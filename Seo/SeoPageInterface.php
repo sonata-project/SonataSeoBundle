@@ -29,18 +29,7 @@ interface SeoPageInterface
      * @param array $data
      * @return SeoPageInterface
      */
-    function setMetaDatas(array $data);
-
-    /**
-     * @return array
-     */
-    function getMetaDatas();
-
-    /**
-     * @param array $data
-     * @return SeoPageInterface
-     */
-    function setMetas(array $data);
+    function addMeta($type, $name, $value, array $extras = array());
 
     /**
      * @return array
@@ -48,17 +37,10 @@ interface SeoPageInterface
     function getMetas();
 
     /**
-     * @param $name
-     * @param $value
+     * @param array $metas
      * @return SeoPageInterface
      */
-    function addMetaData($name, $value);
-
-    /**
-     * @param $meta
-     * @return SeoPageInterface
-     */
-    function addMeta($meta);
+    function setMetas(array $metas);
 
     /**
      * @param array $attributes

@@ -20,17 +20,25 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('sonata_seo');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
-
         $rootNode
             ->children()
                 ->scalarNode('default')->defaultValue('sonata.seo.page.default')->end()
                 ->scalarNode('title')->defaultValue('Sonata Project')->end()
-                ->arrayNode('metadatas')
+                ->arrayNode('metas')
                     ->useAttributeAsKey('id')
-                    ->prototype('scalar')->end()
+                    ->prototype('array')
+                        ->useAttributeAsKey('id')
+                        ->prototype('variable')->end()
+                    ->end()
+                ->end()
+                ->arrayNode('head')
+                    ->useAttributeAsKey('id')
+                    ->children()
+                        ->arrayNode('attributes')
+                            ->useAttributeAsKey('id')
+                            ->prototype('scalar')->end()
+                        ->end()
+                    ->end()
                 ->end()
             ->end()
         ;

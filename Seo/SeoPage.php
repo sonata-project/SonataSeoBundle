@@ -12,11 +12,14 @@ namespace Sonata\SeoBundle\Seo;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ *
+ * http://en.wikipedia.org/wiki/Meta_element
+ *
+ */
 class SeoPage implements SeoPageInterface
 {
     protected $title;
-
-    protected $metaDatas;
 
     protected $metas;
 
@@ -28,9 +31,15 @@ class SeoPage implements SeoPageInterface
      */
     public function __construct($title = '')
     {
-        $this->title = $title;
-        $this->metaDatas = array();
-        $this->metas     = array();
+        $this->title     = $title;
+        $this->metas     = array(
+            'http-equiv' => array(),
+            'name'       => array(),
+            'schema'     => array(),
+            'charset'    => array(),
+            'property'   => array(),
+        );
+
         $this->headAttributes = array();
     }
 
@@ -40,6 +49,8 @@ class SeoPage implements SeoPageInterface
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -53,30 +64,6 @@ class SeoPage implements SeoPageInterface
     /**
      * {@inheritdoc}
      */
-    public function setMetaDatas(array $data)
-    {
-        $this->metaDatas = $data;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getMetaDatas()
-    {
-        return $this->metaDatas;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setMetas(array $data)
-    {
-        $this->metas = $data;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getMetas()
     {
         return $this->metas;
@@ -85,17 +72,42 @@ class SeoPage implements SeoPageInterface
     /**
      * {@inheritdoc}
      */
-    public function addMetaData($name, $value)
+    public function addMeta($type, $name, $content, array $extras = array())
     {
-        $this->metaDatas[$name] = $value;
+        if (!isset($this->metas[$type])) {
+            $this->metas[$type] = array();
+        }
+
+        $this->metas[$type][$name] = array($content, $extras);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function addMeta($meta)
+    public function setMetas(array $metadatas)
     {
-        $this->metas[] = $meta;
+        $this->metas = array();
+
+        foreach ($metadatas as $type => $metas) {
+            foreach ($metas as $name => $meta) {
+                list($content, $extras) = $this->normalize($meta);
+
+                $this->addMeta($type, $name, $content, $extras);
+            }
+        }
+
+        return $this;
+    }
+
+    private function normalize($meta)
+    {
+        if (is_string($meta)) {
+            return array($meta, array());
+        }
+
+        return $meta;
     }
 
     /**
@@ -104,6 +116,8 @@ class SeoPage implements SeoPageInterface
     public function setHeadAttributes(array $attributes)
     {
         $this->headAttributes = $attributes;
+
+        return $this;
     }
 
     /**
@@ -112,6 +126,8 @@ class SeoPage implements SeoPageInterface
     public function addHeadAttributes($name, $value)
     {
         $this->headAttributes[$name] = $value;
+
+        return $this;
     }
 
     /**

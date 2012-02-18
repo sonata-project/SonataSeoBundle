@@ -35,6 +35,7 @@ class SeoExtension extends \Twig_Extension
         return array(
             'sonata_seo_title'      => new \Twig_Function_Method($this, 'renderTitle'),
             'sonata_seo_metadatas'  => new \Twig_Function_Method($this, 'renderMetadatas'),
+            'sonata_seo_head_attributes'  => new \Twig_Function_Method($this, 'renderHeadAttributes'),
         );
     }
 
@@ -61,11 +62,27 @@ class SeoExtension extends \Twig_Extension
      */
     public function renderMetadatas()
     {
-        foreach ($this->page->getMetaDatas() as $name => $content) {
-            echo sprintf("<meta name='%s' content='%s' />\n",
-                $this->normalize($name),
-                $this->normalize($content)
-            );
+        foreach ($this->page->getMetas() as $type => $metas) {
+            foreach ((array) $metas as $name => $meta) {
+                list($content, $extras) = $meta;
+
+                echo sprintf("<meta %s='%s' content='%s' />\n",
+                    $type,
+                    $this->normalize($name),
+                    $this->normalize($content)
+                );
+
+            }
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function renderHeadAttributes()
+    {
+        foreach ($this->page->getHeadAttributes() as $name => $value) {
+            echo sprintf("%s='%s' ", $name, $value);
         }
     }
 
