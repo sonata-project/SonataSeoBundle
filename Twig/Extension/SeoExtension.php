@@ -92,6 +92,6 @@ class SeoExtension extends \Twig_Extension
      */
     private function normalize($string)
     {
-        return str_replace("'", "", $string);
+        return strip_tags(str_replace("'", "", $string));
     }
 }
