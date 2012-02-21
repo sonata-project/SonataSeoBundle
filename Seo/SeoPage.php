@@ -40,7 +40,7 @@ class SeoPage implements SeoPageInterface
             'property'   => array(),
         );
 
-        $this->headAttributes = array();
+        $this->htmlAttributes = array();
     }
 
     /**
@@ -115,7 +115,7 @@ class SeoPage implements SeoPageInterface
      */
     public function setHtmlAttributes(array $attributes)
     {
-        $this->headAttributes = $attributes;
+        $this->htmlAttributes = $attributes;
 
         return $this;
     }
@@ -125,7 +125,7 @@ class SeoPage implements SeoPageInterface
      */
     public function addHtmlAttributes($name, $value)
     {
-        $this->headAttributes[$name] = $value;
+        $this->htmlAttributes[$name] = $value;
 
         return $this;
     }
@@ -135,6 +135,6 @@ class SeoPage implements SeoPageInterface
      */
     public function getHtmlAttributes()
     {
-        return $this->headAttributes;
+        return $this->htmlAttributes;
     }
 }
