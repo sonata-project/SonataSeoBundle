@@ -23,7 +23,7 @@ class SeoPage implements SeoPageInterface
 
     protected $metas;
 
-    protected $headAttributes;
+    protected $htmlAttributes;
 
 
     /**
@@ -113,7 +113,7 @@ class SeoPage implements SeoPageInterface
     /**
      * {@inheritdoc}
      */
-    public function setHeadAttributes(array $attributes)
+    public function setHtmlAttributes(array $attributes)
     {
         $this->headAttributes = $attributes;
 
@@ -123,7 +123,7 @@ class SeoPage implements SeoPageInterface
     /**
      * {@inheritdoc}
      */
-    public function addHeadAttributes($name, $value)
+    public function addHtmlAttributes($name, $value)
     {
         $this->headAttributes[$name] = $value;
 
@@ -133,7 +133,7 @@ class SeoPage implements SeoPageInterface
     /**
      * {@inheritdoc}
      */
-    public function getHeadAttributes()
+    public function getHtmlAttributes()
     {
         return $this->headAttributes;
     }

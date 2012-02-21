@@ -46,17 +46,17 @@ interface SeoPageInterface
      * @param array $attributes
      * @return SeoPageInterface
      */
-    function setHeadAttributes(array $attributes);
+    function setHtmlAttributes(array $attributes);
 
     /**
      * @param $name
      * @param $value
      * @return SeoPageInterface
      */
-    function addHeadAttributes($name, $value);
+    function addHtmlAttributes($name, $value);
 
     /**
      * @return array
      */
-    function getHeadAttributes();
+    function getHtmlAttributes();
 }

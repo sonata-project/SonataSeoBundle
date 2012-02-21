@@ -28,7 +28,7 @@ class SonataSeoExtension extends Extension
         $config['default'] = isset($config['default']) ? $config['default'] : 'sonata.seo.page.default';
         $config['title']   = isset($config['title'])   ? $config['title']   : 'Sonata Project';
         $config['metas']   = isset($config['metas'])   ? $config['metas']   : array();
-        $config['head']    = isset($config['head'])    ? $config['head']    : array();
+        $config['html']    = isset($config['html'])    ? $config['html']    : array();
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
@@ -36,7 +36,7 @@ class SonataSeoExtension extends Extension
         $definition = $container->getDefinition($config['default']);
         $definition->addMethodCall('setTitle', array($config['title']));
         $definition->addMethodCall('setMetas', array($config['metas']));
-        $definition->addMethodCall('setHeadAttributes', array($config['head']));
+        $definition->addMethodCall('setHtmlAttributes', array($config['html']));
 
         $container->setAlias('sonata.seo.page', $config['default']);
     }
