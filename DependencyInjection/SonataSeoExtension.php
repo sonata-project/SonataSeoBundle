@@ -36,7 +36,7 @@ class SonataSeoExtension extends Extension
         $definition = $container->getDefinition($config['default']);
         $definition->addMethodCall('setTitle', array($config['title']));
         $definition->addMethodCall('setMetas', array($config['metas']));
-        $definition->addMethodCall('setHeadAttributes', array($config['head']));
+        $definition->addMethodCall('setHtmlAttributes', array($config['head']));
 
         $container->setAlias('sonata.seo.page', $config['default']);
     }
