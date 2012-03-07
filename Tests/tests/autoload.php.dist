@@ -11,15 +11,7 @@ if (is_file($autoload)) {
 
     $loader = new Symfony\Component\ClassLoader\UniversalClassLoader();
     $loader->registerNamespaces(array(
-        'Symfony'               => array($vendorDir.'/symfony/src'),
-        'Sonata\AdminBundle'    => array($vendorDir),
-        'Sonata\CacheBundle'    => array($vendorDir),
-        'Sonata\BlockBundle'    => array($vendorDir),
-        'Knp'                   => array($vendorDir.'/knpmenu/src'),
-        'Doctrine\Common'       => array($vendorDir.'/doctrine-common/lib'),
-        'Doctrine\ORM'          => array($vendorDir.'/doctrine/lib'),
-        'Doctrine\DBAL'         => array($vendorDir.'/doctrine-dbal/lib'),
-        'Monolog'               => array($vendorDir.'/monolog/src')
+
     ));
     $loader->register();
 
