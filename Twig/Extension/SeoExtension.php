@@ -54,7 +54,7 @@ class SeoExtension extends \Twig_Extension
      */
     public function renderTitle()
     {
-        echo sprintf("<title>%s</title>", $this->page->getTitle());
+        echo sprintf("<title>%s</title>", strip_tags($this->page->getTitle()));
     }
 
     /**
@@ -66,7 +66,7 @@ class SeoExtension extends \Twig_Extension
             foreach ((array) $metas as $name => $meta) {
                 list($content, $extras) = $meta;
 
-                echo sprintf("<meta %s='%s' content='%s' />\n",
+                echo sprintf("<meta %s=\"%s\" content=\"%s\" />\n",
                     $type,
                     $this->normalize($name),
                     $this->normalize($content)
@@ -82,7 +82,7 @@ class SeoExtension extends \Twig_Extension
     public function renderHtmlAttributes()
     {
         foreach ($this->page->getHtmlAttributes() as $name => $value) {
-            echo sprintf("%s='%s' ", $name, $value);
+            echo sprintf('%s="%s" ', $name, $value);
         }
     }
 
@@ -92,6 +92,6 @@ class SeoExtension extends \Twig_Extension
      */
     private function normalize($string)
     {
-        return strip_tags(str_replace("'", "", $string));
+        return htmlentities(strip_tags($string));
     }
 }
