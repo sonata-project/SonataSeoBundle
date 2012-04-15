@@ -1,4 +1,4 @@
-Page Bundle
+SEO Bundle
 ===========
 
 Reference Guide
@@ -10,3 +10,4 @@ Reference Guide
 
    reference/installation
    reference/twig_helpers
+   reference/usage
