@@ -25,10 +25,11 @@ class SonataSeoExtension extends Extension
 
         $config = $configs[0];
 
-        $config['default'] = isset($config['default']) ? $config['default'] : 'sonata.seo.page.default';
-        $config['title']   = isset($config['title'])   ? $config['title']   : 'Sonata Project';
-        $config['metas']   = isset($config['metas'])   ? $config['metas']   : array();
-        $config['head']    = isset($config['head'])    ? $config['head']    : array();
+        $config['default']   = isset($config['default'])  ? $config['default']  : 'sonata.seo.page.default';
+        $config['title']     = isset($config['title'])    ? $config['title']    : 'Sonata Project';
+        $config['metas']     = isset($config['metas'])    ? $config['metas']    : array();
+        $config['head']      = isset($config['head'])     ? $config['head']     : array();
+        $config['encoding']  = isset($config['encoding']) ? $config['encoding'] : 'UTF-8';
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
@@ -37,6 +38,9 @@ class SonataSeoExtension extends Extension
         $definition->addMethodCall('setTitle', array($config['title']));
         $definition->addMethodCall('setMetas', array($config['metas']));
         $definition->addMethodCall('setHtmlAttributes', array($config['head']));
+
+        $container->getDefinition('sonata.seo.twig.extension')
+            ->replaceArgument(1, $config['encoding']);
 
         $container->setAlias('sonata.seo.page', $config['default']);
     }

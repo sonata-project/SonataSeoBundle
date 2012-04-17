@@ -11,6 +11,7 @@
             <tag name="twig.extension" />
 
             <argument type="service" id="sonata.seo.page" />
+            <argument />
         </service>
 
     </services>

@@ -22,7 +22,7 @@ class BlockTest extends \PHPUnit_Framework_TestCase
             'xmlns:og' => 'http://opengraphprotocol.org/schema/',
         )));
 
-        $extension = new SeoExtension($page);
+        $extension = new SeoExtension($page, 'UTF-8');
 
         ob_start();
         $extension->renderHtmlAttributes();
@@ -36,13 +36,40 @@ class BlockTest extends \PHPUnit_Framework_TestCase
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getTitle')->will($this->returnValue('<b>foo bar</b>'));
 
-        $extension = new SeoExtension($page);
+        $extension = new SeoExtension($page, 'UTF-8');
 
         ob_start();
         $extension->renderTitle();
         $content = ob_get_contents();
         ob_end_flush();
         $this->assertEquals('<title>foo bar</title>', $content);
+    }
+
+    public function testEncoding()
+    {
+        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page->expects($this->once())->method('getTitle')->will($this->returnValue('pięć głów zatkniętych na pal'));
+        $page->expects($this->once())->method('getMetas')->will($this->returnValue(array(
+            'http-equiv' => array(),
+            'name'       => array('foo' => array('pięć głów zatkniętych na pal', array())),
+            'schema'     => array(),
+            'charset'    => array(),
+            'property'   => array(),
+        )));
+
+        $extension = new SeoExtension($page, 'UTF-8');
+
+        ob_start();
+        $extension->renderTitle();
+        $content = ob_get_contents();
+        ob_end_flush();
+        $this->assertEquals('<title>pięć głów zatkniętych na pal</title>', $content);
+
+        ob_start();
+        $extension->renderMetadatas();
+        $content = ob_get_contents();
+        ob_end_flush();
+        $this->assertEquals("<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n", $content);
     }
 
     public function testMetadatas()
@@ -56,7 +83,7 @@ class BlockTest extends \PHPUnit_Framework_TestCase
             'property'   => array(),
         )));
 
-        $extension = new SeoExtension($page);
+        $extension = new SeoExtension($page, 'UTF-8');
 
         ob_start();
         $extension->renderMetadatas();

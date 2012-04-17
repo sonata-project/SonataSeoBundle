@@ -17,12 +17,16 @@ class SeoExtension extends \Twig_Extension
 {
     protected $page;
 
+    protected $encoding;
+
     /**
      * @param \Sonata\SeoBundle\Seo\SeoPageInterface $page
+     * @param $encoding
      */
-    public function __construct(SeoPageInterface $page)
+    public function __construct(SeoPageInterface $page, $encoding)
     {
         $this->page = $page;
+        $this->encoding = $encoding;
     }
 
     /**
@@ -92,6 +96,6 @@ class SeoExtension extends \Twig_Extension
      */
     private function normalize($string)
     {
-        return htmlentities(strip_tags($string));
+        return htmlentities(strip_tags($string), ENT_COMPAT, $this->encoding);
     }
 }
