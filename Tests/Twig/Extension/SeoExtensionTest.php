@@ -27,7 +27,7 @@ class BlockTest extends \PHPUnit_Framework_TestCase
         ob_start();
         $extension->renderHtmlAttributes();
         $content = ob_get_contents();
-        ob_end_flush();
+        ob_end_clean();
         $this->assertEquals('xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" ', $content);
     }
 
@@ -41,7 +41,7 @@ class BlockTest extends \PHPUnit_Framework_TestCase
         ob_start();
         $extension->renderTitle();
         $content = ob_get_contents();
-        ob_end_flush();
+        ob_end_clean();
         $this->assertEquals('<title>foo bar</title>', $content);
     }
 
@@ -62,13 +62,13 @@ class BlockTest extends \PHPUnit_Framework_TestCase
         ob_start();
         $extension->renderTitle();
         $content = ob_get_contents();
-        ob_end_flush();
+        ob_end_clean();
         $this->assertEquals('<title>pięć głów zatkniętych na pal</title>', $content);
 
         ob_start();
         $extension->renderMetadatas();
         $content = ob_get_contents();
-        ob_end_flush();
+        ob_end_clean();
         $this->assertEquals("<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n", $content);
     }
 
@@ -88,7 +88,7 @@ class BlockTest extends \PHPUnit_Framework_TestCase
         ob_start();
         $extension->renderMetadatas();
         $content = ob_get_contents();
-        ob_end_flush();
+        ob_end_clean();
 
         $this->assertEquals("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n", $content);
     }
