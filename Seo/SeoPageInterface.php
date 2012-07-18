@@ -15,7 +15,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 interface SeoPageInterface
 {
     /**
-     * @param $title
+     * @param string $title
+     *
      * @return SeoPageInterface
      */
     function setTitle($title);
@@ -26,8 +27,12 @@ interface SeoPageInterface
     function getTitle();
 
     /**
-     * @param array $data
-     * @return SeoPageInterface
+     * @param string $type
+     * @param string $name
+     * @param string $value
+     * @param array  $extras
+     *
+     * @return mixed
      */
     function addMeta($type, $name, $value, array $extras = array());
 
@@ -38,19 +43,22 @@ interface SeoPageInterface
 
     /**
      * @param array $metas
+     *
      * @return SeoPageInterface
      */
     function setMetas(array $metas);
 
     /**
      * @param array $attributes
+     *
      * @return SeoPageInterface
      */
     function setHtmlAttributes(array $attributes);
 
     /**
-     * @param $name
-     * @param $value
+     * @param string $name
+     * @param string $value
+     *
      * @return SeoPageInterface
      */
     function addHtmlAttributes($name, $value);
