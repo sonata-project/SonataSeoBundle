@@ -3,10 +3,7 @@ Installation
 
 To begin, add the dependent bundles to the vendor/bundles directory. Add the following lines to the file deps::
 
-    [SonataSeoBundle]
-        git=http://github.com/sonata-project/SonataSeoBundle.git
-        target=/bundles/Sonata/SeoBundle
-
+    php composer.phar require sonata-project/seo-bundle
 
 Now, add the new `SeoBundle` Bundle to the kernel
 
@@ -19,18 +16,6 @@ Now, add the new `SeoBundle` Bundle to the kernel
             new Sonata\SeoBundle\SonataSeoBundle(),
         );
     }
-
-Update the ``autoload.php`` to add new namespaces:
-
-.. code-block:: php
-
-    <?php
-    $loader->registerNamespaces(array(
-        'Sonata'                             => __DIR__,
-
-        // ... other declarations
-    ));
-
 
 Configuration
 -------------
