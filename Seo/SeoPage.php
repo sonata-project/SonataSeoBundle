@@ -90,10 +90,13 @@ class SeoPage implements SeoPageInterface
         $this->metas = array();
 
         foreach ($metadatas as $type => $metas) {
-            foreach ($metas as $name => $meta) {
-                list($content, $extras) = $this->normalize($meta);
-
-                $this->addMeta($type, $name, $content, $extras);
+            if (null !== $metas || !empty($metas)) {
+	            foreach ($metas as $name => $meta) {
+	                list($content, $extras) = $this->normalize($meta);
+	
+	                $this->addMeta($type, $name, $content, $extras);
+	            }
+	            
             }
         }
 
