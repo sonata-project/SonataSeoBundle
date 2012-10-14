@@ -29,4 +29,15 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $page->getMetas());
     }
+
+    /**
+     * @expectedException RuntimeException
+     */
+    public function testInvalidMetas()
+    {
+        $page = new SeoPage();
+        $page->setMetas(array(
+            'type' => 'not an array'
+        ));
+    }
 }

@@ -90,6 +90,10 @@ class SeoPage implements SeoPageInterface
         $this->metas = array();
 
         foreach ($metadatas as $type => $metas) {
+            if (!is_array($metas)) {
+                throw new \RuntimeException('$metas must be an array');
+            }
+
             foreach ($metas as $name => $meta) {
                 list($content, $extras) = $this->normalize($meta);
 
@@ -100,6 +104,11 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
+    /**
+     * @param mixed $meta
+     *
+     * @return array
+     */
     private function normalize($meta)
     {
         if (is_string($meta)) {
