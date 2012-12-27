@@ -14,6 +14,9 @@
             <argument />
         </service>
 
+        <service id="sonata.seo.sitemap.source" class="Exporter\Source\ChainSourceIterator">
+            <argument type="collection"/>
+        </service>
     </services>
 
 </container>
