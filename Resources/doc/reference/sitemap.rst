@@ -49,4 +49,4 @@ Usage
 
 - Generate the sitemap::
 
-    php app/console app/console sonata:seo:sitemap web sonata-project.org
+    php app/console sonata:seo:sitemap web sonata-project.org
