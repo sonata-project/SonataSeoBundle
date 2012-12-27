@@ -9,24 +9,25 @@ By default, the object is initialized with values defined in the configuration:
 .. code-block:: yaml
 
     sonata_seo:
-        title:            Sonata Project
-        metas:
-            name:
-                keywords:             foo bar
-                description:          The description
-                robots:               index, follow
+        page:
+            title:            Sonata Project
+            metas:
+                name:
+                    keywords:             foo bar
+                    description:          The description
+                    robots:               index, follow
 
-            property:
-                'og:site_name':       Sonata Project Sandbox
-                'og:description':     A demo of the some rich bundles for your Symfony2 projects
+                property:
+                    'og:site_name':       Sonata Project Sandbox
+                    'og:description':     A demo of the some rich bundles for your Symfony2 projects
 
-            http-equiv:
-                'Content-Type':         text/html; charset=utf-8
-                #'X-Ua-Compatible':      IE=EmulateIE7
+                http-equiv:
+                    'Content-Type':         text/html; charset=utf-8
+                    #'X-Ua-Compatible':      IE=EmulateIE7
 
-        head:
-            'xmlns':              http://www.w3.org/1999/xhtml
-            'xmlns:og':           http://opengraphprotocol.org/schema/
+            head:
+                'xmlns':              http://www.w3.org/1999/xhtml
+                'xmlns:og':           http://opengraphprotocol.org/schema/
 
 
 However, it is possible to alter these values at runtime.
