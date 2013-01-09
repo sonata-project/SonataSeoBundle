@@ -87,6 +87,10 @@ class SonataSeoExtension extends Extension
 
             $source->addMethodCall('addSource', array(new Reference($sitemapIteratorId)));
         }
+
+        foreach ($config['services'] as $id) {
+            $source->addMethodCall('addSource', array(new Reference($id)));
+        }
     }
 
     /**
@@ -135,6 +139,8 @@ class SonataSeoExtension extends Extension
 
             $config['sitemap']['doctrine_orm'][$pos] = $sitemap;
         }
+
+        $config['sitemap']['services']  = isset($config['sitemap']['services']) && is_array($config['sitemap']['services'])  ? $config['sitemap']['services'] : array();
 
         return $config;
     }
