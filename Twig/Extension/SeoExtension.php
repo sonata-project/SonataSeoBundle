@@ -40,6 +40,7 @@ class SeoExtension extends \Twig_Extension
             'sonata_seo_title'      => new \Twig_Function_Method($this, 'renderTitle'),
             'sonata_seo_metadatas'  => new \Twig_Function_Method($this, 'renderMetadatas'),
             'sonata_seo_html_attributes'  => new \Twig_Function_Method($this, 'renderHtmlAttributes'),
+            'sonata_seo_link_canonical'  => new \Twig_Function_Method($this, 'renderLinkCanonical'),
         );
     }
 
@@ -87,6 +88,16 @@ class SeoExtension extends \Twig_Extension
     {
         foreach ($this->page->getHtmlAttributes() as $name => $value) {
             echo sprintf('%s="%s" ', $name, $value);
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function renderLinkCanonical()
+    {
+        if ($this->page->getLinkCanonical()) {
+            echo sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
         }
     }
 

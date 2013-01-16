@@ -72,4 +72,11 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('My title', $page->getTitle());
     }
+
+    public function testLinkCanonical() {
+        $page = new SeoPage();
+        $page->setLinkCanonical('http://example.com');
+
+        $this->assertEquals('http://example.com', $page->getLinkCanonical());
+    }
 }

@@ -100,4 +100,17 @@ class BlockTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('sonata_seo', $extension->getName());
     }
+
+    public function testLinkCanonical() {
+        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page->expects($this->any())->method('getLinkCanonical')->will($this->returnValue('http://example.com'));
+
+        $extension = new SeoExtension($page, 'UTF-8');
+        ob_start();
+        $extension->renderLinkCanonical();
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        $this->assertEquals("<link rel=\"canonical\" href=\"http://example.com\"/>\n", $content);
+    }
 }

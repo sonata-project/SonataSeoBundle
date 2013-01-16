@@ -25,6 +25,8 @@ class SeoPage implements SeoPageInterface
 
     protected $htmlAttributes;
 
+    protected $linkCanonical;
+
     /**
      * {@inheritdoc}
      */
@@ -40,6 +42,7 @@ class SeoPage implements SeoPageInterface
         );
 
         $this->headAttributes = array();
+        $this->linkCanonical = '';
     }
 
     /**
@@ -144,5 +147,23 @@ class SeoPage implements SeoPageInterface
     public function getHtmlAttributes()
     {
         return $this->htmlAttributes;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLinkCanonical($link)
+    {
+        $this->linkCanonical = $link;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLinkCanonical()
+    {
+        return $this->linkCanonical;
     }
 }
