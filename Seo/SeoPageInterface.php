@@ -65,4 +65,16 @@ interface SeoPageInterface
      * @return array
      */
     function getHtmlAttributes();
+
+    /**
+     * @param string $link
+     *
+     * @return SeoPageInterface
+     */
+    function setLinkCanonical($link);
+
+    /**
+     * @return string
+     */
+    function getLinkCanonical();
 }
