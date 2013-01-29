@@ -63,7 +63,7 @@ class SonataSeoExtension extends Extension
             // define the connectionIterator
             $connectionIteratorId = 'sonata.seo.source.doctrine_connection_iterator_'.$pos;
 
-            $connectionIterator = new Definition('Exporter\Source\DoctrineDBALConnectionSourceIterator', array(
+            $connectionIterator = new Definition($container->getParameter('sonata.seo.exporter.database_source_iterator.class'), array(
                 new Reference($sitemap['connection']),
                 $sitemap['query']
             ));
@@ -74,7 +74,7 @@ class SonataSeoExtension extends Extension
             // define the sitemap proxy iterator
             $sitemapIteratorId = 'sonata.seo.source.doctrine_sitemap_iterator_'.$pos;
 
-            $sitemapIterator = new Definition('Exporter\Source\SymfonySitemapSourceIterator', array(
+            $sitemapIterator = new Definition($container->getParameter('sonata.seo.exporter.sitemap_source_iterator.class'), array(
                 new Reference($connectionIteratorId),
                 new Reference('router'),
                 $sitemap['route'],
