@@ -85,11 +85,11 @@ class SonataSeoExtension extends Extension
 
             $container->setDefinition($sitemapIteratorId, $sitemapIterator);
 
-            $source->addMethodCall('addSource', array($sitemap['group'], new Reference($sitemapIteratorId)));
+            $source->addMethodCall('addSource', array($sitemap['group'], new Reference($sitemapIteratorId), $sitemap['types']));
         }
 
         foreach ($config['services'] as $service) {
-            $source->addMethodCall('addSource', array($service['group'], new Reference($service['id'])));
+            $source->addMethodCall('addSource', array($service['group'], new Reference($service['id']), $service['types']));
         }
     }
 
@@ -121,6 +121,7 @@ class SonataSeoExtension extends Extension
 
         foreach ($config['sitemap']['doctrine_orm'] as $pos => $sitemap) {
             $sitemap['group']      = isset($sitemap['group']) ? $sitemap['group'] : false;
+            $sitemap['types']      = isset($sitemap['types']) ? $sitemap['types'] : array();
             $sitemap['connection'] = isset($sitemap['connection']) ? $sitemap['connection'] : 'doctrine.dbal.default_connection';
             $sitemap['route']      = isset($sitemap['route']) ? $sitemap['route'] : false;
             $sitemap['parameters'] = isset($sitemap['parameters']) ? $sitemap['parameters'] : false;
@@ -147,11 +148,13 @@ class SonataSeoExtension extends Extension
             if (!is_array($sitemap)) {
                 $sitemap = array(
                     'group' => false,
+                    'types' => array(),
                     'id'    => $sitemap
                 );
             }
             else {
                 $sitemap['group'] = isset($sitemap['group']) ? $sitemap['group'] : false;
+                $sitemap['types'] = isset($sitemap['types']) ? $sitemap['types'] : array();
 
                 if (!isset($sitemap['id'])) {
                     throw new \RuntimeException('Service id must to be defined, please review the sonata_seo.sitemap configuration');

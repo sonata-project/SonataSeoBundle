@@ -81,11 +81,12 @@ EOT
 
         // step 3
         $output->writeln(sprintf('Generating sitemap - this can take a while'));
-        foreach ($manager as $group => $source) {
-            $write = new SitemapWriter($tempFolder, $group, false);
+        foreach ($manager as $group => $sitemap) {
+
+            $write = new SitemapWriter($tempFolder, $group, $sitemap->types, false);
 
             try {
-                Handler::create($source, $write)->export();
+                Handler::create($sitemap->sources, $write)->export();
             } catch (\Exception $e) {
                 $fs->remove($tempFolder);
 

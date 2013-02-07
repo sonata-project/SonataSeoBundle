@@ -30,14 +30,22 @@ class SourceManager implements SourceIteratorInterface
      *
      * @param string                  $group
      * @param SourceIteratorInterface $source
+     * @param array                   $types
      */
-    public function addSource($group, SourceIteratorInterface $source)
+    public function addSource($group, SourceIteratorInterface $source, array $types = array())
     {
         if (!isset($this->sources[$group])) {
-            $this->sources[$group] = new ChainSourceIterator();
+            $this->sources[$group] = new \stdClass();
+
+            $this->sources[$group]->sources = new ChainSourceIterator();
+            $this->sources[$group]->types   = array();
         }
 
-        $this->sources[$group]->addSource($source);
+        $this->sources[$group]->sources->addSource($source);
+
+        if ($types) {
+            $this->sources[$group]->types += array_diff($types, $this->sources[$group]->types);
+        }
     }
 
     /**
