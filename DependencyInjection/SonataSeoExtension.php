@@ -56,7 +56,7 @@ class SonataSeoExtension extends Extension
      */
     protected function configureSitemap(array $config, ContainerBuilder $container)
     {
-        $source = $container->getDefinition('sonata.seo.sitemap.source');
+        $source = $container->getDefinition('sonata.seo.sitemap.manager');
         $source->setScope(ContainerInterface::SCOPE_PROTOTYPE);
 
         foreach ($config['doctrine_orm'] as $pos => $sitemap) {
@@ -85,11 +85,11 @@ class SonataSeoExtension extends Extension
 
             $container->setDefinition($sitemapIteratorId, $sitemapIterator);
 
-            $source->addMethodCall('addSource', array(new Reference($sitemapIteratorId)));
+            $source->addMethodCall('addSource', array($sitemap['group'], new Reference($sitemapIteratorId)));
         }
 
-        foreach ($config['services'] as $id) {
-            $source->addMethodCall('addSource', array(new Reference($id)));
+        foreach ($config['services'] as $service) {
+            $source->addMethodCall('addSource', array($service['group'], new Reference($service['id'])));
         }
     }
 
@@ -120,27 +120,46 @@ class SonataSeoExtension extends Extension
         $config['sitemap']['doctrine_orm']  = isset($config['sitemap']['doctrine_orm']) && is_array($config['sitemap']['doctrine_orm'])  ? $config['sitemap']['doctrine_orm'] : array();
 
         foreach ($config['sitemap']['doctrine_orm'] as $pos => $sitemap) {
+            $sitemap['group']      = isset($sitemap['group']) ? $sitemap['group'] : false;
             $sitemap['connection'] = isset($sitemap['connection']) ? $sitemap['connection'] : 'doctrine.dbal.default_connection';
-            $sitemap['route'] = isset($sitemap['route']) ? $sitemap['route'] : false;
+            $sitemap['route']      = isset($sitemap['route']) ? $sitemap['route'] : false;
             $sitemap['parameters'] = isset($sitemap['parameters']) ? $sitemap['parameters'] : false;
-            $sitemap['query'] = isset($sitemap['query']) ? $sitemap['query'] : false;
+            $sitemap['query']      = isset($sitemap['query']) ? $sitemap['query'] : false;
 
             if ($sitemap['route'] === false) {
-                throw new \RuntimeException('route cannot be empty, please review the sonata_seo.sitemap configuration');
+                throw new \RuntimeException('Route cannot be empty, please review the sonata_seo.sitemap configuration');
             }
 
             if ($sitemap['query'] === false) {
-                throw new \RuntimeException('query cannot be empty, please review the sonata_seo.sitemap configuration');
+                throw new \RuntimeException('Query cannot be empty, please review the sonata_seo.sitemap configuration');
             }
 
             if ($sitemap['parameters'] === false) {
-                throw new \RuntimeException('route\'s parameters cannot be empty, please review the sonata_seo.sitemap configuration');
+                throw new \RuntimeException('Route\'s parameters cannot be empty, please review the sonata_seo.sitemap configuration');
             }
 
             $config['sitemap']['doctrine_orm'][$pos] = $sitemap;
         }
 
         $config['sitemap']['services']  = isset($config['sitemap']['services']) && is_array($config['sitemap']['services'])  ? $config['sitemap']['services'] : array();
+
+        foreach ($config['sitemap']['services'] as $pos => $sitemap) {
+            if (!is_array($sitemap)) {
+                $sitemap = array(
+                    'group' => false,
+                    'id'    => $sitemap
+                );
+            }
+            else {
+                $sitemap['group'] = isset($sitemap['group']) ? $sitemap['group'] : false;
+
+                if (!isset($sitemap['id'])) {
+                    throw new \RuntimeException('Service id must to be defined, please review the sonata_seo.sitemap configuration');
+                }
+            }
+
+            $config['sitemap']['services'][$pos] = $sitemap;
+        }
 
         return $config;
     }
