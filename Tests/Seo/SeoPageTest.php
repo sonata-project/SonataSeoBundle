@@ -66,11 +66,20 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $page->getHtmlAttributes());
     }
 
-    public function testTitle() {
+    public function testSetTitle() {
         $page = new SeoPage;
         $page->setTitle('My title');
 
         $this->assertEquals('My title', $page->getTitle());
+    }
+
+    public function testAddTitle() {
+        $page = new SeoPage;
+        $page->setTitle('My title');
+        $page->setSeparator(' - ');
+        $page->addTitle('Additional title');
+
+        $this->assertEquals('Additional title - My title', $page->getTitle());
     }
 
     public function testLinkCanonical() {

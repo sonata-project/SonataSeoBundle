@@ -20,6 +20,13 @@ interface SeoPageInterface
     function setTitle($title);
 
     /**
+     * @param string $title
+     *
+     * @return SeoPageInterface
+     */
+    function addTitle($title);
+
+    /**
      * @return string
      */
     function getTitle();
@@ -77,4 +84,11 @@ interface SeoPageInterface
      * @return string
      */
     function getLinkCanonical();
+
+    /**
+     * @param string $separator
+     *
+     * @return SeoPageInterface
+     */
+    function setSeparator($separator);
 }
