@@ -25,6 +25,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('page')
                     ->scalarNode('encoding')->defaultValue('UTF-8')->end()
                     ->scalarNode('default')->defaultValue('sonata.seo.page.default')->end()
+                    ->scalarNode('separator')->defaultValue(' - ')->end()
                     ->scalarNode('title')->defaultValue('Sonata Project')->end()
                     ->arrayNode('metas')
                         ->useAttributeAsKey('id')
