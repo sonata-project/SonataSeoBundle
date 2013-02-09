@@ -19,7 +19,7 @@
     "minimum-stability": "dev",
     "require": {
         "symfony/symfony": "2.*",
-        "sonata-project/exporter": "dev-master",
+        "sonata-project/exporter": "1.0.0",
         "twig/twig": "*"
     },
     "autoload": {
