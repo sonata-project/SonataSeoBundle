@@ -7,6 +7,7 @@
     <parameters>
         <parameter key="sonata.seo.exporter.database_source_iterator.class">Exporter\Source\DoctrineDBALConnectionSourceIterator</parameter>
         <parameter key="sonata.seo.exporter.sitemap_source_iterator.class">Exporter\Source\SymfonySitemapSourceIterator</parameter>
+        <parameter key="sonata.seo.sitemap.manager.class">Sonata\SeoBundle\Sitemap\SourceManager</parameter>
     </parameters>
 
     <services>
@@ -19,9 +20,7 @@
             <argument />
         </service>
 
-        <service id="sonata.seo.sitemap.source" class="Exporter\Source\ChainSourceIterator">
-            <argument type="collection"/>
-        </service>
+        <service id="sonata.seo.sitemap.manager" class="%sonata.seo.sitemap.manager.class%" />
     </services>
 
 </container>

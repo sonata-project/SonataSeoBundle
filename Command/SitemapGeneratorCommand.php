@@ -77,18 +77,25 @@ EOT
         $fs->mkdir($tempFolder);
 
         // step 2
-        $source = $this->getContainer()->get('sonata.seo.sitemap.source');
-        $write = new SitemapWriter($tempFolder, 'sitemap_%05d.xml');
+        $manager = $this->getContainer()->get('sonata.seo.sitemap.manager');
 
         // step 3
         $output->writeln(sprintf('Generating sitemap - this can take a while'));
-        try {
-            Handler::create($source, $write)->export();
-        } catch (\Exception $e) {
-            $fs->remove($tempFolder);
+        foreach ($manager as $group => $sitemap) {
 
-            throw $e;
+            $write = new SitemapWriter($tempFolder, $group, $sitemap->types, false);
+
+            try {
+                Handler::create($sitemap->sources, $write)->export();
+            } catch (\Exception $e) {
+                $fs->remove($tempFolder);
+
+                throw $e;
+            }
         }
+
+        // generate global sitemap index
+        SitemapWriter::generateSitemapIndex($tempFolder, 'sitemap*.xml');
 
         // step 4
         $output->writeln(sprintf('Moving temporary file to %s ...', $input->getArgument('folder')));
