@@ -27,6 +27,8 @@ class SeoPage implements SeoPageInterface
 
     protected $linkCanonical;
 
+    protected $separator;
+
     /**
      * {@inheritdoc}
      */
@@ -43,6 +45,7 @@ class SeoPage implements SeoPageInterface
 
         $this->headAttributes = array();
         $this->linkCanonical = '';
+        $this->separator = ' ';
     }
 
     /**
@@ -51,6 +54,16 @@ class SeoPage implements SeoPageInterface
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addTitle($title)
+    {
+        $this->title = $title . $this->separator . $this->title;
 
         return $this;
     }
@@ -165,5 +178,13 @@ class SeoPage implements SeoPageInterface
     public function getLinkCanonical()
     {
         return $this->linkCanonical;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSeparator($separator)
+    {
+        $this->separator = $separator;
     }
 }
