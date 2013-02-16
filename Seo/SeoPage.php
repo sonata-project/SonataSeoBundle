@@ -27,6 +27,8 @@ class SeoPage implements SeoPageInterface
 
     protected $separator;
 
+    protected $headAttributes;
+
     /**
      * {@inheritdoc}
      */
