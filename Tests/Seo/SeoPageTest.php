@@ -53,7 +53,8 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         ));
     }
 
-    public function testHtmlAttributes() {
+    public function testHtmlAttributes()
+    {
         $page = new SeoPage;
         $page->setHtmlAttributes(array('key1' => 'value1'));
         $page->addHtmlAttributes('key2', 'value2');
@@ -66,14 +67,16 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $page->getHtmlAttributes());
     }
 
-    public function testSetTitle() {
+    public function testSetTitle()
+    {
         $page = new SeoPage;
         $page->setTitle('My title');
 
         $this->assertEquals('My title', $page->getTitle());
     }
 
-    public function testAddTitle() {
+    public function testAddTitle()
+    {
         $page = new SeoPage;
         $page->setTitle('My title');
         $page->setSeparator(' - ');
@@ -82,7 +85,8 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Additional title - My title', $page->getTitle());
     }
 
-    public function testLinkCanonical() {
+    public function testLinkCanonical()
+    {
         $page = new SeoPage();
         $page->setLinkCanonical('http://example.com');
 

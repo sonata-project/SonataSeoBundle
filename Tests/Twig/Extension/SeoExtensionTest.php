@@ -93,15 +93,16 @@ class BlockTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n", $content);
     }
 
-    public function testName() {
-
+    public function testName()
+    {
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $extension = new SeoExtension($page, 'UTF-8');
 
         $this->assertEquals('sonata_seo', $extension->getName());
     }
 
-    public function testLinkCanonical() {
+    public function testLinkCanonical()
+    {
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->any())->method('getLinkCanonical')->will($this->returnValue('http://example.com'));
 

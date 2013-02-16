@@ -4,7 +4,6 @@ namespace Sonata\SeoBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Exporter\Source\PDOStatementSourceIterator;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\Config\FileLocator;
@@ -153,8 +152,7 @@ class SonataSeoExtension extends Extension
                     'types' => array(),
                     'id'    => $sitemap
                 );
-            }
-            else {
+            } else {
                 $sitemap['group'] = isset($sitemap['group']) ? $sitemap['group'] : false;
                 $sitemap['types'] = isset($sitemap['types']) ? $sitemap['types'] : array();
 

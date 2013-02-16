@@ -10,8 +10,6 @@
 
 namespace Sonata\SeoBundle\Seo;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
 /**
  *
  * http://en.wikipedia.org/wiki/Meta_element

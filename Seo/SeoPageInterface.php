@@ -17,19 +17,19 @@ interface SeoPageInterface
      *
      * @return SeoPageInterface
      */
-    function setTitle($title);
+    public function setTitle($title);
 
     /**
      * @param string $title
      *
      * @return SeoPageInterface
      */
-    function addTitle($title);
+    public function addTitle($title);
 
     /**
      * @return string
      */
-    function getTitle();
+    public function getTitle();
 
     /**
      * @param string $type
@@ -39,26 +39,26 @@ interface SeoPageInterface
      *
      * @return mixed
      */
-    function addMeta($type, $name, $value, array $extras = array());
+    public function addMeta($type, $name, $value, array $extras = array());
 
     /**
      * @return array
      */
-    function getMetas();
+    public function getMetas();
 
     /**
      * @param array $metas
      *
      * @return SeoPageInterface
      */
-    function setMetas(array $metas);
+    public function setMetas(array $metas);
 
     /**
      * @param array $attributes
      *
      * @return SeoPageInterface
      */
-    function setHtmlAttributes(array $attributes);
+    public function setHtmlAttributes(array $attributes);
 
     /**
      * @param string $name
@@ -66,29 +66,29 @@ interface SeoPageInterface
      *
      * @return SeoPageInterface
      */
-    function addHtmlAttributes($name, $value);
+    public function addHtmlAttributes($name, $value);
 
     /**
      * @return array
      */
-    function getHtmlAttributes();
+    public function getHtmlAttributes();
 
     /**
      * @param string $link
      *
      * @return SeoPageInterface
      */
-    function setLinkCanonical($link);
+    public function setLinkCanonical($link);
 
     /**
      * @return string
      */
-    function getLinkCanonical();
+    public function getLinkCanonical();
 
     /**
      * @param string $separator
      *
      * @return SeoPageInterface
      */
-    function setSeparator($separator);
+    public function setSeparator($separator);
 }
