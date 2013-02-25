@@ -24,5 +24,10 @@
     "autoload": {
         "psr-0": { "Sonata\\SeoBundle": "" }
     },
-    "target-dir": "Sonata/SeoBundle"
+    "target-dir": "Sonata/SeoBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1.x-dev"
+        }
+    }
 }
