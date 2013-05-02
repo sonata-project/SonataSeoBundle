@@ -48,7 +48,6 @@ The <info>sonata:seo:sitemap</info> command create new sitemap files (index + si
 
 EOT
 );
-
     }
 
     /**
@@ -95,7 +94,7 @@ EOT
         }
 
         // generate global sitemap index
-        SitemapWriter::generateSitemapIndex($tempFolder, 'sitemap*.xml');
+        SitemapWriter::generateSitemapIndex($tempFolder, sprintf('%s://%s%s', $input->getOption('scheme'), $input->getArgument('host'), $input->getOption('baseurl')), 'sitemap*.xml', 'sitemap.xml');
 
         // step 4
         $output->writeln(sprintf('Moving temporary file to %s ...', $input->getArgument('folder')));
@@ -114,5 +113,4 @@ EOT
 
         $output->writeln('<info>done!</info>');
     }
-
 }
