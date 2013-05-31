@@ -41,6 +41,7 @@ class SeoExtension extends \Twig_Extension
             'sonata_seo_metadatas'  => new \Twig_Function_Method($this, 'renderMetadatas'),
             'sonata_seo_html_attributes'  => new \Twig_Function_Method($this, 'renderHtmlAttributes'),
             'sonata_seo_link_canonical'  => new \Twig_Function_Method($this, 'renderLinkCanonical'),
+            'sonata_seo_lang_alternates'  => new \Twig_Function_Method($this, 'renderLangAlternates'),
         );
     }
 
@@ -98,6 +99,16 @@ class SeoExtension extends \Twig_Extension
     {
         if ($this->page->getLinkCanonical()) {
             echo sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function renderLangAlternates()
+    {
+        foreach ($this->page->getLangAlternates() as $href => $hrefLang) {
+            echo sprintf("<link rel=\"alternate\" href=\"%s\" hreflang=\"%s\"/>\n", $href, $hrefLang);
         }
     }
 

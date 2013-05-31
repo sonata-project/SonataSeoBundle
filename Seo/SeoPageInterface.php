@@ -91,4 +91,23 @@ interface SeoPageInterface
      * @return SeoPageInterface
      */
     public function setSeparator($separator);
+
+    /**
+     * @param array $langAlternates
+     * @return SeoPageInterface
+     */
+    public function setLangAlternates(array $langAlternates);
+
+    /**
+     * @param string $href
+     * @param string $hrefLang
+     *
+     * @return SeoPageInterface
+     */
+    public function addLangAlternate($href, $hrefLang);
+
+    /**
+     * @return array
+     */
+    public function getLangAlternates();
 }
