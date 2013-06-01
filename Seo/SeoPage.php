@@ -29,6 +29,8 @@ class SeoPage implements SeoPageInterface
 
     protected $headAttributes;
 
+    protected $langAlternates;
+
     /**
      * {@inheritdoc}
      */
@@ -46,6 +48,7 @@ class SeoPage implements SeoPageInterface
         $this->headAttributes = array();
         $this->linkCanonical = '';
         $this->separator = ' ';
+        $this->langAlternates = array();
     }
 
     /**
@@ -186,5 +189,33 @@ class SeoPage implements SeoPageInterface
     public function setSeparator($separator)
     {
         $this->separator = $separator;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLangAlternates(array $langAlternates)
+    {
+        $this->langAlternates= $langAlternates;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addLangAlternate($href, $hrefLang)
+    {
+        $this->langAlternates[$href] = $hrefLang;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLangAlternates()
+    {
+        return  $this->langAlternates;
     }
 }

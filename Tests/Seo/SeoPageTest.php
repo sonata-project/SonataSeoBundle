@@ -92,4 +92,18 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('http://example.com', $page->getLinkCanonical());
     }
+
+    public function testLangAlternates()
+    {
+        $page = new SeoPage();
+        $page->setLangAlternates(array('http://example.com/' => 'x-default'));
+        $page->addLangAlternate('http://example.com/en-us', 'en-us');
+
+        $expected = array(
+            'http://example.com/' => 'x-default',
+            'http://example.com/en-us' => 'en-us'
+        );
+
+        $this->assertEquals($expected, $page->getLangAlternates());
+    }
 }
