@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "symfony/symfony": "2.*",
+        "symfony/symfony": "~2.1",
         "sonata-project/exporter": ">=1.2.2,<2.0",
         "twig/twig": "*"
     },
