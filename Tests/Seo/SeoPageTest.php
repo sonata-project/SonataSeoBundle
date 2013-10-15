@@ -108,12 +108,14 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * The hasMeta() should return a boolean
+     * The hasMeta() should return true for a defined meta, false otherwise
      */
     public function testHasMeta()
     {
         $page = new SeoPage();
+        $page->addMeta('property', 'test', array());
 
-        $this->assertInternalType('bool', $page->hasMeta('property', 'test'));
+        $this->assertTrue($page->hasMeta('property', 'test'));
+        $this->assertFalse($page->hasMeta('property', 'fake'));
     }
 }
