@@ -112,7 +112,6 @@ class SeoPage implements SeoPageInterface
         return isset($this->metas[$type][$name]);
     }
 
-
     /**
      * {@inheritdoc}
      */
