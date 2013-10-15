@@ -42,6 +42,14 @@ interface SeoPageInterface
     public function addMeta($type, $name, $value, array $extras = array());
 
     /**
+     * @param string $type
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasMeta($type, $name);
+
+    /**
      * @return array
      */
     public function getMetas();

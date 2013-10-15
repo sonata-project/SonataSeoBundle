@@ -102,6 +102,17 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
+     * @param string $type
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasMeta($type, $name)
+    {
+        return isset($this->metas[$type][$name]);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function setMetas(array $metadatas)

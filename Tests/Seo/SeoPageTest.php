@@ -106,4 +106,16 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $page->getLangAlternates());
     }
+
+    /**
+     * The hasMeta() should return true for a defined meta, false otherwise
+     */
+    public function testHasMeta()
+    {
+        $page = new SeoPage();
+        $page->addMeta('property', 'test', array());
+
+        $this->assertTrue($page->hasMeta('property', 'test'));
+        $this->assertFalse($page->hasMeta('property', 'fake'));
+    }
 }
