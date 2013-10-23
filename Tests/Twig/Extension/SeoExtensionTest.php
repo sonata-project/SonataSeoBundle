@@ -31,6 +31,20 @@ class BlockTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" ', $content);
     }
 
+    public function testHeadAttributes()
+    {
+        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page->expects($this->once())->method('getHeadAttributes')->will($this->returnValue(array()));
+
+        $extension = new SeoExtension($page, 'UTF-8');
+
+        ob_start();
+        $extension->renderHeadAttributes();
+        $content = ob_get_contents();
+        ob_end_clean();
+        $this->assertEquals('', $content);
+    }
+
     public function testTitle()
     {
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');

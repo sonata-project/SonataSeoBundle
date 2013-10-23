@@ -177,6 +177,39 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
+     * @param array $attributes
+     *
+     * @return SeoPageInterface
+     */
+    public function setHeadAttributes(array $attributes)
+    {
+        $this->headAttributes = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $value
+     *
+     * @return SeoPageInterface
+     */
+    public function addHeadAttribute($name, $value)
+    {
+        $this->headAttributes[$name] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getHeadAttributes()
+    {
+        return $this->headAttributes;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function setLinkCanonical($link)
