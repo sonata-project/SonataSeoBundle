@@ -82,6 +82,26 @@ interface SeoPageInterface
     public function getHtmlAttributes();
 
     /**
+     * @param array $attributes
+     *
+     * @return SeoPageInterface
+     */
+    public function setHeadAttributes(array $attributes);
+
+    /**
+     * @param string $name
+     * @param string $value
+     *
+     * @return SeoPageInterface
+     */
+    public function addHeadAttribute($name, $value);
+
+    /**
+     * @return array
+     */
+    public function getHeadAttributes();
+
+    /**
      * @param string $link
      *
      * @return SeoPageInterface

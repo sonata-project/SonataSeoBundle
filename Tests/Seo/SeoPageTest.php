@@ -67,6 +67,20 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $page->getHtmlAttributes());
     }
 
+    public function testHeadAttributes()
+    {
+        $page = new SeoPage;
+        $page->setHeadAttributes(array('head1' => 'value1'));
+        $page->addHeadAttribute('head2', 'value2');
+
+        $expected = array(
+            'head1' => 'value1',
+            'head2' => 'value2'
+        );
+
+        $this->assertEquals($expected, $page->getHeadAttributes());
+    }
+
     public function testSetTitle()
     {
         $page = new SeoPage;

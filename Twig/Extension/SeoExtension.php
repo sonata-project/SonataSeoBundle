@@ -40,6 +40,7 @@ class SeoExtension extends \Twig_Extension
             'sonata_seo_title'      => new \Twig_Function_Method($this, 'renderTitle'),
             'sonata_seo_metadatas'  => new \Twig_Function_Method($this, 'renderMetadatas'),
             'sonata_seo_html_attributes'  => new \Twig_Function_Method($this, 'renderHtmlAttributes'),
+            'sonata_seo_head_attributes'  => new \Twig_Function_Method($this, 'renderHeadAttributes'),
             'sonata_seo_link_canonical'  => new \Twig_Function_Method($this, 'renderLinkCanonical'),
             'sonata_seo_lang_alternates'  => new \Twig_Function_Method($this, 'renderLangAlternates'),
         );
@@ -88,6 +89,16 @@ class SeoExtension extends \Twig_Extension
     public function renderHtmlAttributes()
     {
         foreach ($this->page->getHtmlAttributes() as $name => $value) {
+            echo sprintf('%s="%s" ', $name, $value);
+        }
+    }
+
+    /**
+     * @return void
+     */
+    public function renderHeadAttributes()
+    {
+        foreach ($this->page->getHeadAttributes() as $name => $value) {
             echo sprintf('%s="%s" ', $name, $value);
         }
     }
