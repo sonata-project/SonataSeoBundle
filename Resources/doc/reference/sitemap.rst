@@ -29,7 +29,7 @@ The following code is an extract of the query required to generate a valid sitem
         AND (publication_date_start IS NULL OR publication_date_start <= NOW())
 
 
-Please note: the ``changefreq`` and the ``prioriy`` fields are optionals.
+Please note: the ``changefreq`` and the ``priority`` fields are optionals.
 
 Configuration
 -------------
