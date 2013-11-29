@@ -22,7 +22,14 @@ class SonataSeoExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $bundles = $container->getParameter('kernel.bundles');
+
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+
+        if (isset($bundles['SonataBlockBundle'])) {
+            $loader->load('blocks.xml');
+        }
+
         $loader->load('services.xml');
 
         $config = $this->fixConfiguration($configs);

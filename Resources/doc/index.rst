@@ -11,4 +11,5 @@ Reference Guide
    reference/installation
    reference/twig_helpers
    reference/usage
+   reference/social_blocks
    reference/sitemap
