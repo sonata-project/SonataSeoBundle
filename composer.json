@@ -21,6 +21,13 @@
         "sonata-project/exporter": ">=1.2.2,<2.0",
         "twig/twig": "*"
     },
+    "require-dev": {
+        "sonata-project/block-bundle": "~2.2,>=2.2.7",
+        "sonata-project/admin-bundle": "~2.2"
+    },
+    "suggest": {
+        "sonata-project/block-bundle": "Allows you to use SEO friendly blocks"
+    },
     "autoload": {
         "psr-0": { "Sonata\\SeoBundle": "" }
     },

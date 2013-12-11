@@ -1,0 +1,30 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+{% spaceless %}
+
+    <a href="https://twitter.com/share" class="twitter-share-button"
+        {% if settings.url %}data-url="{{ setting.url }}"{% endif %}
+        {% if settings.text %}data-text="{{ setting.text }}"{% endif %}
+        {% if settings.via %}data-via="{{ setting.via }}"{% endif %}
+        {% if settings.recommend %}data-related="{{ setting.recommend }}"{% endif %}
+        {% if settings.hashtag %}data-hashtags="{{ setting.hashtag }}"{% endif %}
+        {% if not settings.show_count %}data-count="none"{% endif %}
+        {% if settings.large_button %}data-size="large"{% endif %}
+        data-lang="{{ settings.language }}"
+        {% if settings.opt_out %}data-dnt="true"{% endif %}>
+        Tweet
+    </a>
+
+{% endspaceless %}
+{% endblock %}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="sonata.seo.block.facebook.like_box.class">Sonata\SeoBundle\Block\FacebookLikeBoxBlockService</parameter>
+        <parameter key="sonata.seo.block.facebook.like_button.class">Sonata\SeoBundle\Block\FacebookLikeButtonBlockService</parameter>
+        <parameter key="sonata.seo.block.facebook.send_button.class">Sonata\SeoBundle\Block\FacebookSendButtonBlockService</parameter>
+        <parameter key="sonata.seo.block.facebook.share_button.class">Sonata\SeoBundle\Block\FacebookShareButtonBlockService</parameter>
+        <parameter key="sonata.seo.block.twitter.share_button.class">Sonata\SeoBundle\Block\TwitterShareButtonBlockService</parameter>
+        <parameter key="sonata.seo.block.twitter.follow_button.class">Sonata\SeoBundle\Block\TwitterFollowButtonBlockService</parameter>
+        <parameter key="sonata.seo.block.twitter.hashtag_button.class">Sonata\SeoBundle\Block\TwitterHashtagButtonBlockService</parameter>
+        <parameter key="sonata.seo.block.twitter.mention_button.class">Sonata\SeoBundle\Block\TwitterMentionButtonBlockService</parameter>
+    </parameters>
+
+    <services>
+
+        <!-- Facebook Social Plugins -->
+        <service id="sonata.seo.block.facebook.like_box" class="%sonata.seo.block.facebook.like_box.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.facebook.like_box</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <service id="sonata.seo.block.facebook.like_button" class="%sonata.seo.block.facebook.like_button.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.facebook.like_button</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <service id="sonata.seo.block.facebook.send_button" class="%sonata.seo.block.facebook.send_button.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.facebook.send_button</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <service id="sonata.seo.block.facebook.share_button" class="%sonata.seo.block.facebook.share_button.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.facebook.share_button</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <!-- Facebook Social Plugins -->
+
+        <!-- Twitter buttons -->
+        <service id="sonata.seo.block.twitter.share_button" class="%sonata.seo.block.twitter.share_button.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.twitter.share_button</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <service id="sonata.seo.block.twitter.follow_button" class="%sonata.seo.block.twitter.follow_button.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.twitter.follow_button</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <service id="sonata.seo.block.twitter.hashtag_button" class="%sonata.seo.block.twitter.hashtag_button.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.twitter.hashtag_button</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <service id="sonata.seo.block.twitter.mention_button" class="%sonata.seo.block.twitter.mention_button.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.twitter.mention_button</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <!-- Twitter buttons -->
+
+    </services>
+</container>
