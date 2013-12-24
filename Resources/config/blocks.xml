@@ -12,6 +12,7 @@
         <parameter key="sonata.seo.block.twitter.follow_button.class">Sonata\SeoBundle\Block\TwitterFollowButtonBlockService</parameter>
         <parameter key="sonata.seo.block.twitter.hashtag_button.class">Sonata\SeoBundle\Block\TwitterHashtagButtonBlockService</parameter>
         <parameter key="sonata.seo.block.twitter.mention_button.class">Sonata\SeoBundle\Block\TwitterMentionButtonBlockService</parameter>
+        <parameter key="sonata.seo.block.pinterest.pin_button.class">Sonata\SeoBundle\Block\PinterestPinButtonBlockService</parameter>
     </parameters>
 
     <services>
@@ -61,6 +62,14 @@
             <argument type="service" id="templating" />
         </service>
         <!-- Twitter buttons -->
+
+        <!-- Pinterest buttons -->
+        <service id="sonata.seo.block.pinterest.pin_button" class="%sonata.seo.block.pinterest.pin_button.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.pinterest.pin_button</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <!-- Pinterest buttons -->
 
     </services>
 </container>

@@ -16,6 +16,7 @@ render block services.
         sonata.seo.block.twitter.follow_button:
         sonata.seo.block.twitter.hashtag_button:
         sonata.seo.block.twitter.mention_button:
+        sonata.seo.block.pinterest.pin_button:
 
 These blocks render the correct HTML code to display social widgets but you need to include the related SDK in your main
 layout. You can include them by including these templates :
@@ -26,7 +27,10 @@ layout. You can include them by including these templates :
 
     {% include 'SonataSeoBundle:Block:_twitter_sdk.html.twig' %}
 
+    {% include 'SonataSeoBundle:Block:_pinterest_sdk.html.twig' %}
+
 Check the related documentation to get more details :
 
 - Facebook : https://developers.facebook.com/docs/web/
 - Twitter : https://dev.twitter.com/docs
+- Pinterest : http://business.pinterest.com/widget-builder/
