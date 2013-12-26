@@ -8,6 +8,7 @@ render block services.
 
     # app/config/config.yml
     sonata_block:
+        sonata.seo.block.email.share_button:
         sonata.seo.block.facebook.like_box:
         sonata.seo.block.facebook.like_button:
         sonata.seo.block.facebook.send_button:
