@@ -30,6 +30,7 @@ class SonataSeoExtension extends Extension
             $loader->load('blocks.xml');
         }
 
+        $loader->load('event.xml');
         $loader->load('services.xml');
 
         $config = $this->fixConfiguration($configs);
