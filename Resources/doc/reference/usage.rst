@@ -58,6 +58,8 @@ These values can be used inside a twig template.
 
     <!DOCTYPE html>
     <html {{ sonata_seo_html_attributes() }}>
-        <head>
+        <head {{ sonata_seo_head_attributes() }}>
             {{ sonata_seo_title() }}
             {{ sonata_seo_metadatas() }}
+            {{ sonata_seo_link_canonical() }}
+            {{ sonata_seo_lang_alternates() }}
