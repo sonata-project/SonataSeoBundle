@@ -30,6 +30,10 @@ class SonataSeoExtension extends Extension
             $loader->load('blocks.xml');
         }
 
+        if (isset($bundles['KnpMenuBundle'])) {
+            $loader->load('menu.xml');
+        }
+
         $loader->load('event.xml');
         $loader->load('services.xml');
 

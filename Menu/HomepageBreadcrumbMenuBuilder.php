@@ -9,18 +9,22 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Tests\Block;
+namespace Sonata\SeoBundle\Menu;
 
 /**
+ * Homepage breadcrumb menu builder.
+ *
  * @author Sylvain Deloux <sylvain.deloux@fullsix.com>
  */
-abstract class BaseBlockTest extends \PHPUnit_Framework_TestCase
+class HomepageBreadcrumbMenuBuilder extends BaseBreadcrumbMenuBuilder implements BreadcrumbMenuBuilderInterface
 {
     /**
-     * Checks if Sonata BlockBundle is present. If not, skip the current test.
+     * {@inheritdoc}
      */
-    protected function checkBlockBundle()
+    public function getBreadcrumbMenu($parameters = array())
     {
-        return class_exists('Sonata\BlockBundle\SonataBlockBundle');
+        $menu = $this->getRootMenu();
+
+        return $menu;
     }
 }

@@ -26,7 +26,8 @@
         "sonata-project/admin-bundle": "~2.2"
     },
     "suggest": {
-        "sonata-project/block-bundle": "Allows you to use SEO friendly blocks"
+        "sonata-project/block-bundle": "Allows you to use SEO friendly blocks",
+        "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"
     },
     "autoload": {
         "psr-0": { "Sonata\\SeoBundle": "" }

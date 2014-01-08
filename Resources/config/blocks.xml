@@ -79,5 +79,18 @@
         </service>
         <!-- Pinterest buttons -->
 
+        <!-- Breadcrumb -->
+        <service id="sonata.seo.block.breadcrumb.homepage" class="Sonata\SeoBundle\Block\HomepageBreadcrumbBlockService">
+            <tag name="sonata.block"/>
+            <tag name="sonata.breadcrumb"/>
+
+            <argument>homepage</argument>
+            <argument>sonata.seo.block.breadcrumb.homepage</argument>
+            <argument type="service" id="templating" />
+            <argument type="service" id="knp_menu.menu_provider" />
+            <argument type="service" id="sonata.seo.menu.homepage_breadcrumb_menu_builder" />
+        </service>
+        <!-- Breadcrumb -->
+
     </services>
 </container>
