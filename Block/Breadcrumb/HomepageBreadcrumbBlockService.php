@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Block;
+namespace Sonata\SeoBundle\Block\Breadcrumb;
 
 /**
  * BlockService for homepage breadcrumb.
@@ -29,8 +29,10 @@ class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
     /**
      * {@inheritdoc}
      */
-    protected function getMenu()
+    protected function getMenu(array $settings)
     {
-        return $this->menuBuilder->getBreadcrumbMenu();
+        $menu = $this->getRootMenu($settings);
+
+        return $menu;
     }
 }

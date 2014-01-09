@@ -9,20 +9,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Block;
+namespace Sonata\SeoBundle\Block\Social;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Twitter hashtag button integration.
+ * Twitter share button integration.
  *
- * @see https://about.twitter.com/resources/buttons#hashtag
+ * @see https://about.twitter.com/resources/buttons#tweet
  *
  * @author Sylvain Deloux <sylvain.deloux@fullsix.com>
  */
-class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
+class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
 {
     /**
      * {@inheritdoc}
@@ -30,11 +30,13 @@ class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'template'     => 'SonataSeoBundle:Block:block_twitter_hashtag_button.html.twig',
+            'template'     => 'SonataSeoBundle:Block:block_twitter_share_button.html.twig',
             'url'          => null,
-            'hashtag'      => null,
             'text'         => null,
+            'show_count'   => true,
+            'via'          => null,
             'recommend'    => null,
+            'hashtag'      => null,
             'large_button' => false,
             'opt_out'      => false,
             'language'     => $this->languageList['en'],
@@ -48,10 +50,12 @@ class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
     {
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('hashtag',      'text',     array('required' => true)),
-                array('text',         'text',     array('required' => false)),
-                array('recommend',    'text',     array('required' => false)),
                 array('url',          'url',      array('required' => false)),
+                array('text',         'text',     array('required' => false)),
+                array('show_count',   'checkbox', array('required' => false)),
+                array('via',          'text',     array('required' => false)),
+                array('recommend',    'text',     array('required' => false)),
+                array('hashtag',      'text',     array('required' => false)),
                 array('large_button', 'checkbox', array('required' => false)),
                 array('opt_out',      'checkbox', array('required' => false)),
                 array('language',     'choice',   array('required' => true, 'choices' => $this->languageList)),
@@ -64,6 +68,6 @@ class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function getName()
     {
-        return 'Twitter button - Hashtag link';
+        return 'Twitter button - Share link';
     }
 }

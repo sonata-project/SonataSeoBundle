@@ -46,6 +46,10 @@ class BreadcrumbListener
     {
         $context = $event->getSetting('context', null);
 
+        if ($context == null) {
+            return;
+        }
+
         foreach ($this->blockServices as $blockService) {
             if ($blockService->handleContext($context)) {
                 $block = new Block();

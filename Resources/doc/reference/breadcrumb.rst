@@ -1,43 +1,12 @@
 Breadcrumb
 ==========
 
-The ``SonataSeoBundle`` let you create your own breadcrumbs based on your different website modules (news, products catalog...).
+The ``SonataSeoBundle`` let you create your own breadcrumbs based on your different website modules (news, products catalog...). The bundle uses KnpMenuBundle to generate the breadcrumb. Please refere to the related documentation.
 
 Create your own breadcrumb
 --------------------------
 
-First, you need to create the breadcrumb, create a KnpMenu builder which extends ``Sonata\SeoBundle\Menu\BaseBreadcrumbMenuBuilder`` and implements ``Sonata\SeoBundle\Menu\BreadcrumbMenuBuilderInterface`` :
-
-.. code-block:: php
-
-    <?php
-
-    namespace Acme\Bundle\Menu;
-
-    use Sonata\SeoBundle\Menu\BaseBreadcrumbMenuBuilder;
-    use Sonata\SeoBundle\Menu\BreadcrumbMenuBuilderInterface;
-
-    class MyCustomBreadcrumbMenuBuilder extends BaseBreadcrumbMenuBuilder implements BreadcrumbMenuBuilderInterface
-    {
-        public function getBreadcrumbMenu($parameters = array())
-        {
-            $menu = $this->getRootMenu();
-
-            // generate your breadcrumb based on your needs
-            // $menu->addChild( /* ... */ );
-
-            return $menu;
-        }
-    }
-
-.. code-block:: xml
-
-    <service id="acme.bundle.menu.catalog_breadcrumb_menu_builder" class="Acme\Bundle\Menu\MyCustomBreadcrumbMenuBuilder">
-        <argument type="service" id="knp_menu.factory" />
-        <argument type="service" id="translator" />
-    </service>
-
-Then create the related BlockService to handle your breadcrumb. You need to extends ``Sonata\SeoBundle\Block\BaseBreadcrumbMenuBlockService`` :
+First, you need to create a BlockService to handle your breadcrumb. You can extend ``Sonata\SeoBundle\Block\BaseBreadcrumbMenuBlockService`` :
 
 .. code-block:: php
 
@@ -60,13 +29,14 @@ Then create the related BlockService to handle your breadcrumb. You need to exte
         /**
          * {@inheritdoc}
          */
-        protected function getMenu()
+        protected function getMenu(array $options)
         {
-            $parameters = array(
-                // you can set parameters to the menu here
-            );
 
-            return $this->menuBuilder->getBreadcrumbMenu($parameters);
+            $menu = $this->getMenu($options);
+
+            $menu->addChild('my_awesome_action');
+
+            return $menu
         }
     }
 
@@ -76,15 +46,15 @@ Then create the related BlockService to handle your breadcrumb. You need to exte
         <tag name="sonata.block"/>
         <tag name="sonata.breadcrumb"/>
 
-        <argument>my_custom_breadcrumb</argument>
+        <argument>my_custom_context</argument>
         <argument>acme.bundle.block.breadcrumb</argument>
         <argument type="service" id="templating" />
         <argument type="service" id="knp_menu.menu_provider" />
-        <argument type="service" id="acme.bundle.menu.catalog_breadcrumb_menu_builder" />
+        <argument type="service" id="knp_menu.factory" />
     </service>
 
 And to render the breadcrumb, just use this Twig helper :
 
 .. code-block:: jinja
 
-    {{ sonata_block_render_event('breadcrumb', { 'context': 'my_custom_breadcrumb', 'current_uri': app.request.requestUri }) }}
+    {{ sonata_block_render_event('breadcrumb', { 'context': 'my_custom_context', 'current_uri': app.request.requestUri }) }}

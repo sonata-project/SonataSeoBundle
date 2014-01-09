@@ -9,15 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\SeoBundle\Tests\Block;
+namespace Sonata\SeoBundle\Tests\Block\Social;
 
 use Sonata\BlockBundle\Model\Block;
-use Sonata\SeoBundle\Block\FacebookShareButtonBlockService;
+use Sonata\SeoBundle\Block\Social\FacebookSendButtonBlockService;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Tests\Block\Service\FakeTemplating;
+use Sonata\SeoBundle\Tests\Block\BaseBlockTest;
 
-class FacebookShareButtonBlockServiceTest extends BaseBlockTest
+class FacebookSendButtonBlockServiceTest extends BaseBlockTest
 {
     public function testService()
     {
@@ -28,14 +29,15 @@ class FacebookShareButtonBlockServiceTest extends BaseBlockTest
         }
 
         $templating = new FakeTemplating;
-        $service    = new FacebookShareButtonBlockService('sonata.block.service.facebook.share_button', $templating);
+        $service    = new FacebookSendButtonBlockService('sonata.block.service.facebook.send_button', $templating);
 
         $block = new Block;
         $block->setType('core.text');
         $block->setSettings(array(
-            'url'    => 'url_setting',
-            'width'  => 'width_setting',
-            'layout' => 'layout_setting',
+            'url'         => 'url_setting',
+            'width'       => 'width_setting',
+            'height'      => 'height_setting',
+            'colorscheme' => 'colorscheme_setting',
         ));
 
 
@@ -52,8 +54,9 @@ class FacebookShareButtonBlockServiceTest extends BaseBlockTest
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting',    $templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting',  $templating->parameters['settings']['width']);
-        $this->assertEquals('layout_setting', $templating->parameters['settings']['layout']);
+        $this->assertEquals('url_setting',         $templating->parameters['settings']['url']);
+        $this->assertEquals('width_setting',       $templating->parameters['settings']['width']);
+        $this->assertEquals('height_setting',      $templating->parameters['settings']['height']);
+        $this->assertEquals('colorscheme_setting', $templating->parameters['settings']['colorscheme']);
     }
 }
