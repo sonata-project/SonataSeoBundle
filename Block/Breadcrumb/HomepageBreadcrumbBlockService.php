@@ -10,6 +10,7 @@
  */
 
 namespace Sonata\SeoBundle\Block\Breadcrumb;
+use Sonata\BlockBundle\Block\BlockContextInterface;
 
 /**
  * BlockService for homepage breadcrumb.
@@ -29,9 +30,9 @@ class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
     /**
      * {@inheritdoc}
      */
-    protected function getMenu(array $settings)
+    protected function getMenu(BlockContextInterface $blockContext)
     {
-        $menu = $this->getRootMenu($settings);
+        $menu = $this->getRootMenu($blockContext);
 
         return $menu;
     }

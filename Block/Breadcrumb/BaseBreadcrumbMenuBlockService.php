@@ -13,12 +13,11 @@ namespace Sonata\SeoBundle\Block\Breadcrumb;
 
 use Knp\Menu\ItemInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
+use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\MenuBlockService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\Translation\TranslatorInterface;
-
 
 /**
  * Abstract class for breadcrumb menu services.
@@ -104,12 +103,13 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     /**
      * Initialize breadcrumb menu.
      *
-     * @param array $options
+     * @param BlockContextInterface $blockContext
      *
      * @return ItemInterface
      */
-    protected function getRootMenu(array $options)
+    protected function getRootMenu(BlockContextInterface $blockContext)
     {
+        $settings = $blockContext->getSettings();
         /*
          * @todo : Use the router to get the homepage URI
          */
@@ -117,9 +117,9 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
         $menu = $this->factory->createItem('breadcrumb');
 
         $menu->setChildrenAttribute('class', 'breadcrumb');
-        $menu->setCurrentUri($options['current_uri']);
+        $menu->setCurrentUri($settings['current_uri']);
 
-        if ($options['include_homepage_link']) {
+        if ($settings['include_homepage_link']) {
             $menu->addChild('sonata_seo_homepage_breadcrumb', array('uri' => '/'));
         }
 
