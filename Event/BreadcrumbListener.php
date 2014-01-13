@@ -18,7 +18,7 @@ use Sonata\BlockBundle\Event\BlockEvent;
 /**
  * BreadcrumbListener for Block Event.
  *
- * @author Sylvain Deloux <sylvain.deloux@fullsix.com>
+ * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
 class BreadcrumbListener
 {

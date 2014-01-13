@@ -20,7 +20,7 @@ class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService {
 }
 
 /**
- * @author Sylvain Deloux <sylvain.deloux@fullsix.com>
+ * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
 class BreadcrumbTest extends BaseBlockTest
 {

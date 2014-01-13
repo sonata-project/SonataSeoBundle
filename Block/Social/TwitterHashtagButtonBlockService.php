@@ -20,7 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  * @see https://about.twitter.com/resources/buttons#hashtag
  *
- * @author Sylvain Deloux <sylvain.deloux@fullsix.com>
+ * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
 class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
 {
