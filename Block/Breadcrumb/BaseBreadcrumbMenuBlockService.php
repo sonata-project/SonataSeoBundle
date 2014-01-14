@@ -22,7 +22,7 @@ use Knp\Menu\FactoryInterface;
 /**
  * Abstract class for breadcrumb menu services.
  *
- * @author Sylvain Deloux <sylvain.deloux@fullsix.com>
+ * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
 abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
 {

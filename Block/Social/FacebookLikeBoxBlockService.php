@@ -20,7 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  * @see https://developers.facebook.com/docs/plugins/like-box-for-pages/
  *
- * @author Sylvain Deloux <sylvain.deloux@fullsix.com>
+ * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
 class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
 {

@@ -20,7 +20,7 @@ use Sonata\BlockBundle\Block\BaseBlockService;
 /**
  * Abstract class for Facebook Social Plugins blocks services.
  *
- * @author Sylvain Deloux <sylvain.deloux@fullsix.com>
+ * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
 abstract class BaseFacebookSocialPluginsBlockService extends BaseBlockService
 {

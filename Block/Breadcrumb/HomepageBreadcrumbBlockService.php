@@ -15,7 +15,7 @@ use Sonata\BlockBundle\Block\BlockContextInterface;
 /**
  * BlockService for homepage breadcrumb.
  *
- * @author Sylvain Deloux <sylvain.deloux@fullsix.com>
+ * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
 class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
 {
