@@ -13,7 +13,7 @@ file that was distributed with this source code.
 {% block block %}
 {% spaceless %}
 
-    {% if {{ settings.user }} %}
+    {% if settings.user %}
 
         <a href="https://twitter.com/intent/tweet?screen_name={{ settings.user }}" class="twitter-mention-button"
             data-related="{{ settings.recommend }}"
