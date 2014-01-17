@@ -13,7 +13,7 @@ file that was distributed with this source code.
 {% block block %}
 {% spaceless %}
 
-    {% if {{ settings.hashtag }} %}
+    {% if settings.hashtag %}
 
         <a href="https://twitter.com/intent/tweet?button_hashtag={{ settings.hashtag }}" class="twitter-hashtag-button"
             {% if settings.text %}data-text="{{ settings.text }}"{% endif %}
