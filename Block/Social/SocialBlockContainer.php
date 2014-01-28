@@ -24,18 +24,16 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class SocialBlockContainer extends ContainerBlockService
 {
+    /**
+     * {@inheritdoc}
+     */
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
-//        parent::setDefaultSettings($resolver);
         $resolver->setDefaults(array(
-                'code'        => '',
-                'layout'      => '{{ CONTENT }}',
-                'class'       => '',
-                'template'    => 'SonataSeoBundle:Block:block_social_container.html.twig',
-//                'template'    => 'SonataPageBundle:Block:block_container.html.twig',
-            ));
-
-        $resolver->setDefaults(array(
+            'code'        => '',
+            'layout'      => '{{ CONTENT }}',
+            'class'       => '',
+            'template'    => 'SonataSeoBundle:Block:block_social_container.html.twig',
         ));
     }
 
