@@ -11,7 +11,7 @@
 
 namespace Sonata\SeoBundle\Block\Social;
 
-use Sonata\PageBundle\Block\ContainerBlockService;
+use Sonata\BlockBundle\Block\Service\ContainerBlockService;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 

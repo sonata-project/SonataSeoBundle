@@ -9,20 +9,19 @@ file that was distributed with this source code.
 
 #}
 
-{% extends "SonataPageBundle:Block:block_container.html.twig" %}
+{% extends "SonataBlockBundle:Block:block_container.html.twig" %}
 
 {# render container block #}
 {% block block %}
-    {% if decorator %}{{ decorator.pre|raw }}{% endif %}
     <div class="col-sm-12">
         <div class="row">
-            {% for child in block.children %}
-                <div class="sonata_seo_social pull-left">
-                    {{ sonata_page_render_block(child) }}
-                </div>
-            {% endfor %}
+            {{ parent() }}
         </div>
         <div class="clearfix"></div>
     </div>
-    {% if decorator %}{{ decorator.post|raw }}{% endif %}
+{% endblock %}
+{% block block_child_render %}
+    <div class="sonata_seo_social pull-left">
+        {{ parent() }}
+    </div>
 {% endblock %}
