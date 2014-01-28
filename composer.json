@@ -27,7 +27,6 @@
     },
     "suggest": {
         "sonata-project/block-bundle": "Allows you to use SEO friendly blocks",
-        "sonata-project/page-bundle": "Allows you to wrap SEO friendly blocks",
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"
     },
     "autoload": {
