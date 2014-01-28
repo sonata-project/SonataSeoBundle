@@ -1,0 +1,28 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends "SonataPageBundle:Block:block_container.html.twig" %}
+
+{# render container block #}
+{% block block %}
+    {% if decorator %}{{ decorator.pre|raw }}{% endif %}
+    <div class="col-sm-12">
+        <div class="row">
+            {% for child in block.children %}
+                <div class="sonata_seo_social pull-left">
+                    {{ sonata_page_render_block(child) }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    {% if decorator %}{{ decorator.post|raw }}{% endif %}
+{% endblock %}

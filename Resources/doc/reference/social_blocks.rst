@@ -8,6 +8,7 @@ render block services.
 
     # app/config/config.yml
     sonata_block:
+        sonata.seo.block.social.container:
         sonata.seo.block.email.share_button:
         sonata.seo.block.facebook.like_box:
         sonata.seo.block.facebook.like_button:
@@ -18,6 +19,8 @@ render block services.
         sonata.seo.block.twitter.hashtag_button:
         sonata.seo.block.twitter.mention_button:
         sonata.seo.block.pinterest.pin_button:
+
+The ``SocialBlockContainer`` overrides the PageBundle's default container to render the social blocks in a dedicated template, in order to have them properly aligned on a page.
 
 These blocks render the correct HTML code to display social widgets but you need to include the related SDK in your main
 layout. You can include them by including these templates :
