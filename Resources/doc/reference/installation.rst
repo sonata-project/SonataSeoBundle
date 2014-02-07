@@ -1,7 +1,7 @@
 Installation
 ============
 
-To begin, add the dependent bundles to the vendor/bundles directory. Add the following lines to the file deps::
+To begin, require the bundle via Composer::
 
     php composer.phar require sonata-project/seo-bundle
 
