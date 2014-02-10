@@ -10,7 +10,7 @@ Render the page title
 
     {{ sonata_seo_title() }}
 
-This will render page title as follow: <title>My custom title</title>
+This will render the page title as follows: <title>My custom title</title>
 
 Render page metadatas
 ^^^^^^^^^^^^^^^^^^^^^
@@ -19,7 +19,7 @@ Render page metadatas
 
     {{ sonata_seo_metadatas() }}
 
-This will render page metadatas as follow: <meta name="my-meta-name" content="my-value" />
+This will render page metadata as follows: <meta name="my-meta-name" content="my-value" />
 
 Render HTML attributes
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -28,7 +28,7 @@ Render HTML attributes
 
     {{ sonata_seo_html_attributes() }}
 
-This will render page HTML attributes as follow: my-attribute="my-value"
+This will render page HTML attributes as follows: my-attribute="my-value"
 
 Render head attributes
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -37,7 +37,7 @@ Render head attributes
 
     {{ sonata_seo_head_attributes() }}
 
-This will render page head attributes as follow: my-attribute="my-value"
+This will render page head attributes as follows: my-attribute="my-value"
 
 Render canonical link
 ^^^^^^^^^^^^^^^^^^^^^
@@ -46,7 +46,7 @@ Render canonical link
 
     {{ sonata_seo_link_canonical() }}
 
-This will render page canonical link as follow: <link rel="canonical" href="http://www.example.com/"/>
+This will render the page canonical link as follows: <link rel="canonical" href="http://www.example.com/"/>
 
 Render alternates languages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,4 +55,4 @@ Render alternates languages
 
     {{ sonata_seo_lang_alternates() }}
 
-This will render page alternates languages as follow: <link rel="alternate" href="http://www.example.com/en" hreflang="en"/>
+This will render page alternate languages as follows: <link rel="alternate" href="http://www.example.com/en" hreflang="en"/>

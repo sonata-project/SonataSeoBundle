@@ -1,7 +1,7 @@
 Usage
 =====
 
-The bundle provides a shared service accessible with the name ``sonata.seo.page``. The service
+The bundle provides a shared service accessible by the name ``sonata.seo.page``. The service
 is an instance of ``SeoPage`` which contains methods to alter SEO information for the current request.
 
 By default, the object is initialized with values defined in the configuration:
@@ -30,7 +30,7 @@ By default, the object is initialized with values defined in the configuration:
                 'xmlns:og':           http://opengraphprotocol.org/schema/
 
 
-However, it is possible to alter these values at runtime.
+However, it is possible to alter these values at runtime:
 
 .. code-block:: php
 

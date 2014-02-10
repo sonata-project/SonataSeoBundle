@@ -1,7 +1,7 @@
 Social blocks
 =============
 
-You can use social blocks by adding them in your config and you must install Sonata BlockBundle as it is required to
+You can use social blocks by adding them in your config. You must install Sonata BlockBundle as it is required to
 render block services.
 
 .. code-block:: jinja
