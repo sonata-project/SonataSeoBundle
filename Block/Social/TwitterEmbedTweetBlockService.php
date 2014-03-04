@@ -120,6 +120,26 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     }
 
     /**
+     * Returns supported API parameters from settings
+     *
+     * @return array
+     */
+    protected function getSupportedApiParams()
+    {
+        return array(
+            'maxwidth',
+            'hide_media',
+            'hide_thread',
+            'omit_script',
+            'align',
+            'related',
+            'lang',
+            'url',
+            'id'
+        );
+    }
+
+    /**
      * Builds the API query URI based on $settings
      *
      * @param bool  $uriMatched
@@ -127,7 +147,8 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     protected function buildUri($uriMatched, array $settings)
     {
-        $apiParams = $settings;
+        $apiParams       = $settings;
+        $supportedParams = $this->getSupportedApiParams();
 
         if ($uriMatched) {
             // We matched the uri
@@ -140,7 +161,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
         $parameters = array();
         foreach ($apiParams as $key => $value) {
-            if (null !== $value) {
+            if ($value && in_array($key, $supportedParams)) {
                 $parameters[] = $key."=".$value;
             }
         }

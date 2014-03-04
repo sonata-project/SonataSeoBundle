@@ -35,15 +35,16 @@ class TwitterEmbedTweetBlockServiceTest extends \PHPUnit_Framework_TestCase
     {
         $settings = array(
             'tweet' => "tweeeeeeeet",
-            'foo'   => "bar"
+            'foo'   => "bar",
+            'align' => "bar",
         );
 
-        $expected = sprintf("%s?%s", TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, "foo=bar&url=tweeeeeeeet");
+        $expected = sprintf("%s?%s", TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, "align=bar&url=tweeeeeeeet");
 
         $blockService = new TwitterEmbedTweetBSTest("", $this->getMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface'));
         $this->assertEquals($expected, $blockService->publicBuildUri(true, $settings));
 
-        $expected = sprintf("%s?%s", TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, "foo=bar&id=tweeeeeeeet");
+        $expected = sprintf("%s?%s", TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, "align=bar&id=tweeeeeeeet");
         $this->assertEquals($expected, $blockService->publicBuildUri(false, $settings));
     }
 }
