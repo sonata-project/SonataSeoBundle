@@ -22,10 +22,12 @@
         "twig/twig": "*"
     },
     "require-dev": {
+        "guzzle/guzzle": "3.*",
         "sonata-project/block-bundle": "~2.2,>=2.2.7",
         "sonata-project/admin-bundle": "~2.2"
     },
     "suggest": {
+        "guzzle/guzzle": "3.*",
         "sonata-project/block-bundle": "Allows you to use SEO friendly blocks",
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"
     },

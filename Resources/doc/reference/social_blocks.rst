@@ -18,6 +18,7 @@ render block services.
         sonata.seo.block.twitter.follow_button:
         sonata.seo.block.twitter.hashtag_button:
         sonata.seo.block.twitter.mention_button:
+        sonata.seo.block.twitter.embed:
         sonata.seo.block.pinterest.pin_button:
 
 The ``SocialBlockContainer`` overrides the PageBundle's default container to render the social blocks in a dedicated template, in order to have them properly aligned on a page.
@@ -38,3 +39,10 @@ Check the related documentation to get more details :
 - Facebook : https://developers.facebook.com/docs/web/
 - Twitter : https://dev.twitter.com/docs
 - Pinterest : http://business.pinterest.com/widget-builder/
+
+Twitter Embed Tweet
+-------------------
+
+The ``sonata.seo.block.twitter.embed`` allows you to embed a tweet by giving its id, URL or embed content. Please refer to `Embedded Tweets doc <https://dev.twitter.com/docs/embedded-tweets>`_ and `OEmbed API doc <https://dev.twitter.com/docs/api/1/get/statuses/oembed>`_ for a full understanding.
+
+The block service allows you to ask the API if you've given an ID or a URL (you'll need to install the Guzzle library for this: ``composer require guzzle/guzzle``).

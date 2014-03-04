@@ -15,6 +15,7 @@
         <parameter key="sonata.seo.block.twitter.follow_button.class">Sonata\SeoBundle\Block\Social\TwitterFollowButtonBlockService</parameter>
         <parameter key="sonata.seo.block.twitter.hashtag_button.class">Sonata\SeoBundle\Block\Social\TwitterHashtagButtonBlockService</parameter>
         <parameter key="sonata.seo.block.twitter.mention_button.class">Sonata\SeoBundle\Block\Social\TwitterMentionButtonBlockService</parameter>
+        <parameter key="sonata.seo.block.twitter.embed.class">Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService</parameter>
         <parameter key="sonata.seo.block.pinterest.pin_button.class">Sonata\SeoBundle\Block\Social\PinterestPinButtonBlockService</parameter>
 
         <!-- Breadcrumb block -->
@@ -83,6 +84,14 @@
             <argument type="service" id="templating" />
         </service>
         <!-- Twitter buttons -->
+
+        <!-- Twitter embed -->
+        <service id="sonata.seo.block.twitter.embed" class="%sonata.seo.block.twitter.embed.class%">
+            <tag name="sonata.block" />
+            <argument>sonata.seo.block.twitter.embed</argument>
+            <argument type="service" id="templating" />
+        </service>
+        <!-- Twitter embed -->
 
         <!-- Pinterest buttons -->
         <service id="sonata.seo.block.pinterest.pin_button" class="%sonata.seo.block.pinterest.pin_button.class%">
