@@ -16,6 +16,7 @@ use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -81,7 +82,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
             'omit_script' => false,     // Should be asked for only once in a page
             'align'       => 'none',    // Left, right, center or none
             'related'     => null,      // Accounts related to content
-            'lang'        => $this->languageList
+            'lang'        => $this->languageList['en']
         ));
     }
 
@@ -90,15 +91,26 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     public function buildEditForm(FormMapper $form, BlockInterface $block)
     {
+        $helperOption = function (FormBuilderInterface $formBuilder, $name, $type, $options) {
+            try {
+                $formBuilder->create($name, $type, $options[0]);
+                return $options[0];
+            } catch (\Exception $ex) {
+                // MopaBootstrapBundle not installed
+                unset($options[0]['help_block']);
+                return $options[0];
+            }
+        };
+
         $form->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('tweet', 'textarea', array('required' => true, 'help_block' => 'Tweet id, URL or content. If you put the HTML content directly, other options won\'t be handled.')),
-                array('maxwidth', 'integer', array('required' => false, 'help_block' => 'Must be contained between 250 and 550')),
-                array('hide_media', 'checkbox', array('required' => false, 'help_block' => 'Hide media contained in tweet?')),
-                array('hide_thread', 'checkbox', array('required' => false, 'help_block' => 'Show discussion?')),
-                array('omit_script', 'checkbox', array('required' => false, 'help_block' => 'Should be checked once and only once per page. If you embed several tweets in the page, uncheck this on the other ones.')),
+                array('tweet', 'textarea', $helperOption, array('required' => true, 'help_block' => 'Tweet id, URL or content. If you put the HTML content directly, other options won\'t be handled.')),
+                array('maxwidth', 'integer', $helperOption, array('required' => false, 'help_block' => 'Must be contained between 250 and 550')),
+                array('hide_media', 'checkbox', $helperOption, array('required' => false, 'help_block' => 'Hide media contained in tweet?')),
+                array('hide_thread', 'checkbox', $helperOption, array('required' => false, 'help_block' => 'Show discussion?')),
+                array('omit_script', 'checkbox', $helperOption, array('required' => false, 'help_block' => 'Should be checked once and only once per page. If you embed several tweets in the page, uncheck this on the other ones.')),
                 array('align', 'choice', array('required' => false, 'choices' => array('left', 'right', 'center', 'none'))),
-                array('related', 'text', array('required' => false, 'help_block' => "See 'related' argument in https://dev.twitter.com/docs/intents")),
+                array('related', 'text', $helperOption, array('required' => false, 'help_block' => "See 'related' argument in https://dev.twitter.com/docs/intents")),
                 array('lang', 'choice', array('required' => true, 'choices' => $this->languageList)),
             )
         ));
