@@ -13,13 +13,23 @@ file that was distributed with this source code.
 
 {# render container block #}
 {% block block %}
+
+    {# include sdks #}
+    {% spaceless %}
+        {% for template in include_templates %}
+            {% include template %}
+        {% endfor %}
+    {% endspaceless %}
+
     <div class="col-sm-12">
         <div class="row">
             {{ parent() }}
         </div>
         <div class="clearfix"></div>
     </div>
+
 {% endblock %}
+
 {% block block_child_render %}
     <div class="sonata_seo_social pull-left">
         {{ parent() }}
