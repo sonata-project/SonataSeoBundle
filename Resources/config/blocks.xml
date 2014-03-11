@@ -23,14 +23,6 @@
     </parameters>
 
     <services>
-        <!-- Container -->
-        <service id="sonata.seo.block.social.container" class="%sonata.seo.block.social.container.class%">
-            <tag name="sonata.block" />
-            <argument>sonata.seo.block.social.container</argument>
-            <argument type="service" id="templating" />
-        </service>
-        <!-- Container -->
-
         <!-- Email buttons -->
         <service id="sonata.seo.block.email.share_button" class="%sonata.seo.block.email.share_button.class%">
             <tag name="sonata.block" />
