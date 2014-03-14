@@ -7,13 +7,15 @@
     <parameters>
         <parameter key="sonata.seo.exporter.database_source_iterator.class">Exporter\Source\DoctrineDBALConnectionSourceIterator</parameter>
         <parameter key="sonata.seo.exporter.sitemap_source_iterator.class">Exporter\Source\SymfonySitemapSourceIterator</parameter>
+        <parameter key="sonata.seo.page.default.class">Sonata\SeoBundle\Seo\SeoPage</parameter>
+        <parameter key="sonata.seo.twig.extension.class">Sonata\SeoBundle\Twig\Extension\SeoExtension</parameter>
         <parameter key="sonata.seo.sitemap.manager.class">Sonata\SeoBundle\Sitemap\SourceManager</parameter>
     </parameters>
 
     <services>
-        <service id="sonata.seo.page.default" class="Sonata\SeoBundle\Seo\SeoPage" />
+        <service id="sonata.seo.page.default" class="%sonata.seo.page.default.class%" />
 
-        <service id="sonata.seo.twig.extension" class="Sonata\SeoBundle\Twig\Extension\SeoExtension" public="false">
+        <service id="sonata.seo.twig.extension" class="%sonata.seo.twig.extension.class%" public="false">
             <tag name="twig.extension" />
 
             <argument type="service" id="sonata.seo.page" />
