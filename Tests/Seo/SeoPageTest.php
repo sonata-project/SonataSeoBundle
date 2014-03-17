@@ -132,4 +132,14 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($page->hasMeta('property', 'test'));
         $this->assertFalse($page->hasMeta('property', 'fake'));
     }
+
+    /**
+     * The getLink should always return links se by addLink
+     */
+    public function testAddLink()
+    {
+        $page = new SeoPage();
+        $page->addLink('prev', array('href' => 'http://google.com'));
+        $this->assertEquals(array(array('href' => 'http://google.com')), $page->getLink('prev'));
+    }
 }

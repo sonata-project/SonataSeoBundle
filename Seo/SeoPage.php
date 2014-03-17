@@ -32,6 +32,13 @@ class SeoPage implements SeoPageInterface
     protected $langAlternates;
 
     /**
+     * Meta links
+     *
+     * @var array
+     */
+    protected $links = array();
+
+    /**
      * {@inheritdoc}
      */
     public function __construct($title = '')
@@ -214,7 +221,7 @@ class SeoPage implements SeoPageInterface
      */
     public function setLinkCanonical($link)
     {
-        $this->linkCanonical = $link;
+        $this->setLink('canonical', array('href' => $link));
 
         return $this;
     }
@@ -224,7 +231,11 @@ class SeoPage implements SeoPageInterface
      */
     public function getLinkCanonical()
     {
-        return $this->linkCanonical;
+        if (null !== $link = $this->getLink('canonical')) {
+            return $link[0]['href'];
+        }
+
+        return null;
     }
 
     /**
@@ -240,7 +251,9 @@ class SeoPage implements SeoPageInterface
      */
     public function setLangAlternates(array $langAlternates)
     {
-        $this->langAlternates= $langAlternates;
+        $this->links["alternate"] = array();
+        list($href, $hrefLang) = each($langAlternates);
+        $this->addLangAlternate($href, $hrefLang);
 
         return $this;
     }
@@ -250,7 +263,7 @@ class SeoPage implements SeoPageInterface
      */
     public function addLangAlternate($href, $hrefLang)
     {
-        $this->langAlternates[$href] = $hrefLang;
+        $this->addLink('alternate', array('href' => $href, 'hreflang' => $hrefLang));
 
         return $this;
     }
@@ -260,6 +273,47 @@ class SeoPage implements SeoPageInterface
      */
     public function getLangAlternates()
     {
-        return  $this->langAlternates;
+        if (null !== $links = $this->getLink('alternate')) {
+            $return = array();
+            foreach ($links as $element) {
+                $return[$element['href']] = $element['hreflang'];
+            }
+            return $return;
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addLink($type, array $attributes)
+    {
+        $this->links[$type][] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLink($type, array $attributes)
+    {
+        $this->links[$type] = array();
+
+        return $this->addLink($type, $attributes);
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLink($type)
+    {
+        if (isset($this->links[$type])) {
+            return $this->links[$type];
+        }
+
+        return null;
     }
 }
