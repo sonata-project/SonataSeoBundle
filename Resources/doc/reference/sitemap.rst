@@ -31,8 +31,11 @@ The following code is an extract of the query required to generate a valid sitem
 
 Please note: the ``changefreq`` and the ``priority`` fields are optional.
 
-Configuration
--------------
+Configuration example
+---------------------
+
+Sitemap configuration oubviously depends on the bundle, page types & custom routes you choose to expose.
+Here is a full example coming from the [Sonata Sandbox demo website](https://github.com/sonata-project/sandbox) 
 
 .. code-block:: yaml
 
@@ -40,8 +43,16 @@ Configuration
         # ...
         sitemap:
             doctrine_orm:
-                - { types: [image], connection: doctrine.dbal.default_connection, route: sonata_media_view, parameters: {id: null}, query: "SELECT id, updated_at as lastmod, 'weekly' as changefreq, '0.5' as priority FROM media__media WHERE enabled = true" }
-                - { group: "news",  connection: doctrine.dbal.default_connection, route: sonata_news_view, parameters: {permalink: null}, query: "SELECT CONCAT_WS('/', YEAR(created_at), MONTH(created_at), DAY(created_at), slug) as permalink , updated_at as lastmod, 'weekly' as changefreq, '0.5' as priority FROM news__post WHERE enabled = 1 AND (publication_date_start IS NULL OR publication_date_start <= NOW())" }
+                # media
+                - { types: [image], connection: doctrine.dbal.default_connection, route: sonata_media_view,       parameters: {id: null},                               query: "SELECT id, updated_at as lastmod, 'weekly' as changefreq, '0.5' as prioriy FROM media__media WHERE enabled = true" }
+                # blog post
+                - { group: "news",  connection: doctrine.dbal.default_connection, route: sonata_news_view,        parameters: {permalink: null},                        query: "SELECT CONCAT_WS('/', YEAR(created_at), MONTH(created_at), DAY(created_at), slug) as permalink , updated_at as lastmod, 'weekly' as changefreq, '0.5' as prioriy FROM news__post WHERE enabled = 1 AND (publication_date_start IS NULL OR publication_date_start <= NOW())" }
+                # page - works only for one site, please adapt the code if required
+                - {                 connection: doctrine.dbal.default_connection, route: page_slug,               parameters: {path: null},                             query: "SELECT url as path, updated_at as lastmod, 'weekly' as changefreq, '0.5' as prioriy FROM page__snapshot WHERE route_name = 'page_slug' AND enabled = 1 AND (publication_date_start IS NULL OR publication_date_start <= NOW())" }
+                # product categories
+                - {                 connection: doctrine.dbal.default_connection, route: sonata_catalog_category, parameters: {category_id: null, category_slug: null}, query: "SELECT id as category_id, slug as category_slug, updated_at as lastmod, 'weekly' as changefreq, '0.5' as prioriy FROM classification__category WHERE enabled = true" }
+                # products
+                - {                 connection: doctrine.dbal.default_connection, route: sonata_product_view,     parameters: {productId: null, slug: null},            query: "SELECT id as productId, slug, updated_at as lastmod, 'weekly' as changefreq, '0.5' as prioriy FROM product__product WHERE enabled = true" }
 
 
 Usage
