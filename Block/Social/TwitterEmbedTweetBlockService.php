@@ -11,6 +11,7 @@
 
 namespace Sonata\SeoBundle\Block\Social;
 
+use Guzzle\Http\Exception\CurlException;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Block\BaseBlockService;
@@ -53,12 +54,16 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
             // TODO cache API result
             $client = new \Guzzle\Http\Client();
-            $client->setConfig(array('curl.options' => array(CURLOPT_CONNECTTIMEOUT_MS => 3000)));
-            $request = $client->get($this->buildUri($uriMatched, $blockContext->getSettings()));
+            $client->setConfig(array('curl.options' => array(CURLOPT_CONNECTTIMEOUT_MS => 1000)));
 
-            $apiTweet = json_decode($request->send()->getBody(true), true);
+            try {
+                $request = $client->get($this->buildUri($uriMatched, $blockContext->getSettings()));
+                $apiTweet = json_decode($request->send()->getBody(true), true);
 
-            $tweet = $apiTweet['html'];
+                $tweet = $apiTweet['html'];
+            } catch (CurlException $e) {
+                // log error
+            }
         }
 
         return $this->renderResponse($blockContext->getTemplate(), array(
