@@ -16,8 +16,8 @@ This will render the page title as follows:
 
     <title>My custom title</title>
 
-Render page metadatas
-^^^^^^^^^^^^^^^^^^^^^
+Render page metadata
+^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: jinja
 
