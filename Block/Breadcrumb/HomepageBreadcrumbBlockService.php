@@ -10,6 +10,7 @@
  */
 
 namespace Sonata\SeoBundle\Block\Breadcrumb;
+
 use Sonata\BlockBundle\Block\BlockContextInterface;
 
 /**
@@ -24,7 +25,7 @@ class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
      */
     public function getName()
     {
-        return 'sonata.seo.block.breadcrumb.homepage';
+        return 'Breadcrumb (Homepage)';
     }
 
     /**
