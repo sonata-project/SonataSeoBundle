@@ -30,11 +30,12 @@ class BreadcrumbListener
     /**
      * Add a renderer to the status services list
      *
+     * @param string                $type
      * @param BlockServiceInterface $blockService
      */
-    public function addBlockService(BlockServiceInterface $blockService)
+    public function addBlockService($type, BlockServiceInterface $blockService)
     {
-        $this->blockServices[] = $blockService;
+        $this->blockServices[$type] = $blockService;
     }
 
     /**
@@ -50,12 +51,12 @@ class BreadcrumbListener
             return;
         }
 
-        foreach ($this->blockServices as $blockService) {
+        foreach ($this->blockServices as $type => $blockService) {
             if ($blockService->handleContext($context)) {
                 $block = new Block();
                 $block->setId(uniqid());
                 $block->setSettings($event->getSettings());
-                $block->setType($blockService->getName());
+                $block->setType($type);
 
                 $event->addBlock($block);
 

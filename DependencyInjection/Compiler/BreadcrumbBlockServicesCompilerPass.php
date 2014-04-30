@@ -25,7 +25,7 @@ class BreadcrumbBlockServicesCompilerPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         foreach ($container->findTaggedServiceIds('sonata.breadcrumb') as $id => $attributes) {
-            $container->getDefinition('sonata.seo.event.breadcrumb')->addMethodCall('addBlockService', array(new Reference($id)));
+            $container->getDefinition('sonata.seo.event.breadcrumb')->addMethodCall('addBlockService', array($id, new Reference($id)));
         }
     }
 }
