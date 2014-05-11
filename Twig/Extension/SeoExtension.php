@@ -37,12 +37,12 @@ class SeoExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'sonata_seo_title'      => new \Twig_Function_Method($this, 'renderTitle'),
-            'sonata_seo_metadatas'  => new \Twig_Function_Method($this, 'renderMetadatas'),
-            'sonata_seo_html_attributes'  => new \Twig_Function_Method($this, 'renderHtmlAttributes'),
-            'sonata_seo_head_attributes'  => new \Twig_Function_Method($this, 'renderHeadAttributes'),
-            'sonata_seo_link_canonical'  => new \Twig_Function_Method($this, 'renderLinkCanonical'),
-            'sonata_seo_lang_alternates'  => new \Twig_Function_Method($this, 'renderLangAlternates'),
+            new \Twig_SimpleFunction('sonata_seo_title', array($this, 'getTitle'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('sonata_seo_html_attributes', array($this, 'getMetadatas'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('sonata_seo_html_attributes', array($this, 'getHtmlAttributes'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('sonata_seo_head_attributes', array($this, 'getHeadAttributes'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('sonata_seo_link_canonical', array($this, 'getLinkCanonical'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('sonata_seo_lang_alternates', array($this, 'getLangAlternates'), array('is_safe' => array('html'))),
         );
     }
 
@@ -57,23 +57,44 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
+     * @deprecated Deprecated as of 1.2, echo the return value of getTitle() instead.
+     * 
      * @return void
      */
     public function renderTitle()
     {
-        echo sprintf("<title>%s</title>", strip_tags($this->page->getTitle()));
+        echo $this->getTitle();
+    }
+    
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return sprintf("<title>%s</title>", strip_tags($this->page->getTitle()));
     }
 
     /**
+     * @deprecated Deprecated as of 1.2, echo the return value of getMetadatas() instead.
+     * 
      * @return void
      */
     public function renderMetadatas()
     {
+        echo $this->getMetadatas();
+    }
+    
+    /**
+     * @return string
+     */
+    public function getMetadatas()
+    {
+        $html = '';
         foreach ($this->page->getMetas() as $type => $metas) {
             foreach ((array) $metas as $name => $meta) {
                 list($content, $extras) = $meta;
 
-                echo sprintf("<meta %s=\"%s\" content=\"%s\" />\n",
+                $html .= sprintf("<meta %s=\"%s\" content=\"%s\" />\n",
                     $type,
                     $this->normalize($name),
                     $this->normalize($content)
@@ -81,50 +102,101 @@ class SeoExtension extends \Twig_Extension
 
             }
         }
+        
+        return $html;
     }
 
     /**
+     * @deprecated Deprecated as of 1.2, echo the return value of getHtmlAttributes() instead.
+     * 
      * @return void
      */
     public function renderHtmlAttributes()
     {
+        echo $this->getHtmlAttributes();
+    }
+    
+    /**
+     * @return string
+     */
+    public function getHtmlAttributes()
+    {
+        $attributes = '';
         foreach ($this->page->getHtmlAttributes() as $name => $value) {
-            echo sprintf('%s="%s" ', $name, $value);
+            $attributes .= sprintf('%s="%s" ', $name, $value);
         }
+        
+        return rtrim($attributes);
     }
 
     /**
+     * @deprecated Deprecated as of 1.2, echo the return value of getHeadAttributes() instead.
+     * 
      * @return void
      */
     public function renderHeadAttributes()
     {
+        echo $this->getHeadAttributes();
+    }
+    
+    /**
+     * @return string
+     */
+    public function getHeadAttributes()
+    {
+        $attributes = '';
         foreach ($this->page->getHeadAttributes() as $name => $value) {
-            echo sprintf('%s="%s" ', $name, $value);
+            $attributes .= sprintf('%s="%s" ', $name, $value);
         }
+        
+        return rtrim($attributes);
     }
 
     /**
+     * @deprecated Deprecated as of 1.2, echo the return value of getLinkCanonical() instead.
+     * 
      * @return void
      */
     public function renderLinkCanonical()
     {
+        echo $this->getLinkCanonical();
+    }
+    
+    /**
+     * @return string
+     */
+    public function getLinkCanonical()
+    {
         if ($this->page->getLinkCanonical()) {
-            echo sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
+            return sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
         }
     }
 
     /**
+     * @deprecated Deprecated as of 1.2, echo the return value of getLangAlternates() instead.
+     * 
      * @return void
      */
     public function renderLangAlternates()
     {
+        echo $this->getLangAlternates();
+    }
+    
+    /**
+     * @return string
+     */
+    public function getLangAlternates()
+    {
+        $html = '';
         foreach ($this->page->getLangAlternates() as $href => $hrefLang) {
-            echo sprintf("<link rel=\"alternate\" href=\"%s\" hreflang=\"%s\"/>\n", $href, $hrefLang);
+            $html .= sprintf("<link rel=\"alternate\" href=\"%s\" hreflang=\"%s\"/>\n", $href, $hrefLang);
         }
+        
+        return $html;
     }
 
     /**
-     * @param $string
+     * @param string $string
      * @return mixed
      */
     private function normalize($string)
