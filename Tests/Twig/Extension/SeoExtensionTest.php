@@ -24,11 +24,7 @@ class BlockTest extends \PHPUnit_Framework_TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        ob_start();
-        $extension->renderHtmlAttributes();
-        $content = ob_get_contents();
-        ob_end_clean();
-        $this->assertEquals('xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" ', $content);
+        $this->assertEquals('xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/"', $extension->getHtmlAttributes());
     }
 
     public function testHeadAttributes()
@@ -38,11 +34,7 @@ class BlockTest extends \PHPUnit_Framework_TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        ob_start();
-        $extension->renderHeadAttributes();
-        $content = ob_get_contents();
-        ob_end_clean();
-        $this->assertEquals('', $content);
+        $this->assertEquals('', $extension->getHeadAttributes());
     }
 
     public function testTitle()
@@ -52,11 +44,7 @@ class BlockTest extends \PHPUnit_Framework_TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        ob_start();
-        $extension->renderTitle();
-        $content = ob_get_contents();
-        ob_end_clean();
-        $this->assertEquals('<title>foo bar</title>', $content);
+        $this->assertEquals('<title>foo bar</title>', $extension->getTitle());
     }
 
     public function testEncoding()
@@ -73,17 +61,9 @@ class BlockTest extends \PHPUnit_Framework_TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        ob_start();
-        $extension->renderTitle();
-        $content = ob_get_contents();
-        ob_end_clean();
-        $this->assertEquals('<title>pięć głów zatkniętych na pal</title>', $content);
+        $this->assertEquals('<title>pięć głów zatkniętych na pal</title>', $extension->getTitle());
 
-        ob_start();
-        $extension->renderMetadatas();
-        $content = ob_get_contents();
-        ob_end_clean();
-        $this->assertEquals("<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n", $content);
+        $this->assertEquals("<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n", $extension->getMetadatas());
     }
 
     public function testMetadatas()
@@ -99,12 +79,7 @@ class BlockTest extends \PHPUnit_Framework_TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        ob_start();
-        $extension->renderMetadatas();
-        $content = ob_get_contents();
-        ob_end_clean();
-
-        $this->assertEquals("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n", $content);
+        $this->assertEquals("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n", $extension->getMetadatas());
     }
 
     public function testName()
@@ -121,12 +96,8 @@ class BlockTest extends \PHPUnit_Framework_TestCase
         $page->expects($this->any())->method('getLinkCanonical')->will($this->returnValue('http://example.com'));
 
         $extension = new SeoExtension($page, 'UTF-8');
-        ob_start();
-        $extension->renderLinkCanonical();
-        $content = ob_get_contents();
-        ob_end_clean();
 
-        $this->assertEquals("<link rel=\"canonical\" href=\"http://example.com\"/>\n", $content);
+        $this->assertEquals("<link rel=\"canonical\" href=\"http://example.com\"/>\n", $extension->getLinkCanonical());
     }
 
     public function testLangAlternates()
@@ -138,11 +109,6 @@ class BlockTest extends \PHPUnit_Framework_TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        ob_start();
-        $extension->renderLangAlternates();
-        $content = ob_get_contents();
-        ob_end_clean();
-
-        $this->assertEquals("<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n", $content);
+        $this->assertEquals("<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n", $extension->getLangAlternates());
     }
 }
