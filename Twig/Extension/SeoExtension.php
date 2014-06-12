@@ -67,18 +67,31 @@ class SeoExtension extends \Twig_Extension
     /**
      * @return void
      */
+    public function renderMetadata($type, $name, $meta)
+    {
+        list($content, $extras) = $meta;
+
+        echo sprintf("<meta %s=\"%s\" content=\"%s\" />\n",
+            $type,
+            $this->normalize($name),
+            $this->normalize($content)
+        );
+    }
+
+    /**
+     * @return void
+     */
     public function renderMetadatas()
     {
         foreach ($this->page->getMetas() as $type => $metas) {
             foreach ((array) $metas as $name => $meta) {
-                list($content, $extras) = $meta;
-
-                echo sprintf("<meta %s=\"%s\" content=\"%s\" />\n",
-                    $type,
-                    $this->normalize($name),
-                    $this->normalize($content)
-                );
-
+                if (is_array(current($meta))) {
+                    foreach ($meta as $m) {
+                        $this->renderMetadata($type, $name, $m);
+                    }
+                } else {
+                    $this->renderMetadata($type, $name, $meta);
+                }
             }
         }
     }

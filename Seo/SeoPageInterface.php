@@ -44,6 +44,24 @@ interface SeoPageInterface
     /**
      * @param string $type
      * @param string $name
+     * @param string $value
+     * @param array  $extras
+     *
+     * @return mixed
+     */
+    public function setMeta($type, $name, $value, array $extras = array());
+
+    /**
+     * @param string $type
+     * @param string $name
+     *
+     * @return array|null
+     */
+    public function getMeta($type, $name);
+
+    /**
+     * @param string $type
+     * @param string $name
      *
      * @return bool
      */
