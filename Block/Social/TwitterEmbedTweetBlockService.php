@@ -20,7 +20,6 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-
 /**
  * Class TwitterEmbedTweetBlockService
  *
@@ -149,6 +148,8 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      *
      * @param bool  $uriMatched
      * @param array $settings
+     *
+     * @return string
      */
     protected function buildUri($uriMatched, array $settings)
     {

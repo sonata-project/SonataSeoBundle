@@ -47,7 +47,7 @@ class SitemapGeneratorCommand extends ContainerAwareCommand
 The <info>sonata:seo:sitemap</info> command create new sitemap files (index + sitemap).
 
 EOT
-);
+        );
     }
 
     /**
@@ -81,7 +81,6 @@ EOT
         // step 3
         $output->writeln(sprintf('Generating sitemap - this can take a while'));
         foreach ($manager as $group => $sitemap) {
-
             $write = new SitemapWriter($tempFolder, $group, $sitemap->types, false);
 
             try {
