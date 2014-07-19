@@ -96,9 +96,42 @@ class SeoPage implements SeoPageInterface
             $this->metas[$type] = array();
         }
 
+        if (isset($this->metas[$type][$name])) {
+            if (!is_array(current($this->metas[$type][$name]))) {
+                $meta = $this->metas[$type][$name];
+
+                $this->metas[$type][$name] = array();
+                array_push($this->metas[$type][$name], $meta);
+            }
+
+            array_push($this->metas[$type][$name], array($content, $extras));
+        } else {
+            $this->metas[$type][$name] = array($content, $extras);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMeta($type, $name, $content, array $extras = array())
+    {
+        if (!isset($this->metas[$type])) {
+            $this->metas[$type] = array();
+        }
+
         $this->metas[$type][$name] = array($content, $extras);
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMeta($type, $name)
+    {
+        return $this->hasMeta($type, $name) ? $this->metas[$type][$name] : null;
     }
 
     /**

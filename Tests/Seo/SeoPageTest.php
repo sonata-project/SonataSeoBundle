@@ -30,6 +30,30 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $page->getMetas());
     }
 
+    public function testAddMultipleValueToMeta()
+    {
+        $page = new SeoPage;
+        $page->addMeta('property', 'foo', 'bar');
+        $page->addMeta('property', 'foo', 'bar2');
+        $page->addMeta('property', 'foo', 'bar3');
+        $page->addMeta('property', 'foo', 'bar4');
+
+        $expected = array(
+            'http-equiv' => array(),
+            'name'       => array(),
+            'schema'     => array(),
+            'charset'    => array(),
+            'property'   => array('foo' => array(
+                array('bar', array()),
+                array('bar2', array()),
+                array('bar3', array()),
+                array('bar4', array()),
+            )),
+        );
+
+        $this->assertEquals($expected, $page->getMetas());
+    }
+
     public function testOverrideMetas()
     {
         $page = new SeoPage;
