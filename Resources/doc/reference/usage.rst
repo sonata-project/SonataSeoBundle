@@ -25,9 +25,11 @@ By default, the object is initialized with values defined in the configuration:
                     'Content-Type':         text/html; charset=utf-8
                     #'X-Ua-Compatible':      IE=EmulateIE7
 
+            html:
+                xmlns:    "http://www.w3.org/1999/xhtml"
+
             head:
-                'xmlns':              http://www.w3.org/1999/xhtml
-                'xmlns:og':           http://opengraphprotocol.org/schema/
+                prefix:   "og: http://ogp.me/ns#"
 
 
 However, it is possible to alter these values at runtime:

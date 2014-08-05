@@ -15,6 +15,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'page' => array(
                 'default' => 'sonata.seo.page.default',
                 'head' => array(),
+                'html' => array(),
                 'metas' => array(),
                 'separator' => ' - ',
                 'title' => 'Sonata Project',
