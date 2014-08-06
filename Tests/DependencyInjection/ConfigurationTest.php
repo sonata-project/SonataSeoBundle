@@ -4,6 +4,7 @@ namespace Sonata\SeoBundle\Tests\DependencyInjection;
 
 use Sonata\SeoBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Processor;
+use Symfony\Component\Yaml\Yaml;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
@@ -54,6 +55,20 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 ),
             ),
         );
+
+        $config = $this->processConfiguration(array($values));
+
+        $expected = array_merge_recursive(
+            $this->getDefaultConfiguration(),
+            $values
+        );
+
+        $this->assertEquals($expected, $config);
+    }
+
+    public function testWithYamlConfig()
+    {
+        $values = Yaml::parse(__DIR__ . '/data/config.yml', true);
 
         $config = $this->processConfiguration(array($values));
 

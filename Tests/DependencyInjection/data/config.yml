@@ -1,0 +1,11 @@
+# Test data for sonata_seo
+page:
+    head:
+        'xmlns:og': 'http://ogp.me/ns#'
+
+    metas:
+        http-equiv:
+            Content-Type: 'text/html; charset=utf-8'
+
+        name:
+            robots: 'index, follow'
