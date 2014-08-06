@@ -14,11 +14,11 @@ file that was distributed with this source code.
 {% spaceless %}
 
     <a href="https://twitter.com/share" class="twitter-share-button"
-        {% if settings.url %}data-url="{{ setting.url }}"{% endif %}
-        {% if settings.text %}data-text="{{ setting.text }}"{% endif %}
-        {% if settings.via %}data-via="{{ setting.via }}"{% endif %}
-        {% if settings.recommend %}data-related="{{ setting.recommend }}"{% endif %}
-        {% if settings.hashtag %}data-hashtags="{{ setting.hashtag }}"{% endif %}
+        {% if settings.url %}data-url="{{ settings.url }}"{% endif %}
+        {% if settings.text %}data-text="{{ settings.text }}"{% endif %}
+        {% if settings.via %}data-via="{{ settings.via }}"{% endif %}
+        {% if settings.recommend %}data-related="{{ settings.recommend }}"{% endif %}
+        {% if settings.hashtag %}data-hashtags="{{ settings.hashtag }}"{% endif %}
         {% if not settings.show_count %}data-count="none"{% endif %}
         {% if settings.large_button %}data-size="large"{% endif %}
         data-lang="{{ settings.language }}"
