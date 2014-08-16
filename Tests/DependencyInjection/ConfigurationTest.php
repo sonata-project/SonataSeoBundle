@@ -48,6 +48,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $values = array(
             'page' => array(
+                'head' => array('data-example' => 'abc-123'),
                 'metas' => array(
                     'http-equiv' => array(
                         'Content-Type' => 'text/html; charset=utf-8',

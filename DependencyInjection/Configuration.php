@@ -25,6 +25,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('default')->defaultValue('sonata.seo.page.default')->end()
                         ->arrayNode('head')
+                            ->normalizeKeys(false)
                             ->useAttributeAsKey('attribute')
                             ->prototype('scalar')->end()
                         ->end()
