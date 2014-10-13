@@ -58,14 +58,14 @@ class SeoExtension extends \Twig_Extension
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getTitle() instead.
-     * 
+     *
      * @return void
      */
     public function renderTitle()
     {
         echo $this->getTitle();
     }
-    
+
     /**
      * @return string
      */
@@ -76,14 +76,14 @@ class SeoExtension extends \Twig_Extension
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getMetadatas() instead.
-     * 
+     *
      * @return void
      */
     public function renderMetadatas()
     {
         echo $this->getMetadatas();
     }
-    
+
     /**
      * @return string
      */
@@ -94,28 +94,34 @@ class SeoExtension extends \Twig_Extension
             foreach ((array) $metas as $name => $meta) {
                 list($content, $extras) = $meta;
 
-                $html .= sprintf("<meta %s=\"%s\" content=\"%s\" />\n",
-                    $type,
-                    $this->normalize($name),
-                    $this->normalize($content)
-                );
-
+                if (!empty($content)) {
+                    $html .= sprintf("<meta %s=\"%s\" content=\"%s\" />\n",
+                        $type,
+                        $this->normalize($name),
+                        $this->normalize($content)
+                    );
+                } else {
+                    $html .= sprintf("<meta %s=\"%s\" />\n",
+                        $type,
+                        $this->normalize($name)
+                    );
+                }
             }
         }
-        
+
         return $html;
     }
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getHtmlAttributes() instead.
-     * 
+     *
      * @return void
      */
     public function renderHtmlAttributes()
     {
         echo $this->getHtmlAttributes();
     }
-    
+
     /**
      * @return string
      */
@@ -125,20 +131,20 @@ class SeoExtension extends \Twig_Extension
         foreach ($this->page->getHtmlAttributes() as $name => $value) {
             $attributes .= sprintf('%s="%s" ', $name, $value);
         }
-        
+
         return rtrim($attributes);
     }
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getHeadAttributes() instead.
-     * 
+     *
      * @return void
      */
     public function renderHeadAttributes()
     {
         echo $this->getHeadAttributes();
     }
-    
+
     /**
      * @return string
      */
@@ -148,20 +154,20 @@ class SeoExtension extends \Twig_Extension
         foreach ($this->page->getHeadAttributes() as $name => $value) {
             $attributes .= sprintf('%s="%s" ', $name, $value);
         }
-        
+
         return rtrim($attributes);
     }
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getLinkCanonical() instead.
-     * 
+     *
      * @return void
      */
     public function renderLinkCanonical()
     {
         echo $this->getLinkCanonical();
     }
-    
+
     /**
      * @return string
      */
@@ -174,14 +180,14 @@ class SeoExtension extends \Twig_Extension
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getLangAlternates() instead.
-     * 
+     *
      * @return void
      */
     public function renderLangAlternates()
     {
         echo $this->getLangAlternates();
     }
-    
+
     /**
      * @return string
      */
@@ -191,7 +197,7 @@ class SeoExtension extends \Twig_Extension
         foreach ($this->page->getLangAlternates() as $href => $hrefLang) {
             $html .= sprintf("<link rel=\"alternate\" href=\"%s\" hreflang=\"%s\"/>\n", $href, $hrefLang);
         }
-        
+
         return $html;
     }
 

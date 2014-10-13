@@ -51,6 +51,9 @@ file.
                     'Content-Type':         text/html; charset=utf-8
                     #'X-Ua-Compatible':      IE=EmulateIE7
 
+                charset:
+                    UTF-8:    ''
+
             head:
                 'xmlns':              http://www.w3.org/1999/xhtml
                 'xmlns:og':           http://opengraphprotocol.org/schema/
