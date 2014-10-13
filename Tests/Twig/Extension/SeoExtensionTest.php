@@ -73,13 +73,13 @@ class BlockTest extends \PHPUnit_Framework_TestCase
             'http-equiv' => array(),
             'name'       => array('foo' => array('bar "\'"', array())),
             'schema'     => array(),
-            'charset'    => array(),
+            'charset'    => array('UTF-8' => array('', array())),
             'property'   => array(),
         )));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n", $extension->getMetadatas());
+        $this->assertEquals("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n", $extension->getMetadatas());
     }
 
     public function testName()
