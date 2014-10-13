@@ -113,6 +113,19 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
+     * @param string $type
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function removeMeta($type, $name)
+    {
+        unset($this->metas[$type][$name]);
+
+        return $this;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function setMetas(array $metadatas)
@@ -169,11 +182,33 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function removeHtmlAttributes($name)
+    {
+        unset($this->htmlAttributes[$name]);
+
+        return $this;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getHtmlAttributes()
     {
         return $this->htmlAttributes;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasHtmlAttribute($name)
+    {
+        return isset($this->htmlAttributes[$name]);
     }
 
     /**
@@ -202,11 +237,33 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function removeHeadAttribute($name)
+    {
+        unset($this->headAttributes[$name]);
+
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function getHeadAttributes()
     {
         return $this->headAttributes;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return array
+     */
+    public function hasHeadAttribute($name)
+    {
+        return isset($this->headAttributes[$name]);
     }
 
     /**
@@ -225,6 +282,14 @@ class SeoPage implements SeoPageInterface
     public function getLinkCanonical()
     {
         return $this->linkCanonical;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeLinkCanonical()
+    {
+        $this->linkCanonical = '';
     }
 
     /**
@@ -253,6 +318,28 @@ class SeoPage implements SeoPageInterface
         $this->langAlternates[$href] = $hrefLang;
 
         return $this;
+    }
+
+    /**
+     * @param string $href
+     *
+     * @return $this
+     */
+    public function removeLangAlternate($href)
+    {
+        unset($this->langAlternates[$href]);
+
+        return $this;
+    }
+
+    /**
+     * @param string $href
+     *
+     * @return $this
+     */
+    public function hasLangAlternate($href)
+    {
+        return isset($this->langAlternates[$href]);
     }
 
     /**

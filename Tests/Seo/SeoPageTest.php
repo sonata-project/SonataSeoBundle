@@ -42,6 +42,15 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $page->getMetas());
     }
 
+    public function testRemoveMeta()
+    {
+        $page = new SeoPage;
+        $page->setMetas(array('property' => array('foo' => 'bar', 'foo2' => array('bar2', array()))));
+        $page->removeMeta('property', 'foo');
+
+        $this->assertFalse($page->hasMeta('property', 'foo'));
+    }
+
     /**
      * @expectedException RuntimeException
      */
@@ -65,6 +74,10 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals($expected, $page->getHtmlAttributes());
+
+        $this->assertTrue($page->hasHtmlAttribute('key2'));
+        $page->removeHtmlAttributes('key2');
+        $this->assertFalse($page->hasHtmlAttribute('key2'));
     }
 
     public function testHeadAttributes()
@@ -79,6 +92,10 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals($expected, $page->getHeadAttributes());
+
+        $this->assertTrue($page->hasHeadAttribute('head1'));
+        $page->removeHeadAttribute('head1');
+        $this->assertFalse($page->hasHeadAttribute('head1'));
     }
 
     public function testSetTitle()
@@ -105,6 +122,9 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $page->setLinkCanonical('http://example.com');
 
         $this->assertEquals('http://example.com', $page->getLinkCanonical());
+
+        $page->removeLinkCanonical();
+        $this->assertEquals('', $page->getLinkCanonical());
     }
 
     public function testLangAlternates()
@@ -119,6 +139,10 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals($expected, $page->getLangAlternates());
+
+        $this->assertTrue($page->hasLangAlternate('http://example.com/'));
+        $page->removeLangAlternate('http://example.com/');
+        $this->assertFalse($page->hasLangAlternate('http://example.com/'));
     }
 
     /**
