@@ -41,6 +41,7 @@ class SitemapGeneratorCommand extends ContainerAwareCommand
         $this->addArgument('host', InputArgument::REQUIRED, 'Set the host');
         $this->addOption('scheme', null, InputOption::VALUE_OPTIONAL, 'Set the scheme', 'http');
         $this->addOption('baseurl', null, InputOption::VALUE_OPTIONAL, 'Set the base url', '');
+        $this->addOption('sitemap_path', null, InputOption::VALUE_OPTIONAL, 'Set the sitemap relative path (if in a specific folder)', '');
 
         $this->setDescription('Create a sitemap');
         $this->setHelp(<<<EOT
@@ -93,7 +94,8 @@ EOT
         }
 
         // generate global sitemap index
-        SitemapWriter::generateSitemapIndex($tempFolder, sprintf('%s://%s%s', $input->getOption('scheme'), $input->getArgument('host'), $input->getOption('baseurl')), 'sitemap*.xml', 'sitemap.xml');
+        $appendPath = $input->hasOption('sitemap_path') ? $input->getOption('sitemap_path') : $input->getOption('baseurl');
+        SitemapWriter::generateSitemapIndex($tempFolder, sprintf('%s://%s%s', $input->getOption('scheme'), $input->getArgument('host'), $appendPath), 'sitemap*.xml', 'sitemap.xml');
 
         // step 4
         $output->writeln(sprintf('Moving temporary file to %s ...', $input->getArgument('folder')));
