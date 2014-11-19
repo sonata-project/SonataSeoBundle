@@ -9,7 +9,7 @@ A [BC BREAK] means the update will break the project for many reasons:
 
 ### 2014-11-06
 
-* [BC BREAK] sitemap command now gets a new argument ``sitemap_path`` which is append instead of ``base_url`` to generate sitemap URLs in the index file.
+* sitemap command now gets a new argument ``sitemap_path`` which overrides ``base_url`` when it comes to appending to generate sitemap URLs in the index file.
 
 ### 2012-12-13
 

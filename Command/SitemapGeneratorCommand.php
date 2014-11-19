@@ -94,7 +94,8 @@ EOT
         }
 
         // generate global sitemap index
-        SitemapWriter::generateSitemapIndex($tempFolder, sprintf('%s://%s%s', $input->getOption('scheme'), $input->getArgument('host'), $input->getOption('sitemap_path')), 'sitemap*.xml', 'sitemap.xml');
+        $appendPath = $input->hasOption('sitemap_path') ? $input->getOption('sitemap_path') : $input->getOption('baseurl');
+        SitemapWriter::generateSitemapIndex($tempFolder, sprintf('%s://%s%s', $input->getOption('scheme'), $input->getArgument('host'), $appendPath), 'sitemap*.xml', 'sitemap.xml');
 
         // step 4
         $output->writeln(sprintf('Moving temporary file to %s ...', $input->getArgument('folder')));
