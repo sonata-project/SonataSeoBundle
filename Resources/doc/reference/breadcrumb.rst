@@ -1,7 +1,7 @@
 Breadcrumb
 ==========
 
-The ``SonataSeoBundle`` let you create your own breadcrumbs based on your different website modules (news, products catalog...). The bundle uses KnpMenuBundle to generate the breadcrumb. Please refer to related documentation.
+The ``SonataSeoBundle`` let's you create your own breadcrumbs based on your different website modules (news, products catalog...). The bundle uses KnpMenuBundle to generate the breadcrumb. Please refer to related documentation.
 
 Create your own breadcrumb
 --------------------------
@@ -36,7 +36,7 @@ First, you need to create a BlockService to handle your breadcrumbs. You can ext
 
             $menu->addChild('my_awesome_action');
 
-            return $menu
+            return $menu;
         }
     }
 
