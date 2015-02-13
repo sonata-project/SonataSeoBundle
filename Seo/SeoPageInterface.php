@@ -138,4 +138,16 @@ interface SeoPageInterface
      * @return array
      */
     public function getLangAlternates();
+
+    /**
+     * @param $title
+     * @param $link
+     * @return SeoPageInterface
+     */
+    public function addOEmbedLink($title, $link);
+
+    /**
+     * @return array
+     */
+    public function getOEmbedLinks();
 }

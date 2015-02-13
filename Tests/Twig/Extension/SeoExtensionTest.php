@@ -111,4 +111,16 @@ class BlockTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals("<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n", $extension->getLangAlternates());
     }
+
+    public function testOEmbedLinks()
+    {
+        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page->expects($this->once())->method('getOembedLinks')->will($this->returnValue(array(
+            'Foo' => 'http://example.com/',
+        )));
+
+        $extension = new SeoExtension($page, 'UTF-8');
+
+        $this->assertEquals("<link rel=\"alternate\" type=\"application/json+oembed\" href=\"http://example.com/\" title=\"Foo\" />\n", $extension->getOembedLinks());
+    }
 }

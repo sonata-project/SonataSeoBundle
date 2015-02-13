@@ -72,3 +72,17 @@ This will render page alternate languages as follows:
 .. code-block:: html
 
     <link rel="alternate" href="http://www.example.com/en" hreflang="en"/>
+
+
+Render oEmbed links (http://www.oembed.com/)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: jinja
+
+    {{ sonata_seo_oembed_links() }}
+
+This will render oEmbed links as follows:
+
+.. code-block:: html
+
+    <link rel="alternate" type="application/json+oembed" href="http://flickr.com/services/oembed?url=http%3A%2F%2Fflickr.com%2Fphotos%2Fbees%2F2362225867%2F&format=json" title="Bacon Lollys oEmbed Profile" />
