@@ -1,7 +1,61 @@
 Sitemap
 =======
 
-The ``SonataSeoBundle`` provides a support for static sitemap generation.
+The ``SonataSeoBundle`` provides a support for static sitemap generation. You can either create services or provide raw SQL queries.
+
+Service Definition
+------------------
+
+The service must implement the ``SourceIteratorInterface`` from the ``sonata-project/exporter`` library. The iterator will be used to generate the file. The iterator must not store all data as property to avoid memory issue. Data must be fetch one by one using a buffered connection (from mysql and not php which is not default behavior).
+
+.. code-block:: php
+
+    class MyCustomSitemapIterator implements SourceIteratorInterface
+    {
+        protected $key;
+
+        protected $stop;
+
+        protected $current;
+
+        public function __construct($stop = 1000)
+        {
+            $this->stop = $stop;
+        }
+
+        public function current()
+        {
+            return $this->current;
+        }
+
+        public function next()
+        {
+            $this->current = array(
+                'permalink'  => '/the/path/to/target',
+                'lastmod'    => '',
+                'changefreq' => 'weekly',
+                'priority'   => 0.5
+            )
+        }
+
+        public function key()
+        {
+            return $this->key;
+        }
+
+        public function valid()
+        {
+            return $this->key < $this->stop;
+        }
+
+        public function rewind()
+        {
+            $this->key = 0;
+        }
+    }
+
+Raw Performance with Query
+--------------------------
 
 You will need to configure:
  - a Doctrine connection
@@ -35,13 +89,20 @@ Configuration example
 ---------------------
 
 Sitemap configuration obviously depends on the bundle, page types & custom routes you choose to expose.
-Here is a full example coming from the [Sonata Sandbox demo website](https://github.com/sonata-project/sandbox) 
+Here is a full example coming from the [Sonata Sandbox demo website](https://github.com/sonata-project/sandbox)
 
 .. code-block:: yaml
+
+    service:
+        app.my_custom_sitemap_service:
+            class: MyCustomSitemapIterator
 
     sonata_seo:
         # ...
         sitemap:
+            services:
+                - app.my_custom_sitemap_service
+
             doctrine_orm:
                 # media
                 - { types: [image], connection: doctrine.dbal.default_connection, route: sonata_media_view,       parameters: {id: null},                               query: "SELECT id, updated_at as lastmod, 'weekly' as changefreq, '0.5' as priority FROM media__media WHERE enabled = true" }
@@ -55,9 +116,15 @@ Here is a full example coming from the [Sonata Sandbox demo website](https://git
                 - {                 connection: doctrine.dbal.default_connection, route: sonata_product_view,     parameters: {productId: null, slug: null},            query: "SELECT id as productId, slug, updated_at as lastmod, 'weekly' as changefreq, '0.5' as priority FROM product__product WHERE enabled = true" }
 
 
+
+
 Usage
 -----
 
 - Generate the sitemap::
 
     php app/console sonata:seo:sitemap web sonata-project.org
+
+.. note::
+
+    The command will generate all files in a temporary folder to avoid issue will files are indexed. Once the files are generated then the files will be copied to the ``web`` folder. The ``sonata-project.org`` argument will be used to prefix url with the provided domain.
