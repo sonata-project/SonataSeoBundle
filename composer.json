@@ -27,8 +27,7 @@
         "symfony/console": "~2.3",
         "symfony/finder": "~2.3",
         "sonata-project/block-bundle": "~2.2,>=2.2.7",
-        "sonata-project/admin-bundle": "~2.2",
-        "sonata-project/core-bundle": "~2.3,>=2.3.1"
+        "sonata-project/admin-bundle": "~2.2"
     },
     "suggest": {
         "guzzle/guzzle": "3.*",
