@@ -79,6 +79,9 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals($expected, $config);
+
+        $this->assertEquals('website', $config['page']['metas']['property']['og:type']);
+
     }
 
 }
