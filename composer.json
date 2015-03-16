@@ -26,12 +26,12 @@
         "guzzle/guzzle": "3.*",
         "symfony/console": "~2.3",
         "symfony/finder": "~2.3",
-        "sonata-project/block-bundle": "~2.2,>=2.2.7",
-        "sonata-project/admin-bundle": "~2.2"
+        "sonata-project/admin-bundle": "~2.2",
+        "sonata-project/core-bundle": "~2.3,>=2.3.1"
     },
     "suggest": {
         "guzzle/guzzle": "3.*",
-        "sonata-project/block-bundle": "Allows you to use SEO friendly blocks",
+        "sonaqqta-project/block-bundle": "Allows you to use SEO friendly blocks",
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"
     },
     "autoload": {
@@ -39,7 +39,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1.x-dev"
+            "dev-master": "2.0.x-dev"
         }
     }
 }
