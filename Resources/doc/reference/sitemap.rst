@@ -30,6 +30,7 @@ The service must implement the ``SourceIteratorInterface`` from the ``sonata-pro
 
         public function next()
         {
+            $this->key++;
             $this->current = array(
                 'permalink'  => '/the/path/to/target',
                 'lastmod'    => '',
