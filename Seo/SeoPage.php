@@ -31,6 +31,8 @@ class SeoPage implements SeoPageInterface
 
     protected $langAlternates;
 
+    protected $oembedLinks;
+
     /**
      * {@inheritdoc}
      */
@@ -49,6 +51,7 @@ class SeoPage implements SeoPageInterface
         $this->linkCanonical = '';
         $this->separator = ' ';
         $this->langAlternates = array();
+        $this->oembedLinks = array();
     }
 
     /**
@@ -261,5 +264,25 @@ class SeoPage implements SeoPageInterface
     public function getLangAlternates()
     {
         return  $this->langAlternates;
+    }
+
+    /**
+     * @param $title
+     * @param $link
+     * @return SeoPageInterface
+     */
+    public function addOEmbedLink($title, $link)
+    {
+        $this->oembedLinks[$title] = $link;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOEmbedLinks()
+    {
+        return $this->oembedLinks;
     }
 }

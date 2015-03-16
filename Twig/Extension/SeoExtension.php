@@ -43,6 +43,7 @@ class SeoExtension extends \Twig_Extension
             new \Twig_SimpleFunction('sonata_seo_head_attributes', array($this, 'getHeadAttributes'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('sonata_seo_link_canonical', array($this, 'getLinkCanonical'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('sonata_seo_lang_alternates', array($this, 'getLangAlternates'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('sonata_seo_oembed_links', array($this, 'getOembedLinks'), array('is_safe' => array('html'))),
         );
     }
 
@@ -196,6 +197,19 @@ class SeoExtension extends \Twig_Extension
         $html = '';
         foreach ($this->page->getLangAlternates() as $href => $hrefLang) {
             $html .= sprintf("<link rel=\"alternate\" href=\"%s\" hreflang=\"%s\"/>\n", $href, $hrefLang);
+        }
+
+        return $html;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOembedLinks()
+    {
+        $html = '';
+        foreach ($this->page->getOEmbedLinks() as $title => $link) {
+            $html .= sprintf("<link rel=\"alternate\" type=\"application/json+oembed\" href=\"%s\" title=\"%s\" />\n", $link, $title);
         }
 
         return $html;
