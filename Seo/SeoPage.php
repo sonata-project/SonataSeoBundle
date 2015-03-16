@@ -301,6 +301,8 @@ class SeoPage implements SeoPageInterface
     public function setSeparator($separator)
     {
         $this->separator = $separator;
+
+        return $this;
     }
 
     /**

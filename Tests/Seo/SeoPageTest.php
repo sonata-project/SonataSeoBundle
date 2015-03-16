@@ -156,4 +156,11 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($page->hasMeta('property', 'test'));
         $this->assertFalse($page->hasMeta('property', 'fake'));
     }
+
+    public function testSetSeparator()
+    {
+        $page = new SeoPage();
+
+        $this->assertInstanceOf('Sonata\SeoBundle\Seo\SeoPage', $page->setSeparator('-'));
+    }
 }
