@@ -7,40 +7,49 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
  */
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('sonata_seo');
 
-        $rootNode
+        $treeBuilder->root('sonata_seo')
             ->children()
+                ->scalarNode('encoding')->defaultValue('UTF-8')->end()
                 ->arrayNode('page')
-                    ->scalarNode('encoding')->defaultValue('UTF-8')->end()
-                    ->scalarNode('default')->defaultValue('sonata.seo.page.default')->end()
-                    ->scalarNode('separator')->defaultValue(' - ')->end()
-                    ->scalarNode('title')->defaultValue('Sonata Project')->end()
-                    ->arrayNode('metas')
-                        ->useAttributeAsKey('id')
-                        ->prototype('array')
-                            ->useAttributeAsKey('id')
-                            ->prototype('variable')->end()
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('default')->defaultValue('sonata.seo.page.default')->end()
+                        ->arrayNode('head')
+                            ->normalizeKeys(false)
+                            ->useAttributeAsKey('attribute')
+                            ->prototype('scalar')->end()
                         ->end()
-                    ->end()
-                    ->arrayNode('head')
-                        ->useAttributeAsKey('id')
-                        ->children()
-                            ->arrayNode('attributes')
-                                ->useAttributeAsKey('id')
+                        ->arrayNode('metas')
+                            ->normalizeKeys(false)
+                            ->useAttributeAsKey('element')
+                            ->prototype('array')
+                                ->normalizeKeys(false)
+                                ->useAttributeAsKey('name')
                                 ->prototype('scalar')->end()
                             ->end()
+                        ->end()
+                        ->scalarNode('separator')->defaultValue(' - ')->end()
+                        ->scalarNode('title')->defaultValue('Sonata Project')->end()
+                    ->end()
+                ->end()
+                ->arrayNode('sitemap')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->arrayNode('doctrine_orm')
+                            ->prototype('variable')->end()
+                        ->end()
+                        ->arrayNode('services')
+                            ->prototype('variable')->end()
                         ->end()
                     ->end()
                 ->end()

@@ -2,26 +2,28 @@
 
 namespace Sonata\SeoBundle\DependencyInjection;
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * This is the class that loads and manages your bundle configuration
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
 class SonataSeoExtension extends Extension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+        $config = $this->fixConfiguration($config);
+
         $bundles = $container->getParameter('kernel.bundles');
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -33,8 +35,6 @@ class SonataSeoExtension extends Extension
         $loader->load('event.xml');
         $loader->load('services.xml');
 
-        $config = $this->fixConfiguration($configs);
-
         $this->configureSeoPage($config['page'], $container);
         $this->configureSitemap($config['sitemap'], $container);
         $this->configureClassesToCompile();
@@ -44,8 +44,12 @@ class SonataSeoExtension extends Extension
     }
 
     /**
+     * Configure the default seo page
+     *
      * @param array            $config
      * @param ContainerBuilder $container
+     *
+     * @return void
      */
     protected function configureSeoPage(array $config, ContainerBuilder $container)
     {
@@ -60,8 +64,12 @@ class SonataSeoExtension extends Extension
     }
 
     /**
+     * Configure the sitemap source manager
+     *
      * @param array            $config
      * @param ContainerBuilder $container
+     *
+     * @return void
      */
     protected function configureSitemap(array $config, ContainerBuilder $container)
     {
@@ -103,32 +111,14 @@ class SonataSeoExtension extends Extension
     }
 
     /**
-     * @param array $configs
+     * Fix the sitemap configuration
+     *
+     * @param array $config
      *
      * @return array
      */
-    protected function fixConfiguration(array $configs)
+    protected function fixConfiguration(array $config)
     {
-        // for now this configuration cannot be used as the key are normalized
-        // $configuration = new Configuration();
-        // $config = $this->processConfiguration($configuration, $configs);
-        $config = $configs[0];
-
-        // page settings
-        $config['page']              = isset($config['page']) && is_array($config['page'])  ? $config['page'] : array();
-        $config['page']['default']   = isset($config['page']['default'])  ? $config['page']['default']  : 'sonata.seo.page.default';
-        $config['page']['separator'] = isset($config['page']['separator'])? $config['page']['separator']: ' - ';
-        $config['page']['title']     = isset($config['page']['title'])    ? $config['page']['title']    : 'Sonata Project';
-        $config['page']['metas']     = isset($config['page']['metas'])    ? $config['page']['metas']    : array();
-        $config['page']['head']      = isset($config['page']['head'])     ? $config['page']['head']     : array();
-
-        // twig settings
-        $config['encoding']          = isset($config['encoding']) ? $config['encoding'] : 'UTF-8';
-
-        // sitemap
-        $config['sitemap']                  = isset($config['sitemap']) && is_array($config['sitemap'])  ? $config['sitemap'] : array();
-        $config['sitemap']['doctrine_orm']  = isset($config['sitemap']['doctrine_orm']) && is_array($config['sitemap']['doctrine_orm'])  ? $config['sitemap']['doctrine_orm'] : array();
-
         foreach ($config['sitemap']['doctrine_orm'] as $pos => $sitemap) {
             $sitemap['group']      = isset($sitemap['group']) ? $sitemap['group'] : false;
             $sitemap['types']      = isset($sitemap['types']) ? $sitemap['types'] : array();
@@ -151,8 +141,6 @@ class SonataSeoExtension extends Extension
 
             $config['sitemap']['doctrine_orm'][$pos] = $sitemap;
         }
-
-        $config['sitemap']['services']  = isset($config['sitemap']['services']) && is_array($config['sitemap']['services'])  ? $config['sitemap']['services'] : array();
 
         foreach ($config['sitemap']['services'] as $pos => $sitemap) {
             if (!is_array($sitemap)) {
@@ -178,6 +166,8 @@ class SonataSeoExtension extends Extension
 
     /**
      * Add class to compile
+     *
+     * @return void
      */
     public function configureClassesToCompile()
     {
