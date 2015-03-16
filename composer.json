@@ -31,7 +31,7 @@
     },
     "suggest": {
         "guzzle/guzzle": "3.*",
-        "sonaqqta-project/block-bundle": "Allows you to use SEO friendly blocks",
+        "sonata-project/block-bundle": "Allows you to use SEO friendly blocks",
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"
     },
     "autoload": {
