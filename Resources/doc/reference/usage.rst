@@ -25,7 +25,7 @@ By default, the object is initialized with values defined in the configuration:
                     'Content-Type':         text/html; charset=utf-8
                     #'X-Ua-Compatible':      IE=EmulateIE7
 
-            head:
+            html_tag:
                 'xmlns':              http://www.w3.org/1999/xhtml
                 'xmlns:og':           http://opengraphprotocol.org/schema/
 
