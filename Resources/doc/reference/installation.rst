@@ -27,10 +27,10 @@ file.
 
     # app/config/config.yml
     sonata_seo:
-        default:          sonata.seo.page.default
         encoding:         UTF-8
         page:
             title:            Sonata Project
+            default:          sonata.seo.page.default
             metas:
                 name:
                     keywords:             foo bar
