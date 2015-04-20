@@ -27,9 +27,9 @@ file.
 
     # app/config/config.yml
     sonata_seo:
-        default:          sonata.seo.page.default
         encoding:         UTF-8
         page:
+            default: sonata.seo.page.default
             title:            Sonata Project
             metas:
                 name:
