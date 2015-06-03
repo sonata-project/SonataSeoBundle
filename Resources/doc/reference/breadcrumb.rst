@@ -14,7 +14,7 @@ First, you need to create a BlockService to handle your breadcrumbs. You can ext
 
     namespace Acme\Bundle\Block;
 
-    use Sonata\SeoBundle\Block\BaseBreadcrumbMenuBlockService;
+    use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
 
     class MyCustomBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
     {
