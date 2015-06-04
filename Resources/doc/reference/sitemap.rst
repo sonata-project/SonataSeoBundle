@@ -36,7 +36,7 @@ The service must implement the ``SourceIteratorInterface`` from the ``sonata-pro
                 'lastmod'    => '',
                 'changefreq' => 'weekly',
                 'priority'   => 0.5
-            )
+            );
         }
 
         public function key()
