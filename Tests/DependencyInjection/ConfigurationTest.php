@@ -69,7 +69,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testWithYamlConfig()
     {
-        $values = Yaml::parse(__DIR__ . '/data/config.yml', true);
+        $values = Yaml::parse(file_get_contents(__DIR__ . '/data/config.yml'), true);
 
         $config = $this->processConfiguration(array($values));
 
