@@ -11,14 +11,13 @@
 
 namespace Sonata\SeoBundle\Block\Social;
 
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\BlockBundle\Block\BaseBlockService;
+use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Sonata\CoreBundle\Validator\ErrorElement;
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\BaseBlockService;
-use Sonata\BlockBundle\Model\BlockInterface;
 
 /**
  * Pinterest pin button integration.
@@ -57,12 +56,12 @@ class PinterestPinButtonBlockService extends BaseBlockService
                 array('size', 'integer', array('required' => false)),
                 array('shape', 'choice', array(
                     'required' => false,
-                    'choices' => array(
+                    'choices'  => array(
                         'rectangular' => 'rectangular',
-                        'round' => 'round',
-                    )
+                        'round'       => 'round',
+                    ),
                 )),
-            )
+            ),
         ));
     }
 

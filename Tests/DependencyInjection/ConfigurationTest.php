@@ -8,21 +8,20 @@ use Symfony\Component\Yaml\Yaml;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
-
     private function getDefaultConfiguration()
     {
         return array(
             'encoding' => 'UTF-8',
-            'page' => array(
-                'default' => 'sonata.seo.page.default',
-                'head' => array(),
-                'metas' => array(),
+            'page'     => array(
+                'default'   => 'sonata.seo.page.default',
+                'head'      => array(),
+                'metas'     => array(),
                 'separator' => ' - ',
-                'title' => 'Sonata Project',
+                'title'     => 'Sonata Project',
             ),
             'sitemap' => array(
                 'doctrine_orm' => array(),
-                'services' => array(),
+                'services'     => array(),
             ),
         );
     }
@@ -48,7 +47,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $values = array(
             'page' => array(
-                'head' => array('data-example' => 'abc-123'),
+                'head'  => array('data-example' => 'abc-123'),
                 'metas' => array(
                     'http-equiv' => array(
                         'Content-Type' => 'text/html; charset=utf-8',
@@ -69,7 +68,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testWithYamlConfig()
     {
-        $values = Yaml::parse(file_get_contents(__DIR__ . '/data/config.yml'), true);
+        $values = Yaml::parse(file_get_contents(__DIR__.'/data/config.yml'), true);
 
         $config = $this->processConfiguration(array($values));
 
@@ -81,7 +80,5 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $config);
 
         $this->assertEquals('website', $config['page']['metas']['property']['og:type']);
-
     }
-
 }

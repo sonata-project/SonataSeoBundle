@@ -57,7 +57,7 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
                 array('show_header', 'checkbox', array('required' => false)),
                 array('show_posts',  'checkbox', array('required' => false)),
                 array('show_border', 'checkbox', array('required' => false)),
-            )
+            ),
         ));
     }
 

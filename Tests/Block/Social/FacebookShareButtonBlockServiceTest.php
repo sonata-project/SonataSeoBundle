@@ -11,12 +11,12 @@
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
-use Sonata\BlockBundle\Model\Block;
-use Sonata\SeoBundle\Block\Social\FacebookShareButtonBlockService;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Tests\Block\Service\FakeTemplating;
+use Sonata\SeoBundle\Block\Social\FacebookShareButtonBlockService;
 use Sonata\SeoBundle\Tests\Block\BaseBlockTest;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FacebookShareButtonBlockServiceTest extends BaseBlockTest
 {
@@ -28,17 +28,16 @@ class FacebookShareButtonBlockServiceTest extends BaseBlockTest
             return;
         }
 
-        $templating = new FakeTemplating;
+        $templating = new FakeTemplating();
         $service    = new FacebookShareButtonBlockService('sonata.block.service.facebook.share_button', $templating);
 
-        $block = new Block;
+        $block = new Block();
         $block->setType('core.text');
         $block->setSettings(array(
             'url'    => 'url_setting',
             'width'  => 'width_setting',
             'layout' => 'layout_setting',
         ));
-
 
         $optionResolver = new OptionsResolver();
         $service->setDefaultSettings($optionResolver);

@@ -11,20 +11,18 @@
 
 namespace Sonata\SeoBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Filesystem\Filesystem;
+use Exporter\Handler;
 use Exporter\Writer\SitemapWriter;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Output\Output;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
-use Exporter\Handler;
-
 /**
- * Create a sitemap
+ * Create a sitemap.
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */

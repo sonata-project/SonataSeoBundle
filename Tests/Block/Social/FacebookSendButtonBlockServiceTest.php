@@ -11,12 +11,12 @@
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
-use Sonata\BlockBundle\Model\Block;
-use Sonata\SeoBundle\Block\Social\FacebookSendButtonBlockService;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Tests\Block\Service\FakeTemplating;
+use Sonata\SeoBundle\Block\Social\FacebookSendButtonBlockService;
 use Sonata\SeoBundle\Tests\Block\BaseBlockTest;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FacebookSendButtonBlockServiceTest extends BaseBlockTest
 {
@@ -28,10 +28,10 @@ class FacebookSendButtonBlockServiceTest extends BaseBlockTest
             return;
         }
 
-        $templating = new FakeTemplating;
+        $templating = new FakeTemplating();
         $service    = new FacebookSendButtonBlockService('sonata.block.service.facebook.send_button', $templating);
 
-        $block = new Block;
+        $block = new Block();
         $block->setType('core.text');
         $block->setSettings(array(
             'url'         => 'url_setting',
@@ -39,7 +39,6 @@ class FacebookSendButtonBlockServiceTest extends BaseBlockTest
             'height'      => 'height_setting',
             'colorscheme' => 'colorscheme_setting',
         ));
-
 
         $optionResolver = new OptionsResolver();
         $service->setDefaultSettings($optionResolver);

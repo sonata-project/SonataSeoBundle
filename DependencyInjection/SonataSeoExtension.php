@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  */
 class SonataSeoExtension extends Extension
 {
@@ -44,12 +44,10 @@ class SonataSeoExtension extends Extension
     }
 
     /**
-     * Configure the default seo page
+     * Configure the default seo page.
      *
      * @param array            $config
      * @param ContainerBuilder $container
-     *
-     * @return void
      */
     protected function configureSeoPage(array $config, ContainerBuilder $container)
     {
@@ -64,12 +62,10 @@ class SonataSeoExtension extends Extension
     }
 
     /**
-     * Configure the sitemap source manager
+     * Configure the sitemap source manager.
      *
      * @param array            $config
      * @param ContainerBuilder $container
-     *
-     * @return void
      */
     protected function configureSitemap(array $config, ContainerBuilder $container)
     {
@@ -82,7 +78,7 @@ class SonataSeoExtension extends Extension
 
             $connectionIterator = new Definition('%sonata.seo.exporter.database_source_iterator.class%', array(
                 new Reference($sitemap['connection']),
-                $sitemap['query']
+                $sitemap['query'],
             ));
 
             $connectionIterator->setPublic(false);
@@ -95,7 +91,7 @@ class SonataSeoExtension extends Extension
                 new Reference($connectionIteratorId),
                 new Reference('router'),
                 $sitemap['route'],
-                $sitemap['parameters']
+                $sitemap['parameters'],
             ));
 
             $sitemapIterator->setPublic(false);
@@ -111,7 +107,7 @@ class SonataSeoExtension extends Extension
     }
 
     /**
-     * Fix the sitemap configuration
+     * Fix the sitemap configuration.
      *
      * @param array $config
      *
@@ -147,7 +143,7 @@ class SonataSeoExtension extends Extension
                 $sitemap = array(
                     'group' => false,
                     'types' => array(),
-                    'id'    => $sitemap
+                    'id'    => $sitemap,
                 );
             } else {
                 $sitemap['group'] = isset($sitemap['group']) ? $sitemap['group'] : false;
@@ -165,17 +161,15 @@ class SonataSeoExtension extends Extension
     }
 
     /**
-     * Add class to compile
-     *
-     * @return void
+     * Add class to compile.
      */
     public function configureClassesToCompile()
     {
         $this->addClassesToCompile(array(
-            "Sonata\\SeoBundle\\Seo\\SeoPage",
-            "Sonata\\SeoBundle\\Seo\\SeoPageInterface",
-            "Sonata\\SeoBundle\\Sitemap\\SourceManager",
-            "Sonata\\SeoBundle\\Twig\\Extension\\SeoExtension",
+            'Sonata\\SeoBundle\\Seo\\SeoPage',
+            'Sonata\\SeoBundle\\Seo\\SeoPageInterface',
+            'Sonata\\SeoBundle\\Sitemap\\SourceManager',
+            'Sonata\\SeoBundle\\Twig\\Extension\\SeoExtension',
         ));
     }
 }

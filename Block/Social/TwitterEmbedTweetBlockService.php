@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -8,34 +9,30 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Sonata\SeoBundle\Block\Social;
 
 use Guzzle\Http\Exception\CurlException;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\CoreBundle\Validator\ErrorElement;
-use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Class TwitterEmbedTweetBlockService
+ * Class TwitterEmbedTweetBlockService.
  *
  * This block service allows to embed a tweet by requesting the Twitter API.
  *
  * @see https://dev.twitter.com/docs/api/1/get/statuses/oembed
  *
- * @package Sonata\SeoBundle\Block\Social
- *
  * @author Hugo Briand <briand@ekino.com>
  */
 class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 {
-    const TWITTER_OEMBED_URI = "https://api.twitter.com/1/statuses/oembed.json";
-    const TWEET_URL_PATTERN  = "%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i";
-    const TWEET_ID_PATTERN   = "%^([0-9]*)$%";
+    const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
+    const TWEET_URL_PATTERN  = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
+    const TWEET_ID_PATTERN   = '%^([0-9]*)$%';
 
     /**
      * {@inheritdoc}
@@ -44,11 +41,11 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     {
         $tweet = $blockContext->getSetting('tweet');
 
-        if (($uriMatched = preg_match(TwitterEmbedTweetBlockService::TWEET_URL_PATTERN, $tweet))
-            || preg_match(TwitterEmbedTweetBlockService::TWEET_ID_PATTERN, $tweet)) {
+        if (($uriMatched = preg_match(self::TWEET_URL_PATTERN, $tweet))
+            || preg_match(self::TWEET_ID_PATTERN, $tweet)) {
             // We matched an URL or an ID, we'll need to ask the API
             if (class_exists('Guzzle\Http\Client') === false) {
-                throw new \RuntimeException("The guzzle http client library is required to call the Twitter API. Make sure to add guzzle/guzzle to your composer.json.");
+                throw new \RuntimeException('The guzzle http client library is required to call the Twitter API. Make sure to add guzzle/guzzle to your composer.json.');
             }
 
             // TODO cache API result
@@ -78,14 +75,14 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     {
         $resolver->setDefaults(array(
             'template'    => 'SonataSeoBundle:Block:block_twitter_embed.html.twig',
-            'tweet'       => "",
+            'tweet'       => '',
             'maxwidth'    => null,      // Should be between 250 and 550px
             'hide_media'  => false,
             'hide_thread' => false,
             'omit_script' => false,     // Should be asked for only once in a page
             'align'       => 'none',    // Left, right, center or none
             'related'     => null,      // Accounts related to content
-            'lang'        => $this->languageList
+            'lang'        => $this->languageList,
         ));
     }
 
@@ -104,7 +101,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
                 array('align', 'choice', array('required' => false, 'choices' => array('left', 'right', 'center', 'none'))),
                 array('related', 'text', array('required' => false, 'help_block' => "See 'related' argument in https://dev.twitter.com/docs/intents")),
                 array('lang', 'choice', array('required' => true, 'choices' => $this->languageList)),
-            )
+            ),
         ));
     }
 
@@ -124,7 +121,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     }
 
     /**
-     * Returns supported API parameters from settings
+     * Returns supported API parameters from settings.
      *
      * @return array
      */
@@ -139,12 +136,12 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
             'related',
             'lang',
             'url',
-            'id'
+            'id',
         );
     }
 
     /**
-     * Builds the API query URI based on $settings
+     * Builds the API query URI based on $settings.
      *
      * @param bool  $uriMatched
      * @param array $settings
@@ -168,10 +165,10 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         $parameters = array();
         foreach ($apiParams as $key => $value) {
             if ($value && in_array($key, $supportedParams)) {
-                $parameters[] = $key."=".$value;
+                $parameters[] = $key.'='.$value;
             }
         }
 
-        return sprintf("%s?%s", TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, implode("&", $parameters));
+        return sprintf('%s?%s', self::TWITTER_OEMBED_URI, implode('&', $parameters));
     }
 }

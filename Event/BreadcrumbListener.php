@@ -12,8 +12,8 @@
 namespace Sonata\SeoBundle\Event;
 
 use Sonata\BlockBundle\Block\BlockServiceInterface;
-use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Event\BlockEvent;
+use Sonata\BlockBundle\Model\Block;
 
 /**
  * BreadcrumbListener for Block Event.
@@ -28,7 +28,7 @@ class BreadcrumbListener
     protected $blockServices = array();
 
     /**
-     * Add a renderer to the status services list
+     * Add a renderer to the status services list.
      *
      * @param string                $type
      * @param BlockServiceInterface $blockService

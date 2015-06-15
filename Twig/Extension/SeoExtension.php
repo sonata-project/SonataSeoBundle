@@ -59,8 +59,6 @@ class SeoExtension extends \Twig_Extension
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getTitle() instead.
-     *
-     * @return void
      */
     public function renderTitle()
     {
@@ -72,13 +70,11 @@ class SeoExtension extends \Twig_Extension
      */
     public function getTitle()
     {
-        return sprintf("<title>%s</title>", strip_tags($this->page->getTitle()));
+        return sprintf('<title>%s</title>', strip_tags($this->page->getTitle()));
     }
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getMetadatas() instead.
-     *
-     * @return void
      */
     public function renderMetadatas()
     {
@@ -115,8 +111,6 @@ class SeoExtension extends \Twig_Extension
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getHtmlAttributes() instead.
-     *
-     * @return void
      */
     public function renderHtmlAttributes()
     {
@@ -138,8 +132,6 @@ class SeoExtension extends \Twig_Extension
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getHeadAttributes() instead.
-     *
-     * @return void
      */
     public function renderHeadAttributes()
     {
@@ -161,8 +153,6 @@ class SeoExtension extends \Twig_Extension
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getLinkCanonical() instead.
-     *
-     * @return void
      */
     public function renderLinkCanonical()
     {
@@ -181,8 +171,6 @@ class SeoExtension extends \Twig_Extension
 
     /**
      * @deprecated Deprecated as of 1.2, echo the return value of getLangAlternates() instead.
-     *
-     * @return void
      */
     public function renderLangAlternates()
     {
@@ -217,6 +205,7 @@ class SeoExtension extends \Twig_Extension
 
     /**
      * @param string $string
+     *
      * @return mixed
      */
     private function normalize($string)

@@ -59,7 +59,7 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
                 array('large_button', 'checkbox', array('required' => false)),
                 array('opt_out',      'checkbox', array('required' => false)),
                 array('language',     'choice',   array('required' => true, 'choices' => $this->languageList)),
-            )
+            ),
         ));
     }
 

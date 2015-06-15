@@ -11,17 +11,16 @@
 
 namespace Sonata\SeoBundle\Block\Social;
 
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\BlockBundle\Block\BaseBlockService;
+use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Sonata\CoreBundle\Validator\ErrorElement;
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\BaseBlockService;
-use Sonata\BlockBundle\Model\BlockInterface;
-
 /**
- * This block offers a button to share current page by email
+ * This block offers a button to share current page by email.
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
@@ -48,7 +47,7 @@ class EmailShareButtonBlockService extends BaseBlockService
             'keys' => array(
                 array('subject', 'text', array('required' => false)),
                 array('body', 'text', array('required' => false)),
-            )
+            ),
         ));
     }
 

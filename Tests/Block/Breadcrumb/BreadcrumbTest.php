@@ -14,8 +14,8 @@ namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
 use Sonata\SeoBundle\Tests\Block\BaseBlockTest;
 
-class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService {
-
+class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
+{
 }
 
 /**
