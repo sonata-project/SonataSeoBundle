@@ -49,7 +49,7 @@ class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockServi
                 array('width',       'integer',  array('required' => false)),
                 array('height',      'integer',  array('required' => false)),
                 array('colorscheme', 'choice',   array('required' => true, 'choices' => $this->colorschemeList)),
-            )
+            ),
         ));
     }
 

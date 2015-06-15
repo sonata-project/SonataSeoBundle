@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -12,13 +13,13 @@ namespace Sonata\SeoBundle\Tests\Request;
 
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
-class BlockTest extends \PHPUnit_Framework_TestCase
+class SeoExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function testHtmlAttributes()
     {
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getHtmlAttributes')->will($this->returnValue(array(
-            'xmlns' => 'http://www.w3.org/1999/xhtml',
+            'xmlns'    => 'http://www.w3.org/1999/xhtml',
             'xmlns:og' => 'http://opengraphprotocol.org/schema/',
         )));
 

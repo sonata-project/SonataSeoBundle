@@ -11,11 +11,11 @@
 
 namespace Sonata\SeoBundle\Block\Social;
 
-use Sonata\CoreBundle\Validator\ErrorElement;
+use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\HttpFoundation\Response;
-use Sonata\BlockBundle\Block\BaseBlockService;
 
 /**
  * Abstract class for Facebook Social Plugins blocks services.

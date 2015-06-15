@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata project.
  *
@@ -11,9 +12,7 @@
 namespace Sonata\SeoBundle\Seo;
 
 /**
- *
- * http://en.wikipedia.org/wiki/Meta_element
- *
+ * http://en.wikipedia.org/wiki/Meta_element.
  */
 class SeoPage implements SeoPageInterface
 {
@@ -69,7 +68,7 @@ class SeoPage implements SeoPageInterface
      */
     public function addTitle($title)
     {
-        $this->title = $title . $this->separator . $this->title;
+        $this->title = $title.$this->separator.$this->title;
 
         return $this;
     }
@@ -310,7 +309,7 @@ class SeoPage implements SeoPageInterface
      */
     public function setLangAlternates(array $langAlternates)
     {
-        $this->langAlternates= $langAlternates;
+        $this->langAlternates = $langAlternates;
 
         return $this;
     }
@@ -358,6 +357,7 @@ class SeoPage implements SeoPageInterface
     /**
      * @param $title
      * @param $link
+     *
      * @return SeoPageInterface
      */
     public function addOEmbedLink($title, $link)

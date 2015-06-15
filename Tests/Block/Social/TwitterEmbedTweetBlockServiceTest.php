@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -8,9 +9,7 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Sonata\SeoBundle\Tests\Block\Social;
-
 
 use Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService;
 
@@ -23,9 +22,8 @@ class TwitterEmbedTweetBSTest extends TwitterEmbedTweetBlockService
 }
 
 /**
- * Class TwitterEmbedTweetBlockServiceTest
+ * Class TwitterEmbedTweetBlockServiceTest.
  *
- * @package Sonata\SeoBundle\Tests\Block\Social
  *
  * @author Hugo Briand <briand@ekino.com>
  */
@@ -34,17 +32,17 @@ class TwitterEmbedTweetBlockServiceTest extends \PHPUnit_Framework_TestCase
     public function testBuildUri()
     {
         $settings = array(
-            'tweet' => "tweeeeeeeet",
-            'foo'   => "bar",
-            'align' => "bar",
+            'tweet' => 'tweeeeeeeet',
+            'foo'   => 'bar',
+            'align' => 'bar',
         );
 
-        $expected = sprintf("%s?%s", TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, "align=bar&url=tweeeeeeeet");
+        $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&url=tweeeeeeeet');
 
-        $blockService = new TwitterEmbedTweetBSTest("", $this->getMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface'));
+        $blockService = new TwitterEmbedTweetBSTest('', $this->getMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface'));
         $this->assertEquals($expected, $blockService->publicBuildUri(true, $settings));
 
-        $expected = sprintf("%s?%s", TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, "align=bar&id=tweeeeeeeet");
+        $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&id=tweeeeeeeet');
         $this->assertEquals($expected, $blockService->publicBuildUri(false, $settings));
     }
 }

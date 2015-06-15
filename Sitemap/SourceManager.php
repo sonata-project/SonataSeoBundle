@@ -2,11 +2,11 @@
 
 namespace Sonata\SeoBundle\Sitemap;
 
-use Exporter\Source\SourceIteratorInterface;
 use Exporter\Source\ChainSourceIterator;
+use Exporter\Source\SourceIteratorInterface;
 
 /**
- * SourceManager
+ * SourceManager.
  *
  * Manager several chain source iterator grouped
  */
@@ -26,7 +26,7 @@ class SourceManager implements SourceIteratorInterface
     }
 
     /**
-     * Adding source with his group
+     * Adding source with his group.
      *
      * @param string                  $group
      * @param SourceIteratorInterface $source

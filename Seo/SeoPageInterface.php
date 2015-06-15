@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata project.
  *
@@ -122,6 +123,7 @@ interface SeoPageInterface
 
     /**
      * @param array $langAlternates
+     *
      * @return SeoPageInterface
      */
     public function setLangAlternates(array $langAlternates);
@@ -142,6 +144,7 @@ interface SeoPageInterface
     /**
      * @param $title
      * @param $link
+     *
      * @return SeoPageInterface
      */
     public function addOEmbedLink($title, $link);

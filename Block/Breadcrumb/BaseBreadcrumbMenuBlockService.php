@@ -11,13 +11,13 @@
 
 namespace Sonata\SeoBundle\Block\Breadcrumb;
 
+use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\MenuBlockService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Knp\Menu\FactoryInterface;
 
 /**
  * Abstract class for breadcrumb menu services.
@@ -56,7 +56,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
      *
      * @param string $context
      *
-     * @return boolean
+     * @return bool
      */
     public function handleContext($context)
     {
@@ -68,7 +68,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
      */
     public function getName()
     {
-        return sprintf("Breadcrumb %s", $this->context);
+        return sprintf('Breadcrumb %s', $this->context);
     }
 
     /**

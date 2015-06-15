@@ -67,7 +67,7 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
                 array('layout',      'choice',   array('required' => true, 'choices' => $this->layoutList)),
                 array('colorscheme', 'choice',   array('required' => true, 'choices' => $this->colorschemeList)),
                 array('action',      'choice',   array('required' => true, 'choices' => $this->actionTypes)),
-            )
+            ),
         ));
     }
 

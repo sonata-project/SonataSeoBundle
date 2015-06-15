@@ -11,12 +11,12 @@
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
-use Sonata\BlockBundle\Model\Block;
-use Sonata\SeoBundle\Block\Social\FacebookLikeButtonBlockService;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Tests\Block\Service\FakeTemplating;
+use Sonata\SeoBundle\Block\Social\FacebookLikeButtonBlockService;
 use Sonata\SeoBundle\Tests\Block\BaseBlockTest;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FacebookLikeButtonBlockServiceTest extends BaseBlockTest
 {
@@ -28,10 +28,10 @@ class FacebookLikeButtonBlockServiceTest extends BaseBlockTest
             return;
         }
 
-        $templating = new FakeTemplating;
+        $templating = new FakeTemplating();
         $service    = new FacebookLikeButtonBlockService('sonata.block.service.facebook.like_button', $templating);
 
-        $block = new Block;
+        $block = new Block();
         $block->setType('core.text');
         $block->setSettings(array(
             'url'         => 'url_setting',
@@ -42,7 +42,6 @@ class FacebookLikeButtonBlockServiceTest extends BaseBlockTest
             'colorscheme' => 'colorscheme_setting',
             'action'      => 'action_setting',
         ));
-
 
         $optionResolver = new OptionsResolver();
         $service->setDefaultSettings($optionResolver);

@@ -56,7 +56,7 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
                 array('url',    'url',      array('required' => false)),
                 array('width',  'integer',  array('required' => false)),
                 array('layout', 'choice',   array('required' => true, 'choices' => $this->layoutList)),
-            )
+            ),
         ));
     }
 
