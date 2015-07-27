@@ -31,6 +31,7 @@ file.
         page:
             default: sonata.seo.page.default
             title:            Sonata Project
+            default:          sonata.seo.page.default
             metas:
                 name:
                     keywords:             foo bar
