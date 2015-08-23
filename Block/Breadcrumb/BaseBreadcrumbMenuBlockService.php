@@ -97,6 +97,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
         $resolver->setDefaults(array(
             'menu_template'         => 'SonataSeoBundle:Block:breadcrumb.html.twig',
             'include_homepage_link' => true,
+            'context'               => false,
         ));
     }
 
