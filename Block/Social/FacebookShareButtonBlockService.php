@@ -13,7 +13,7 @@ namespace Sonata\SeoBundle\Block\Social;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Facebook share button integration.
@@ -36,7 +36,7 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
     /**
      * {@inheritdoc}
      */
-    public function setDefaultSettings(OptionsResolverInterface $resolver)
+    public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'template'    => 'SonataSeoBundle:Block:block_facebook_share_button.html.twig',
