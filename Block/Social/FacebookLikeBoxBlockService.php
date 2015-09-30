@@ -13,7 +13,7 @@ namespace Sonata\SeoBundle\Block\Social;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Facebook like box integration.
@@ -27,7 +27,7 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
     /**
      * {@inheritdoc}
      */
-    public function setDefaultSettings(OptionsResolverInterface $resolver)
+    public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'template'    => 'SonataSeoBundle:Block:block_facebook_like_box.html.twig',

@@ -13,7 +13,7 @@ namespace Sonata\SeoBundle\Block\Social;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Facebook send button integration.
@@ -27,7 +27,7 @@ class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockServi
     /**
      * {@inheritdoc}
      */
-    public function setDefaultSettings(OptionsResolverInterface $resolver)
+    public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'template'    => 'SonataSeoBundle:Block:block_facebook_send_button.html.twig',
