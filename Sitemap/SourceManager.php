@@ -13,7 +13,7 @@ use Exporter\Source\SourceIteratorInterface;
 class SourceManager implements SourceIteratorInterface
 {
     /**
-     * @var \ArrayIterator[]
+     * @var \ArrayIterator
      */
     protected $sources;
 

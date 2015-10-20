@@ -24,6 +24,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 abstract class BaseFacebookSocialPluginsBlockService extends BaseBlockService
 {
+    /**
+     * @var string[]
+     */
     protected $colorschemeList = array(
         'light' => 'light',
         'dark'  => 'dark',

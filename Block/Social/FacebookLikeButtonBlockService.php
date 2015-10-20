@@ -24,6 +24,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockService
 {
+    /**
+     * @var string[]
+     */
     protected $layoutList = array(
         'standard'     => 'standard',
         'box_count'    => 'box_count',
@@ -31,6 +34,9 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
         'button'       => 'button',
     );
 
+    /**
+     * @var string[]
+     */
     protected $actionTypes = array(
         'like'      => 'like',
         'recommend' => 'recommend',

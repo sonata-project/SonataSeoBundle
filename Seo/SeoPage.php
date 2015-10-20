@@ -16,24 +16,48 @@ namespace Sonata\SeoBundle\Seo;
  */
 class SeoPage implements SeoPageInterface
 {
+    /**
+     * @var string
+     */
     protected $title;
 
+    /**
+     * @var array
+     */
     protected $metas;
 
+    /**
+     * @var array
+     */
     protected $htmlAttributes;
 
+    /**
+     * @var string
+     */
     protected $linkCanonical;
 
+    /**
+     * @var string
+     */
     protected $separator;
 
+    /**
+     * @var array
+     */
     protected $headAttributes;
 
+    /**
+     * @var array
+     */
     protected $langAlternates;
 
+    /**
+     * @var array
+     */
     protected $oembedLinks;
 
     /**
-     * {@inheritdoc}
+     * @param string $title
      */
     public function __construct($title = '')
     {
