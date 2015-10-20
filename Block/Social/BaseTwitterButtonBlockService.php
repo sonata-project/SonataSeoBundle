@@ -79,11 +79,4 @@ abstract class BaseTwitterButtonBlockService extends BaseBlockService
             'settings' => $settings,
         ), $response);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
-    {
-    }
 }
