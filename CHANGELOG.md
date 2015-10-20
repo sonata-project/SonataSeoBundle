@@ -4,3 +4,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+
+### Changed
+- Moved public methods from `SeoPage` to `SeoPageInterface`

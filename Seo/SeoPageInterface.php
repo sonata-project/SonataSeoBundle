@@ -153,4 +153,54 @@ interface SeoPageInterface
      * @return array
      */
     public function getOEmbedLinks();
+
+    /**
+     * @param string $type
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function removeMeta($type, $name);
+
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function removeHtmlAttributes($name);
+
+    /**
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasHtmlAttribute($name);
+
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function removeHeadAttribute($name);
+
+    /**
+     * @param string $name
+     *
+     * @return array
+     */
+    public function hasHeadAttribute($name);
+
+    /**
+     * @param string $href
+     *
+     * @return $this
+     */
+    public function removeLangAlternate($href);
+
+    /**
+     * @param string $href
+     *
+     * @return $this
+     */
+    public function hasLangAlternate($href);
 }
