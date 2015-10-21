@@ -15,13 +15,19 @@ use Sonata\SeoBundle\Seo\SeoPageInterface;
 
 class SeoExtension extends \Twig_Extension
 {
+    /**
+     * @var SeoPageInterface
+     */
     protected $page;
 
+    /**
+     * @var string
+     */
     protected $encoding;
 
     /**
-     * @param \Sonata\SeoBundle\Seo\SeoPageInterface $page
-     * @param $encoding
+     * @param SeoPageInterface $page
+     * @param string           $encoding
      */
     public function __construct(SeoPageInterface $page, $encoding)
     {
@@ -30,9 +36,7 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
-     * Returns a list of functions to add to the existing list.
-     *
-     * @return array An array of functions
+     * {@inheritdoc}
      */
     public function getFunctions()
     {
@@ -48,9 +52,7 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
-     * Returns the name of the extension.
-     *
-     * @return string The extension name
+     * {@inheritdoc}
      */
     public function getName()
     {

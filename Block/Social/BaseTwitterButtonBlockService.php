@@ -24,6 +24,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 abstract class BaseTwitterButtonBlockService extends BaseBlockService
 {
+    /**
+     * @var string[]
+     */
     protected $languageList = array(
         'fr'    => 'fr',
         'en'    => 'en',

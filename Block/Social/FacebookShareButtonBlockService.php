@@ -24,6 +24,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockService
 {
+    /**
+     * @var string[]
+     */
     protected $layoutList = array(
         'box_count'    => 'box_count',
         'button_count' => 'button_count',

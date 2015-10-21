@@ -72,7 +72,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     }
 
     /**
-     * @return \Knp\Menu\FactoryInterface
+     * @return FactoryInterface
      */
     protected function getFactory()
     {
