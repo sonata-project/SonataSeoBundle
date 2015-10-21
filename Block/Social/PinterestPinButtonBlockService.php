@@ -82,13 +82,6 @@ class PinterestPinButtonBlockService extends BaseBlockService
     /**
      * {@inheritdoc}
      */
-    public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
-    {
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return 'Pinterest - Pin button';

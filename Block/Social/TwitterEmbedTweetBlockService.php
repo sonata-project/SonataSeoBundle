@@ -114,13 +114,6 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function validateBlock(ErrorElement $errorElement, BlockInterface $block)
-    {
-    }
-
-    /**
      * Returns supported API parameters from settings.
      *
      * @return array
