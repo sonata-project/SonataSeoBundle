@@ -128,8 +128,8 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
     public function testLinks() {
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getLinks')->will($this->returnValue(array(
-            "prev" => array("href" => 'http://example.com/'),
-            "alternate" => array("href" => "http://example.com", "hrefLang" => "x-default")
+            "prev" => array(array("href" => 'http://example.com/')),
+            "alternate" => array(array("href" => "http://example.com", "hrefLang" => "x-default"))
         )));
 
         $extension = new SeoExtension($page, 'UTF-8');
