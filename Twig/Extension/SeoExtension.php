@@ -48,6 +48,7 @@ class SeoExtension extends \Twig_Extension
             new \Twig_SimpleFunction('sonata_seo_link_canonical', array($this, 'getLinkCanonical'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('sonata_seo_lang_alternates', array($this, 'getLangAlternates'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('sonata_seo_oembed_links', array($this, 'getOembedLinks'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('sonata_seo_links', array($this, 'getLinks'), array('is_safe' => array('html'))),
         );
     }
 
