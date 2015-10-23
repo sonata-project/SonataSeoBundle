@@ -34,11 +34,6 @@ class SeoPage implements SeoPageInterface
     /**
      * @var string
      */
-    protected $linkCanonical;
-
-    /**
-     * @var string
-     */
     protected $separator;
 
     /**
@@ -49,12 +44,12 @@ class SeoPage implements SeoPageInterface
     /**
      * @var array
      */
-    protected $langAlternates;
+    protected $oembedLinks;
 
     /**
      * @var array
      */
-    protected $oembedLinks;
+    protected $links;
 
     /**
      * @param string $title
@@ -71,10 +66,9 @@ class SeoPage implements SeoPageInterface
         );
 
         $this->headAttributes = array();
-        $this->linkCanonical = '';
         $this->separator = ' ';
-        $this->langAlternates = array();
         $this->oembedLinks = array();
+        $this->links = array();
     }
 
     /**
@@ -297,7 +291,7 @@ class SeoPage implements SeoPageInterface
      */
     public function setLinkCanonical($link)
     {
-        $this->linkCanonical = $link;
+        $this->setLink("canonical", array("href" => $link));
 
         return $this;
     }
@@ -307,7 +301,13 @@ class SeoPage implements SeoPageInterface
      */
     public function getLinkCanonical()
     {
-        return $this->linkCanonical;
+        $canonical = $this->getLink("canonical");
+
+        if (is_null($canonical) == false) {
+            return $canonical[0]["href"];
+        }
+
+        return null;
     }
 
     /**
@@ -315,7 +315,7 @@ class SeoPage implements SeoPageInterface
      */
     public function removeLinkCanonical()
     {
-        $this->linkCanonical = '';
+        return $this->removeLink("canonical");
     }
 
     /**
@@ -333,7 +333,9 @@ class SeoPage implements SeoPageInterface
      */
     public function setLangAlternates(array $langAlternates)
     {
-        $this->langAlternates = $langAlternates;
+        $this->links["alternate"] = array();
+        list($href, $hrefLang) = each($langAlternates);
+        $this->addLangAlternate($href, $hrefLang);
 
         return $this;
     }
@@ -343,7 +345,7 @@ class SeoPage implements SeoPageInterface
      */
     public function addLangAlternate($href, $hrefLang)
     {
-        $this->langAlternates[$href] = $hrefLang;
+        $this->addLink("alternate", array("href" => $href, "hrefLang" => $hrefLang));
 
         return $this;
     }
@@ -355,7 +357,17 @@ class SeoPage implements SeoPageInterface
      */
     public function removeLangAlternate($href)
     {
-        unset($this->langAlternates[$href]);
+        if (array_key_exists("alternate", $this->links)) {
+            foreach ($this->links["alternate"] as $key => $link) {
+                if (array_key_exists("href", $link)) {
+                    $linkHref = $link["href"];
+
+                    if ($linkHref === $href) {
+                        unset($this->links["alternate"][$key]);
+                    }
+                }
+            }
+        }
 
         return $this;
     }
@@ -363,11 +375,24 @@ class SeoPage implements SeoPageInterface
     /**
      * @param string $href
      *
-     * @return $this
+     * @return boolean
      */
     public function hasLangAlternate($href)
     {
-        return isset($this->langAlternates[$href]);
+        $langs = $this->getLink("alternate");
+
+        if (is_null($langs) == false) {
+            foreach ($langs as $lang) {
+                if (array_key_exists("href", $lang) == false) continue;
+
+                // Assert the presence of the href
+                if ($lang["href"] === $href) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -375,7 +400,14 @@ class SeoPage implements SeoPageInterface
      */
     public function getLangAlternates()
     {
-        return  $this->langAlternates;
+        $alternate = $this->getLink("alternate");
+        $langs = array();
+
+        foreach ($alternate as $alt) {
+            $langs[$alt["href"]] = $alt["hrefLang"];
+        }
+
+        return $langs;
     }
 
     /**
@@ -397,5 +429,58 @@ class SeoPage implements SeoPageInterface
     public function getOEmbedLinks()
     {
         return $this->oembedLinks;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addLink($type, array $attributes)
+    {
+        $this->links[$type][] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLink($type, array $attributes)
+    {
+        $this->links[$type] = array();
+
+        return $this->addLink($type, $attributes);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLink($type)
+    {
+        if (array_key_exists($type, $this->links)) {
+            return $this->links[$type];
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeLink($type)
+    {
+        if (array_key_exists($type, $this->links)) {
+            unset($this->links[$type]);
+            return true;
+        }
+
+        return false;
     }
 }
