@@ -206,6 +206,31 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
+     * @return string
+     */
+    public function getLinks()
+    {
+        $html = "";
+        $exclude = ["alternate"];
+
+        foreach ($this->page->getLinks() as $rel => $attribute) {
+            // Prevent from duplicate links
+            if (in_array($rel, $exclude)) continue;
+
+            $html .= sprintf("<link rel=\"%s\"", $rel);
+
+            foreach ($attribute as $key => $attribute) {
+                $attribute = $this->normalize($attribute);
+                $html.= sprintf(" %s=\"%s\"", $key, $attribute);
+            }
+
+            $html .= sprintf(" />\n");
+        }
+
+        return $html;
+    }
+
+    /**
      * @param string $string
      *
      * @return mixed
