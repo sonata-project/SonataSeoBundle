@@ -212,7 +212,7 @@ class SeoExtension extends \Twig_Extension
     public function getLinks()
     {
         $html = "";
-        $exclude = ["alternate", "canonical"];
+        $exclude = array("alternate", "canonical");
 
         foreach ($this->page->getLinks() as $rel => $attributes) {
             // Prevent from duplicate links

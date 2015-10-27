@@ -52,6 +52,12 @@ class SeoPage implements SeoPageInterface
     protected $links;
 
     /**
+     * @var string
+     */
+    protected $langAlternates;
+    protected $linkCanonical;
+
+    /**
      * @param string $title
      */
     public function __construct($title = '')
@@ -65,9 +71,11 @@ class SeoPage implements SeoPageInterface
             'property'   => array(),
         );
 
+        $this->linkCanonical = '';
         $this->headAttributes = array();
         $this->separator = ' ';
         $this->oembedLinks = array();
+        $this->langAlternates = array();
         $this->links = array();
     }
 
@@ -291,7 +299,7 @@ class SeoPage implements SeoPageInterface
      */
     public function setLinkCanonical($link)
     {
-        $this->setLink("canonical", array("href" => $link));
+        $this->linkCanonical = $link;
 
         return $this;
     }
@@ -301,13 +309,7 @@ class SeoPage implements SeoPageInterface
      */
     public function getLinkCanonical()
     {
-        $canonical = $this->getLink("canonical");
-
-        if (is_null($canonical) == false) {
-            return $canonical[0]["href"];
-        }
-
-        return null;
+        return $this->linkCanonical;
     }
 
     /**
@@ -315,7 +317,7 @@ class SeoPage implements SeoPageInterface
      */
     public function removeLinkCanonical()
     {
-        return $this->removeLink("canonical");
+        $this->linkCanonical = '';
     }
 
     /**
@@ -333,9 +335,7 @@ class SeoPage implements SeoPageInterface
      */
     public function setLangAlternates(array $langAlternates)
     {
-        $this->links["alternate"] = array();
-        list($href, $hrefLang) = each($langAlternates);
-        $this->addLangAlternate($href, $hrefLang);
+        $this->langAlternates = $langAlternates;
 
         return $this;
     }
@@ -345,7 +345,7 @@ class SeoPage implements SeoPageInterface
      */
     public function addLangAlternate($href, $hrefLang)
     {
-        $this->addLink("alternate", array("href" => $href, "hrefLang" => $hrefLang));
+        $this->langAlternates[$href] = $hrefLang;
 
         return $this;
     }
@@ -357,17 +357,7 @@ class SeoPage implements SeoPageInterface
      */
     public function removeLangAlternate($href)
     {
-        if (array_key_exists("alternate", $this->links)) {
-            foreach ($this->links["alternate"] as $key => $link) {
-                if (array_key_exists("href", $link)) {
-                    $linkHref = $link["href"];
-
-                    if ($linkHref === $href) {
-                        unset($this->links["alternate"][$key]);
-                    }
-                }
-            }
-        }
+        unset($this->langAlternates[$href]);
 
         return $this;
     }
@@ -379,20 +369,7 @@ class SeoPage implements SeoPageInterface
      */
     public function hasLangAlternate($href)
     {
-        $langs = $this->getLink("alternate");
-
-        if (is_null($langs) == false) {
-            foreach ($langs as $lang) {
-                if (array_key_exists("href", $lang) == false) continue;
-
-                // Assert the presence of the href
-                if ($lang["href"] === $href) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        return array_key_exists($href, $this->langAlternates);
     }
 
     /**
@@ -400,14 +377,7 @@ class SeoPage implements SeoPageInterface
      */
     public function getLangAlternates()
     {
-        $alternate = $this->getLink("alternate");
-        $langs = array();
-
-        foreach ($alternate as $alt) {
-            $langs[$alt["href"]] = $alt["hrefLang"];
-        }
-
-        return $langs;
+        return $this->langAlternates;
     }
 
     /**
@@ -432,7 +402,23 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Add a new link into the head like this format :
+     *
+     * type       : 'prev'
+     * attributes :
+     * - 'href' : 'http://www.toto.fr/1'
+     *
+     * will becomes
+     *
+     * `<link rel="prev" href="http://www.toto.fr/1" />
+     *
+     * Also, if you add others attributes on the same type, the link will be
+     * added multiple times you added attributes.
+     *
+     * @param  string $type
+     * @param  array $attributes
+     *
+     * @return self
      */
     public function addLink($type, array $attributes)
     {
@@ -442,7 +428,14 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * This function will do the same as `addLink` but will reset the links
+     * type array before. Use this function in order to be sure that you want
+     * only one link for this type like `prev`, `next`, etc.
+     *
+     * @param  string $type
+     * @param  array $attributes
+     *
+     * @return self
      */
     public function setLink($type, array $attributes)
     {
@@ -452,7 +445,11 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * This function will return an existing link from is type. If not found,
+     * the method will return null
+     *
+     * @param  string $type
+     * @return array|null
      */
     public function getLink($type)
     {
@@ -464,7 +461,9 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Return all links
+     *
+     * @return array
      */
     public function getLinks()
     {
@@ -472,7 +471,10 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Remove all link based on the given type
+     *
+     * @param  string $type
+     * @return boolean
      */
     public function removeLink($type)
     {
