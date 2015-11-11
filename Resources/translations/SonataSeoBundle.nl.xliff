@@ -10,6 +10,50 @@
                 <source>sonata_seo_share_by_email</source>
                 <target>Delen via e-mail</target>
             </trans-unit>
+            <trans-unit id="sonata_seo_block_email_share_button">
+                <source>sonata.seo.block.email.share_button</source>
+                <target>sonata.seo.block.email.share_button</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_facebook_like_box">
+                <source>sonata.seo.block.facebook.like_box</source>
+                <target>sonata.seo.block.facebook.like_box</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_facebook_like_button">
+                <source>sonata.seo.block.facebook.like_button</source>
+                <target>sonata.seo.block.facebook.like_button</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_facebook_send_button">
+                <source>sonata.seo.block.facebook.send_button</source>
+                <target>sonata.seo.block.facebook.send_button</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_facebook_share_button">
+                <source>sonata.seo.block.facebook.share_button</source>
+                <target>sonata.seo.block.facebook.share_button</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_share_button">
+                <source>sonata.seo.block.twitter.share_button</source>
+                <target>sonata.seo.block.twitter.share_button</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_follow_button">
+                <source>sonata.seo.block.twitter.follow_button</source>
+                <target>sonata.seo.block.twitter.follow_button</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_hashtag_button">
+                <source>sonata.seo.block.twitter.hashtag_button</source>
+                <target>sonata.seo.block.twitter.hashtag_button</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_mention_button">
+                <source>sonata.seo.block.twitter.mention_button</source>
+                <target>sonata.seo.block.twitter.mention_button</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_embed">
+                <source>sonata.seo.block.twitter.embed</source>
+                <target>sonata.seo.block.twitter.embed</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_pinterest_pin_button">
+                <source>sonata.seo.block.pinterest.pin_button</source>
+                <target>sonata.seo.block.pinterest.pin_button</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

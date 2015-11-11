@@ -49,10 +49,10 @@ class PinterestPinButtonBlockService extends BaseBlockService
     {
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('url', 'url', array('required' => false)),
-                array('image', 'text', array('required' => false)),
+                array('url', 'url', array('required'          => false)),
+                array('image', 'text', array('required'       => false)),
                 array('description', 'text', array('required' => false)),
-                array('size', 'integer', array('required' => false)),
+                array('size', 'integer', array('required'     => false)),
                 array('shape', 'choice', array(
                     'required' => false,
                     'choices'  => array(
@@ -81,7 +81,7 @@ class PinterestPinButtonBlockService extends BaseBlockService
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockMetadata($code = null)
     {
         return 'Pinterest - Pin button';
     }

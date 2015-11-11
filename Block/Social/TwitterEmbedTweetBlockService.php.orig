@@ -15,6 +15,10 @@ use Guzzle\Http\Exception\CurlException;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
+<<<<<<< 7647a4735fc981a7e6ec5248e0af482e215549b1
+=======
+use Sonata\CoreBundle\Model\Metadata;
+>>>>>>> Block translation
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -154,5 +158,15 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         }
 
         return sprintf('%s?%s', self::TWITTER_OEMBED_URI, implode('&', $parameters));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockMetadata($code = null)
+    {
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+            'class' => 'fa fa-twitter',
+        ));
     }
 }
