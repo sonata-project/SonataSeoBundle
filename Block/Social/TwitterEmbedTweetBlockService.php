@@ -15,7 +15,7 @@ use Guzzle\Http\Exception\CurlException;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\CoreBundle\Validator\ErrorElement;
+use Sonata\CoreBundle\Model\Metadata;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -93,24 +93,16 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     {
         $form->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('tweet', 'textarea', array('required' => true, 'help_block' => 'Tweet id, URL or content. If you put the HTML content directly, other options won\'t be handled.')),
-                array('maxwidth', 'integer', array('required' => false, 'help_block' => 'Must be contained between 250 and 550')),
-                array('hide_media', 'checkbox', array('required' => false, 'help_block' => 'Hide media contained in tweet?')),
+                array('tweet', 'textarea', array('required'       => true, 'help_block' => 'Tweet id, URL or content. If you put the HTML content directly, other options won\'t be handled.')),
+                array('maxwidth', 'integer', array('required'     => false, 'help_block' => 'Must be contained between 250 and 550')),
+                array('hide_media', 'checkbox', array('required'  => false, 'help_block' => 'Hide media contained in tweet?')),
                 array('hide_thread', 'checkbox', array('required' => false, 'help_block' => 'Show discussion?')),
                 array('omit_script', 'checkbox', array('required' => false, 'help_block' => 'Should be checked once and only once per page. If you embed several tweets in the page, uncheck this on the other ones.')),
-                array('align', 'choice', array('required' => false, 'choices' => array('left', 'right', 'center', 'none'))),
-                array('related', 'text', array('required' => false, 'help_block' => "See 'related' argument in https://dev.twitter.com/docs/intents")),
-                array('lang', 'choice', array('required' => true, 'choices' => $this->languageList)),
+                array('align', 'choice', array('required'         => false, 'choices' => array('left', 'right', 'center', 'none'))),
+                array('related', 'text', array('required'         => false, 'help_block' => "See 'related' argument in https://dev.twitter.com/docs/intents")),
+                array('lang', 'choice', array('required'          => true, 'choices' => $this->languageList)),
             ),
         ));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'Twitter embed tweet';
     }
 
     /**
@@ -163,5 +155,15 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         }
 
         return sprintf('%s?%s', self::TWITTER_OEMBED_URI, implode('&', $parameters));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockMetadata($code = null)
+    {
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+            'class' => 'fa fa-twitter',
+        ));
     }
 }

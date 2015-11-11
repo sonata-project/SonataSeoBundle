@@ -15,7 +15,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\CoreBundle\Validator\ErrorElement;
+use Sonata\CoreBundle\Model\Metadata;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -46,7 +46,7 @@ class EmailShareButtonBlockService extends BaseBlockService
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
                 array('subject', 'text', array('required' => false)),
-                array('body', 'text', array('required' => false)),
+                array('body', 'text', array('required'    => false)),
             ),
         ));
     }
@@ -68,8 +68,10 @@ class EmailShareButtonBlockService extends BaseBlockService
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockMetadata($code = null)
     {
-        return 'Email - Share button';
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+            'class' => 'fa fa-envelope-o',
+        ));
     }
 }
