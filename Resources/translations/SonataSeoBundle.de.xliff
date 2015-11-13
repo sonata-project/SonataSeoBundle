@@ -10,6 +10,50 @@
 				<source>sonata_seo_share_by_email</source>
 				<target>Via E-Mail teilen</target>
 			</trans-unit>
+			<trans-unit id="sonata_seo_block_email_share_button">
+				<source>sonata.seo.block.email.share_button</source>
+				<target>E-Mail teilen</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_facebook_like_box">
+				<source>sonata.seo.block.facebook.like_box</source>
+				<target>Facebook - Likebox</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_facebook_like_button">
+				<source>sonata.seo.block.facebook.like_button</source>
+				<target>Facebook - Like Button</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_facebook_send_button">
+				<source>sonata.seo.block.facebook.send_button</source>
+				<target>Facebook - Senden</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_facebook_share_button">
+				<source>sonata.seo.block.facebook.share_button</source>
+				<target>Facebook - Teilen</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_twitter_share_button">
+				<source>sonata.seo.block.twitter.share_button</source>
+				<target>Twitter - Teilen</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_twitter_follow_button">
+				<source>sonata.seo.block.twitter.follow_button</source>
+				<target>Twitter - Folgen</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_twitter_hashtag_button">
+				<source>sonata.seo.block.twitter.hashtag_button</source>
+				<target>Twitter - Hashtag</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_twitter_mention_button">
+				<source>sonata.seo.block.twitter.mention_button</source>
+				<target>Twitter - Erwähnungen</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_twitter_embed">
+				<source>sonata.seo.block.twitter.embed</source>
+				<target>Twitter - Stream</target>
+			</trans-unit>
+			<trans-unit id="sonata_seo_block_pinterest_pin_button">
+				<source>sonata.seo.block.pinterest.pin_button</source>
+				<target>Pinterest - Pin</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

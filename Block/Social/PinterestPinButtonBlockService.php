@@ -15,7 +15,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\CoreBundle\Validator\ErrorElement;
+use Sonata\CoreBundle\Model\Metadata;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -50,10 +50,10 @@ class PinterestPinButtonBlockService extends BaseBlockService
     {
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('url', 'url', array('required' => false)),
-                array('image', 'text', array('required' => false)),
+                array('url', 'url', array('required'          => false)),
+                array('image', 'text', array('required'       => false)),
                 array('description', 'text', array('required' => false)),
-                array('size', 'integer', array('required' => false)),
+                array('size', 'integer', array('required'     => false)),
                 array('shape', 'choice', array(
                     'required' => false,
                     'choices'  => array(
@@ -82,8 +82,10 @@ class PinterestPinButtonBlockService extends BaseBlockService
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockMetadata($code = null)
     {
-        return 'Pinterest - Pin button';
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+            'class' => 'fa fa-pinterest-p',
+        ));
     }
 }
