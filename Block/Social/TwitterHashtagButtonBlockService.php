@@ -49,14 +49,37 @@ class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
     {
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('hashtag',      'text',     array('required' => true)),
-                array('text',         'text',     array('required' => false)),
-                array('recommend',    'text',     array('required' => false)),
-                array('url',          'url',      array('required' => false)),
-                array('large_button', 'checkbox', array('required' => false)),
-                array('opt_out',      'checkbox', array('required' => false)),
-                array('language',     'choice',   array('required' => true, 'choices' => $this->languageList)),
+                array('hashtag', 'text', array(
+                    'required' => true,
+                    'label'    => 'form.label_hashtag',
+                )),
+                array('text', 'text', array(
+                    'required' => false,
+                    'label'    => 'form.label_text',
+                )),
+                array('recommend', 'text', array(
+                    'required' => false,
+                    'label'    => 'form.label_recommend',
+                )),
+                array('url', 'url', array(
+                    'required' => false,
+                    'label'    => 'form.label_url',
+                )),
+                array('large_button', 'checkbox', array(
+                    'required' => false,
+                    'label'    => 'form.label_large_button',
+                )),
+                array('opt_out', 'checkbox', array(
+                    'required' => false,
+                    'label'    => 'form.label_opt_out',
+                )),
+                array('language', 'choice', array(
+                    'required' => true,
+                    'choices'  => $this->languageList,
+                    'label'    => 'form.label_language',
+                )),
             ),
+            'translation_domain' => 'SonataSeoBundle',
         ));
     }
 

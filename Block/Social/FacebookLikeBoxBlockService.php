@@ -50,15 +50,41 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
     {
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('url',         'url',      array('required' => false)),
-                array('width',       'integer',  array('required' => false)),
-                array('height',      'integer',  array('required' => false)),
-                array('colorscheme', 'choice',   array('required' => true, 'choices' => $this->colorschemeList)),
-                array('show_faces',  'checkbox', array('required' => false)),
-                array('show_header', 'checkbox', array('required' => false)),
-                array('show_posts',  'checkbox', array('required' => false)),
-                array('show_border', 'checkbox', array('required' => false)),
+                array('url', 'url', array(
+                    'required' => false,
+                    'label'    => 'form.label_url',
+                )),
+                array('width', 'integer', array(
+                    'required' => false,
+                    'label'    => 'form.label_width',
+                )),
+                array('height', 'integer', array(
+                    'required' => false,
+                    'label'    => 'form.label_height',
+                )),
+                array('colorscheme', 'choice', array(
+                    'required' => true,
+                    'choices'  => $this->colorschemeList,
+                    'label'    => 'form.label_colorscheme',
+                )),
+                array('show_faces', 'checkbox', array(
+                    'required' => false,
+                    'label'    => 'form.label_show_faces',
+                )),
+                array('show_header', 'checkbox', array(
+                    'required' => false,
+                    'label'    => 'form.label_show_header',
+                )),
+                array('show_posts', 'checkbox', array(
+                    'required' => false,
+                    'label'    => 'form.label_show_posts',
+                )),
+                array('show_border', 'checkbox', array(
+                    'required' => false,
+                    'label'    => 'form.label_show_border',
+                )),
             ),
+            'translation_domain' => 'SonataSeoBundle',
         ));
     }
 

@@ -29,12 +29,12 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
      * @var string[]
      */
     protected $layoutList = array(
-        'box_count'    => 'box_count',
-        'button_count' => 'button_count',
-        'button'       => 'button',
-        'icon_link'    => 'icon_link',
-        'icon'         => 'icon',
-        'link'         => 'link',
+        'box_count'    => 'form.label_layout_box_count',
+        'button_count' => 'form.label_layout_button_count',
+        'button'       => 'form.label_layout_button',
+        'icon_link'    => 'form.label_layout_icon_link',
+        'icon'         => 'form.label_layout_icon',
+        'link'         => 'form.label_layout_link',
     );
 
     /**
@@ -43,10 +43,10 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'template'    => 'SonataSeoBundle:Block:block_facebook_share_button.html.twig',
-            'url'         => null,
-            'width'       => null,
-            'layout'      => $this->layoutList['box_count'],
+            'template' => 'SonataSeoBundle:Block:block_facebook_share_button.html.twig',
+            'url'      => null,
+            'width'    => null,
+            'layout'   => $this->layoutList['box_count'],
         ));
     }
 
@@ -57,10 +57,21 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
     {
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('url',    'url',      array('required' => false)),
-                array('width',  'integer',  array('required' => false)),
-                array('layout', 'choice',   array('required' => true, 'choices' => $this->layoutList)),
+                array('url', 'url', array(
+                    'required' => false,
+                    'label'    => 'form.label_url',
+                )),
+                array('width', 'integer', array(
+                    'required' => false,
+                    'label'    => 'form.label_width',
+                )),
+                array('layout', 'choice', array(
+                    'required' => true,
+                    'choices'  => $this->layoutList,
+                    'label'    => 'form.label_layout',
+                )),
             ),
+            'translation_domain' => 'SonataSeoBundle',
         ));
     }
 

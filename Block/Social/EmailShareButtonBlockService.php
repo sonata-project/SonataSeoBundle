@@ -44,9 +44,16 @@ class EmailShareButtonBlockService extends BaseBlockService
     {
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('subject', 'text', array('required' => false)),
-                array('body', 'text', array('required'    => false)),
+                array('subject', 'text', array(
+                    'required' => false,
+                    'label'    => 'form.label_subject',
+                )),
+                array('body', 'text', array(
+                    'required' => false,
+                    'label'    => 'form.label_body',
+                )),
             ),
+            'translation_domain' => 'SonataSeoBundle',
         ));
     }
 

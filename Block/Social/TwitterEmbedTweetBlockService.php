@@ -75,12 +75,12 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         $resolver->setDefaults(array(
             'template'    => 'SonataSeoBundle:Block:block_twitter_embed.html.twig',
             'tweet'       => '',
-            'maxwidth'    => null,      // Should be between 250 and 550px
+            'maxwidth'    => null, // Should be between 250 and 550px
             'hide_media'  => false,
             'hide_thread' => false,
-            'omit_script' => false,     // Should be asked for only once in a page
-            'align'       => 'none',    // Left, right, center or none
-            'related'     => null,      // Accounts related to content
+            'omit_script' => false, // Should be asked for only once in a page
+            'align'       => 'none', // Left, right, center or none
+            'related'     => null, // Accounts related to content
             'lang'        => $this->languageList,
         ));
     }
@@ -92,15 +92,53 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     {
         $form->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('tweet', 'textarea', array('required'       => true, 'help_block' => 'Tweet id, URL or content. If you put the HTML content directly, other options won\'t be handled.')),
-                array('maxwidth', 'integer', array('required'     => false, 'help_block' => 'Must be contained between 250 and 550')),
-                array('hide_media', 'checkbox', array('required'  => false, 'help_block' => 'Hide media contained in tweet?')),
-                array('hide_thread', 'checkbox', array('required' => false, 'help_block' => 'Show discussion?')),
-                array('omit_script', 'checkbox', array('required' => false, 'help_block' => 'Should be checked once and only once per page. If you embed several tweets in the page, uncheck this on the other ones.')),
-                array('align', 'choice', array('required'         => false, 'choices' => array('left', 'right', 'center', 'none'))),
-                array('related', 'text', array('required'         => false, 'help_block' => "See 'related' argument in https://dev.twitter.com/docs/intents")),
-                array('lang', 'choice', array('required'          => true, 'choices' => $this->languageList)),
+                array('tweet', 'textarea', array(
+                    'required'        => true,
+                    'label'           => 'form.label_tweet',
+                    'help_block'      => 'form.help_tweet',
+                )),
+                array('maxwidth', 'integer', array(
+                    'required'   => false,
+                    'label'      => 'form.label_maxwidth',
+                    'help_block' => 'form.help_maxwidth',
+                )),
+                array('hide_media', 'checkbox', array(
+                    'required'   => false,
+                    'label'      => 'form.label_hide_media',
+                    'help_block' => 'form.help_hide_media',
+                )),
+                array('hide_thread', 'checkbox', array(
+                    'required'   => false,
+                    'label'      => 'form.label_hide_thread',
+                    'help_block' => 'form.help_hide_thread',
+                )),
+                array('omit_script', 'checkbox', array(
+                    'required'   => false,
+                    'label'      => 'form.label_omit_script',
+                    'help_block' => 'form.help_omit_script',
+                )),
+                array('align', 'choice', array(
+                    'required' => false,
+                    'choices'  => array(
+                        'left'   => 'form.label_align_left',
+                        'right'  => 'form.label_align_right',
+                        'center' => 'form.label_align_center',
+                        'none'   => 'form.label_align_none',
+                    ),
+                    'label' => 'form.label_align',
+                )),
+                array('related', 'text', array(
+                    'required'   => false,
+                    'label'      => 'form.label_related',
+                    'help_block' => 'form.help_related',
+                )),
+                array('lang', 'choice', array(
+                    'required' => true,
+                    'choices'  => $this->languageList,
+                    'label'    => 'form.label_lang',
+                )),
             ),
+            'translation_domain' => 'SonataSeoBundle',
         ));
     }
 
