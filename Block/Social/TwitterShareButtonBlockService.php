@@ -51,16 +51,45 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
     {
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('url',          'url',      array('required' => false)),
-                array('text',         'text',     array('required' => false)),
-                array('show_count',   'checkbox', array('required' => false)),
-                array('via',          'text',     array('required' => false)),
-                array('recommend',    'text',     array('required' => false)),
-                array('hashtag',      'text',     array('required' => false)),
-                array('large_button', 'checkbox', array('required' => false)),
-                array('opt_out',      'checkbox', array('required' => false)),
-                array('language',     'choice',   array('required' => true, 'choices' => $this->languageList)),
+                array('url', 'url', array(
+                    'required' => false,
+                    'label'    => 'form.label_url',
+                )),
+                array('text', 'text', array(
+                    'required' => false,
+                    'label'    => 'form.label_text',
+                )),
+                array('show_count', 'checkbox', array(
+                    'required' => false,
+                    'label'    => 'form.label_show_count',
+                )),
+                array('via', 'text', array(
+                    'required' => false,
+                    'label'    => 'form.label_via',
+                )),
+                array('recommend', 'text', array(
+                    'required' => false,
+                    'label'    => 'form.label_recommend',
+                )),
+                array('hashtag', 'text', array(
+                    'required' => false,
+                    'label'    => 'form.label_hashtag',
+                )),
+                array('large_button', 'checkbox', array(
+                    'required' => false,
+                    'label'    => 'form.label_large_button',
+                )),
+                array('opt_out', 'checkbox', array(
+                    'required' => false,
+                    'label'    => 'form.label_opt_out',
+                )),
+                array('language', 'choice', array(
+                    'required' => true,
+                    'choices'  => $this->languageList,
+                    'label'    => 'form.label_language',
+                )),
             ),
+            'translation_domain' => 'SonataSeoBundle',
         ));
     }
 

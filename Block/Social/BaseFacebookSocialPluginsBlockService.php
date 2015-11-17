@@ -26,8 +26,8 @@ abstract class BaseFacebookSocialPluginsBlockService extends BaseBlockService
      * @var string[]
      */
     protected $colorschemeList = array(
-        'light' => 'light',
-        'dark'  => 'dark',
+        'light' => 'form.label_colorscheme_light',
+        'dark'  => 'form.label_colorscheme_dark',
     );
 
     /**
