@@ -76,12 +76,12 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         $resolver->setDefaults(array(
             'template'    => 'SonataSeoBundle:Block:block_twitter_embed.html.twig',
             'tweet'       => '',
-            'maxwidth'    => null, // Should be between 250 and 550px
+            'maxwidth'    => null,
             'hide_media'  => false,
             'hide_thread' => false,
-            'omit_script' => false, // Should be asked for only once in a page
-            'align'       => 'none', // Left, right, center or none
-            'related'     => null, // Accounts related to content
+            'omit_script' => false,
+            'align'       => 'none',
+            'related'     => null,
             'lang'        => $this->languageList,
         ));
     }
