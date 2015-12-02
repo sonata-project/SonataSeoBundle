@@ -14,9 +14,9 @@ namespace Sonata\SeoBundle\Tests\Block\Social;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Tests\Block\Service\FakeTemplating;
+use Sonata\BlockBundle\Util\OptionsResolver;
 use Sonata\SeoBundle\Block\Social\FacebookLikeBoxBlockService;
 use Sonata\SeoBundle\Tests\Block\BaseBlockTest;
-use Sonata\BlockBundle\Util\OptionsResolver;
 
 class FacebookLikeBoxBlockServiceTest extends BaseBlockTest
 {
