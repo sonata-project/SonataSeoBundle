@@ -16,7 +16,7 @@ use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Tests\Block\Service\FakeTemplating;
 use Sonata\SeoBundle\Block\Social\FacebookSendButtonBlockService;
 use Sonata\SeoBundle\Tests\Block\BaseBlockTest;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Sonata\BlockBundle\Util\OptionsResolver;
 
 class FacebookSendButtonBlockServiceTest extends BaseBlockTest
 {
