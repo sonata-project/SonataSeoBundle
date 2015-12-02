@@ -70,7 +70,13 @@ class SonataSeoExtension extends Extension
     protected function configureSitemap(array $config, ContainerBuilder $container)
     {
         $source = $container->getDefinition('sonata.seo.sitemap.manager');
-        $source->setScope(ContainerInterface::SCOPE_PROTOTYPE);
+
+        if (method_exists($source, 'setShared')) { // Symfony 2.8+
+            $source->setShared(false);
+        } else {
+            // For Symfony <2.8 compatibility
+            $source->setScope(ContainerInterface::SCOPE_PROTOTYPE);
+        }
 
         foreach ($config['doctrine_orm'] as $pos => $sitemap) {
             // define the connectionIterator
