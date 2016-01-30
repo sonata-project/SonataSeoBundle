@@ -28,7 +28,7 @@
             </trans-unit>
             <trans-unit id="sonata_seo_block_facebook_share_button">
                 <source>sonata.seo.block.facebook.share_button</source>
-                <target>Facebook - Sjare</target>
+                <target>Facebook - Share</target>
             </trans-unit>
             <trans-unit id="sonata_seo_block_twitter_share_button">
                 <source>sonata.seo.block.twitter.share_button</source>
