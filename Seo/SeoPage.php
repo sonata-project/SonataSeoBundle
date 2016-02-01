@@ -34,11 +34,6 @@ class SeoPage implements SeoPageInterface
     /**
      * @var string
      */
-    protected $linkCanonical;
-
-    /**
-     * @var string
-     */
     protected $separator;
 
     /**
@@ -49,12 +44,18 @@ class SeoPage implements SeoPageInterface
     /**
      * @var array
      */
-    protected $langAlternates;
+    protected $oembedLinks;
 
     /**
      * @var array
      */
-    protected $oembedLinks;
+    protected $links;
+
+    /**
+     * @var string
+     */
+    protected $langAlternates;
+    protected $linkCanonical;
 
     /**
      * @param string $title
@@ -70,11 +71,12 @@ class SeoPage implements SeoPageInterface
             'property'   => array(),
         );
 
-        $this->headAttributes = array();
         $this->linkCanonical = '';
+        $this->headAttributes = array();
         $this->separator = ' ';
-        $this->langAlternates = array();
         $this->oembedLinks = array();
+        $this->langAlternates = array();
+        $this->links = array();
     }
 
     /**
@@ -363,11 +365,11 @@ class SeoPage implements SeoPageInterface
     /**
      * @param string $href
      *
-     * @return $this
+     * @return boolean
      */
     public function hasLangAlternate($href)
     {
-        return isset($this->langAlternates[$href]);
+        return array_key_exists($href, $this->langAlternates);
     }
 
     /**
@@ -375,7 +377,7 @@ class SeoPage implements SeoPageInterface
      */
     public function getLangAlternates()
     {
-        return  $this->langAlternates;
+        return $this->langAlternates;
     }
 
     /**
@@ -397,5 +399,90 @@ class SeoPage implements SeoPageInterface
     public function getOEmbedLinks()
     {
         return $this->oembedLinks;
+    }
+
+    /**
+     * Add a new link into the head like this format :
+     *
+     * type       : 'prev'
+     * attributes :
+     * - 'href' : 'http://www.toto.fr/1'
+     *
+     * will becomes
+     *
+     * `<link rel="prev" href="http://www.toto.fr/1" />
+     *
+     * Also, if you add others attributes on the same type, the link will be
+     * added multiple times you added attributes.
+     *
+     * @param  string $type
+     * @param  array $attributes
+     *
+     * @return self
+     */
+    public function addLink($type, array $attributes)
+    {
+        $this->links[$type][] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * This function will do the same as `addLink` but will reset the links
+     * type array before. Use this function in order to be sure that you want
+     * only one link for this type like `prev`, `next`, etc.
+     *
+     * @param  string $type
+     * @param  array $attributes
+     *
+     * @return self
+     */
+    public function setLink($type, array $attributes)
+    {
+        $this->links[$type] = array();
+
+        return $this->addLink($type, $attributes);
+    }
+
+    /**
+     * This function will return an existing link from is type. If not found,
+     * the method will return null
+     *
+     * @param  string $type
+     * @return array|null
+     */
+    public function getLink($type)
+    {
+        if (array_key_exists($type, $this->links)) {
+            return $this->links[$type];
+        }
+
+        return null;
+    }
+
+    /**
+     * Return all links
+     *
+     * @return array
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    /**
+     * Remove all link based on the given type
+     *
+     * @param  string $type
+     * @return boolean
+     */
+    public function removeLink($type)
+    {
+        if (array_key_exists($type, $this->links)) {
+            unset($this->links[$type]);
+            return true;
+        }
+
+        return false;
     }
 }
