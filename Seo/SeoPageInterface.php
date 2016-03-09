@@ -153,4 +153,41 @@ interface SeoPageInterface
      * @return array
      */
     public function getOEmbedLinks();
+
+    /**
+     * @param string $type
+     * @param array  $attributes
+     *
+     * @return self
+     */
+    public function addLink($type, array $attributes);
+
+    /**
+     * @param string $type
+     * @param array  $attributes
+     *
+     * @return self
+     */
+    public function setLink($type, array $attributes);
+
+    /**
+     * @param string $type
+     *
+     * @return array
+     */
+    public function getLink($type);
+
+    /**
+     * Return all links.
+     *
+     * @return array
+     */
+    public function getLinks();
+
+    /**
+     * @param string $type
+     *
+     * @return bool
+     */
+    public function removeLink($type);
 }
