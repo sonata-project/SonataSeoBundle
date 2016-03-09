@@ -34,11 +34,6 @@ class SeoPage implements SeoPageInterface
     /**
      * @var string
      */
-    protected $linkCanonical;
-
-    /**
-     * @var string
-     */
     protected $separator;
 
     /**
@@ -74,7 +69,6 @@ class SeoPage implements SeoPageInterface
         );
 
         $this->headAttributes = array();
-        $this->linkCanonical = '';
         $this->separator = ' ';
         $this->langAlternates = array();
         $this->oembedLinks = array();
