@@ -211,19 +211,21 @@ class SeoExtension extends \Twig_Extension
      */
     public function getLinks()
     {
-        $html = "";
-        $exclude = array("alternate", "canonical");
+        $html = '';
+        $exclude = array('alternate', 'canonical');
 
         foreach ($this->page->getLinks() as $rel => $attributes) {
             // Prevent from duplicate links
-            if (in_array($rel, $exclude)) continue;
+            if (in_array($rel, $exclude)) {
+                continue;
+            }
 
             foreach ($attributes as $attribute) {
-                $html .= sprintf("<link rel=\"%s\"", $rel);
+                $html .= sprintf('<link rel="%s"', $rel);
 
                 foreach ($attribute as $key => $attr) {
                     $attr = $this->normalize($attr);
-                    $html.= sprintf(" %s=\"%s\"", $key, $attr);
+                    $html .= sprintf(' %s="%s"', $key, $attr);
                 }
 
                 $html .= sprintf(" />\n");

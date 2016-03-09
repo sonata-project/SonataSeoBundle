@@ -365,7 +365,7 @@ class SeoPage implements SeoPageInterface
     /**
      * @param string $href
      *
-     * @return boolean
+     * @return bool
      */
     public function hasLangAlternate($href)
     {
@@ -402,7 +402,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * Add a new link into the head like this format :
+     * Add a new link into the head like this format :.
      *
      * type       : 'prev'
      * attributes :
@@ -415,8 +415,8 @@ class SeoPage implements SeoPageInterface
      * Also, if you add others attributes on the same type, the link will be
      * added multiple times you added attributes.
      *
-     * @param  string $type
-     * @param  array $attributes
+     * @param string $type
+     * @param array  $attributes
      *
      * @return self
      */
@@ -432,8 +432,8 @@ class SeoPage implements SeoPageInterface
      * type array before. Use this function in order to be sure that you want
      * only one link for this type like `prev`, `next`, etc.
      *
-     * @param  string $type
-     * @param  array $attributes
+     * @param string $type
+     * @param array  $attributes
      *
      * @return self
      */
@@ -446,9 +446,10 @@ class SeoPage implements SeoPageInterface
 
     /**
      * This function will return an existing link from is type. If not found,
-     * the method will return null
+     * the method will return null.
      *
-     * @param  string $type
+     * @param string $type
+     *
      * @return array|null
      */
     public function getLink($type)
@@ -457,11 +458,11 @@ class SeoPage implements SeoPageInterface
             return $this->links[$type];
         }
 
-        return null;
+        return;
     }
 
     /**
-     * Return all links
+     * Return all links.
      *
      * @return array
      */
@@ -471,15 +472,17 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * Remove all link based on the given type
+     * Remove all link based on the given type.
      *
-     * @param  string $type
-     * @return boolean
+     * @param string $type
+     *
+     * @return bool
      */
     public function removeLink($type)
     {
         if (array_key_exists($type, $this->links)) {
             unset($this->links[$type]);
+
             return true;
         }
 
