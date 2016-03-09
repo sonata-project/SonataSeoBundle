@@ -49,6 +49,10 @@ However, it is possible to alter these values at runtime:
             'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($post, true)
         ), true))
         ->addMeta('property', 'og:description', $post->getAbstract())
+        ->addLink('shortcut icon', array(
+            'href' => 'favicon.png',
+            'type' => 'image/x-icon'
+        ))
     ;
 
 
@@ -62,4 +66,5 @@ These values can be used inside a twig template.
             {{ sonata_seo_title() }}
             {{ sonata_seo_metadatas() }}
             {{ sonata_seo_link_canonical() }}
+            {{ sonata_seo_links() }}
             {{ sonata_seo_lang_alternates() }}

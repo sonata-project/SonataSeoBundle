@@ -56,6 +56,9 @@ class SeoPage implements SeoPageInterface
      */
     protected $oembedLinks;
 
+    /** @var array $links */
+    protected $links;
+
     /**
      * @param string $title
      */
@@ -75,6 +78,7 @@ class SeoPage implements SeoPageInterface
         $this->separator = ' ';
         $this->langAlternates = array();
         $this->oembedLinks = array();
+        $this->links = array();
     }
 
     /**
@@ -297,7 +301,7 @@ class SeoPage implements SeoPageInterface
      */
     public function setLinkCanonical($link)
     {
-        $this->linkCanonical = $link;
+        $this->setLink('canonical', array('href' => $link));
 
         return $this;
     }
@@ -307,7 +311,14 @@ class SeoPage implements SeoPageInterface
      */
     public function getLinkCanonical()
     {
-        return $this->linkCanonical;
+        $canonical = $this->getLink('canonical');
+        $canonical = current($canonical) ? current($canonical) : array();
+
+        if (array_key_exists('href', $canonical)) {
+            return $canonical['href'];
+        }
+
+        return '';
     }
 
     /**
@@ -315,7 +326,7 @@ class SeoPage implements SeoPageInterface
      */
     public function removeLinkCanonical()
     {
-        $this->linkCanonical = '';
+        $this->removeLink('canonical');
     }
 
     /**
@@ -397,5 +408,59 @@ class SeoPage implements SeoPageInterface
     public function getOEmbedLinks()
     {
         return $this->oembedLinks;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addLink($type, array $attributes)
+    {
+        $this->links[$type][] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLink($type, array $attributes)
+    {
+        $this->links[$type] = array();
+
+        return $this->addLink($type, $attributes);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLink($type)
+    {
+        if (array_key_exists($type, $this->links)) {
+            return $this->links[$type];
+        }
+
+        return array();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeLink($type)
+    {
+        if (array_key_exists($type, $this->links)) {
+            unset($this->links[$type]);
+
+            return true;
+        }
+
+        return false;
     }
 }
