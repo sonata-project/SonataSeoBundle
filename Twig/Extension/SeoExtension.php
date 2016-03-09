@@ -48,6 +48,7 @@ class SeoExtension extends \Twig_Extension
             new \Twig_SimpleFunction('sonata_seo_link_canonical', array($this, 'getLinkCanonical'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('sonata_seo_lang_alternates', array($this, 'getLangAlternates'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('sonata_seo_oembed_links', array($this, 'getOembedLinks'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('sonata_seo_links', array($this, 'getLinks'), array('is_safe' => array('html'))),
         );
     }
 
@@ -169,6 +170,36 @@ class SeoExtension extends \Twig_Extension
         if ($this->page->getLinkCanonical()) {
             return sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
         }
+    }
+
+    /**
+     * Return links HTML tags.
+     *
+     * @return string
+     */
+    public function getLinks()
+    {
+        $html = '';
+        $exclude = array('alternate', 'canonical');
+
+        foreach ($this->page->getLinks() as $rel => $attributes) {
+            // Prevent duplicate links
+            if (in_array($rel, $exclude)) {
+                continue;
+            }
+
+            $html .= sprintf('<link rel="%s"', $rel);
+
+            foreach ($attributes as $attribute) {
+                foreach ($attribute as $key => $value) {
+                    $html .= sprintf(' %s="%s"', $key, $value);
+                }
+            }
+
+            $html .= sprintf(" />\n");
+        }
+
+        return $html;
     }
 
     /**
