@@ -49,32 +49,18 @@ class PinterestPinButtonBlockService extends BaseBlockService
     {
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('url', 'url', array(
-                    'required' => false,
-                    'label'    => 'form.label_url',
-                )),
-                array('image', 'text', array(
-                    'required' => false,
-                    'label'    => 'form.label_image',
-                )),
-                array('description', 'text', array(
-                    'required' => false,
-                    'label'    => 'form.label_description',
-                )),
-                array('size', 'integer', array(
-                    'required' => false,
-                    'label'    => 'form.label_size',
-                )),
+                array('url', 'url', array('required' => false)),
+                array('image', 'text', array('required' => false)),
+                array('description', 'text', array('required' => false)),
+                array('size', 'integer', array('required' => false)),
                 array('shape', 'choice', array(
                     'required' => false,
                     'choices'  => array(
-                        'rectangular' => 'form.label_shape_rectangular',
-                        'round'       => 'form.label_shape_round',
+                        'rectangular' => 'rectangular',
+                        'round'       => 'round',
                     ),
-                    'label' => 'form.label_shape',
                 )),
             ),
-            'translation_domain' => 'SonataSeoBundle',
         ));
     }
 
