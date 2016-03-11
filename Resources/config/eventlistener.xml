@@ -6,7 +6,9 @@
 
     <services>
         <service id="sonata.seo.listener.configuration" class="Sonata\SeoBundle\EventListener\ConfigurationListener">
-            <argument type="service" id="service_container" />
+            <argument type="service" id="file_locator" />
+            <argument type="service" id="sonata.seo.page" />
+            <argument type="service" id="logger" />
 
             <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
         </service>
