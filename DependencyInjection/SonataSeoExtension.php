@@ -34,6 +34,7 @@ class SonataSeoExtension extends Extension
 
         $loader->load('event.xml');
         $loader->load('services.xml');
+        $loader->load('eventlistener.xml');
 
         $this->configureSeoPage($config['page'], $container);
         $this->configureSitemap($config['sitemap'], $container);
