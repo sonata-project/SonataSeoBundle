@@ -180,7 +180,7 @@ class SeoPage implements SeoPageInterface
      */
     private function normalize($meta)
     {
-        if (is_string($meta)) {
+        if (!is_array($meta)) {
             return array($meta, array());
         }
 
