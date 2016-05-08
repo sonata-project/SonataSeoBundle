@@ -113,6 +113,21 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n", $extension->getLangAlternates());
     }
 
+    /**
+     * Test SeoExtension::getLinks method.
+     */
+    public function testLinks()
+    {
+        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page->expects($this->once())->method('getLinks')->will($this->returnValue(array(
+            'prev'      => array(array('href' => 'http://example.com')),
+            'alternate' => array(array('rel' => 'http://example.com', 'hreflang' => 'x-default')),
+        )));
+
+        $extension = new SeoExtension($page, 'UTF-8');
+        $this->assertEquals("<link rel=\"prev\" href=\"http://example.com\" />\n", $extension->getLinks());
+    }
+
     public function testOEmbedLinks()
     {
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');

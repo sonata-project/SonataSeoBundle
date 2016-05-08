@@ -7,6 +7,11 @@ A [BC BREAK] means the update will break the project for many reasons:
 * new dependencies
 * class refactoring
 
+### 2016-03-09
+
+* [BC BREAK] removes SeoPage `linkCanonical`, please use the links `attribute`
+  instead.
+
 ### 2014-11-06
 
 * sitemap command now gets a new argument ``sitemap_path`` which overrides ``base_url`` when it comes to appending to generate sitemap URLs in the index file.

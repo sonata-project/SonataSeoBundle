@@ -73,6 +73,19 @@ This will render page alternate languages as follows:
 
     <link rel="alternate" href="http://www.example.com/en" hreflang="en"/>
 
+Render others links
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: jinja
+
+    {{ sonata_seo_links }}
+
+This will render the links as follows :
+
+.. code-block:: html
+
+    <link rel="prev" href="http://www.example.com/1" />
+    <link rel="next" href="http://www.example.com/3" />
 
 Render oEmbed links (http://www.oembed.com/)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
