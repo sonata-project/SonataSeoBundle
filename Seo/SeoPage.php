@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -61,20 +61,20 @@ class SeoPage implements SeoPageInterface
      */
     public function __construct($title = '')
     {
-        $this->title     = $title;
-        $this->metas     = array(
-            'http-equiv' => array(),
-            'name'       => array(),
-            'schema'     => array(),
-            'charset'    => array(),
-            'property'   => array(),
-        );
+        $this->title = $title;
+        $this->metas = [
+            'http-equiv' => [],
+            'name'       => [],
+            'schema'     => [],
+            'charset'    => [],
+            'property'   => [],
+        ];
 
-        $this->headAttributes = array();
+        $this->headAttributes = [];
         $this->linkCanonical = '';
         $this->separator = ' ';
-        $this->langAlternates = array();
-        $this->oembedLinks = array();
+        $this->langAlternates = [];
+        $this->oembedLinks = [];
     }
 
     /**
@@ -116,13 +116,13 @@ class SeoPage implements SeoPageInterface
     /**
      * {@inheritdoc}
      */
-    public function addMeta($type, $name, $content, array $extras = array())
+    public function addMeta($type, $name, $content, array $extras = [])
     {
         if (!isset($this->metas[$type])) {
-            $this->metas[$type] = array();
+            $this->metas[$type] = [];
         }
 
-        $this->metas[$type][$name] = array($content, $extras);
+        $this->metas[$type][$name] = [$content, $extras];
 
         return $this;
     }
@@ -156,7 +156,7 @@ class SeoPage implements SeoPageInterface
      */
     public function setMetas(array $metadatas)
     {
-        $this->metas = array();
+        $this->metas = [];
 
         foreach ($metadatas as $type => $metas) {
             if (!is_array($metas)) {
@@ -181,7 +181,7 @@ class SeoPage implements SeoPageInterface
     private function normalize($meta)
     {
         if (is_string($meta)) {
-            return array($meta, array());
+            return [$meta, []];
         }
 
         return $meta;
