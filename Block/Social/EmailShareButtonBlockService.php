@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -31,11 +31,11 @@ class EmailShareButtonBlockService extends BaseBlockService
      */
     public function configureSettings(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'template' => 'SonataSeoBundle:Block:block_email_share_button.html.twig',
             'subject'  => null,
             'body'     => null,
-        ));
+        ]);
     }
 
     /**
@@ -43,19 +43,19 @@ class EmailShareButtonBlockService extends BaseBlockService
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', array(
-            'keys' => array(
-                array('subject', 'text', array(
+        $formMapper->add('settings', 'sonata_type_immutable_array', [
+            'keys' => [
+                ['subject', 'text', [
                     'required' => false,
                     'label'    => 'form.label_subject',
-                )),
-                array('body', 'text', array(
+                ]],
+                ['body', 'text', [
                     'required' => false,
                     'label'    => 'form.label_body',
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'SonataSeoBundle',
-        ));
+        ]);
     }
 
     /**
@@ -63,13 +63,13 @@ class EmailShareButtonBlockService extends BaseBlockService
      */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        $block    = $blockContext->getBlock();
+        $block = $blockContext->getBlock();
         $settings = array_merge($blockContext->getSettings(), $block->getSettings());
 
-        return $this->renderResponse($blockContext->getTemplate(), array(
+        return $this->renderResponse($blockContext->getTemplate(), [
             'block'    => $blockContext->getBlock(),
             'settings' => $settings,
-        ), $response);
+        ], $response);
     }
 
     /**
@@ -77,8 +77,8 @@ class EmailShareButtonBlockService extends BaseBlockService
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', [
             'class' => 'fa fa-envelope-o',
-        ));
+        ]);
     }
 }

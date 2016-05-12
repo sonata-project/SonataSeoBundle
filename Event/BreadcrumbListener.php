@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -25,7 +25,7 @@ class BreadcrumbListener
     /**
      * @var array
      */
-    protected $blockServices = array();
+    protected $blockServices = [];
 
     /**
      * Add a renderer to the status services list.

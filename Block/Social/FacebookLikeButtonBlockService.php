@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -28,27 +28,27 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
     /**
      * @var string[]
      */
-    protected $layoutList = array(
+    protected $layoutList = [
         'standard'     => 'form.label_layout_standard',
         'box_count'    => 'form.label_layout_box_count',
         'button_count' => 'form.label_layout_button_count',
         'button'       => 'form.label_layout_button',
-    );
+    ];
 
     /**
      * @var string[]
      */
-    protected $actionTypes = array(
+    protected $actionTypes = [
         'like'      => 'form.label_action_like',
         'recommend' => 'form.label_action_recommend',
-    );
+    ];
 
     /**
      * {@inheritdoc}
      */
     public function configureSettings(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'template'    => 'SonataSeoBundle:Block:block_facebook_like_button.html.twig',
             'url'         => null,
             'width'       => null,
@@ -57,7 +57,7 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
             'layout'      => $this->layoutList['standard'],
             'colorscheme' => $this->colorschemeList['light'],
             'action'      => $this->actionTypes['like'],
-        ));
+        ]);
     }
 
     /**
@@ -65,42 +65,42 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', array(
-            'keys' => array(
-                array('url', 'url', array(
+        $formMapper->add('settings', 'sonata_type_immutable_array', [
+            'keys' => [
+                ['url', 'url', [
                     'required' => false,
                     'label'    => 'form.label_url',
-                )),
-                array('width', 'integer', array(
+                ]],
+                ['width', 'integer', [
                     'required' => false,
                     'label'    => 'form.label_width',
-                )),
-                array('show_faces', 'checkbox', array(
+                ]],
+                ['show_faces', 'checkbox', [
                     'required' => false,
                     'label'    => 'form.label_show_faces',
-                )),
-                array('share', 'checkbox', array(
+                ]],
+                ['share', 'checkbox', [
                     'required' => false,
                     'label'    => 'form.label_share',
-                )),
-                array('layout', 'choice', array(
+                ]],
+                ['layout', 'choice', [
                     'required' => true,
                     'choices'  => $this->layoutList,
                     'label'    => 'form.label_layout',
-                )),
-                array('colorscheme', 'choice', array(
+                ]],
+                ['colorscheme', 'choice', [
                     'required' => true,
                     'choices'  => $this->colorschemeList,
                     'label'    => 'form.label_colorscheme',
-                )),
-                array('action', 'choice', array(
+                ]],
+                ['action', 'choice', [
                     'required' => true,
                     'choices'  => $this->actionTypes,
                     'label'    => 'form.label_action',
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'SonataSeoBundle',
-        ));
+        ]);
     }
 
     /**
@@ -108,8 +108,8 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
-        ));
+        ]);
     }
 }
