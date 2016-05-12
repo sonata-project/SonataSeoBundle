@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -31,13 +31,13 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'template'     => 'SonataSeoBundle:Block:block_twitter_mention_button.html.twig',
-            'user'         => null,
-            'text'         => null,
-            'recommend'    => null,
+            'template' => 'SonataSeoBundle:Block:block_twitter_mention_button.html.twig',
+            'user' => null,
+            'text' => null,
+            'recommend' => null,
             'large_button' => false,
-            'opt_out'      => false,
-            'language'     => $this->languageList['en'],
+            'opt_out' => false,
+            'language' => $this->languageList['en'],
         ));
     }
 
@@ -50,28 +50,28 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
             'keys' => array(
                 array('user', 'text', array(
                     'required' => true,
-                    'label'    => 'form.label_user',
+                    'label' => 'form.label_user',
                 )),
                 array('text', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_text',
+                    'label' => 'form.label_text',
                 )),
                 array('recommend', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_recommend',
+                    'label' => 'form.label_recommend',
                 )),
                 array('large_button', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_large_button',
+                    'label' => 'form.label_large_button',
                 )),
                 array('opt_out', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_opt_out',
+                    'label' => 'form.label_opt_out',
                 )),
                 array('language', 'choice', array(
                     'required' => true,
-                    'choices'  => $this->languageList,
-                    'label'    => 'form.label_language',
+                    'choices' => $this->languageList,
+                    'label' => 'form.label_language',
                 )),
             ),
             'translation_domain' => 'SonataSeoBundle',

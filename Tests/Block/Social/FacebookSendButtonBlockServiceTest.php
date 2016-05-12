@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -29,14 +29,14 @@ class FacebookSendButtonBlockServiceTest extends BaseBlockTest
         }
 
         $templating = new FakeTemplating();
-        $service    = new FacebookSendButtonBlockService('sonata.block.service.facebook.send_button', $templating);
+        $service = new FacebookSendButtonBlockService('sonata.block.service.facebook.send_button', $templating);
 
         $block = new Block();
         $block->setType('core.text');
         $block->setSettings(array(
-            'url'         => 'url_setting',
-            'width'       => 'width_setting',
-            'height'      => 'height_setting',
+            'url' => 'url_setting',
+            'width' => 'width_setting',
+            'height' => 'height_setting',
             'colorscheme' => 'colorscheme_setting',
         ));
 
@@ -53,9 +53,9 @@ class FacebookSendButtonBlockServiceTest extends BaseBlockTest
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting',         $templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting',       $templating->parameters['settings']['width']);
-        $this->assertEquals('height_setting',      $templating->parameters['settings']['height']);
+        $this->assertEquals('url_setting', $templating->parameters['settings']['url']);
+        $this->assertEquals('width_setting', $templating->parameters['settings']['width']);
+        $this->assertEquals('height_setting', $templating->parameters['settings']['height']);
         $this->assertEquals('colorscheme_setting', $templating->parameters['settings']['colorscheme']);
     }
 }
