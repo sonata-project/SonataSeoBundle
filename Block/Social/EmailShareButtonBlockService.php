@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -33,8 +33,8 @@ class EmailShareButtonBlockService extends BaseBlockService
     {
         $resolver->setDefaults(array(
             'template' => 'SonataSeoBundle:Block:block_email_share_button.html.twig',
-            'subject'  => null,
-            'body'     => null,
+            'subject' => null,
+            'body' => null,
         ));
     }
 
@@ -47,11 +47,11 @@ class EmailShareButtonBlockService extends BaseBlockService
             'keys' => array(
                 array('subject', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_subject',
+                    'label' => 'form.label_subject',
                 )),
                 array('body', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_body',
+                    'label' => 'form.label_body',
                 )),
             ),
             'translation_domain' => 'SonataSeoBundle',
@@ -63,11 +63,11 @@ class EmailShareButtonBlockService extends BaseBlockService
      */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        $block    = $blockContext->getBlock();
+        $block = $blockContext->getBlock();
         $settings = array_merge($blockContext->getSettings(), $block->getSettings());
 
         return $this->renderResponse($blockContext->getTemplate(), array(
-            'block'    => $blockContext->getBlock(),
+            'block' => $blockContext->getBlock(),
             'settings' => $settings,
         ), $response);
     }

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -72,6 +72,20 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function configureSettings(OptionsResolver $resolver)
+    {
+        parent::configureSettings($resolver);
+
+        $resolver->setDefaults(array(
+            'menu_template' => 'SonataSeoBundle:Block:breadcrumb.html.twig',
+            'include_homepage_link' => true,
+            'context' => false,
+        ));
+    }
+
+    /**
      * @return FactoryInterface
      */
     protected function getFactory()
@@ -85,20 +99,6 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     protected function getContext()
     {
         return $this->context;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureSettings(OptionsResolver $resolver)
-    {
-        parent::configureSettings($resolver);
-
-        $resolver->setDefaults(array(
-            'menu_template'         => 'SonataSeoBundle:Block:breadcrumb.html.twig',
-            'include_homepage_link' => true,
-            'context'               => false,
-        ));
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -31,14 +31,14 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'template'    => 'SonataSeoBundle:Block:block_facebook_like_box.html.twig',
-            'url'         => null,
-            'width'       => null,
-            'height'      => null,
+            'template' => 'SonataSeoBundle:Block:block_facebook_like_box.html.twig',
+            'url' => null,
+            'width' => null,
+            'height' => null,
             'colorscheme' => $this->colorschemeList['light'],
-            'show_faces'  => true,
+            'show_faces' => true,
             'show_header' => true,
-            'show_posts'  => false,
+            'show_posts' => false,
             'show_border' => true,
         ));
     }
@@ -52,36 +52,36 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
             'keys' => array(
                 array('url', 'url', array(
                     'required' => false,
-                    'label'    => 'form.label_url',
+                    'label' => 'form.label_url',
                 )),
                 array('width', 'integer', array(
                     'required' => false,
-                    'label'    => 'form.label_width',
+                    'label' => 'form.label_width',
                 )),
                 array('height', 'integer', array(
                     'required' => false,
-                    'label'    => 'form.label_height',
+                    'label' => 'form.label_height',
                 )),
                 array('colorscheme', 'choice', array(
                     'required' => true,
-                    'choices'  => $this->colorschemeList,
-                    'label'    => 'form.label_colorscheme',
+                    'choices' => $this->colorschemeList,
+                    'label' => 'form.label_colorscheme',
                 )),
                 array('show_faces', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_show_faces',
+                    'label' => 'form.label_show_faces',
                 )),
                 array('show_header', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_show_header',
+                    'label' => 'form.label_show_header',
                 )),
                 array('show_posts', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_show_posts',
+                    'label' => 'form.label_show_posts',
                 )),
                 array('show_border', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_show_border',
+                    'label' => 'form.label_show_border',
                 )),
             ),
             'translation_domain' => 'SonataSeoBundle',

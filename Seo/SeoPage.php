@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -61,13 +61,13 @@ class SeoPage implements SeoPageInterface
      */
     public function __construct($title = '')
     {
-        $this->title     = $title;
-        $this->metas     = array(
+        $this->title = $title;
+        $this->metas = array(
             'http-equiv' => array(),
-            'name'       => array(),
-            'schema'     => array(),
-            'charset'    => array(),
-            'property'   => array(),
+            'name' => array(),
+            'schema' => array(),
+            'charset' => array(),
+            'property' => array(),
         );
 
         $this->headAttributes = array();
@@ -171,20 +171,6 @@ class SeoPage implements SeoPageInterface
         }
 
         return $this;
-    }
-
-    /**
-     * @param mixed $meta
-     *
-     * @return array
-     */
-    private function normalize($meta)
-    {
-        if (is_string($meta)) {
-            return array($meta, array());
-        }
-
-        return $meta;
     }
 
     /**
@@ -397,5 +383,19 @@ class SeoPage implements SeoPageInterface
     public function getOEmbedLinks()
     {
         return $this->oembedLinks;
+    }
+
+    /**
+     * @param mixed $meta
+     *
+     * @return array
+     */
+    private function normalize($meta)
+    {
+        if (is_string($meta)) {
+            return array($meta, array());
+        }
+
+        return $meta;
     }
 }

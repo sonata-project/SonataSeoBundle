@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -31,8 +31,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 {
     const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
-    const TWEET_URL_PATTERN  = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
-    const TWEET_ID_PATTERN   = '%^([0-9]*)$%';
+    const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
+    const TWEET_ID_PATTERN = '%^([0-9]*)$%';
 
     /**
      * {@inheritdoc}
@@ -74,15 +74,15 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'template'    => 'SonataSeoBundle:Block:block_twitter_embed.html.twig',
-            'tweet'       => '',
-            'maxwidth'    => null,
-            'hide_media'  => false,
+            'template' => 'SonataSeoBundle:Block:block_twitter_embed.html.twig',
+            'tweet' => '',
+            'maxwidth' => null,
+            'hide_media' => false,
             'hide_thread' => false,
             'omit_script' => false,
-            'align'       => 'none',
-            'related'     => null,
-            'lang'        => $this->languageList,
+            'align' => 'none',
+            'related' => null,
+            'lang' => $this->languageList,
         ));
     }
 
@@ -94,52 +94,62 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         $form->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
                 array('tweet', 'textarea', array(
-                    'required'        => true,
-                    'label'           => 'form.label_tweet',
-                    'help_block'      => 'form.help_tweet',
+                    'required' => true,
+                    'label' => 'form.label_tweet',
+                    'help_block' => 'form.help_tweet',
                 )),
                 array('maxwidth', 'integer', array(
-                    'required'   => false,
-                    'label'      => 'form.label_maxwidth',
+                    'required' => false,
+                    'label' => 'form.label_maxwidth',
                     'help_block' => 'form.help_maxwidth',
                 )),
                 array('hide_media', 'checkbox', array(
-                    'required'   => false,
-                    'label'      => 'form.label_hide_media',
+                    'required' => false,
+                    'label' => 'form.label_hide_media',
                     'help_block' => 'form.help_hide_media',
                 )),
                 array('hide_thread', 'checkbox', array(
-                    'required'   => false,
-                    'label'      => 'form.label_hide_thread',
+                    'required' => false,
+                    'label' => 'form.label_hide_thread',
                     'help_block' => 'form.help_hide_thread',
                 )),
                 array('omit_script', 'checkbox', array(
-                    'required'   => false,
-                    'label'      => 'form.label_omit_script',
+                    'required' => false,
+                    'label' => 'form.label_omit_script',
                     'help_block' => 'form.help_omit_script',
                 )),
                 array('align', 'choice', array(
                     'required' => false,
-                    'choices'  => array(
-                        'left'   => 'form.label_align_left',
-                        'right'  => 'form.label_align_right',
+                    'choices' => array(
+                        'left' => 'form.label_align_left',
+                        'right' => 'form.label_align_right',
                         'center' => 'form.label_align_center',
-                        'none'   => 'form.label_align_none',
+                        'none' => 'form.label_align_none',
                     ),
                     'label' => 'form.label_align',
                 )),
                 array('related', 'text', array(
-                    'required'   => false,
-                    'label'      => 'form.label_related',
+                    'required' => false,
+                    'label' => 'form.label_related',
                     'help_block' => 'form.help_related',
                 )),
                 array('lang', 'choice', array(
                     'required' => true,
-                    'choices'  => $this->languageList,
-                    'label'    => 'form.label_lang',
+                    'choices' => $this->languageList,
+                    'label' => 'form.label_lang',
                 )),
             ),
             'translation_domain' => 'SonataSeoBundle',
+        ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockMetadata($code = null)
+    {
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+            'class' => 'fa fa-twitter',
         ));
     }
 
@@ -173,7 +183,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     protected function buildUri($uriMatched, array $settings)
     {
-        $apiParams       = $settings;
+        $apiParams = $settings;
         $supportedParams = $this->getSupportedApiParams();
 
         if ($uriMatched) {
@@ -193,15 +203,5 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         }
 
         return sprintf('%s?%s', self::TWITTER_OEMBED_URI, implode('&', $parameters));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockMetadata($code = null)
-    {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
-            'class' => 'fa fa-twitter',
-        ));
     }
 }
