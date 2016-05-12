@@ -174,20 +174,6 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param mixed $meta
-     *
-     * @return array
-     */
-    private function normalize($meta)
-    {
-        if (is_string($meta)) {
-            return array($meta, array());
-        }
-
-        return $meta;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function setHtmlAttributes(array $attributes)
@@ -397,5 +383,19 @@ class SeoPage implements SeoPageInterface
     public function getOEmbedLinks()
     {
         return $this->oembedLinks;
+    }
+
+    /**
+     * @param mixed $meta
+     *
+     * @return array
+     */
+    private function normalize($meta)
+    {
+        if (is_string($meta)) {
+            return array($meta, array());
+        }
+
+        return $meta;
     }
 }
