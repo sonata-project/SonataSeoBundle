@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -25,7 +25,7 @@ abstract class BaseTwitterButtonBlockService extends BaseBlockService
     /**
      * @var string[]
      */
-    protected $languageList = array(
+    protected $languageList = [
         'fr'    => 'fr',
         'en'    => 'en',
         'ar'    => 'ar',
@@ -66,7 +66,7 @@ abstract class BaseTwitterButtonBlockService extends BaseBlockService
         'hr'    => 'hr',
         'ckb'   => 'ckb',
         'en-gb' => 'en-gb',
-    );
+    ];
 
     /**
      * {@inheritdoc}
@@ -75,9 +75,9 @@ abstract class BaseTwitterButtonBlockService extends BaseBlockService
     {
         $settings = $blockContext->getSettings();
 
-        return $this->renderResponse($blockContext->getTemplate(), array(
+        return $this->renderResponse($blockContext->getTemplate(), [
             'block'    => $blockContext->getBlock(),
             'settings' => $settings,
-        ), $response);
+        ], $response);
     }
 }

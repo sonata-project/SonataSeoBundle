@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -42,7 +42,7 @@ class SitemapGeneratorCommand extends ContainerAwareCommand
         $this->addOption('sitemap_path', null, InputOption::VALUE_OPTIONAL, 'Set the sitemap relative path (if in a specific folder)', '');
 
         $this->setDescription('Create a sitemap');
-        $this->setHelp(<<<EOT
+        $this->setHelp(<<<'EOT'
 The <info>sonata:seo:sitemap</info> command create new sitemap files (index + sitemap).
 
 EOT
