@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -29,7 +29,7 @@ class SonataSeoExtensionTest extends \PHPUnit_Framework_TestCase
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', array(
             'SonataBlockBundle' => 'Sonata\BlockBundle\SonataBlockBundle',
-            'KnpMenuBundle'     => 'Knp\Bundle\MenuBundle\KnpMenuBundle',
+            'KnpMenuBundle' => 'Knp\Bundle\MenuBundle\KnpMenuBundle',
         ));
 
         $extension = new SonataSeoExtension();

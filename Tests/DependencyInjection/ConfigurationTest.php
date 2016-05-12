@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Sonata Project package.
+ *
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Sonata\SeoBundle\Tests\DependencyInjection;
 
 use Sonata\SeoBundle\DependencyInjection\Configuration;
@@ -12,16 +21,16 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             'encoding' => 'UTF-8',
-            'page'     => array(
-                'default'   => 'sonata.seo.page.default',
-                'head'      => array(),
-                'metas'     => array(),
+            'page' => array(
+                'default' => 'sonata.seo.page.default',
+                'head' => array(),
+                'metas' => array(),
                 'separator' => ' - ',
-                'title'     => 'Sonata Project',
+                'title' => 'Sonata Project',
             ),
             'sitemap' => array(
                 'doctrine_orm' => array(),
-                'services'     => array(),
+                'services' => array(),
             ),
         );
     }
@@ -47,7 +56,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $values = array(
             'page' => array(
-                'head'  => array('data-example' => 'abc-123'),
+                'head' => array('data-example' => 'abc-123'),
                 'metas' => array(
                     'http-equiv' => array(
                         'Content-Type' => 'text/html; charset=utf-8',

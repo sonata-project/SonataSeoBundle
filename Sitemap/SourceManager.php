@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Sonata Project package.
+ *
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Sonata\SeoBundle\Sitemap;
 
 use Exporter\Source\ChainSourceIterator;
@@ -38,7 +47,7 @@ class SourceManager implements SourceIteratorInterface
             $this->sources[$group] = new \stdClass();
 
             $this->sources[$group]->sources = new ChainSourceIterator();
-            $this->sources[$group]->types   = array();
+            $this->sources[$group]->types = array();
         }
 
         $this->sources[$group]->sources->addSource($source);

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -27,7 +27,7 @@ abstract class BaseFacebookSocialPluginsBlockService extends BaseBlockService
      */
     protected $colorschemeList = array(
         'light' => 'form.label_colorscheme_light',
-        'dark'  => 'form.label_colorscheme_dark',
+        'dark' => 'form.label_colorscheme_dark',
     );
 
     /**
@@ -38,7 +38,7 @@ abstract class BaseFacebookSocialPluginsBlockService extends BaseBlockService
         $settings = $blockContext->getSettings();
 
         return $this->renderResponse($blockContext->getTemplate(), array(
-            'block'    => $blockContext->getBlock(),
+            'block' => $blockContext->getBlock(),
             'settings' => $settings,
         ), $response);
     }
