@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -30,7 +30,7 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function configureSettings(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'template'     => 'SonataSeoBundle:Block:block_twitter_share_button.html.twig',
             'url'          => null,
             'text'         => null,
@@ -41,7 +41,7 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
             'large_button' => false,
             'opt_out'      => false,
             'language'     => $this->languageList['en'],
-        ));
+        ]);
     }
 
     /**
@@ -49,48 +49,48 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', array(
-            'keys' => array(
-                array('url', 'url', array(
+        $formMapper->add('settings', 'sonata_type_immutable_array', [
+            'keys' => [
+                ['url', 'url', [
                     'required' => false,
                     'label'    => 'form.label_url',
-                )),
-                array('text', 'text', array(
+                ]],
+                ['text', 'text', [
                     'required' => false,
                     'label'    => 'form.label_text',
-                )),
-                array('show_count', 'checkbox', array(
+                ]],
+                ['show_count', 'checkbox', [
                     'required' => false,
                     'label'    => 'form.label_show_count',
-                )),
-                array('via', 'text', array(
+                ]],
+                ['via', 'text', [
                     'required' => false,
                     'label'    => 'form.label_via',
-                )),
-                array('recommend', 'text', array(
+                ]],
+                ['recommend', 'text', [
                     'required' => false,
                     'label'    => 'form.label_recommend',
-                )),
-                array('hashtag', 'text', array(
+                ]],
+                ['hashtag', 'text', [
                     'required' => false,
                     'label'    => 'form.label_hashtag',
-                )),
-                array('large_button', 'checkbox', array(
+                ]],
+                ['large_button', 'checkbox', [
                     'required' => false,
                     'label'    => 'form.label_large_button',
-                )),
-                array('opt_out', 'checkbox', array(
+                ]],
+                ['opt_out', 'checkbox', [
                     'required' => false,
                     'label'    => 'form.label_opt_out',
-                )),
-                array('language', 'choice', array(
+                ]],
+                ['language', 'choice', [
                     'required' => true,
                     'choices'  => $this->languageList,
                     'label'    => 'form.label_language',
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'SonataSeoBundle',
-        ));
+        ]);
     }
 
     /**
@@ -98,8 +98,8 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', [
             'class' => 'fa fa-twitter',
-        ));
+        ]);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -31,11 +31,11 @@ class TwitterEmbedTweetBlockServiceTest extends \PHPUnit_Framework_TestCase
 {
     public function testBuildUri()
     {
-        $settings = array(
+        $settings = [
             'tweet' => 'tweeeeeeeet',
             'foo'   => 'bar',
             'align' => 'bar',
-        );
+        ];
 
         $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&url=tweeeeeeeet');
 
