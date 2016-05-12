@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -29,11 +29,11 @@ class FacebookLikeButtonBlockServiceTest extends BaseBlockTest
         }
 
         $templating = new FakeTemplating();
-        $service    = new FacebookLikeButtonBlockService('sonata.block.service.facebook.like_button', $templating);
+        $service = new FacebookLikeButtonBlockService('sonata.block.service.facebook.like_button', $templating);
 
         $block = new Block();
         $block->setType('core.text');
-        $block->setSettings(array(
+        $block->setSettings([
             'url'         => 'url_setting',
             'width'       => 'width_setting',
             'show_faces'  => 'show_faces_setting',
@@ -41,14 +41,14 @@ class FacebookLikeButtonBlockServiceTest extends BaseBlockTest
             'layout'      => 'layout_setting',
             'colorscheme' => 'colorscheme_setting',
             'action'      => 'action_setting',
-        ));
+        ]);
 
         $optionResolver = new OptionsResolver();
         $service->setDefaultSettings($optionResolver);
 
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
-        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', array(), array(), '', false);
+        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', [], [], '', false);
         $formMapper->expects($this->exactly(2))->method('add');
 
         $service->buildCreateForm($formMapper, $block);
@@ -56,12 +56,12 @@ class FacebookLikeButtonBlockServiceTest extends BaseBlockTest
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting',         $templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting',       $templating->parameters['settings']['width']);
-        $this->assertEquals('show_faces_setting',  $templating->parameters['settings']['show_faces']);
-        $this->assertEquals('share_setting',       $templating->parameters['settings']['share']);
-        $this->assertEquals('layout_setting',      $templating->parameters['settings']['layout']);
+        $this->assertEquals('url_setting', $templating->parameters['settings']['url']);
+        $this->assertEquals('width_setting', $templating->parameters['settings']['width']);
+        $this->assertEquals('show_faces_setting', $templating->parameters['settings']['show_faces']);
+        $this->assertEquals('share_setting', $templating->parameters['settings']['share']);
+        $this->assertEquals('layout_setting', $templating->parameters['settings']['layout']);
         $this->assertEquals('colorscheme_setting', $templating->parameters['settings']['colorscheme']);
-        $this->assertEquals('action_setting',      $templating->parameters['settings']['action']);
+        $this->assertEquals('action_setting', $templating->parameters['settings']['action']);
     }
 }

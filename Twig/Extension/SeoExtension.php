@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of sonata-project.
+ * This file is part of the Sonata Project package.
  *
- * (c) 2010 Thomas Rabaix
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -40,15 +40,15 @@ class SeoExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('sonata_seo_title', array($this, 'getTitle'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('sonata_seo_metadatas', array($this, 'getMetadatas'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('sonata_seo_html_attributes', array($this, 'getHtmlAttributes'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('sonata_seo_head_attributes', array($this, 'getHeadAttributes'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('sonata_seo_link_canonical', array($this, 'getLinkCanonical'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('sonata_seo_lang_alternates', array($this, 'getLangAlternates'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('sonata_seo_oembed_links', array($this, 'getOembedLinks'), array('is_safe' => array('html'))),
-        );
+        return [
+            new \Twig_SimpleFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
+        ];
     }
 
     /**

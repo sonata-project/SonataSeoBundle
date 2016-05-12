@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -20,13 +20,13 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $page = new SeoPage();
         $page->addMeta('property', 'foo', 'bar');
 
-        $expected = array(
-            'http-equiv' => array(),
-            'name'       => array(),
-            'schema'     => array(),
-            'charset'    => array(),
-            'property'   => array('foo' => array('bar', array())),
-        );
+        $expected = [
+            'http-equiv' => [],
+            'name'       => [],
+            'schema'     => [],
+            'charset'    => [],
+            'property'   => ['foo' => ['bar', []]],
+        ];
 
         $this->assertEquals($expected, $page->getMetas());
     }
@@ -34,11 +34,11 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
     public function testOverrideMetas()
     {
         $page = new SeoPage();
-        $page->setMetas(array('property' => array('foo' => 'bar', 'foo2' => array('bar2', array()))));
+        $page->setMetas(['property' => ['foo' => 'bar', 'foo2' => ['bar2', []]]]);
 
-        $expected = array(
-            'property'   => array('foo' => array('bar', array()), 'foo2' => array('bar2', array())),
-        );
+        $expected = [
+            'property'   => ['foo' => ['bar', []], 'foo2' => ['bar2', []]],
+        ];
 
         $this->assertEquals($expected, $page->getMetas());
     }
@@ -46,7 +46,7 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
     public function testRemoveMeta()
     {
         $page = new SeoPage();
-        $page->setMetas(array('property' => array('foo' => 'bar', 'foo2' => array('bar2', array()))));
+        $page->setMetas(['property' => ['foo' => 'bar', 'foo2' => ['bar2', []]]]);
         $page->removeMeta('property', 'foo');
 
         $this->assertFalse($page->hasMeta('property', 'foo'));
@@ -58,21 +58,21 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
     public function testInvalidMetas()
     {
         $page = new SeoPage();
-        $page->setMetas(array(
+        $page->setMetas([
             'type' => 'not an array',
-        ));
+        ]);
     }
 
     public function testHtmlAttributes()
     {
         $page = new SeoPage();
-        $page->setHtmlAttributes(array('key1' => 'value1'));
+        $page->setHtmlAttributes(['key1' => 'value1']);
         $page->addHtmlAttributes('key2', 'value2');
 
-        $expected = array(
+        $expected = [
             'key1' => 'value1',
             'key2' => 'value2',
-        );
+        ];
 
         $this->assertEquals($expected, $page->getHtmlAttributes());
 
@@ -84,13 +84,13 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
     public function testHeadAttributes()
     {
         $page = new SeoPage();
-        $page->setHeadAttributes(array('head1' => 'value1'));
+        $page->setHeadAttributes(['head1' => 'value1']);
         $page->addHeadAttribute('head2', 'value2');
 
-        $expected = array(
+        $expected = [
             'head1' => 'value1',
             'head2' => 'value2',
-        );
+        ];
 
         $this->assertEquals($expected, $page->getHeadAttributes());
 
@@ -131,13 +131,13 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
     public function testLangAlternates()
     {
         $page = new SeoPage();
-        $page->setLangAlternates(array('http://example.com/' => 'x-default'));
+        $page->setLangAlternates(['http://example.com/' => 'x-default']);
         $page->addLangAlternate('http://example.com/en-us', 'en-us');
 
-        $expected = array(
+        $expected = [
             'http://example.com/'      => 'x-default',
             'http://example.com/en-us' => 'en-us',
-        );
+        ];
 
         $this->assertEquals($expected, $page->getLangAlternates());
 
@@ -152,7 +152,7 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
     public function testHasMeta()
     {
         $page = new SeoPage();
-        $page->addMeta('property', 'test', array());
+        $page->addMeta('property', 'test', []);
 
         $this->assertTrue($page->hasMeta('property', 'test'));
         $this->assertFalse($page->hasMeta('property', 'fake'));

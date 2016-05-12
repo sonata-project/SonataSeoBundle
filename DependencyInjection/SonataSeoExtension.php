@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Sonata Project package.
+ *
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Sonata\SeoBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -53,10 +62,10 @@ class SonataSeoExtension extends Extension
     {
         $definition = $container->getDefinition($config['default']);
 
-        $definition->addMethodCall('setTitle', array($config['title']));
-        $definition->addMethodCall('setMetas', array($config['metas']));
-        $definition->addMethodCall('setHtmlAttributes', array($config['head']));
-        $definition->addMethodCall('setSeparator', array($config['separator']));
+        $definition->addMethodCall('setTitle', [$config['title']]);
+        $definition->addMethodCall('setMetas', [$config['metas']]);
+        $definition->addMethodCall('setHtmlAttributes', [$config['head']]);
+        $definition->addMethodCall('setSeparator', [$config['separator']]);
 
         $container->setAlias('sonata.seo.page', $config['default']);
     }
@@ -82,10 +91,10 @@ class SonataSeoExtension extends Extension
             // define the connectionIterator
             $connectionIteratorId = 'sonata.seo.source.doctrine_connection_iterator_'.$pos;
 
-            $connectionIterator = new Definition('%sonata.seo.exporter.database_source_iterator.class%', array(
+            $connectionIterator = new Definition('%sonata.seo.exporter.database_source_iterator.class%', [
                 new Reference($sitemap['connection']),
                 $sitemap['query'],
-            ));
+            ]);
 
             $connectionIterator->setPublic(false);
             $container->setDefinition($connectionIteratorId, $connectionIterator);
@@ -93,22 +102,22 @@ class SonataSeoExtension extends Extension
             // define the sitemap proxy iterator
             $sitemapIteratorId = 'sonata.seo.source.doctrine_sitemap_iterator_'.$pos;
 
-            $sitemapIterator = new Definition('%sonata.seo.exporter.sitemap_source_iterator.class%', array(
+            $sitemapIterator = new Definition('%sonata.seo.exporter.sitemap_source_iterator.class%', [
                 new Reference($connectionIteratorId),
                 new Reference('router'),
                 $sitemap['route'],
                 $sitemap['parameters'],
-            ));
+            ]);
 
             $sitemapIterator->setPublic(false);
 
             $container->setDefinition($sitemapIteratorId, $sitemapIterator);
 
-            $source->addMethodCall('addSource', array($sitemap['group'], new Reference($sitemapIteratorId), $sitemap['types']));
+            $source->addMethodCall('addSource', [$sitemap['group'], new Reference($sitemapIteratorId), $sitemap['types']]);
         }
 
         foreach ($config['services'] as $service) {
-            $source->addMethodCall('addSource', array($service['group'], new Reference($service['id']), $service['types']));
+            $source->addMethodCall('addSource', [$service['group'], new Reference($service['id']), $service['types']]);
         }
     }
 
@@ -122,12 +131,12 @@ class SonataSeoExtension extends Extension
     protected function fixConfiguration(array $config)
     {
         foreach ($config['sitemap']['doctrine_orm'] as $pos => $sitemap) {
-            $sitemap['group']      = isset($sitemap['group']) ? $sitemap['group'] : false;
-            $sitemap['types']      = isset($sitemap['types']) ? $sitemap['types'] : array();
+            $sitemap['group'] = isset($sitemap['group']) ? $sitemap['group'] : false;
+            $sitemap['types'] = isset($sitemap['types']) ? $sitemap['types'] : [];
             $sitemap['connection'] = isset($sitemap['connection']) ? $sitemap['connection'] : 'doctrine.dbal.default_connection';
-            $sitemap['route']      = isset($sitemap['route']) ? $sitemap['route'] : false;
+            $sitemap['route'] = isset($sitemap['route']) ? $sitemap['route'] : false;
             $sitemap['parameters'] = isset($sitemap['parameters']) ? $sitemap['parameters'] : false;
-            $sitemap['query']      = isset($sitemap['query']) ? $sitemap['query'] : false;
+            $sitemap['query'] = isset($sitemap['query']) ? $sitemap['query'] : false;
 
             if ($sitemap['route'] === false) {
                 throw new \RuntimeException('Route cannot be empty, please review the sonata_seo.sitemap configuration');
@@ -146,14 +155,14 @@ class SonataSeoExtension extends Extension
 
         foreach ($config['sitemap']['services'] as $pos => $sitemap) {
             if (!is_array($sitemap)) {
-                $sitemap = array(
+                $sitemap = [
                     'group' => false,
-                    'types' => array(),
+                    'types' => [],
                     'id'    => $sitemap,
-                );
+                ];
             } else {
                 $sitemap['group'] = isset($sitemap['group']) ? $sitemap['group'] : false;
-                $sitemap['types'] = isset($sitemap['types']) ? $sitemap['types'] : array();
+                $sitemap['types'] = isset($sitemap['types']) ? $sitemap['types'] : [];
 
                 if (!isset($sitemap['id'])) {
                     throw new \RuntimeException('Service id must to be defined, please review the sonata_seo.sitemap configuration');
@@ -171,11 +180,11 @@ class SonataSeoExtension extends Extension
      */
     public function configureClassesToCompile()
     {
-        $this->addClassesToCompile(array(
+        $this->addClassesToCompile([
             'Sonata\\SeoBundle\\Seo\\SeoPage',
             'Sonata\\SeoBundle\\Seo\\SeoPageInterface',
             'Sonata\\SeoBundle\\Sitemap\\SourceManager',
             'Sonata\\SeoBundle\\Twig\\Extension\\SeoExtension',
-        ));
+        ]);
     }
 }

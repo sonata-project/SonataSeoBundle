@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -30,7 +30,7 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
      */
     public function configureSettings(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'template'    => 'SonataSeoBundle:Block:block_facebook_like_box.html.twig',
             'url'         => null,
             'width'       => null,
@@ -40,7 +40,7 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
             'show_header' => true,
             'show_posts'  => false,
             'show_border' => true,
-        ));
+        ]);
     }
 
     /**
@@ -48,44 +48,44 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', array(
-            'keys' => array(
-                array('url', 'url', array(
+        $formMapper->add('settings', 'sonata_type_immutable_array', [
+            'keys' => [
+                ['url', 'url', [
                     'required' => false,
                     'label'    => 'form.label_url',
-                )),
-                array('width', 'integer', array(
+                ]],
+                ['width', 'integer', [
                     'required' => false,
                     'label'    => 'form.label_width',
-                )),
-                array('height', 'integer', array(
+                ]],
+                ['height', 'integer', [
                     'required' => false,
                     'label'    => 'form.label_height',
-                )),
-                array('colorscheme', 'choice', array(
+                ]],
+                ['colorscheme', 'choice', [
                     'required' => true,
                     'choices'  => $this->colorschemeList,
                     'label'    => 'form.label_colorscheme',
-                )),
-                array('show_faces', 'checkbox', array(
+                ]],
+                ['show_faces', 'checkbox', [
                     'required' => false,
                     'label'    => 'form.label_show_faces',
-                )),
-                array('show_header', 'checkbox', array(
+                ]],
+                ['show_header', 'checkbox', [
                     'required' => false,
                     'label'    => 'form.label_show_header',
-                )),
-                array('show_posts', 'checkbox', array(
+                ]],
+                ['show_posts', 'checkbox', [
                     'required' => false,
                     'label'    => 'form.label_show_posts',
-                )),
-                array('show_border', 'checkbox', array(
+                ]],
+                ['show_border', 'checkbox', [
                     'required' => false,
                     'label'    => 'form.label_show_border',
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'SonataSeoBundle',
-        ));
+        ]);
     }
 
     /**
@@ -93,8 +93,8 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
-        ));
+        ]);
     }
 }
