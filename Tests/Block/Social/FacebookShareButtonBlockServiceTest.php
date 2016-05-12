@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -29,13 +29,13 @@ class FacebookShareButtonBlockServiceTest extends BaseBlockTest
         }
 
         $templating = new FakeTemplating();
-        $service    = new FacebookShareButtonBlockService('sonata.block.service.facebook.share_button', $templating);
+        $service = new FacebookShareButtonBlockService('sonata.block.service.facebook.share_button', $templating);
 
         $block = new Block();
         $block->setType('core.text');
         $block->setSettings(array(
-            'url'    => 'url_setting',
-            'width'  => 'width_setting',
+            'url' => 'url_setting',
+            'width' => 'width_setting',
             'layout' => 'layout_setting',
         ));
 
@@ -52,8 +52,8 @@ class FacebookShareButtonBlockServiceTest extends BaseBlockTest
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting',    $templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting',  $templating->parameters['settings']['width']);
+        $this->assertEquals('url_setting', $templating->parameters['settings']['url']);
+        $this->assertEquals('width_setting', $templating->parameters['settings']['width']);
         $this->assertEquals('layout_setting', $templating->parameters['settings']['layout']);
     }
 }

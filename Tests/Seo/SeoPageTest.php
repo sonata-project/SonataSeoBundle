@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -22,10 +22,10 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
 
         $expected = array(
             'http-equiv' => array(),
-            'name'       => array(),
-            'schema'     => array(),
-            'charset'    => array(),
-            'property'   => array('foo' => array('bar', array())),
+            'name' => array(),
+            'schema' => array(),
+            'charset' => array(),
+            'property' => array('foo' => array('bar', array())),
         );
 
         $this->assertEquals($expected, $page->getMetas());
@@ -37,7 +37,7 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $page->setMetas(array('property' => array('foo' => 'bar', 'foo2' => array('bar2', array()))));
 
         $expected = array(
-            'property'   => array('foo' => array('bar', array()), 'foo2' => array('bar2', array())),
+            'property' => array('foo' => array('bar', array()), 'foo2' => array('bar2', array())),
         );
 
         $this->assertEquals($expected, $page->getMetas());
@@ -135,7 +135,7 @@ class SeoPageTest extends \PHPUnit_Framework_TestCase
         $page->addLangAlternate('http://example.com/en-us', 'en-us');
 
         $expected = array(
-            'http://example.com/'      => 'x-default',
+            'http://example.com/' => 'x-default',
             'http://example.com/en-us' => 'en-us',
         );
 

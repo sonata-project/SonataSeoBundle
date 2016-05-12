@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Sonata Project package.
+ *
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Sonata\SeoBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -41,6 +50,19 @@ class SonataSeoExtension extends Extension
 
         $container->getDefinition('sonata.seo.twig.extension')
             ->replaceArgument(1, $config['encoding']);
+    }
+
+    /**
+     * Add class to compile.
+     */
+    public function configureClassesToCompile()
+    {
+        $this->addClassesToCompile(array(
+            'Sonata\\SeoBundle\\Seo\\SeoPage',
+            'Sonata\\SeoBundle\\Seo\\SeoPageInterface',
+            'Sonata\\SeoBundle\\Sitemap\\SourceManager',
+            'Sonata\\SeoBundle\\Twig\\Extension\\SeoExtension',
+        ));
     }
 
     /**
@@ -122,12 +144,12 @@ class SonataSeoExtension extends Extension
     protected function fixConfiguration(array $config)
     {
         foreach ($config['sitemap']['doctrine_orm'] as $pos => $sitemap) {
-            $sitemap['group']      = isset($sitemap['group']) ? $sitemap['group'] : false;
-            $sitemap['types']      = isset($sitemap['types']) ? $sitemap['types'] : array();
+            $sitemap['group'] = isset($sitemap['group']) ? $sitemap['group'] : false;
+            $sitemap['types'] = isset($sitemap['types']) ? $sitemap['types'] : array();
             $sitemap['connection'] = isset($sitemap['connection']) ? $sitemap['connection'] : 'doctrine.dbal.default_connection';
-            $sitemap['route']      = isset($sitemap['route']) ? $sitemap['route'] : false;
+            $sitemap['route'] = isset($sitemap['route']) ? $sitemap['route'] : false;
             $sitemap['parameters'] = isset($sitemap['parameters']) ? $sitemap['parameters'] : false;
-            $sitemap['query']      = isset($sitemap['query']) ? $sitemap['query'] : false;
+            $sitemap['query'] = isset($sitemap['query']) ? $sitemap['query'] : false;
 
             if ($sitemap['route'] === false) {
                 throw new \RuntimeException('Route cannot be empty, please review the sonata_seo.sitemap configuration');
@@ -149,7 +171,7 @@ class SonataSeoExtension extends Extension
                 $sitemap = array(
                     'group' => false,
                     'types' => array(),
-                    'id'    => $sitemap,
+                    'id' => $sitemap,
                 );
             } else {
                 $sitemap['group'] = isset($sitemap['group']) ? $sitemap['group'] : false;
@@ -164,18 +186,5 @@ class SonataSeoExtension extends Extension
         }
 
         return $config;
-    }
-
-    /**
-     * Add class to compile.
-     */
-    public function configureClassesToCompile()
-    {
-        $this->addClassesToCompile(array(
-            'Sonata\\SeoBundle\\Seo\\SeoPage',
-            'Sonata\\SeoBundle\\Seo\\SeoPageInterface',
-            'Sonata\\SeoBundle\\Sitemap\\SourceManager',
-            'Sonata\\SeoBundle\\Twig\\Extension\\SeoExtension',
-        ));
     }
 }

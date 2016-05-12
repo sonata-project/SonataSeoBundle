@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -34,11 +34,11 @@ class PinterestPinButtonBlockService extends BaseBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'template'    => 'SonataSeoBundle:Block:block_pinterest_pin_button.html.twig',
-            'size'        => null,
-            'shape'       => null,
-            'url'         => null,
-            'image'       => null,
+            'template' => 'SonataSeoBundle:Block:block_pinterest_pin_button.html.twig',
+            'size' => null,
+            'shape' => null,
+            'url' => null,
+            'image' => null,
             'description' => null,
         ));
     }
@@ -52,25 +52,25 @@ class PinterestPinButtonBlockService extends BaseBlockService
             'keys' => array(
                 array('url', 'url', array(
                     'required' => false,
-                    'label'    => 'form.label_url',
+                    'label' => 'form.label_url',
                 )),
                 array('image', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_image',
+                    'label' => 'form.label_image',
                 )),
                 array('description', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_description',
+                    'label' => 'form.label_description',
                 )),
                 array('size', 'integer', array(
                     'required' => false,
-                    'label'    => 'form.label_size',
+                    'label' => 'form.label_size',
                 )),
                 array('shape', 'choice', array(
                     'required' => false,
-                    'choices'  => array(
+                    'choices' => array(
                         'rectangular' => 'form.label_shape_rectangular',
-                        'round'       => 'form.label_shape_round',
+                        'round' => 'form.label_shape_round',
                     ),
                     'label' => 'form.label_shape',
                 )),
@@ -84,11 +84,11 @@ class PinterestPinButtonBlockService extends BaseBlockService
      */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        $block    = $blockContext->getBlock();
+        $block = $blockContext->getBlock();
         $settings = array_merge($blockContext->getSettings(), $block->getSettings());
 
         return $this->renderResponse($blockContext->getTemplate(), array(
-            'block'    => $blockContext->getBlock(),
+            'block' => $blockContext->getBlock(),
             'settings' => $settings,
         ), $response);
     }

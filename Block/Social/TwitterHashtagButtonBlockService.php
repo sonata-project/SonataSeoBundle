@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -31,14 +31,14 @@ class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'template'     => 'SonataSeoBundle:Block:block_twitter_hashtag_button.html.twig',
-            'url'          => null,
-            'hashtag'      => null,
-            'text'         => null,
-            'recommend'    => null,
+            'template' => 'SonataSeoBundle:Block:block_twitter_hashtag_button.html.twig',
+            'url' => null,
+            'hashtag' => null,
+            'text' => null,
+            'recommend' => null,
             'large_button' => false,
-            'opt_out'      => false,
-            'language'     => $this->languageList['en'],
+            'opt_out' => false,
+            'language' => $this->languageList['en'],
         ));
     }
 
@@ -51,32 +51,32 @@ class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
             'keys' => array(
                 array('hashtag', 'text', array(
                     'required' => true,
-                    'label'    => 'form.label_hashtag',
+                    'label' => 'form.label_hashtag',
                 )),
                 array('text', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_text',
+                    'label' => 'form.label_text',
                 )),
                 array('recommend', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_recommend',
+                    'label' => 'form.label_recommend',
                 )),
                 array('url', 'url', array(
                     'required' => false,
-                    'label'    => 'form.label_url',
+                    'label' => 'form.label_url',
                 )),
                 array('large_button', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_large_button',
+                    'label' => 'form.label_large_button',
                 )),
                 array('opt_out', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_opt_out',
+                    'label' => 'form.label_opt_out',
                 )),
                 array('language', 'choice', array(
                     'required' => true,
-                    'choices'  => $this->languageList,
-                    'label'    => 'form.label_language',
+                    'choices' => $this->languageList,
+                    'label' => 'form.label_language',
                 )),
             ),
             'translation_domain' => 'SonataSeoBundle',

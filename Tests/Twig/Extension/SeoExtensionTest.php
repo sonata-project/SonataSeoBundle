@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -19,7 +19,7 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getHtmlAttributes')->will($this->returnValue(array(
-            'xmlns'    => 'http://www.w3.org/1999/xhtml',
+            'xmlns' => 'http://www.w3.org/1999/xhtml',
             'xmlns:og' => 'http://opengraphprotocol.org/schema/',
         )));
 
@@ -54,10 +54,10 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
         $page->expects($this->once())->method('getTitle')->will($this->returnValue('pięć głów zatkniętych na pal'));
         $page->expects($this->once())->method('getMetas')->will($this->returnValue(array(
             'http-equiv' => array(),
-            'name'       => array('foo' => array('pięć głów zatkniętych na pal', array())),
-            'schema'     => array(),
-            'charset'    => array(),
-            'property'   => array(),
+            'name' => array('foo' => array('pięć głów zatkniętych na pal', array())),
+            'schema' => array(),
+            'charset' => array(),
+            'property' => array(),
         )));
 
         $extension = new SeoExtension($page, 'UTF-8');
@@ -72,10 +72,10 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getMetas')->will($this->returnValue(array(
             'http-equiv' => array(),
-            'name'       => array('foo' => array('bar "\'"', array())),
-            'schema'     => array(),
-            'charset'    => array('UTF-8' => array('', array())),
-            'property'   => array(),
+            'name' => array('foo' => array('bar "\'"', array())),
+            'schema' => array(),
+            'charset' => array('UTF-8' => array('', array())),
+            'property' => array(),
         )));
 
         $extension = new SeoExtension($page, 'UTF-8');
