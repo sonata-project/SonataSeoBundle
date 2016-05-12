@@ -144,6 +144,16 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getBlockMetadata($code = null)
+    {
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+            'class' => 'fa fa-twitter',
+        ));
+    }
+
+    /**
      * Returns supported API parameters from settings.
      *
      * @return array
@@ -193,15 +203,5 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         }
 
         return sprintf('%s?%s', self::TWITTER_OEMBED_URI, implode('&', $parameters));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockMetadata($code = null)
-    {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
-            'class' => 'fa fa-twitter',
-        ));
     }
 }
