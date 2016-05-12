@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -26,45 +26,45 @@ abstract class BaseTwitterButtonBlockService extends BaseBlockService
      * @var string[]
      */
     protected $languageList = array(
-        'fr'    => 'fr',
-        'en'    => 'en',
-        'ar'    => 'ar',
-        'ja'    => 'ja',
-        'es'    => 'es',
-        'de'    => 'de',
-        'it'    => 'it',
-        'id'    => 'id',
-        'pt'    => 'pt',
-        'ko'    => 'ko',
-        'tr'    => 'tr',
-        'ru'    => 'ru',
-        'nl'    => 'nl',
-        'fil'   => 'fil',
-        'msa'   => 'msa',
+        'fr' => 'fr',
+        'en' => 'en',
+        'ar' => 'ar',
+        'ja' => 'ja',
+        'es' => 'es',
+        'de' => 'de',
+        'it' => 'it',
+        'id' => 'id',
+        'pt' => 'pt',
+        'ko' => 'ko',
+        'tr' => 'tr',
+        'ru' => 'ru',
+        'nl' => 'nl',
+        'fil' => 'fil',
+        'msa' => 'msa',
         'zh-tw' => 'zh-tw',
         'zh-cn' => 'zh-cn',
-        'hi'    => 'hi',
-        'no'    => 'no',
-        'sv'    => 'sv',
-        'fi'    => 'fi',
-        'da'    => 'da',
-        'pl'    => 'pl',
-        'hu'    => 'hu',
-        'fa'    => 'fa',
-        'he'    => 'he',
-        'ur'    => 'ur',
-        'th'    => 'th',
-        'uk'    => 'uk',
-        'ca'    => 'ca',
-        'el'    => 'el',
-        'eu'    => 'eu',
-        'cs'    => 'cs',
-        'af'    => 'af',
+        'hi' => 'hi',
+        'no' => 'no',
+        'sv' => 'sv',
+        'fi' => 'fi',
+        'da' => 'da',
+        'pl' => 'pl',
+        'hu' => 'hu',
+        'fa' => 'fa',
+        'he' => 'he',
+        'ur' => 'ur',
+        'th' => 'th',
+        'uk' => 'uk',
+        'ca' => 'ca',
+        'el' => 'el',
+        'eu' => 'eu',
+        'cs' => 'cs',
+        'af' => 'af',
         'xx-lc' => 'xx-lc',
-        'gl'    => 'gl',
-        'ro'    => 'ro',
-        'hr'    => 'hr',
-        'ckb'   => 'ckb',
+        'gl' => 'gl',
+        'ro' => 'ro',
+        'hr' => 'hr',
+        'ckb' => 'ckb',
         'en-gb' => 'en-gb',
     );
 
@@ -76,7 +76,7 @@ abstract class BaseTwitterButtonBlockService extends BaseBlockService
         $settings = $blockContext->getSettings();
 
         return $this->renderResponse($blockContext->getTemplate(), array(
-            'block'    => $blockContext->getBlock(),
+            'block' => $blockContext->getBlock(),
             'settings' => $settings,
         ), $response);
     }

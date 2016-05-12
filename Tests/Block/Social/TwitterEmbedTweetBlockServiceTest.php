@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -33,7 +33,7 @@ class TwitterEmbedTweetBlockServiceTest extends \PHPUnit_Framework_TestCase
     {
         $settings = array(
             'tweet' => 'tweeeeeeeet',
-            'foo'   => 'bar',
+            'foo' => 'bar',
             'align' => 'bar',
         );
 
