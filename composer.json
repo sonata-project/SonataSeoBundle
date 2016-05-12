@@ -28,7 +28,8 @@
         "symfony/console": "^2.3 || ^3.0",
         "symfony/finder": "^2.3 || ^3.0",
         "sonata-project/admin-bundle": "^3.0",
-        "symfony/phpunit-bridge": "^2.7 || ^3.0"
+        "symfony/phpunit-bridge": "^2.7 || ^3.0",
+        "sllh/php-cs-fixer-styleci-bridge": "^2.0"
     },
     "suggest": {
         "guzzle/guzzle": "3.*",
