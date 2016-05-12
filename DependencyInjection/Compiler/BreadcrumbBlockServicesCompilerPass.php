@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -26,7 +26,7 @@ class BreadcrumbBlockServicesCompilerPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         foreach ($container->findTaggedServiceIds('sonata.breadcrumb') as $id => $attributes) {
-            $container->getDefinition('sonata.seo.event.breadcrumb')->addMethodCall('addBlockService', array($id, new Reference($id)));
+            $container->getDefinition('sonata.seo.event.breadcrumb')->addMethodCall('addBlockService', [$id, new Reference($id)]);
         }
     }
 }
