@@ -53,6 +53,19 @@ class SonataSeoExtension extends Extension
     }
 
     /**
+     * Add class to compile.
+     */
+    public function configureClassesToCompile()
+    {
+        $this->addClassesToCompile(array(
+            'Sonata\\SeoBundle\\Seo\\SeoPage',
+            'Sonata\\SeoBundle\\Seo\\SeoPageInterface',
+            'Sonata\\SeoBundle\\Sitemap\\SourceManager',
+            'Sonata\\SeoBundle\\Twig\\Extension\\SeoExtension',
+        ));
+    }
+
+    /**
      * Configure the default seo page.
      *
      * @param array            $config
@@ -173,18 +186,5 @@ class SonataSeoExtension extends Extension
         }
 
         return $config;
-    }
-
-    /**
-     * Add class to compile.
-     */
-    public function configureClassesToCompile()
-    {
-        $this->addClassesToCompile(array(
-            'Sonata\\SeoBundle\\Seo\\SeoPage',
-            'Sonata\\SeoBundle\\Seo\\SeoPageInterface',
-            'Sonata\\SeoBundle\\Sitemap\\SourceManager',
-            'Sonata\\SeoBundle\\Twig\\Extension\\SeoExtension',
-        ));
     }
 }
