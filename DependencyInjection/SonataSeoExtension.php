@@ -53,9 +53,14 @@ class SonataSeoExtension extends Extension
     {
         $definition = $container->getDefinition($config['default']);
 
+        if (count($config['head'])) {
+            trigger_error('sonata_seo->page->head config is deprecated. Use sonata_seo->page->html_tag instead.', E_USER_DEPRECATED);
+            $config['html_tag'] = array_merge($config['head'], $config['html_tag']);
+        }
         $definition->addMethodCall('setTitle', array($config['title']));
         $definition->addMethodCall('setMetas', array($config['metas']));
-        $definition->addMethodCall('setHtmlAttributes', array($config['head']));
+        $definition->addMethodCall('setHtmlAttributes', array($config['html_tag']));
+        $definition->addMethodCall('setHeadAttributes', array($config['head_tag']));
         $definition->addMethodCall('setSeparator', array($config['separator']));
 
         $container->setAlias('sonata.seo.page', $config['default']);

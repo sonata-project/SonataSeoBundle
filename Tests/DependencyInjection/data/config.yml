@@ -1,6 +1,6 @@
 # Test data for sonata_seo
 page:
-    head:
+    html_tag:
         'xmlns:og': 'http://ogp.me/ns#'
 
     metas:

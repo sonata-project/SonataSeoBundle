@@ -15,6 +15,8 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'page'     => array(
                 'default'   => 'sonata.seo.page.default',
                 'head'      => array(),
+                'html_tag'  => array(),
+                'head_tag'  => array(),
                 'metas'     => array(),
                 'separator' => ' - ',
                 'title'     => 'Sonata Project',
@@ -47,8 +49,8 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $values = array(
             'page' => array(
-                'head'  => array('data-example' => 'abc-123'),
-                'metas' => array(
+                'html_tag' => array('data-example' => 'abc-123'),
+                'metas'    => array(
                     'http-equiv' => array(
                         'Content-Type' => 'text/html; charset=utf-8',
                     ),
