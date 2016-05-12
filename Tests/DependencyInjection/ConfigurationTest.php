@@ -17,32 +17,6 @@ use Symfony\Component\Yaml\Yaml;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
-    private function getDefaultConfiguration()
-    {
-        return array(
-            'encoding' => 'UTF-8',
-            'page' => array(
-                'default' => 'sonata.seo.page.default',
-                'head' => array(),
-                'metas' => array(),
-                'separator' => ' - ',
-                'title' => 'Sonata Project',
-            ),
-            'sitemap' => array(
-                'doctrine_orm' => array(),
-                'services' => array(),
-            ),
-        );
-    }
-
-    private function processConfiguration(array $configs)
-    {
-        $configuration = new Configuration();
-        $processor = new Processor();
-
-        return $processor->processConfiguration($configuration, $configs);
-    }
-
     public function testDefaultConfiguration()
     {
         $config = $this->processConfiguration(array(array()));
@@ -89,5 +63,31 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $config);
 
         $this->assertEquals('website', $config['page']['metas']['property']['og:type']);
+    }
+
+    private function getDefaultConfiguration()
+    {
+        return array(
+            'encoding' => 'UTF-8',
+            'page' => array(
+                'default' => 'sonata.seo.page.default',
+                'head' => array(),
+                'metas' => array(),
+                'separator' => ' - ',
+                'title' => 'Sonata Project',
+            ),
+            'sitemap' => array(
+                'doctrine_orm' => array(),
+                'services' => array(),
+            ),
+        );
+    }
+
+    private function processConfiguration(array $configs)
+    {
+        $configuration = new Configuration();
+        $processor = new Processor();
+
+        return $processor->processConfiguration($configuration, $configs);
     }
 }
