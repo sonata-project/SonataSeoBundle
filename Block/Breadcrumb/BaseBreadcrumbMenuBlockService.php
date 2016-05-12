@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -95,9 +95,9 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
         parent::configureSettings($resolver);
 
         $resolver->setDefaults(array(
-            'menu_template'         => 'SonataSeoBundle:Block:breadcrumb.html.twig',
+            'menu_template' => 'SonataSeoBundle:Block:breadcrumb.html.twig',
             'include_homepage_link' => true,
-            'context'               => false,
+            'context' => false,
         ));
     }
 

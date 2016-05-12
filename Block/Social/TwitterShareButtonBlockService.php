@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -31,16 +31,16 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'template'     => 'SonataSeoBundle:Block:block_twitter_share_button.html.twig',
-            'url'          => null,
-            'text'         => null,
-            'show_count'   => true,
-            'via'          => null,
-            'recommend'    => null,
-            'hashtag'      => null,
+            'template' => 'SonataSeoBundle:Block:block_twitter_share_button.html.twig',
+            'url' => null,
+            'text' => null,
+            'show_count' => true,
+            'via' => null,
+            'recommend' => null,
+            'hashtag' => null,
             'large_button' => false,
-            'opt_out'      => false,
-            'language'     => $this->languageList['en'],
+            'opt_out' => false,
+            'language' => $this->languageList['en'],
         ));
     }
 
@@ -53,40 +53,40 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
             'keys' => array(
                 array('url', 'url', array(
                     'required' => false,
-                    'label'    => 'form.label_url',
+                    'label' => 'form.label_url',
                 )),
                 array('text', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_text',
+                    'label' => 'form.label_text',
                 )),
                 array('show_count', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_show_count',
+                    'label' => 'form.label_show_count',
                 )),
                 array('via', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_via',
+                    'label' => 'form.label_via',
                 )),
                 array('recommend', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_recommend',
+                    'label' => 'form.label_recommend',
                 )),
                 array('hashtag', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_hashtag',
+                    'label' => 'form.label_hashtag',
                 )),
                 array('large_button', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_large_button',
+                    'label' => 'form.label_large_button',
                 )),
                 array('opt_out', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_opt_out',
+                    'label' => 'form.label_opt_out',
                 )),
                 array('language', 'choice', array(
                     'required' => true,
-                    'choices'  => $this->languageList,
-                    'label'    => 'form.label_language',
+                    'choices' => $this->languageList,
+                    'label' => 'form.label_language',
                 )),
             ),
             'translation_domain' => 'SonataSeoBundle',

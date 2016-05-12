@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -29,17 +29,17 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
      * @var string[]
      */
     protected $layoutList = array(
-        'standard'     => 'form.label_layout_standard',
-        'box_count'    => 'form.label_layout_box_count',
+        'standard' => 'form.label_layout_standard',
+        'box_count' => 'form.label_layout_box_count',
         'button_count' => 'form.label_layout_button_count',
-        'button'       => 'form.label_layout_button',
+        'button' => 'form.label_layout_button',
     );
 
     /**
      * @var string[]
      */
     protected $actionTypes = array(
-        'like'      => 'form.label_action_like',
+        'like' => 'form.label_action_like',
         'recommend' => 'form.label_action_recommend',
     );
 
@@ -49,14 +49,14 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'template'    => 'SonataSeoBundle:Block:block_facebook_like_button.html.twig',
-            'url'         => null,
-            'width'       => null,
-            'show_faces'  => true,
-            'share'       => true,
-            'layout'      => $this->layoutList['standard'],
+            'template' => 'SonataSeoBundle:Block:block_facebook_like_button.html.twig',
+            'url' => null,
+            'width' => null,
+            'show_faces' => true,
+            'share' => true,
+            'layout' => $this->layoutList['standard'],
             'colorscheme' => $this->colorschemeList['light'],
-            'action'      => $this->actionTypes['like'],
+            'action' => $this->actionTypes['like'],
         ));
     }
 
@@ -69,34 +69,34 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
             'keys' => array(
                 array('url', 'url', array(
                     'required' => false,
-                    'label'    => 'form.label_url',
+                    'label' => 'form.label_url',
                 )),
                 array('width', 'integer', array(
                     'required' => false,
-                    'label'    => 'form.label_width',
+                    'label' => 'form.label_width',
                 )),
                 array('show_faces', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_show_faces',
+                    'label' => 'form.label_show_faces',
                 )),
                 array('share', 'checkbox', array(
                     'required' => false,
-                    'label'    => 'form.label_share',
+                    'label' => 'form.label_share',
                 )),
                 array('layout', 'choice', array(
                     'required' => true,
-                    'choices'  => $this->layoutList,
-                    'label'    => 'form.label_layout',
+                    'choices' => $this->layoutList,
+                    'label' => 'form.label_layout',
                 )),
                 array('colorscheme', 'choice', array(
                     'required' => true,
-                    'choices'  => $this->colorschemeList,
-                    'label'    => 'form.label_colorscheme',
+                    'choices' => $this->colorschemeList,
+                    'label' => 'form.label_colorscheme',
                 )),
                 array('action', 'choice', array(
                     'required' => true,
-                    'choices'  => $this->actionTypes,
-                    'label'    => 'form.label_action',
+                    'choices' => $this->actionTypes,
+                    'label' => 'form.label_action',
                 )),
             ),
             'translation_domain' => 'SonataSeoBundle',
