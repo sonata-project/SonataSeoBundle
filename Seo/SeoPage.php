@@ -128,10 +128,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param string $type
-     * @param string $name
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasMeta($type, $name)
     {
@@ -139,10 +136,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param string $type
-     * @param string $name
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function removeMeta($type, $name)
     {
@@ -194,9 +188,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param string $name
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function removeHtmlAttributes($name)
     {
@@ -214,9 +206,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param string $name
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasHtmlAttribute($name)
     {
@@ -224,9 +214,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param array $attributes
-     *
-     * @return SeoPageInterface
+     * {@inheritdoc}
      */
     public function setHeadAttributes(array $attributes)
     {
@@ -236,10 +224,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param string $name
-     * @param string $value
-     *
-     * @return SeoPageInterface
+     * {@inheritdoc}
      */
     public function addHeadAttribute($name, $value)
     {
@@ -249,9 +234,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param string $name
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function removeHeadAttribute($name)
     {
@@ -269,9 +252,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param string $name
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function hasHeadAttribute($name)
     {
@@ -335,9 +316,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param string $href
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function removeLangAlternate($href)
     {
@@ -347,9 +326,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param string $href
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function hasLangAlternate($href)
     {
@@ -365,10 +342,7 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param $title
-     * @param $link
-     *
-     * @return SeoPageInterface
+     * {@inheritdoc}
      */
     public function addOEmbedLink($title, $link)
     {
