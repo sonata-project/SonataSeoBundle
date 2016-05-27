@@ -10,7 +10,9 @@ Symfony SonataSeoBundle
 [![Monthly Downloads](https://poser.pugx.org/sonata-project/seo-bundle/d/monthly)](https://packagist.org/packages/sonata-project/seo-bundle)
 [![Daily Downloads](https://poser.pugx.org/sonata-project/seo-bundle/d/daily)](https://packagist.org/packages/sonata-project/seo-bundle)
 
-[![Build Status](https://travis-ci.org/sonata-project/SonataSeoBundle.svg?branch=master)](https://travis-ci.org/sonata-project/SonataSeoBundle)
+2.x status: [![Build Status](https://travis-ci.org/sonata-project/SonataSeoBundle.svg?branch=2.x)](https://travis-ci.org/sonata-project/SonataSeoBundle)
+
+master status: [![Build Status](https://travis-ci.org/sonata-project/SonataSeoBundle.svg?branch=master)](https://travis-ci.org/sonata-project/SonataSeoBundle)
 
 ## Documentation
 
