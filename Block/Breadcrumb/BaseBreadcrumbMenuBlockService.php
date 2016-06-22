@@ -127,8 +127,10 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
             $menu->setCurrent($settings['current_uri']);
         }
 
-        if ($settings['include_homepage_link']) {
-            $menu->addChild('sonata_seo_homepage_breadcrumb', array('uri' => '/'));
+        if (array_key_exists('include_homepage_link', $settings)) {
+            if ($settings['include_homepage_link']) {
+                $menu->addChild('sonata_seo_homepage_breadcrumb', array('uri' => '/'));
+            }
         }
 
         return $menu;
