@@ -48,6 +48,7 @@ class SonataSeoExtension extends Extension
 
         $this->configureSeoPage($config['page'], $container);
         $this->configureSitemap($config['sitemap'], $container);
+        $this->configureHttpClient($container, $config['http']);
 
         $container->getDefinition('sonata.seo.twig.extension')
             ->replaceArgument(1, $config['encoding']);
@@ -154,5 +155,15 @@ class SonataSeoExtension extends Extension
         }
 
         return $config;
+    }
+
+    private function configureHttpClient(ContainerBuilder $container, array $config): void
+    {
+        if (null === $config['client'] || null === $config['message_factory']) {
+            return;
+        }
+
+        $container->setAlias('sonata.seo.http.client', $config['client']);
+        $container->setAlias('sonata.seo.http.message_factory', $config['message_factory']);
     }
 }

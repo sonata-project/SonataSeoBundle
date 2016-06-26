@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -75,6 +76,28 @@ class Configuration implements ConfigurationInterface
             ->end()
         ;
 
+        $this->addHttpClientSection($rootNode);
+
         return $treeBuilder;
+    }
+
+    private function addHttpClientSection(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('http')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('client')
+                            ->defaultNull()
+                            ->info('Alias of the http client.')
+                        ->end()
+                        ->scalarNode('message_factory')
+                            ->defaultNull()
+                            ->info('Alias of the message factory.')
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
     }
 }
