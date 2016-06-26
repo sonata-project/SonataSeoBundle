@@ -1,6 +1,13 @@
 UPGRADE 2.x
 ===========
 
+## TwitterEmbedTweetBlockService uses HTTPlug
+
+The `Guzzle` dependency was removed and replaced with the abstract `HTTPlug` client, so you can choose your preferred 
+http client implementation. If you have extended the `TwitterEmbedTweetBlockService` class, you need to adjust the 
+constructor signature.
+
+
 UPGRADE FROM 2.2 to 2.3
 =======================
 

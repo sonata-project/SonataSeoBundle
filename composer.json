@@ -35,7 +35,10 @@
         "sonata-project/block-bundle": "<3.11"
     },
     "require-dev": {
-        "guzzle/guzzle": "^3.8",
+        "guzzlehttp/guzzle": "^6.0",
+        "php-http/httplug": "^1.1 || ^2.0",
+        "php-http/httplug-bundle": "^1.14",
+        "php-http/mock-client": "^0.3",
         "sonata-project/admin-bundle": "^3.31",
         "sonata-project/block-bundle": "^3.11",
         "sonata-project/core-bundle": "^3.9",
@@ -46,8 +49,9 @@
         "symfony/yaml": "^2.8 || ^3.2 || ^4.0"
     },
     "suggest": {
-        "guzzle/guzzle": "3.*",
-        "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"
+        "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder",
+        "php-http/buzz-adapter": "Buzz HTTP client implementation for TwitterEmbedTweetBlockService",
+        "php-http/guzzle6-adapter": "Guzzle HTTP client implementation for TwitterEmbedTweetBlockService"
     },
     "config": {
         "sort-packages": true

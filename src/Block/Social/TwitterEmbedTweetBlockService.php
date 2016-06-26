@@ -13,12 +13,16 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Block\Social;
 
-use Guzzle\Http\Exception\CurlException;
+use GuzzleHttp\Exception\GuzzleException;
+use Http\Client\Exception;
+use Http\Client\HttpClient;
+use Http\Message\MessageFactory;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
 use Sonata\CoreBundle\Model\Metadata;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -41,36 +45,37 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     public const TWEET_ID_PATTERN = '%^([0-9]*)$%';
 
     /**
+     * @var HttpClient|null
+     */
+    private $httpClient;
+
+    /**
+     * @var MessageFactory|null
+     */
+    private $messageFactory;
+
+    /**
+     * @param string          $name
+     * @param EngineInterface $templating
+     * @param HttpClient      $httpClient
+     * @param MessageFactory  $messageFactory
+     */
+    public function __construct($name, EngineInterface $templating, HttpClient $httpClient = null, MessageFactory $messageFactory = null)
+    {
+        parent::__construct($name, $templating);
+
+        $this->httpClient = $httpClient;
+        $this->messageFactory = $messageFactory;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
-        $tweet = $blockContext->getSetting('tweet');
-
-        if (($uriMatched = preg_match(self::TWEET_URL_PATTERN, $tweet))
-            || preg_match(self::TWEET_ID_PATTERN, $tweet)) {
-            // We matched an URL or an ID, we'll need to ask the API
-            if (false === class_exists('Guzzle\Http\Client')) {
-                throw new \RuntimeException('The guzzle http client library is required to call the Twitter API. Make sure to add guzzle/guzzle to your composer.json.');
-            }
-
-            // TODO cache API result
-            $client = new \Guzzle\Http\Client();
-            $client->setConfig(['curl.options' => [CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
-
-            try {
-                $request = $client->get($this->buildUri($uriMatched, $blockContext->getSettings()));
-                $apiTweet = json_decode($request->send()->getBody(true), true);
-
-                $tweet = $apiTweet['html'];
-            } catch (CurlException $e) {
-                // log error
-            }
-        }
-
         return $this->renderResponse($blockContext->getTemplate(), [
             'block' => $blockContext->getBlock(),
-            'tweet' => $tweet,
+            'tweet' => $this->loadTweet($blockContext),
         ], $response);
     }
 
@@ -209,5 +214,69 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         }
 
         return sprintf('%s?%s', self::TWITTER_OEMBED_URI, implode('&', $parameters));
+    }
+
+    /**
+     * Loads twitter tweet.
+     *
+     * @param BlockContextInterface $blockContext
+     *
+     * @return string|null
+     */
+    private function loadTweet(BlockContextInterface $blockContext)
+    {
+        $uriMatched = preg_match(self::TWEET_URL_PATTERN, $blockContext->getSetting('tweet'));
+
+        if (!$uriMatched || !preg_match(self::TWEET_ID_PATTERN, $blockContext->getSetting('tweet'))) {
+            return null;
+        }
+
+        if (null !== $this->httpClient && null !== $this->messageFactory) {
+            try {
+                $response = $this->httpClient->sendRequest(
+                    $this->messageFactory->createRequest(
+                        'GET',
+                        $this->buildUri($uriMatched, $blockContext->getSettings())
+                    )
+                );
+            } catch (Exception $e) {
+                // log error
+                return null;
+            }
+
+            $apiTweet = json_decode($response->getBody(), true);
+
+            return $apiTweet['html'];
+        }
+
+        // NEXT_MAJOR: Remove the old guzzle implementation
+
+        // We matched an URL or an ID, we'll need to ask the API
+        if (false === class_exists('GuzzleHttp\Client')) {
+            throw new \RuntimeException(
+                'The guzzle http client library is required to call the Twitter API.'.
+                'Make sure to add php-http/httplug-bundle or guzzlehttp/guzzle to your composer.json.'
+            );
+        }
+
+        @trigger_error(
+            'The direct Guzzle implementation is deprecated since 2.x and will be removed with the next major release.',
+            E_USER_DEPRECATED
+        );
+
+        // TODO cache API result
+        $client = new \GuzzleHttp\Client();
+        $client->setConfig(['curl.options' => [CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
+
+        try {
+            $request = $client->get($this->buildUri($uriMatched, $blockContext->getSettings()));
+            $apiTweet = json_decode($request->send()->getBody(true), true);
+
+            return $apiTweet['html'];
+        } catch (GuzzleException $e) {
+            // log error
+            return null;
+        }
+        // END NEXT_MAJOR
     }
 }

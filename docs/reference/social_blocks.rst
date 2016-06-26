@@ -49,5 +49,12 @@ The ``sonata.seo.block.twitter.embed`` allows you to embed a tweet by giving its
 or embed content. Please refer to `Embedded Tweets doc <https://dev.twitter.com/docs/embedded-tweets>`_
 and `OEmbed API doc <https://dev.twitter.com/docs/api/1/get/statuses/oembed>`_ for a full understanding.
 
-The block service allows you to ask the API if you've given an ID or a URL (you'll need to install the
-Guzzle library for this: ``composer require guzzle/guzzle``).
+The block service allows you to ask the API if you've given an ID or a URL .
+
+You'll need to install an HTTPlug client to request the Twitter API, for example the Guzzle adapter:
+
+.. code-block:: bash
+
+    composer require php-http/guzzle6-adapter
+
+More information can be found [here](https://php-http.readthedocs.io/en/latest/httplug/users.html).
