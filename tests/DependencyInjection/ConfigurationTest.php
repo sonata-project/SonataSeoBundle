@@ -97,6 +97,10 @@ class ConfigurationTest extends TestCase
                 'doctrine_orm' => [],
                 'services' => [],
             ],
+            'http' => [
+                'client' => null,
+                'message_factory' => null,
+            ],
         ];
     }
 
