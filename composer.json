@@ -37,8 +37,14 @@
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"
     },
     "autoload": {
-        "psr-4": { "Sonata\\SeoBundle\\": "" }
+        "psr-4": { "Sonata\\SeoBundle\\": "" },
+        "exclude-from-classmap": [
+            "Tests/"
+        ]
     },
+    "autoload-dev": {
+        "psr-4": { "Sonata\\SeoBundle\\Tests\\": "Tests/" }
+     },
     "extra": {
         "branch-alias": {
             "dev-master": "2.x-dev"
