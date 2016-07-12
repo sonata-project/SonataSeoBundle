@@ -13,23 +13,15 @@ namespace Sonata\SeoBundle\Tests\Block\Social;
 
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
-use Sonata\BlockBundle\Tests\Block\Service\FakeTemplating;
+use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 use Sonata\BlockBundle\Util\OptionsResolver;
 use Sonata\SeoBundle\Block\Social\FacebookShareButtonBlockService;
-use Sonata\SeoBundle\Tests\Block\BaseBlockTest;
 
-class FacebookShareButtonBlockServiceTest extends BaseBlockTest
+class FacebookShareButtonBlockServiceTest extends AbstractBlockServiceTestCase
 {
     public function testService()
     {
-        if (!$this->checkBlockBundle()) {
-            $this->markTestSkipped('Sonata BlockBundle is not installed.');
-
-            return;
-        }
-
-        $templating = new FakeTemplating();
-        $service = new FacebookShareButtonBlockService('sonata.block.service.facebook.share_button', $templating);
+        $service = new FacebookShareButtonBlockService('sonata.block.service.facebook.share_button', $this->templating);
 
         $block = new Block();
         $block->setType('core.text');
@@ -52,8 +44,8 @@ class FacebookShareButtonBlockServiceTest extends BaseBlockTest
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting', $templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting', $templating->parameters['settings']['width']);
-        $this->assertEquals('layout_setting', $templating->parameters['settings']['layout']);
+        $this->assertEquals('url_setting', $this->templating->parameters['settings']['url']);
+        $this->assertEquals('width_setting', $this->templating->parameters['settings']['width']);
+        $this->assertEquals('layout_setting', $this->templating->parameters['settings']['layout']);
     }
 }
