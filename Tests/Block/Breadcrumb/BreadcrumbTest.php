@@ -11,8 +11,8 @@
 
 namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 
+use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
-use Sonata\SeoBundle\Tests\Block\BaseBlockTest;
 
 class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 {
@@ -21,7 +21,7 @@ class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class BreadcrumbTest extends BaseBlockTest
+class BreadcrumbTest extends AbstractBlockServiceTestCase
 {
     public function testBlockService()
     {
