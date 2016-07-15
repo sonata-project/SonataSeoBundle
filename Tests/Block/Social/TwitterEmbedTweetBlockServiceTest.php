@@ -11,23 +11,16 @@
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
+use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 use Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService;
-
-class TwitterEmbedTweetBSTest extends TwitterEmbedTweetBlockService
-{
-    public function publicBuildUri($uriMatched, array $settings)
-    {
-        return $this->buildUri($uriMatched, $settings);
-    }
-}
+use Sonata\SeoBundle\Tests\Fixtures\Block\TwitterEmbedTweetBSTest;
 
 /**
  * Class TwitterEmbedTweetBlockServiceTest.
  *
- *
  * @author Hugo Briand <briand@ekino.com>
  */
-class TwitterEmbedTweetBlockServiceTest extends \PHPUnit_Framework_TestCase
+class TwitterEmbedTweetBlockServiceTest extends AbstractBlockServiceTestCase
 {
     public function testBuildUri()
     {
