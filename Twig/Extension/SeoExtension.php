@@ -60,7 +60,7 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
-     * @deprecated Deprecated as of 1.2, echo the return value of getTitle() instead.
+     * @deprecated Deprecated as of 1.2, echo the return value of getTitle() instead
      */
     public function renderTitle()
     {
@@ -76,7 +76,7 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
-     * @deprecated Deprecated as of 1.2, echo the return value of getMetadatas() instead.
+     * @deprecated Deprecated as of 1.2, echo the return value of getMetadatas() instead
      */
     public function renderMetadatas()
     {
@@ -112,7 +112,7 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
-     * @deprecated Deprecated as of 1.2, echo the return value of getHtmlAttributes() instead.
+     * @deprecated Deprecated as of 1.2, echo the return value of getHtmlAttributes() instead
      */
     public function renderHtmlAttributes()
     {
@@ -133,7 +133,7 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
-     * @deprecated Deprecated as of 1.2, echo the return value of getHeadAttributes() instead.
+     * @deprecated Deprecated as of 1.2, echo the return value of getHeadAttributes() instead
      */
     public function renderHeadAttributes()
     {
@@ -154,7 +154,7 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
-     * @deprecated Deprecated as of 1.2, echo the return value of getLinkCanonical() instead.
+     * @deprecated Deprecated as of 1.2, echo the return value of getLinkCanonical() instead
      */
     public function renderLinkCanonical()
     {
@@ -172,7 +172,7 @@ class SeoExtension extends \Twig_Extension
     }
 
     /**
-     * @deprecated Deprecated as of 1.2, echo the return value of getLangAlternates() instead.
+     * @deprecated Deprecated as of 1.2, echo the return value of getLangAlternates() instead
      */
     public function renderLangAlternates()
     {
