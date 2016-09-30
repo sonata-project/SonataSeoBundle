@@ -29,7 +29,6 @@ file.
     sonata_seo:
         encoding:         UTF-8
         page:
-            default: sonata.seo.page.default
             title:            Sonata Project
             default:          sonata.seo.page.default
             metas:
