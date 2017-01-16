@@ -15,9 +15,7 @@ use Exporter\Source\ChainSourceIterator;
 use Exporter\Source\SourceIteratorInterface;
 
 /**
- * SourceManager.
- *
- * Manager several chain source iterator grouped
+ * Manager several chain source iterator grouped.
  */
 class SourceManager implements SourceIteratorInterface
 {
@@ -26,9 +24,6 @@ class SourceManager implements SourceIteratorInterface
      */
     protected $sources;
 
-    /**
-     * Constructor.
-     */
     public function __construct()
     {
         $this->sources = new \ArrayIterator();

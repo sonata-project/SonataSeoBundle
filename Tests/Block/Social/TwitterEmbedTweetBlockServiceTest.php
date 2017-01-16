@@ -16,8 +16,6 @@ use Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService;
 use Sonata\SeoBundle\Tests\Fixtures\Block\TwitterEmbedTweetBSTest;
 
 /**
- * Class TwitterEmbedTweetBlockServiceTest.
- *
  * @author Hugo Briand <briand@ekino.com>
  */
 class TwitterEmbedTweetBlockServiceTest extends AbstractBlockServiceTestCase
