@@ -1,6 +1,17 @@
 UPGRADE 2.x
 ===========
 
+### Deprecated methods in `Sonata\SeoBundle\Twig\Extension`
+
+| deprecated method | recommended method |
+|-------------------------|-----------------------------|
+| `renderTitle()` | `getTitle()` |
+| `renderMetadatas()` | `getMetadatas()` |
+| `renderHtmlAttributes()` | `getHtmlAttributes()` |
+| `renderHeadAttributes()` | `getHeadAttributes()` |
+| `renderLinkCanonical()` | `getLinkCanonical()` |
+| `renderLangAlternates()` | `getLangAlternates()` |
+
 ### Tests
 
 All files under the ``Tests`` directory are now correctly handled as internal test classes. 
