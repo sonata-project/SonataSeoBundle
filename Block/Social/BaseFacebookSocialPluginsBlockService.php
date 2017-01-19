@@ -11,8 +11,8 @@
 
 namespace Sonata\SeoBundle\Block\Social;
 
-use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-abstract class BaseFacebookSocialPluginsBlockService extends BaseBlockService
+abstract class BaseFacebookSocialPluginsBlockService extends AbstractAdminBlockService
 {
     /**
      * @var string[]
