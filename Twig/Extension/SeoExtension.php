@@ -62,10 +62,16 @@ class SeoExtension extends \Twig_Extension
     /**
      * NEXT_MAJOR: remove this method.
      *
-     * @deprecated Deprecated as of 1.2, echo the return value of getTitle() instead
+     * @deprecated since 2.0, to be removed in 3.0
      */
     public function renderTitle()
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
+            'Use '.__NAMESPACE__.'::getTitle() instead.',
+            E_USER_DEPRECATED
+        );
+
         echo $this->getTitle();
     }
 
@@ -80,10 +86,16 @@ class SeoExtension extends \Twig_Extension
     /**
      * NEXT_MAJOR: remove this method.
      *
-     * @deprecated Deprecated as of 1.2, echo the return value of getMetadatas() instead
+     * @deprecated since 2.0, to be removed in 3.0
      */
     public function renderMetadatas()
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
+            'Use '.__NAMESPACE__.'::getMetadatas() instead.',
+            E_USER_DEPRECATED
+        );
+
         echo $this->getMetadatas();
     }
 
@@ -118,10 +130,16 @@ class SeoExtension extends \Twig_Extension
     /**
      * NEXT_MAJOR: remove this method.
      *
-     * @deprecated Deprecated as of 1.2, echo the return value of getHtmlAttributes() instead
+     * @deprecated since 2.0, to be removed in 3.0
      */
     public function renderHtmlAttributes()
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
+            'Use '.__NAMESPACE__.'::getHtmlAttributes() instead.',
+            E_USER_DEPRECATED
+        );
+
         echo $this->getHtmlAttributes();
     }
 
@@ -141,10 +159,16 @@ class SeoExtension extends \Twig_Extension
     /**
      * NEXT_MAJOR: remove this method.
      *
-     * @deprecated Deprecated as of 1.2, echo the return value of getHeadAttributes() instead
+     * @deprecated since 2.0, to be removed in 3.0
      */
     public function renderHeadAttributes()
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
+            'Use '.__NAMESPACE__.'::getHeadAttributes() instead.',
+            E_USER_DEPRECATED
+        );
+
         echo $this->getHeadAttributes();
     }
 
@@ -164,10 +188,16 @@ class SeoExtension extends \Twig_Extension
     /**
      * NEXT_MAJOR: remove this method.
      *
-     * @deprecated Deprecated as of 1.2, echo the return value of getLinkCanonical() instead
+     * @deprecated since 2.0, to be removed in 3.0
      */
     public function renderLinkCanonical()
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
+            'Use '.__NAMESPACE__.'::getLinkCanonical() instead.',
+            E_USER_DEPRECATED
+        );
+
         echo $this->getLinkCanonical();
     }
 
@@ -184,10 +214,16 @@ class SeoExtension extends \Twig_Extension
     /**
      * NEXT_MAJOR: remove this method.
      *
-     * @deprecated Deprecated as of 1.2, echo the return value of getLangAlternates() instead
+     * @deprecated since 2.0, to be removed in 3.0
      */
     public function renderLangAlternates()
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
+            'Use '.__NAMESPACE__.'::getLangAlternates() instead.',
+            E_USER_DEPRECATED
+        );
+
         echo $this->getLangAlternates();
     }
 
