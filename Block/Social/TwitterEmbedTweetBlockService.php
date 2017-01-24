@@ -80,7 +80,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
             'omit_script' => false,
             'align' => 'none',
             'related' => null,
-            'lang' => $this->languageList,
+            'lang' => null,
         ));
     }
 
