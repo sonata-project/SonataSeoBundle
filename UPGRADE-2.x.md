@@ -1,6 +1,9 @@
 UPGRADE 2.x
 ===========
 
+UPGRADE FROM 2.0 to 2.1
+=======================
+
 ### Deprecated methods in `Sonata\SeoBundle\Twig\Extension`
 
 | deprecated method | recommended method |
