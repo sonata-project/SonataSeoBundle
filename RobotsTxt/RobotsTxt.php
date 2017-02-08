@@ -11,15 +11,13 @@
 
 namespace Sonata\SeoBundle\RobotsTxt;
 
-/**
- * Class to represent robots.txt
- */
-class RobotsTxt
+
+final class RobotsTxt
 {
     /**
      * The lines of for the robots.txt
      *
-     * @var array
+     * @var string[]
      */
     protected $lines = array();
 
@@ -99,7 +97,7 @@ class RobotsTxt
      * @param string|array $directories
      * @param string       $rule
      */
-    protected function addRuleLine($directories, $rule)
+    private function addRuleLine($directories, $rule)
     {
         foreach ((array) $directories as $directory)
         {

@@ -1,5 +1,5 @@
 Robots.txt
-=======
+==========
 
 The ``SonataSeoBundle`` provides a support for static robots.txt generation.
 
@@ -35,6 +35,6 @@ For more information on robots.txt:
 Usage
 -----
 
-- Generate the sitemap::
+- Generate the robots.txt::
 
     php app/console sonata:seo:robotstxt web

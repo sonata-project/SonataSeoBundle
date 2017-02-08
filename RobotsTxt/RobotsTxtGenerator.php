@@ -13,14 +13,11 @@ namespace Sonata\SeoBundle\RobotsTxt;
 
 use Sonata\SeoBundle\RobotsTxt\RobotsTxt;
 
-/**
- *
- */
 class RobotsTxtGenerator {
 
 
     /**
-     * [buildRobotsTxt description]
+     * Build a RobotsTxt Object from an array
      * @param  array  $robotsTxtArray
      * @return RobotsTxt
      */

@@ -6,7 +6,6 @@
         <parameter key="sonata.seo.page.default.class">Sonata\SeoBundle\Seo\SeoPage</parameter>
         <parameter key="sonata.seo.twig.extension.class">Sonata\SeoBundle\Twig\Extension\SeoExtension</parameter>
         <parameter key="sonata.seo.sitemap.manager.class">Sonata\SeoBundle\Sitemap\SourceManager</parameter>
-        <parameter key="sonata.seo.robotstxt.generator.class">Sonata\SeoBundle\RobotsTxt\RobotsTxtGenerator</parameter>
     </parameters>
     <services>
         <service id="sonata.seo.page.default" class="%sonata.seo.page.default.class%"/>
@@ -16,6 +15,6 @@
             <argument/>
         </service>
         <service id="sonata.seo.sitemap.manager" class="%sonata.seo.sitemap.manager.class%"/>
-        <service id="sonata.seo.robotstxt.generator" class="%sonata.seo.robotstxt.generator.class%"/>
+        <service id="sonata.seo.robotstxt.generator" class="Sonata\SeoBundle\RobotsTxt\RobotsTxtGenerator"/>
     </services>
 </container>

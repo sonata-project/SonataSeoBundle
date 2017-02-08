@@ -20,7 +20,7 @@ use Symfony\Component\Filesystem\Filesystem;
 /**
  * Create robots.txt
  */
-class RobotsTxtGeneratorCommand extends ContainerAwareCommand
+final class RobotsTxtGeneratorCommand extends ContainerAwareCommand
 {
     /**
      * {@inheritdoc}
@@ -29,11 +29,11 @@ class RobotsTxtGeneratorCommand extends ContainerAwareCommand
     {
         $this->setName('sonata:seo:robotstxt');
 
-        $this->addArgument('folder', InputArgument::REQUIRED, 'The folder to store the robots.txt file');
+        $this->addArgument('folder', InputArgument::REQUIRED, 'The directory where to write the robots.txt file');
 
         $this->setDescription('Create robots.txt');
         $this->setHelp(<<<'EOT'
-The <info>sonata:seo:robotstxt</info> command create new robots.txt file.
+The <info>sonata:seo:robotstxt</info> command creates new robots.txt file.
 
 EOT
         );
@@ -46,14 +46,12 @@ EOT
     {
         $fs = new Filesystem();
 
-        // step 1
         $generator = $this->getContainer()->get('sonata.seo.robotstxt.generator');
         $robotsConfig = $this->getContainer()->getParameter('sonata_seo.robotstxt');
         if(empty($robotsConfig)){
             throw new \RuntimeException("No sonata_seo_robotstxt config found, check your config.yml");
         }
 
-        // step 2
         $output->writeln(sprintf('Generating robots.txt in %s', $input->getArgument('folder')));
         $robotsTxt = $generator->buildRobotsTxt($robotsConfig);
 
@@ -63,10 +61,7 @@ EOT
             $fs->touch($filePath);
         }
 
-        // step 3
         $content = $robotsTxt->generate();
-
-        // step 4
         $fs->dumpFile($filePath, $content);
 
         $output->writeln('<info>done!</info>');
