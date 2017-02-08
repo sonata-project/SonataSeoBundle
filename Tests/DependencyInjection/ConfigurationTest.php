@@ -65,6 +65,22 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('website', $config['page']['metas']['property']['og:type']);
     }
 
+    public function testRobotstxtConfig()
+    {
+        $values = Yaml::parse(file_get_contents(__DIR__.'/data/config_robotstxt.yml'), true);
+
+        $config = $this->processConfiguration(array($values));
+
+        $expected = array_merge_recursive(
+            $this->getDefaultConfiguration(),
+            $values
+        );
+
+        $this->assertEquals($expected, $config);
+
+        $this->assertEquals('*', $config['robotstxt'][0]['user-agent'][0]);
+    }
+
     private function getDefaultConfiguration()
     {
         return array(
@@ -80,6 +96,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'doctrine_orm' => array(),
                 'services' => array(),
             ),
+            'robotstxt' => array(),
         );
     }
 
