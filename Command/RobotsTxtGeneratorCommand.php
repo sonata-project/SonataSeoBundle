@@ -49,7 +49,7 @@ EOT
         $generator = $this->getContainer()->get('sonata.seo.robotstxt.generator');
         $robotsConfig = $this->getContainer()->getParameter('sonata_seo.robotstxt');
         if(empty($robotsConfig)){
-            throw new \RuntimeException("No sonata_seo_robotstxt config found, check your config.yml");
+            throw new \RuntimeException('No sonata_seo_robotstxt config found, check your config.yml');
         }
 
         $output->writeln(sprintf('Generating robots.txt in %s', $input->getArgument('folder')));

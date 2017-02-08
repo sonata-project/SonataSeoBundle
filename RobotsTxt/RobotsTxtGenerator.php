@@ -26,8 +26,8 @@ class RobotsTxtGenerator {
         $robotsTxt = new RobotsTxt();
 
         // add first line comment
-        $robotsTxt->addComment("www.robotstxt.org/");
-        $robotsTxt->addComment("www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449");
+        $robotsTxt->addComment('www.robotstxt.org/');
+        $robotsTxt->addComment('www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449');
         $robotsTxt->addSpacer();
 
         foreach ($robotsTxtArray as $key => $section) {
@@ -51,7 +51,7 @@ class RobotsTxtGenerator {
                         $robotsTxt->addDisallow($directory);
                         break;
                     default:
-                        throw new \RuntimeException("Only allow or disallow is accepted for access-control");
+                        throw new \RuntimeException('Only allow or disallow is accepted for access-control');
                         break;
                 }
             }
