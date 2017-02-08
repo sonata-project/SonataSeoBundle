@@ -52,7 +52,7 @@ EOT
         $folder = $input->hasOption('folder') ? $input->getOption('folder') : $this->getContainer()->getParameter('kernel.root_dir').DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'web';
 
         $output->writeln(sprintf('Generating robots.txt in %s', $input->getArgument('folder')));
-        $generator->writeRobotsTxt($robotsConfig, $folder);
+        $generator->generate($robotsConfig, $folder);
 
         $output->writeln('<info>done!</info>');
     }

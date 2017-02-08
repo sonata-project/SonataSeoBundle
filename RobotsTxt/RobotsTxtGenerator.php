@@ -15,6 +15,19 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class RobotsTxtGenerator
 {
+
+    /**
+     * Generate robots.txt file from an array.
+     *
+     * @param array $robotsTxtArray
+     * @param string $folder
+     */
+    public function generate(array $robotsTxtArray, $folder)
+    {
+        $robotsTxt = $this->buildRobotsTxt($robotsTxtArray);
+        $this->writeRobotsTxt($robotsTxt, $folder);
+    }
+
     /**
      * Build a RobotsTxt Object from an array.
      *
@@ -75,13 +88,11 @@ class RobotsTxtGenerator
     /**
      * Write the robots.txt file into the $folder.
      *
-     * @param array  $robotsTxtArray
+     * @param RobotsTxt $robotsTxtArray
      * @param string $folder
      */
-    public function writeRobotsTxt(array $robotsTxtArray, $folder)
+    public function writeRobotsTxt(RobotsTxt $robotsTxt, $folder)
     {
-        $robotsTxt = $this->buildRobotsTxt($robotsTxtArray);
-
         $filePath = $folder.DIRECTORY_SEPARATOR.'robots.txt';
 
         $content = $robotsTxt->generate();
