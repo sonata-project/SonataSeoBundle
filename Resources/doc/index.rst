@@ -14,3 +14,4 @@ Reference Guide
    reference/breadcrumb
    reference/social_blocks
    reference/sitemap
+   reference/robotstxt

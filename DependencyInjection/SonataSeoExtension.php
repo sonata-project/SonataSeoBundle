@@ -44,6 +44,7 @@ class SonataSeoExtension extends Extension
         $loader->load('event.xml');
         $loader->load('services.xml');
 
+        $container->setParameter('sonata_seo.robotstxt', $config['robotstxt']);
         $this->configureSeoPage($config['page'], $container);
         $this->configureSitemap($config['sitemap'], $container);
         $this->configureClassesToCompile();
