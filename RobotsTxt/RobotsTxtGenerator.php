@@ -20,7 +20,7 @@ class RobotsTxtGenerator
      * Generate robots.txt file from an array.
      *
      * @param array  $robotsTxtArray
-     * @param string    $folder
+     * @param string $folder
      */
     public function generate(array $robotsTxtArray, $folder)
     {
@@ -89,7 +89,7 @@ class RobotsTxtGenerator
      * Write the robots.txt file into the $folder.
      *
      * @param RobotsTxt $robotsTxtArray
-     * @param string $folder
+     * @param string    $folder
      */
     public function writeRobotsTxt(RobotsTxt $robotsTxt, $folder)
     {
