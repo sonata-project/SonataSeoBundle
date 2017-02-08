@@ -15,7 +15,6 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Create robots.txt.
@@ -29,7 +28,7 @@ final class RobotsTxtGeneratorCommand extends ContainerAwareCommand
     {
         $this->setName('sonata:seo:robotstxt');
 
-        $this->addArgument('folder', InputArgument::REQUIRED, 'The directory where to write the robots.txt file');
+        $this->addArgument('folder', InputArgument::OPTIONAL, 'The directory where to write the robots.txt file');
 
         $this->setDescription('Create robots.txt');
         $this->setHelp(<<<'EOT'
@@ -44,25 +43,16 @@ EOT
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $fs = new Filesystem();
-
         $generator = $this->getContainer()->get('sonata.seo.robotstxt.generator');
         $robotsConfig = $this->getContainer()->getParameter('sonata_seo.robotstxt');
         if (empty($robotsConfig)) {
             throw new \RuntimeException('No sonata_seo_robotstxt config found, check your config.yml');
         }
 
+        $folder = $input->hasOption('folder') ? $input->getOption('folder') : $this->getContainer()->getParameter('kernel.root_dir').DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'web';;
+
         $output->writeln(sprintf('Generating robots.txt in %s', $input->getArgument('folder')));
-        $robotsTxt = $generator->buildRobotsTxt($robotsConfig);
-
-        $filePath = $input->getArgument('folder').DIRECTORY_SEPARATOR.'robots.txt';
-
-        if (!$fs->exists($filePath)) {
-            $fs->touch($filePath);
-        }
-
-        $content = $robotsTxt->generate();
-        $fs->dumpFile($filePath, $content);
+        $generator->writeRobotsTxt($robotsConfig, $folder);
 
         $output->writeln('<info>done!</info>');
     }

@@ -12,6 +12,7 @@
 namespace Sonata\SeoBundle\RobotsTxt;
 
 use Sonata\SeoBundle\RobotsTxt\RobotsTxt;
+use Symfony\Component\Filesystem\Filesystem;
 
 class RobotsTxtGenerator
 {
@@ -73,6 +74,25 @@ class RobotsTxtGenerator
         }
 
         return $robotsTxt;
+    }
+
+    /**
+     * Write the robots.txt file into the $folder
+     *
+     * @param  array  $robotsTxtArray
+     * @param string  $folder
+     *
+     * @return void
+     */
+    public function writeRobotsTxt(array $robotsTxtArray, $folder)
+    {
+        $robotsTxt = $this->buildRobotsTxt($robotsTxtArray);
+
+        $filePath = $folder.DIRECTORY_SEPARATOR.'robots.txt';
+
+        $content = $robotsTxt->generate();
+        $fs = new Filesystem();
+        $fs->dumpFile($filePath, $content);
     }
 
 }
