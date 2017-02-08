@@ -15,7 +15,6 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class RobotsTxtGenerator
 {
-
     /**
      * Generate robots.txt file from an array.
      *
