@@ -19,8 +19,8 @@ class RobotsTxtGenerator
     /**
      * Generate robots.txt file from an array.
      *
-     * @param array $robotsTxtArray
-     * @param string $folder
+     * @param array  $robotsTxtArray
+     * @param string    $folder
      */
     public function generate(array $robotsTxtArray, $folder)
     {
