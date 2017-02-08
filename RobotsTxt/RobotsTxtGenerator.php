@@ -13,7 +13,8 @@ namespace Sonata\SeoBundle\RobotsTxt;
 
 use Sonata\SeoBundle\RobotsTxt\RobotsTxt;
 
-class RobotsTxtGenerator {
+class RobotsTxtGenerator
+{
 
 
     /**
