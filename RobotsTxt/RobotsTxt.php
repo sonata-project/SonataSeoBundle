@@ -11,7 +11,6 @@
 
 namespace Sonata\SeoBundle\RobotsTxt;
 
-
 final class RobotsTxt
 {
     /**
@@ -110,6 +109,14 @@ final class RobotsTxt
     }
 
     /**
+     * Reset the lines.
+     */
+    public function reset()
+    {
+        $this->lines = array();
+    }
+
+    /**
      * Add a line to the robots.txt.
      *
      * @param string $line
@@ -129,14 +136,6 @@ final class RobotsTxt
         foreach ((array) $lines as $line) {
             $this->addLine($line);
         }
-    }
-
-    /**
-     * Reset the lines.
-     */
-    public function reset()
-    {
-        $this->lines = array();
     }
 
     /**

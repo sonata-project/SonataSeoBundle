@@ -71,6 +71,7 @@ class Configuration implements ConfigurationInterface
                                if (empty($v['sitemap'])) {
                                    unset($v['sitemap']);
                                }
+
                                return $v;
                            })
                         ->end()

@@ -52,8 +52,7 @@ class RobotsTxtGeneratorTest extends \PHPUnit_Framework_TestCase
             'User-agent: BadRobot',
             'User-agent: GoogleBot',
             'Disallow: /private',
-            ''
+            '',
         );
     }
-
 }
