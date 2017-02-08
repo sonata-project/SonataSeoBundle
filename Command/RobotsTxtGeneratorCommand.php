@@ -18,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * Create robots.txt
+ * Create robots.txt.
  */
 final class RobotsTxtGeneratorCommand extends ContainerAwareCommand
 {
@@ -48,16 +48,16 @@ EOT
 
         $generator = $this->getContainer()->get('sonata.seo.robotstxt.generator');
         $robotsConfig = $this->getContainer()->getParameter('sonata_seo.robotstxt');
-        if(empty($robotsConfig)){
+        if (empty($robotsConfig)) {
             throw new \RuntimeException('No sonata_seo_robotstxt config found, check your config.yml');
         }
 
         $output->writeln(sprintf('Generating robots.txt in %s', $input->getArgument('folder')));
         $robotsTxt = $generator->buildRobotsTxt($robotsConfig);
 
-        $filePath = $input->getArgument('folder').DIRECTORY_SEPARATOR."robots.txt";
+        $filePath = $input->getArgument('folder').DIRECTORY_SEPARATOR.'robots.txt';
 
-        if(!$fs->exists($filePath)){
+        if (!$fs->exists($filePath)) {
             $fs->touch($filePath);
         }
 

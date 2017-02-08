@@ -19,10 +19,13 @@ class RobotsTxtGenerator
 
     /**
      * Build a RobotsTxt Object from an array
+     *
      * @param  array  $robotsTxtArray
+     *
      * @return RobotsTxt
      */
-    public function buildRobotsTxt(array $robotsTxtArray){
+    public function buildRobotsTxt(array $robotsTxtArray)
+    {
 
         $robotsTxt = new RobotsTxt();
 
@@ -37,7 +40,7 @@ class RobotsTxtGenerator
                 $robotsTxt->addUserAgent($userAgent);
             }
             // add crawl-delay
-            if(array_key_exists('crawl-delay', $section)){
+            if (array_key_exists('crawl-delay', $section)) {
                 $robotsTxt->addCrawlDelay($section['crawl-delay']);
             }
             // add access-control
@@ -57,13 +60,13 @@ class RobotsTxtGenerator
                 }
             }
             // add Sitemap
-            if(array_key_exists('sitemap', $section)){
+            if (array_key_exists('sitemap', $section)) {
                 foreach ($section['sitemap'] as $sitemap) {
                     $robotsTxt->addSitemap($sitemap);
                 }
             }
             // add Host
-            if(array_key_exists('host', $section)){
+            if (array_key_exists('host', $section)) {
                 $robotsTxt->addHost($section['host']);
             }
             $robotsTxt->addSpacer();

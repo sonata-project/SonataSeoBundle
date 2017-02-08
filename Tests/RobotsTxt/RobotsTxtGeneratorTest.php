@@ -11,8 +11,8 @@
 
 namespace Sonata\SeoBundle\Tests\RobotsTxt;
 
-use Symfony\Component\Yaml\Yaml;
 use Sonata\SeoBundle\RobotsTxt\RobotsTxtGenerator;
+use Symfony\Component\Yaml\Yaml;
 
 class RobotsTxtGeneratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -35,22 +35,22 @@ class RobotsTxtGeneratorTest extends \PHPUnit_Framework_TestCase
 
     private function getRobotsTxtArray(){
         return [
-            "# www.robotstxt.org/",
-            "# www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449",
-            "",
-            "User-agent: *",
-            "Crawl-delay: 10",
-            "Disallow: /admin",
-            "Disallow: /sonatadmin",
-            "Allow: /api/doc",
-            "Disallow: /api",
-            "Sitemap: https://www.example.com/sitemap_index.xml",
-            "Host: www.example.com",
-            "",
-            "User-agent: BadRobot",
-            "User-agent: GoogleBot",
-            "Disallow: /private",
-            ""
+            '# www.robotstxt.org/',
+            '# www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449',
+            '',
+            'User-agent: *',
+            'Crawl-delay: 10',
+            'Disallow: /admin',
+            'Disallow: /sonatadmin',
+            'Allow: /api/doc',
+            'Disallow: /api',
+            'Sitemap: https://www.example.com/sitemap_index.xml',
+            'Host: www.example.com',
+            '',
+            'User-agent: BadRobot',
+            'User-agent: GoogleBot',
+            'Disallow: /private',
+            ''
         ];
     }
 

@@ -67,9 +67,11 @@ class Configuration implements ConfigurationInterface
                     ->prototype('array')
                         ->normalizeKeys(false)
                         ->validate()
-                           ->always(function($v){
-                               if ( empty($v['sitemap']) )
+                           ->always(function ($v) {
+                               if (empty($v['sitemap'])){
                                    unset($v['sitemap']);
+                               }
+                               
                                return $v;
                            })
                         ->end()

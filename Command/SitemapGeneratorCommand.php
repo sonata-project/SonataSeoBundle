@@ -26,7 +26,7 @@ use Symfony\Component\Finder\Finder;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class SitemapGeneratorCommand extends ContainerAwareCommand
+final class SitemapGeneratorCommand extends ContainerAwareCommand
 {
     /**
      * {@inheritdoc}

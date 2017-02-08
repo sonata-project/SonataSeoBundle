@@ -15,7 +15,7 @@ namespace Sonata\SeoBundle\RobotsTxt;
 final class RobotsTxt
 {
     /**
-     * The lines of for the robots.txt
+     * The lines of for the robots.txt.
      *
      * @var string[]
      */
@@ -92,20 +92,6 @@ final class RobotsTxt
     }
 
     /**
-     * Add a rule to the robots.txt.
-     *
-     * @param string|array $directories
-     * @param string       $rule
-     */
-    private function addRuleLine($directories, $rule)
-    {
-        foreach ((array) $directories as $directory)
-        {
-            $this->addLine("$rule: $directory");
-        }
-    }
-
-    /**
      * Add a comment to the robots.txt.
      *
      * @param string $comment
@@ -120,7 +106,7 @@ final class RobotsTxt
      */
     public function addSpacer()
     {
-        $this->addLine("");
+        $this->addLine('');
     }
 
     /**
@@ -140,8 +126,7 @@ final class RobotsTxt
      */
     protected function addLines($lines)
     {
-        foreach ((array) $lines as $line)
-        {
+        foreach ((array) $lines as $line) {
             $this->addLine($line);
         }
     }
@@ -154,5 +139,18 @@ final class RobotsTxt
     public function reset()
     {
         $this->lines = array();
+    }
+
+    /**
+     * Add a rule to the robots.txt.
+     *
+     * @param string|array $directories
+     * @param string       $rule
+     */
+    private function addRuleLine($directories, $rule)
+    {
+        foreach ((array) $directories as $directory) {
+            $this->addLine("$rule: $directory");
+        }
     }
 }
