@@ -29,12 +29,14 @@ class RobotsTxtGeneratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $result);
     }
 
-    private function getRobotsTxt(){
+    private function getRobotsTxt()
+    {
         return implode(PHP_EOL, $this->getRobotsTxtArray());
     }
 
-    private function getRobotsTxtArray(){
-        return [
+    private function getRobotsTxtArray()
+    {
+        return array(
             '# www.robotstxt.org/',
             '# www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449',
             '',
@@ -51,7 +53,7 @@ class RobotsTxtGeneratorTest extends \PHPUnit_Framework_TestCase
             'User-agent: GoogleBot',
             'Disallow: /private',
             ''
-        ];
+        );
     }
 
 }

@@ -11,7 +11,6 @@
 
 namespace Sonata\SeoBundle\RobotsTxt;
 
-use Sonata\SeoBundle\RobotsTxt\RobotsTxt;
 use Symfony\Component\Filesystem\Filesystem;
 
 class RobotsTxtGenerator
@@ -19,9 +18,9 @@ class RobotsTxtGenerator
 
 
     /**
-     * Build a RobotsTxt Object from an array
+     * Build a RobotsTxt Object from an array.
      *
-     * @param  array  $robotsTxtArray
+     * @param array $robotsTxtArray
      *
      * @return RobotsTxt
      */
@@ -77,12 +76,10 @@ class RobotsTxtGenerator
     }
 
     /**
-     * Write the robots.txt file into the $folder
+     * Write the robots.txt file into the $folder.
      *
-     * @param  array  $robotsTxtArray
-     * @param string  $folder
-     *
-     * @return void
+     * @param array $robotsTxtArray
+     * @param string $folder
      */
     public function writeRobotsTxt(array $robotsTxtArray, $folder)
     {

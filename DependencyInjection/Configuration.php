@@ -68,10 +68,9 @@ class Configuration implements ConfigurationInterface
                         ->normalizeKeys(false)
                         ->validate()
                            ->always(function ($v) {
-                               if (empty($v['sitemap'])){
+                               if (empty($v['sitemap'])) {
                                    unset($v['sitemap']);
                                }
-                               
                                return $v;
                            })
                         ->end()

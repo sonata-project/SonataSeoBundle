@@ -133,8 +133,6 @@ final class RobotsTxt
 
     /**
      * Reset the lines.
-     *
-     * @return void
      */
     public function reset()
     {
