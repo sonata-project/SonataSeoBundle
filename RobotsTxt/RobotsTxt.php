@@ -64,6 +64,16 @@ class RobotsTxt
     }
 
     /**
+     * Add a Crawl-delay to the robots.txt.
+     *
+     * @param int $delay
+     */
+    public function addCrawlDelay($delay)
+    {
+        $this->addLine("Crawl-delay: $delay");
+    }
+
+    /**
      * Add a disallow rule to the robots.txt.
      *
      * @param string|array $directories

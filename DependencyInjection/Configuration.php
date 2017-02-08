@@ -82,7 +82,7 @@ class Configuration implements ConfigurationInterface
                             ->end()
                             ->arrayNode('access-control')
                                 ->isRequired()
-                                ->prototype('scalar')->end()
+                                ->prototype('variable')->end()
                             ->end()
                             ->arrayNode('sitemap')
                                 ->prototype('scalar')->defaultNull()->end()

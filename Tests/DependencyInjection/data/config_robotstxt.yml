@@ -4,14 +4,14 @@ robotstxt:
             - "*"
         crawl-delay: 10
         access-control:
-            - "Disallow: /admin"
-            - "Disallow: /sonatadmin"
-            - "Allow: /api/doc"
-            - "Disallow: /api"
+            - disallow: /admin
+            - disallow: /sonatadmin
+            - allow: /api/doc
+            - disallow: /api
         sitemap:
             - https://www.example.com/sitemap_index.xml
         host: www.example.com
     -
         user-agent: [BadRobot, GoogleBot]
         access-control:
-            - "Disallow: /private"
+            - disallow: /private
