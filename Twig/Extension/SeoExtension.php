@@ -48,6 +48,7 @@ class SeoExtension extends \Twig_Extension
             new \Twig_SimpleFunction('sonata_seo_link_canonical', array($this, 'getLinkCanonical'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('sonata_seo_lang_alternates', array($this, 'getLangAlternates'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('sonata_seo_oembed_links', array($this, 'getOembedLinks'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('sonata_seo_content_spinner', array($this, 'contentSpinningFilter')),
         );
     }
 
@@ -215,6 +216,34 @@ class SeoExtension extends \Twig_Extension
         }
 
         return $html;
+    }
+
+    /**
+     * @param string $string
+     *
+     * @return string
+     */
+    public function contentSpinningFilter($string)
+    {
+        return preg_replace_callback(
+            '/\{(((?>[^\{\}]+)|(?R))*)\}/x',
+            array($this, 'replace'),
+            $string
+        );
+    }
+
+    /**
+     * Replace.
+     *
+     * @param string $text
+     *
+     * @return string
+     */
+    private function replace($text)
+    {
+        $parts = explode('|', $this->contentSpinningFilter($text[1]));
+
+        return $parts[array_rand($parts)];
     }
 
     /**

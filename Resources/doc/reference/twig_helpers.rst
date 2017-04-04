@@ -86,3 +86,21 @@ This will render oEmbed links as follows:
 .. code-block:: html
 
     <link rel="alternate" type="application/json+oembed" href="http://flickr.com/services/oembed?url=http%3A%2F%2Fflickr.com%2Fphotos%2Fbees%2F2362225867%2F&format=json" title="Bacon Lollys oEmbed Profile" />
+
+Content spinning
+^^^^^^^^^^^^^^^^
+
+`Content spinning <https://www.wikiwand.com/en/Article_spinning#/Automatic_spinning>`_, is a search engine optimization (SEO) technique. Content spinning makes it possible to publish dozens of texts from a written text rather than spend time writing these dozens of texts.
+From the same text it is thus possible to publish a content several times without the search engines detecting it as duplicate content.
+
+`You could see more about Content spinning, here <https://www.wikiwand.com/en/Article_spinning#/Automatic_spinning>`_
+
+.. code-block:: jinja
+
+    {{ sonata_seo_content_spinner("{Beerpong|Tea} is {great|good|excellent} for {health|life}.") }}
+
+This will render content spinning as follows:
+
+.. code-block:: html
+
+    Tea is good for health.

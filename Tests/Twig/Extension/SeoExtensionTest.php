@@ -113,6 +113,18 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n", $extension->getLangAlternates());
     }
 
+    public function testContentSpinnerFilter()
+    {
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+
+        $extension = new SeoExtension($page, 'UTF-8');
+        $text = '{Beerpong|Tea} is {great|good|excellent} for {health|life}.';
+
+        $this->assertContains('is', $extension->contentSpinningFilter($text));
+        $this->assertContains('for', $extension->contentSpinningFilter($text));
+        $this->assertRegexp('/great|good|excellent/', $extension->contentSpinningFilter($text));
+    }
+
     public function testOEmbedLinks()
     {
         $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
