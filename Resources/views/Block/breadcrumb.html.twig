@@ -10,7 +10,17 @@ file that was distributed with this source code.
 #}
 
 {% extends 'knp_menu_ordered.html.twig' %}
-{% block label %}{{ item.label|trans(item.getExtra('translation_params', {}), item.getExtra('translation_domain', 'SonataSeoBundle')) }}{% endblock %}
+
+{% block label %}
+    {% set translation_domain = item.getExtra('translation_domain', 'SonataSeoBundle') %}
+    {% if options.allow_safe_labels and item.extra('safe_label', false) %}
+        {{- item.label|raw -}}
+    {% elseif translation_domain is sameas(false) %}
+        {{- item.label -}}
+    {% else %}
+        {{- item.label|trans(item.getExtra('translation_params', {}), translation_domain) -}}
+    {% endif %}
+{% endblock %}
 
 {% block list %}
 {% spaceless %}

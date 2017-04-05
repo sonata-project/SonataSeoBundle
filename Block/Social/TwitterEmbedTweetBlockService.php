@@ -20,8 +20,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class TwitterEmbedTweetBlockService.
- *
  * This block service allows to embed a tweet by requesting the Twitter API.
  *
  * @see https://dev.twitter.com/docs/api/1/get/statuses/oembed
@@ -82,7 +80,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
             'omit_script' => false,
             'align' => 'none',
             'related' => null,
-            'lang' => $this->languageList,
+            'lang' => null,
         ));
     }
 
