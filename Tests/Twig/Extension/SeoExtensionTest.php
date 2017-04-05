@@ -11,13 +11,14 @@
 
 namespace Sonata\SeoBundle\Tests\Request;
 
+use Sonata\SeoBundle\Tests\Helpers\PHPUnit_Framework_TestCase;
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
-class SeoExtensionTest extends \PHPUnit_Framework_TestCase
+class SeoExtensionTest extends PHPUnit_Framework_TestCase
 {
     public function testHtmlAttributes()
     {
-        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getHtmlAttributes')->will($this->returnValue(array(
             'xmlns' => 'http://www.w3.org/1999/xhtml',
             'xmlns:og' => 'http://opengraphprotocol.org/schema/',
@@ -30,7 +31,7 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testHeadAttributes()
     {
-        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getHeadAttributes')->will($this->returnValue(array()));
 
         $extension = new SeoExtension($page, 'UTF-8');
@@ -40,7 +41,7 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testTitle()
     {
-        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getTitle')->will($this->returnValue('<b>foo bar</b>'));
 
         $extension = new SeoExtension($page, 'UTF-8');
@@ -50,7 +51,7 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testEncoding()
     {
-        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getTitle')->will($this->returnValue('pięć głów zatkniętych na pal'));
         $page->expects($this->once())->method('getMetas')->will($this->returnValue(array(
             'http-equiv' => array(),
@@ -69,7 +70,7 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testMetadatas()
     {
-        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getMetas')->will($this->returnValue(array(
             'http-equiv' => array(),
             'name' => array('foo' => array('bar "\'"', array())),
@@ -85,7 +86,7 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testName()
     {
-        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $extension = new SeoExtension($page, 'UTF-8');
 
         $this->assertEquals('sonata_seo', $extension->getName());
@@ -93,7 +94,7 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testLinkCanonical()
     {
-        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->any())->method('getLinkCanonical')->will($this->returnValue('http://example.com'));
 
         $extension = new SeoExtension($page, 'UTF-8');
@@ -103,7 +104,7 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testLangAlternates()
     {
-        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getLangAlternates')->will($this->returnValue(array(
                     'http://example.com/' => 'x-default',
                 )));
@@ -115,7 +116,7 @@ class SeoExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testOEmbedLinks()
     {
-        $page = $this->getMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getOembedLinks')->will($this->returnValue(array(
             'Foo' => 'http://example.com/',
         )));
