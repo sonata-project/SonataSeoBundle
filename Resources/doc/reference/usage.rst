@@ -63,3 +63,8 @@ These values can be used inside a twig template.
             {{ sonata_seo_metadatas() }}
             {{ sonata_seo_link_canonical() }}
             {{ sonata_seo_lang_alternates() }}
+
+
+You can also use a configuration file for each bundle you need by creating a
+``sonata.yml`` file into it's ``Resources/config`` directory. The syntax will be
+the same as ``config.yml`` file (see above)
