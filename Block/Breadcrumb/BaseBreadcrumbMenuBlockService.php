@@ -29,12 +29,12 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     /**
      * @var string
      */
-    private $context;
+    protected $context;
 
     /**
      * @var FactoryInterface
      */
-    private $factory;
+    protected $factory;
 
     /**
      * @param string                $context
