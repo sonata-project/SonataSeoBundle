@@ -15,7 +15,7 @@ file that was distributed with this source code.
     {% set translation_domain = item.getExtra('translation_domain', 'SonataSeoBundle') %}
     {% if options.allow_safe_labels and item.extra('safe_label', false) %}
         {{- item.label|raw -}}
-    {% elseif translation_domain is sameas(false) %}
+    {% elseif translation_domain is same as(false) %}
         {{- item.label -}}
     {% else %}
         {{- item.label|trans(item.getExtra('translation_params', {}), translation_domain) -}}
