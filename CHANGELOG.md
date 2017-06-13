@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.2.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.1.0...2.2.0) - 2017-06-14
+### Changed
+- Allow Twig ^2.0
+
+### Fixed
+- Deprecated usage of `Sonata\BlockBundle\Block\BaseBlockService`
+- use `same as` instead of deprecated `sameas` `breadcrumb.html.twig`
+
 ## [2.1.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.0.2...2.1.0) - 2017-02-02
 ### Added
 - Added support for `safe_label` in breadcrumb
