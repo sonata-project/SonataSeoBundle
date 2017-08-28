@@ -59,9 +59,11 @@ class RobotsTxtGenerator
                 switch ($rule) {
                     case 'allow':
                         $robotsTxt->addAllow($directory);
+                        
                         break;
                     case 'disallow':
                         $robotsTxt->addDisallow($directory);
+                        
                         break;
                     default:
                         throw new \RuntimeException('Only allow or disallow is accepted for access-control');
