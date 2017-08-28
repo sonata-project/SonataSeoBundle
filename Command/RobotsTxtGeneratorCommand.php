@@ -48,8 +48,11 @@ EOT
         if (empty($robotsConfig)) {
             throw new \RuntimeException('No sonata_seo_robotstxt config found, check your config.yml');
         }
-
-        $folder = $input->hasOption('folder') ? $input->getOption('folder') : $this->getContainer()->getParameter('kernel.root_dir').DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'web';
+        
+        $folder = $this->getContainer()->getParameter('kernel.root_dir').DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'web';
+        if ($input->hasOption('folder')) {
+            $folder = $input->getOption('folder');
+        }
 
         $output->writeln(sprintf('Generating robots.txt in %s', $input->getArgument('folder')));
         $generator->generate($robotsConfig, $folder);
