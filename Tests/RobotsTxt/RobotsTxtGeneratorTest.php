@@ -24,14 +24,9 @@ class RobotsTxtGeneratorTest extends \PHPUnit_Framework_TestCase
 
         $robotsTxt = $generator->buildRobotsTxt($values['robotstxt']);
         $result = $robotsTxt->generate();
-        $expected = $this->getRobotsTxt();
+        $expected = implode(PHP_EOL, $this->getRobotsTxtArray());
 
         $this->assertEquals($expected, $result);
-    }
-
-    private function getRobotsTxt()
-    {
-        return implode(PHP_EOL, $this->getRobotsTxtArray());
     }
 
     private function getRobotsTxtArray()
