@@ -48,7 +48,7 @@ EOT
         if (empty($robotsConfig)) {
             throw new \RuntimeException('No sonata_seo_robotstxt config found, check your config.yml');
         }
-        
+
         $folder = $this->getContainer()->getParameter('kernel.root_dir').DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'web';
         if ($input->hasOption('folder')) {
             $folder = $input->getOption('folder');
