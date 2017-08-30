@@ -74,7 +74,7 @@ EOT
 
         $fs->mkdir($tempFolder);
 
-        // step 2
+        // step 2.
         $manager = $this->getContainer()->get('sonata.seo.sitemap.manager');
 
         // step 3
