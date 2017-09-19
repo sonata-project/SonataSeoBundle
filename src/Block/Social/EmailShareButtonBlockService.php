@@ -12,8 +12,8 @@
 namespace Sonata\SeoBundle\Block\Social;
 
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\CoreBundle\Model\Metadata;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +24,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
-class EmailShareButtonBlockService extends BaseBlockService
+class EmailShareButtonBlockService extends AbstractAdminBlockService
 {
     /**
      * {@inheritdoc}

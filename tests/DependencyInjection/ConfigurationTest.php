@@ -12,10 +12,11 @@
 namespace Sonata\SeoBundle\Tests\DependencyInjection;
 
 use Sonata\SeoBundle\DependencyInjection\Configuration;
+use Sonata\SeoBundle\Tests\Helpers\PHPUnit_Framework_TestCase;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Yaml\Yaml;
 
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends PHPUnit_Framework_TestCase
 {
     public function testDefaultConfiguration()
     {

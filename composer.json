@@ -21,8 +21,8 @@
         "symfony/framework-bundle": "^2.3 || ^3.0",
         "symfony/options-resolver": "^2.3 || ^3.0",
         "sonata-project/exporter": "^1.2.2",
-        "sonata-project/block-bundle": "^3.1.1",
-        "twig/twig": "^1.12"
+        "sonata-project/block-bundle": "^3.2",
+        "twig/twig": "^1.14.2 || ^2.0"
     },
     "require-dev": {
         "guzzle/guzzle": "3.*",
@@ -37,13 +37,10 @@
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"
     },
     "autoload": {
-        "psr-4": { "Sonata\\SeoBundle\\": "" },
-        "exclude-from-classmap": [
-            "Tests/"
-        ]
+        "psr-4": { "Sonata\\SeoBundle\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": { "Sonata\\SeoBundle\\Tests\\": "Tests/" }
+        "psr-4": { "Sonata\\SeoBundle\\Tests\\": "tests/" }
      },
     "extra": {
         "branch-alias": {
