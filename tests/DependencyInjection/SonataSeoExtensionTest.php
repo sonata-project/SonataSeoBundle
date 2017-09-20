@@ -12,6 +12,7 @@
 namespace Sonata\SeoBundle\Tests\DependencyInjection;
 
 use Sonata\SeoBundle\DependencyInjection\SonataSeoExtension;
+use Sonata\SeoBundle\Tests\Helpers\PHPUnit_Framework_TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -19,7 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  *
  * @author Vincent Tommasi <tommasi.v@gmail.com>
  */
-class SonataSeoExtensionTest extends \PHPUnit_Framework_TestCase
+class SonataSeoExtensionTest extends PHPUnit_Framework_TestCase
 {
     /**
      * Tests the loading of blocks.xml file.
