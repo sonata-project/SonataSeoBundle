@@ -94,27 +94,27 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
                 array('tweet', 'textarea', array(
                     'required' => true,
                     'label' => 'form.label_tweet',
-                    'help_block' => 'form.help_tweet',
+                    'sonata_help' => 'form.help_tweet',
                 )),
                 array('maxwidth', 'integer', array(
                     'required' => false,
                     'label' => 'form.label_maxwidth',
-                    'help_block' => 'form.help_maxwidth',
+                    'sonata_help' => 'form.help_maxwidth',
                 )),
                 array('hide_media', 'checkbox', array(
                     'required' => false,
                     'label' => 'form.label_hide_media',
-                    'help_block' => 'form.help_hide_media',
+                    'sonata_help' => 'form.help_hide_media',
                 )),
                 array('hide_thread', 'checkbox', array(
                     'required' => false,
                     'label' => 'form.label_hide_thread',
-                    'help_block' => 'form.help_hide_thread',
+                    'sonata_help' => 'form.help_hide_thread',
                 )),
                 array('omit_script', 'checkbox', array(
                     'required' => false,
                     'label' => 'form.label_omit_script',
-                    'help_block' => 'form.help_omit_script',
+                    'sonata_help' => 'form.help_omit_script',
                 )),
                 array('align', 'choice', array(
                     'required' => false,
@@ -129,7 +129,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
                 array('related', 'text', array(
                     'required' => false,
                     'label' => 'form.label_related',
-                    'help_block' => 'form.help_related',
+                    'sonata_help' => 'form.help_related',
                 )),
                 array('lang', 'choice', array(
                     'required' => true,
