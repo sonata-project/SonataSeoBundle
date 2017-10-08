@@ -40,7 +40,7 @@ interface SeoPageInterface
      *
      * @return mixed
      */
-    public function addMeta($type, $name, $value, array $extras = array());
+    public function addMeta($type, $name, $value, array $extras = []);
 
     /**
      * @param string $type

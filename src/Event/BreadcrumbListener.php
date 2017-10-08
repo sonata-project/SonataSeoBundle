@@ -25,7 +25,7 @@ class BreadcrumbListener
     /**
      * @var array
      */
-    protected $blockServices = array();
+    protected $blockServices = [];
 
     /**
      * Add a renderer to the status services list.
