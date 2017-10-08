@@ -45,7 +45,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
      */
     public function __construct($context, $name, EngineInterface $templating, MenuProviderInterface $menuProvider, FactoryInterface $factory)
     {
-        parent::__construct($name, $templating, $menuProvider, array());
+        parent::__construct($name, $templating, $menuProvider, []);
 
         $this->context = $context;
         $this->factory = $factory;
@@ -78,11 +78,11 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     {
         parent::configureSettings($resolver);
 
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'menu_template' => 'SonataSeoBundle:Block:breadcrumb.html.twig',
             'include_homepage_link' => true,
             'context' => false,
-        ));
+        ]);
     }
 
     /**
@@ -128,7 +128,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
         }
 
         if ($settings['include_homepage_link']) {
-            $menu->addChild('sonata_seo_homepage_breadcrumb', array('uri' => '/'));
+            $menu->addChild('sonata_seo_homepage_breadcrumb', ['uri' => '/']);
         }
 
         return $menu;

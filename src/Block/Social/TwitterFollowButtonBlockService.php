@@ -30,14 +30,14 @@ class TwitterFollowButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function configureSettings(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'template' => 'SonataSeoBundle:Block:block_twitter_follow_button.html.twig',
             'user' => null,
             'show_username' => true,
             'large_button' => false,
             'opt_out' => false,
             'language' => $this->languageList['en'],
-        ));
+        ]);
     }
 
     /**
@@ -45,32 +45,32 @@ class TwitterFollowButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', array(
-            'keys' => array(
-                array('user', 'text', array(
+        $formMapper->add('settings', 'sonata_type_immutable_array', [
+            'keys' => [
+                ['user', 'text', [
                     'required' => true,
                     'label' => 'form.label_user',
-                )),
-                array('show_username', 'checkbox', array(
+                ]],
+                ['show_username', 'checkbox', [
                     'required' => false,
                     'label' => 'form.label_show_username',
-                )),
-                array('large_button', 'checkbox', array(
+                ]],
+                ['large_button', 'checkbox', [
                     'required' => false,
                     'label' => 'form.label_large_button',
-                )),
-                array('opt_out', 'checkbox', array(
+                ]],
+                ['opt_out', 'checkbox', [
                     'required' => false,
                     'label' => 'form.label_opt_out',
-                )),
-                array('language', 'choice', array(
+                ]],
+                ['language', 'choice', [
                     'required' => true,
                     'choices' => $this->languageList,
                     'label' => 'form.label_language',
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'SonataSeoBundle',
-        ));
+        ]);
     }
 
     /**
@@ -78,8 +78,8 @@ class TwitterFollowButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', [
             'class' => 'fa fa-twitter',
-        ));
+        ]);
     }
 }

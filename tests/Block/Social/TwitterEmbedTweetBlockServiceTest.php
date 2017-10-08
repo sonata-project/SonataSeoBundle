@@ -22,11 +22,11 @@ class TwitterEmbedTweetBlockServiceTest extends AbstractBlockServiceTestCase
 {
     public function testBuildUri()
     {
-        $settings = array(
+        $settings = [
             'tweet' => 'tweeeeeeeet',
             'foo' => 'bar',
             'align' => 'bar',
-        );
+        ];
 
         $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&url=tweeeeeeeet');
 

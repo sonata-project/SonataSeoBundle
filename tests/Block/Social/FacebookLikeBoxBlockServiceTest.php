@@ -25,7 +25,7 @@ class FacebookLikeBoxBlockServiceTest extends AbstractBlockServiceTestCase
 
         $block = new Block();
         $block->setType('core.text');
-        $block->setSettings(array(
+        $block->setSettings([
             'url' => 'url_setting',
             'width' => 'width_setting',
             'height' => 'height_setting',
@@ -34,14 +34,14 @@ class FacebookLikeBoxBlockServiceTest extends AbstractBlockServiceTestCase
             'show_header' => 'show_header_setting',
             'show_posts' => 'show_posts_setting',
             'show_border' => 'show_border_setting',
-        ));
+        ]);
 
         $optionResolver = new OptionsResolver();
         $service->setDefaultSettings($optionResolver);
 
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
-        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', array(), array(), '', false);
+        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', [], [], '', false);
         $formMapper->expects($this->exactly(2))->method('add');
 
         $service->buildCreateForm($formMapper, $block);
