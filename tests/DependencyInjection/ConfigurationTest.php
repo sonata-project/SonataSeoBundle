@@ -20,7 +20,7 @@ class ConfigurationTest extends PHPUnit_Framework_TestCase
 {
     public function testDefaultConfiguration()
     {
-        $config = $this->processConfiguration(array(array()));
+        $config = $this->processConfiguration([[]]);
 
         $expected = $this->getDefaultConfiguration();
 
@@ -29,18 +29,18 @@ class ConfigurationTest extends PHPUnit_Framework_TestCase
 
     public function testKeysAreNotNormalized()
     {
-        $values = array(
-            'page' => array(
-                'head' => array('data-example' => 'abc-123'),
-                'metas' => array(
-                    'http-equiv' => array(
+        $values = [
+            'page' => [
+                'head' => ['data-example' => 'abc-123'],
+                'metas' => [
+                    'http-equiv' => [
                         'Content-Type' => 'text/html; charset=utf-8',
-                    ),
-                ),
-            ),
-        );
+                    ],
+                ],
+            ],
+        ];
 
-        $config = $this->processConfiguration(array($values));
+        $config = $this->processConfiguration([$values]);
 
         $expected = array_merge_recursive(
             $this->getDefaultConfiguration(),
@@ -54,7 +54,7 @@ class ConfigurationTest extends PHPUnit_Framework_TestCase
     {
         $values = Yaml::parse(file_get_contents(__DIR__.'/data/config.yml'), true);
 
-        $config = $this->processConfiguration(array($values));
+        $config = $this->processConfiguration([$values]);
 
         $expected = array_merge_recursive(
             $this->getDefaultConfiguration(),
@@ -68,20 +68,20 @@ class ConfigurationTest extends PHPUnit_Framework_TestCase
 
     private function getDefaultConfiguration()
     {
-        return array(
+        return [
             'encoding' => 'UTF-8',
-            'page' => array(
+            'page' => [
                 'default' => 'sonata.seo.page.default',
-                'head' => array(),
-                'metas' => array(),
+                'head' => [],
+                'metas' => [],
                 'separator' => ' - ',
                 'title' => 'Sonata Project',
-            ),
-            'sitemap' => array(
-                'doctrine_orm' => array(),
-                'services' => array(),
-            ),
-        );
+            ],
+            'sitemap' => [
+                'doctrine_orm' => [],
+                'services' => [],
+            ],
+        ];
     }
 
     private function processConfiguration(array $configs)

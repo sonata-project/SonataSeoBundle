@@ -25,7 +25,7 @@ abstract class BaseTwitterButtonBlockService extends AbstractAdminBlockService
     /**
      * @var string[]
      */
-    protected $languageList = array(
+    protected $languageList = [
         'fr' => 'fr',
         'en' => 'en',
         'ar' => 'ar',
@@ -66,7 +66,7 @@ abstract class BaseTwitterButtonBlockService extends AbstractAdminBlockService
         'hr' => 'hr',
         'ckb' => 'ckb',
         'en-gb' => 'en-gb',
-    );
+    ];
 
     /**
      * {@inheritdoc}
@@ -75,9 +75,9 @@ abstract class BaseTwitterButtonBlockService extends AbstractAdminBlockService
     {
         $settings = $blockContext->getSettings();
 
-        return $this->renderResponse($blockContext->getTemplate(), array(
+        return $this->renderResponse($blockContext->getTemplate(), [
             'block' => $blockContext->getBlock(),
             'settings' => $settings,
-        ), $response);
+        ], $response);
     }
 }

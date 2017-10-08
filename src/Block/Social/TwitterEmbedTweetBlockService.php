@@ -48,7 +48,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
             // TODO cache API result
             $client = new \Guzzle\Http\Client();
-            $client->setConfig(array('curl.options' => array(CURLOPT_CONNECTTIMEOUT_MS => 1000)));
+            $client->setConfig(['curl.options' => [CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
 
             try {
                 $request = $client->get($this->buildUri($uriMatched, $blockContext->getSettings()));
@@ -60,10 +60,10 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
             }
         }
 
-        return $this->renderResponse($blockContext->getTemplate(), array(
+        return $this->renderResponse($blockContext->getTemplate(), [
             'block' => $blockContext->getBlock(),
             'tweet' => $tweet,
-        ), $response);
+        ], $response);
     }
 
     /**
@@ -71,7 +71,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     public function configureSettings(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'template' => 'SonataSeoBundle:Block:block_twitter_embed.html.twig',
             'tweet' => '',
             'maxwidth' => null,
@@ -81,7 +81,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
             'align' => 'none',
             'related' => null,
             'lang' => null,
-        ));
+        ]);
     }
 
     /**
@@ -89,56 +89,56 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     public function buildEditForm(FormMapper $form, BlockInterface $block)
     {
-        $form->add('settings', 'sonata_type_immutable_array', array(
-            'keys' => array(
-                array('tweet', 'textarea', array(
+        $form->add('settings', 'sonata_type_immutable_array', [
+            'keys' => [
+                ['tweet', 'textarea', [
                     'required' => true,
                     'label' => 'form.label_tweet',
                     'sonata_help' => 'form.help_tweet',
-                )),
-                array('maxwidth', 'integer', array(
+                ]],
+                ['maxwidth', 'integer', [
                     'required' => false,
                     'label' => 'form.label_maxwidth',
                     'sonata_help' => 'form.help_maxwidth',
-                )),
-                array('hide_media', 'checkbox', array(
+                ]],
+                ['hide_media', 'checkbox', [
                     'required' => false,
                     'label' => 'form.label_hide_media',
                     'sonata_help' => 'form.help_hide_media',
-                )),
-                array('hide_thread', 'checkbox', array(
+                ]],
+                ['hide_thread', 'checkbox', [
                     'required' => false,
                     'label' => 'form.label_hide_thread',
                     'sonata_help' => 'form.help_hide_thread',
-                )),
-                array('omit_script', 'checkbox', array(
+                ]],
+                ['omit_script', 'checkbox', [
                     'required' => false,
                     'label' => 'form.label_omit_script',
                     'sonata_help' => 'form.help_omit_script',
-                )),
-                array('align', 'choice', array(
+                ]],
+                ['align', 'choice', [
                     'required' => false,
-                    'choices' => array(
+                    'choices' => [
                         'left' => 'form.label_align_left',
                         'right' => 'form.label_align_right',
                         'center' => 'form.label_align_center',
                         'none' => 'form.label_align_none',
-                    ),
+                    ],
                     'label' => 'form.label_align',
-                )),
-                array('related', 'text', array(
+                ]],
+                ['related', 'text', [
                     'required' => false,
                     'label' => 'form.label_related',
                     'sonata_help' => 'form.help_related',
-                )),
-                array('lang', 'choice', array(
+                ]],
+                ['lang', 'choice', [
                     'required' => true,
                     'choices' => $this->languageList,
                     'label' => 'form.label_lang',
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'SonataSeoBundle',
-        ));
+        ]);
     }
 
     /**
@@ -146,9 +146,9 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', [
             'class' => 'fa fa-twitter',
-        ));
+        ]);
     }
 
     /**
@@ -158,7 +158,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     protected function getSupportedApiParams()
     {
-        return array(
+        return [
             'maxwidth',
             'hide_media',
             'hide_thread',
@@ -168,7 +168,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
             'lang',
             'url',
             'id',
-        );
+        ];
     }
 
     /**
@@ -193,7 +193,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
         unset($apiParams['tweet']);
 
-        $parameters = array();
+        $parameters = [];
         foreach ($apiParams as $key => $value) {
             if ($value && in_array($key, $supportedParams)) {
                 $parameters[] = $key.'='.$value;

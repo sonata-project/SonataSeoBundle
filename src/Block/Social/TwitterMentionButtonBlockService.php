@@ -30,7 +30,7 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function configureSettings(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'template' => 'SonataSeoBundle:Block:block_twitter_mention_button.html.twig',
             'user' => null,
             'text' => null,
@@ -38,7 +38,7 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
             'large_button' => false,
             'opt_out' => false,
             'language' => $this->languageList['en'],
-        ));
+        ]);
     }
 
     /**
@@ -46,36 +46,36 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', array(
-            'keys' => array(
-                array('user', 'text', array(
+        $formMapper->add('settings', 'sonata_type_immutable_array', [
+            'keys' => [
+                ['user', 'text', [
                     'required' => true,
                     'label' => 'form.label_user',
-                )),
-                array('text', 'text', array(
+                ]],
+                ['text', 'text', [
                     'required' => false,
                     'label' => 'form.label_text',
-                )),
-                array('recommend', 'text', array(
+                ]],
+                ['recommend', 'text', [
                     'required' => false,
                     'label' => 'form.label_recommend',
-                )),
-                array('large_button', 'checkbox', array(
+                ]],
+                ['large_button', 'checkbox', [
                     'required' => false,
                     'label' => 'form.label_large_button',
-                )),
-                array('opt_out', 'checkbox', array(
+                ]],
+                ['opt_out', 'checkbox', [
                     'required' => false,
                     'label' => 'form.label_opt_out',
-                )),
-                array('language', 'choice', array(
+                ]],
+                ['language', 'choice', [
                     'required' => true,
                     'choices' => $this->languageList,
                     'label' => 'form.label_language',
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'SonataSeoBundle',
-        ));
+        ]);
     }
 
     /**
@@ -83,8 +83,8 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', [
             'class' => 'fa fa-twitter',
-        ));
+        ]);
     }
 }
