@@ -46,23 +46,9 @@ class SonataSeoExtension extends Extension
 
         $this->configureSeoPage($config['page'], $container);
         $this->configureSitemap($config['sitemap'], $container);
-        $this->configureClassesToCompile();
 
         $container->getDefinition('sonata.seo.twig.extension')
             ->replaceArgument(1, $config['encoding']);
-    }
-
-    /**
-     * Add class to compile.
-     */
-    public function configureClassesToCompile()
-    {
-        $this->addClassesToCompile([
-            'Sonata\\SeoBundle\\Seo\\SeoPage',
-            'Sonata\\SeoBundle\\Seo\\SeoPageInterface',
-            'Sonata\\SeoBundle\\Sitemap\\SourceManager',
-            'Sonata\\SeoBundle\\Twig\\Extension\\SeoExtension',
-        ]);
     }
 
     /**
