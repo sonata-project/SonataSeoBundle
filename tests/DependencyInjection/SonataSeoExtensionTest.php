@@ -28,19 +28,19 @@ class SonataSeoExtensionTest extends PHPUnit_Framework_TestCase
     public function testBlocksLoading()
     {
         $container = new ContainerBuilder();
-        $container->setParameter('kernel.bundles', array(
+        $container->setParameter('kernel.bundles', [
             'SonataBlockBundle' => 'Sonata\BlockBundle\SonataBlockBundle',
             'KnpMenuBundle' => 'Knp\Bundle\MenuBundle\KnpMenuBundle',
-        ));
+        ]);
 
         $extension = new SonataSeoExtension();
-        $extension->load(array(array()), $container);
+        $extension->load([[]], $container);
 
         $this->assertTrue($container->hasDefinition('sonata.seo.block.breadcrumb.homepage'));
 
         $container = new ContainerBuilder();
-        $container->setParameter('kernel.bundles', array());
-        $extension->load(array(array()), $container);
+        $container->setParameter('kernel.bundles', []);
+        $extension->load([[]], $container);
 
         $this->assertFalse($container->hasDefinition('sonata.seo.block.breadcrumb.homepage'));
     }

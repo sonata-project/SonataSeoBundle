@@ -30,13 +30,13 @@ class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockServi
      */
     public function configureSettings(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'template' => 'SonataSeoBundle:Block:block_facebook_send_button.html.twig',
             'url' => null,
             'width' => null,
             'height' => null,
             'colorscheme' => $this->colorschemeList['light'],
-        ));
+        ]);
     }
 
     /**
@@ -44,28 +44,28 @@ class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockServi
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', array(
-            'keys' => array(
-                array('url', 'url', array(
+        $formMapper->add('settings', 'sonata_type_immutable_array', [
+            'keys' => [
+                ['url', 'url', [
                     'required' => false,
                     'label' => 'form.label_url',
-                )),
-                array('width', 'integer', array(
+                ]],
+                ['width', 'integer', [
                     'required' => false,
                     'label' => 'form.label_width',
-                )),
-                array('height', 'integer', array(
+                ]],
+                ['height', 'integer', [
                     'required' => false,
                     'label' => 'form.label_height',
-                )),
-                array('colorscheme', 'choice', array(
+                ]],
+                ['colorscheme', 'choice', [
                     'required' => true,
                     'choices' => $this->colorschemeList,
                     'label' => 'form.label_colorscheme',
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'SonataSeoBundle',
-        ));
+        ]);
     }
 
     /**
@@ -73,8 +73,8 @@ class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockServi
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', array(
+        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
-        ));
+        ]);
     }
 }

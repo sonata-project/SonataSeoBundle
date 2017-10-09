@@ -25,19 +25,19 @@ class FacebookSendButtonBlockServiceTest extends AbstractBlockServiceTestCase
 
         $block = new Block();
         $block->setType('core.text');
-        $block->setSettings(array(
+        $block->setSettings([
             'url' => 'url_setting',
             'width' => 'width_setting',
             'height' => 'height_setting',
             'colorscheme' => 'colorscheme_setting',
-        ));
+        ]);
 
         $optionResolver = new OptionsResolver();
         $service->setDefaultSettings($optionResolver);
 
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
-        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', array(), array(), '', false);
+        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', [], [], '', false);
         $formMapper->expects($this->exactly(2))->method('add');
 
         $service->buildCreateForm($formMapper, $block);

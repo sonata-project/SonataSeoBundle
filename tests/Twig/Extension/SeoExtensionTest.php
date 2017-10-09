@@ -19,10 +19,10 @@ class SeoExtensionTest extends PHPUnit_Framework_TestCase
     public function testHtmlAttributes()
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
-        $page->expects($this->once())->method('getHtmlAttributes')->will($this->returnValue(array(
+        $page->expects($this->once())->method('getHtmlAttributes')->will($this->returnValue([
             'xmlns' => 'http://www.w3.org/1999/xhtml',
             'xmlns:og' => 'http://opengraphprotocol.org/schema/',
-        )));
+        ]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -32,7 +32,7 @@ class SeoExtensionTest extends PHPUnit_Framework_TestCase
     public function testHeadAttributes()
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
-        $page->expects($this->once())->method('getHeadAttributes')->will($this->returnValue(array()));
+        $page->expects($this->once())->method('getHeadAttributes')->will($this->returnValue([]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -53,13 +53,13 @@ class SeoExtensionTest extends PHPUnit_Framework_TestCase
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getTitle')->will($this->returnValue('pięć głów zatkniętych na pal'));
-        $page->expects($this->once())->method('getMetas')->will($this->returnValue(array(
-            'http-equiv' => array(),
-            'name' => array('foo' => array('pięć głów zatkniętych na pal', array())),
-            'schema' => array(),
-            'charset' => array(),
-            'property' => array(),
-        )));
+        $page->expects($this->once())->method('getMetas')->will($this->returnValue([
+            'http-equiv' => [],
+            'name' => ['foo' => ['pięć głów zatkniętych na pal', []]],
+            'schema' => [],
+            'charset' => [],
+            'property' => [],
+        ]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -71,13 +71,13 @@ class SeoExtensionTest extends PHPUnit_Framework_TestCase
     public function testMetadatas()
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
-        $page->expects($this->once())->method('getMetas')->will($this->returnValue(array(
-            'http-equiv' => array(),
-            'name' => array('foo' => array('bar "\'"', array())),
-            'schema' => array(),
-            'charset' => array('UTF-8' => array('', array())),
-            'property' => array(),
-        )));
+        $page->expects($this->once())->method('getMetas')->will($this->returnValue([
+            'http-equiv' => [],
+            'name' => ['foo' => ['bar "\'"', []]],
+            'schema' => [],
+            'charset' => ['UTF-8' => ['', []]],
+            'property' => [],
+        ]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -105,9 +105,9 @@ class SeoExtensionTest extends PHPUnit_Framework_TestCase
     public function testLangAlternates()
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
-        $page->expects($this->once())->method('getLangAlternates')->will($this->returnValue(array(
+        $page->expects($this->once())->method('getLangAlternates')->will($this->returnValue([
                     'http://example.com/' => 'x-default',
-                )));
+                ]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -117,9 +117,9 @@ class SeoExtensionTest extends PHPUnit_Framework_TestCase
     public function testOEmbedLinks()
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
-        $page->expects($this->once())->method('getOembedLinks')->will($this->returnValue(array(
+        $page->expects($this->once())->method('getOembedLinks')->will($this->returnValue([
             'Foo' => 'http://example.com/',
-        )));
+        ]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
