@@ -13,7 +13,12 @@ namespace Sonata\SeoBundle\Block\Social;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
 use Sonata\CoreBundle\Model\Metadata;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -49,41 +54,41 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', [
+        $formMapper->add('settings', ImmutableArrayType::class, [
             'keys' => [
-                ['url', 'url', [
+                ['url', UrlType::class, [
                     'required' => false,
                     'label' => 'form.label_url',
                 ]],
-                ['text', 'text', [
+                ['text', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_text',
                 ]],
-                ['show_count', 'checkbox', [
+                ['show_count', CheckboxType::class, [
                     'required' => false,
                     'label' => 'form.label_show_count',
                 ]],
-                ['via', 'text', [
+                ['via', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_via',
                 ]],
-                ['recommend', 'text', [
+                ['recommend', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_recommend',
                 ]],
-                ['hashtag', 'text', [
+                ['hashtag', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_hashtag',
                 ]],
-                ['large_button', 'checkbox', [
+                ['large_button', CheckboxType::class, [
                     'required' => false,
                     'label' => 'form.label_large_button',
                 ]],
-                ['opt_out', 'checkbox', [
+                ['opt_out', CheckboxType::class, [
                     'required' => false,
                     'label' => 'form.label_opt_out',
                 ]],
-                ['language', 'choice', [
+                ['language', ChoiceType::class, [
                     'required' => true,
                     'choices' => $this->languageList,
                     'label' => 'form.label_language',

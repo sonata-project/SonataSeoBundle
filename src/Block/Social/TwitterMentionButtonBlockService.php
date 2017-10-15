@@ -13,7 +13,11 @@ namespace Sonata\SeoBundle\Block\Social;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
 use Sonata\CoreBundle\Model\Metadata;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -46,29 +50,29 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', [
+        $formMapper->add('settings', ImmutableArrayType::class, [
             'keys' => [
-                ['user', 'text', [
+                ['user', TextType::class, [
                     'required' => true,
                     'label' => 'form.label_user',
                 ]],
-                ['text', 'text', [
+                ['text', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_text',
                 ]],
-                ['recommend', 'text', [
+                ['recommend', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_recommend',
                 ]],
-                ['large_button', 'checkbox', [
+                ['large_button', CheckboxType::class, [
                     'required' => false,
                     'label' => 'form.label_large_button',
                 ]],
-                ['opt_out', 'checkbox', [
+                ['opt_out', CheckboxType::class, [
                     'required' => false,
                     'label' => 'form.label_opt_out',
                 ]],
-                ['language', 'choice', [
+                ['language', ChoiceType::class, [
                     'required' => true,
                     'choices' => $this->languageList,
                     'label' => 'form.label_language',

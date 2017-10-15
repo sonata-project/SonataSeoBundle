@@ -13,7 +13,11 @@ namespace Sonata\SeoBundle\Block\Social;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
 use Sonata\CoreBundle\Model\Metadata;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -55,17 +59,17 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', [
+        $formMapper->add('settings', ImmutableArrayType::class, [
             'keys' => [
-                ['url', 'url', [
+                ['url', UrlType::class, [
                     'required' => false,
                     'label' => 'form.label_url',
                 ]],
-                ['width', 'integer', [
+                ['width', IntegerType::class, [
                     'required' => false,
                     'label' => 'form.label_width',
                 ]],
-                ['layout', 'choice', [
+                ['layout', ChoiceType::class, [
                     'required' => true,
                     'choices' => $this->layoutList,
                     'label' => 'form.label_layout',
