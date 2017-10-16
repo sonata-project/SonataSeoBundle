@@ -11,10 +11,10 @@
 
 namespace Sonata\SeoBundle\Tests\Request;
 
-use Sonata\SeoBundle\Tests\Helpers\PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
-class SeoExtensionTest extends PHPUnit_Framework_TestCase
+class SeoExtensionTest extends TestCase
 {
     public function testHtmlAttributes()
     {
