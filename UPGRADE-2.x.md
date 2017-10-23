@@ -1,8 +1,8 @@
 UPGRADE 2.x
 ===========
 
-UPGRADE FROM 2.2.0 to 2.2.1
-===========================
+UPGRADE FROM 2.2 to 2.3
+=======================
 
 `sonata-project/block-bundle` is not required anymore. If you want to use seo friendly blocks,
 you should require it on your own by calling `composer require sonata-project/block-bundle`.

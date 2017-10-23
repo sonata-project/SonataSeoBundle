@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.3.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.2.1...2.3.0) - 2017-10-22
+### Changed
+- moved `sonata-project/block-bundle` back to require-dev
+
+### Removed
+- Support for old versions of PHP and Symfony.
+
+## [2.2.1](https://github.com/sonata-project/SonataSeoBundle/compare/2.2.0...2.2.1) - 2017-10-22
+### Fixed
+- Pass the right option for showing form help in twitter embedded block
+
 ## [2.2.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.1.0...2.2.0) - 2017-06-14
 ### Changed
 - Allow Twig ^2.0
