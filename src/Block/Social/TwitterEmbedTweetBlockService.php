@@ -42,7 +42,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         if (($uriMatched = preg_match(self::TWEET_URL_PATTERN, $tweet))
             || preg_match(self::TWEET_ID_PATTERN, $tweet)) {
             // We matched an URL or an ID, we'll need to ask the API
-            if (class_exists('Guzzle\Http\Client') === false) {
+            if (false === class_exists('Guzzle\Http\Client')) {
                 throw new \RuntimeException('The guzzle http client library is required to call the Twitter API. Make sure to add guzzle/guzzle to your composer.json.');
             }
 
