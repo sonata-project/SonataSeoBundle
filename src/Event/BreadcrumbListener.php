@@ -47,7 +47,7 @@ class BreadcrumbListener
     {
         $context = $event->getSetting('context', null);
 
-        if ($context == null) {
+        if (null == $context) {
             return;
         }
 
