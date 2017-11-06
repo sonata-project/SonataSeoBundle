@@ -137,15 +137,15 @@ class SonataSeoExtension extends Extension
             $sitemap['parameters'] = isset($sitemap['parameters']) ? $sitemap['parameters'] : false;
             $sitemap['query'] = isset($sitemap['query']) ? $sitemap['query'] : false;
 
-            if ($sitemap['route'] === false) {
+            if (false === $sitemap['route']) {
                 throw new \RuntimeException('Route cannot be empty, please review the sonata_seo.sitemap configuration');
             }
 
-            if ($sitemap['query'] === false) {
+            if (false === $sitemap['query']) {
                 throw new \RuntimeException('Query cannot be empty, please review the sonata_seo.sitemap configuration');
             }
 
-            if ($sitemap['parameters'] === false) {
+            if (false === $sitemap['parameters']) {
                 throw new \RuntimeException('Route\'s parameters cannot be empty, please review the sonata_seo.sitemap configuration');
             }
 

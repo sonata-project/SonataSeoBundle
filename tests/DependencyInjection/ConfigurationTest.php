@@ -52,7 +52,13 @@ class ConfigurationTest extends TestCase
 
     public function testWithYamlConfig()
     {
-        $values = Yaml::parse(file_get_contents(__DIR__.'/data/config.yml'), true);
+        $values = Yaml::parse(
+            file_get_contents(__DIR__.'/data/config.yml'),
+            // NEXT_MAJOR: use constant when dropping Symfony < 3.1
+            defined('Symfony\Component\Yaml\Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE') ?
+            Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE :
+            true
+        );
 
         $config = $this->processConfiguration([$values]);
 
