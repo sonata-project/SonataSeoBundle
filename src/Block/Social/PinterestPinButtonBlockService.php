@@ -15,7 +15,12 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
 use Sonata\CoreBundle\Model\Metadata;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -48,25 +53,25 @@ class PinterestPinButtonBlockService extends AbstractAdminBlockService
      */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
-        $formMapper->add('settings', 'sonata_type_immutable_array', [
+        $formMapper->add('settings', ImmutableArrayType::class, [
             'keys' => [
-                ['url', 'url', [
+                ['url', UrlType::class, [
                     'required' => false,
                     'label' => 'form.label_url',
                 ]],
-                ['image', 'text', [
+                ['image', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_image',
                 ]],
-                ['description', 'text', [
+                ['description', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_description',
                 ]],
-                ['size', 'integer', [
+                ['size', IntegerType::class, [
                     'required' => false,
                     'label' => 'form.label_size',
                 ]],
-                ['shape', 'choice', [
+                ['shape', ChoiceType::class, [
                     'required' => false,
                     'choices' => [
                         'rectangular' => 'form.label_shape_rectangular',

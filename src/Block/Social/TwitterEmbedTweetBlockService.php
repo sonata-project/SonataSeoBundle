@@ -15,7 +15,13 @@ use Guzzle\Http\Exception\CurlException;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
 use Sonata\CoreBundle\Model\Metadata;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -89,34 +95,34 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     public function buildEditForm(FormMapper $form, BlockInterface $block)
     {
-        $form->add('settings', 'sonata_type_immutable_array', [
+        $form->add('settings', ImmutableArrayType::class, [
             'keys' => [
-                ['tweet', 'textarea', [
+                ['tweet', TextareaType::class, [
                     'required' => true,
                     'label' => 'form.label_tweet',
                     'sonata_help' => 'form.help_tweet',
                 ]],
-                ['maxwidth', 'integer', [
+                ['maxwidth', IntegerType::class, [
                     'required' => false,
                     'label' => 'form.label_maxwidth',
                     'sonata_help' => 'form.help_maxwidth',
                 ]],
-                ['hide_media', 'checkbox', [
+                ['hide_media', CheckboxType::class, [
                     'required' => false,
                     'label' => 'form.label_hide_media',
                     'sonata_help' => 'form.help_hide_media',
                 ]],
-                ['hide_thread', 'checkbox', [
+                ['hide_thread', CheckboxType::class, [
                     'required' => false,
                     'label' => 'form.label_hide_thread',
                     'sonata_help' => 'form.help_hide_thread',
                 ]],
-                ['omit_script', 'checkbox', [
+                ['omit_script', CheckboxType::class, [
                     'required' => false,
                     'label' => 'form.label_omit_script',
                     'sonata_help' => 'form.help_omit_script',
                 ]],
-                ['align', 'choice', [
+                ['align', ChoiceType::class, [
                     'required' => false,
                     'choices' => [
                         'left' => 'form.label_align_left',
@@ -126,12 +132,12 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
                     ],
                     'label' => 'form.label_align',
                 ]],
-                ['related', 'text', [
+                ['related', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_related',
                     'sonata_help' => 'form.help_related',
                 ]],
-                ['lang', 'choice', [
+                ['lang', ChoiceType::class, [
                     'required' => true,
                     'choices' => $this->languageList,
                     'label' => 'form.label_lang',
