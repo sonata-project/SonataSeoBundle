@@ -27,10 +27,10 @@
         "guzzle/guzzle": "3.*",
         "sllh/php-cs-fixer-styleci-bridge": "^2.0",
         "sonata-project/admin-bundle": "^3.0",
-        "sonata-project/block-bundle": "^3.2",
+        "sonata-project/block-bundle": "^3.5",
         "symfony/console": "^2.8 || ^3.2",
         "symfony/finder": "^2.8 || ^3.2",
-        "symfony/phpunit-bridge": "^3.3"
+        "symfony/phpunit-bridge": "^3.3.12"
     },
     "suggest": {
         "guzzle/guzzle": "3.*",
