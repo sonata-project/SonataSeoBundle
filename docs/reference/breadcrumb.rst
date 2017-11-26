@@ -51,6 +51,7 @@ First, you need to create a BlockService to handle your breadcrumbs. You can ext
         <argument type="service" id="templating" />
         <argument type="service" id="knp_menu.menu_provider" />
         <argument type="service" id="knp_menu.factory" />
+        <argument type="service" id="sonata.block.menu.registry" />
     </service>
 
 And to render the breadcrumb, just use this Twig helper :

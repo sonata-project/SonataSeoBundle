@@ -1,6 +1,12 @@
 UPGRADE 2.x
 ===========
 
+### Deprecated omitting menu registry argument to breadcrumbs menu block service
+
+`Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService` now has an
+optional argument called `$menuRegistry`. You should pass a
+`Sonata\BlockBundle\Menu\MenuRegistryInterface` instance into it.
+
 UPGRADE FROM 2.2 to 2.3
 =======================
 

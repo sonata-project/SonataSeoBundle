@@ -16,6 +16,7 @@ use Knp\Menu\ItemInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\MenuBlockService;
+use Sonata\BlockBundle\Menu\MenuRegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -43,12 +44,22 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
      * @param MenuProviderInterface $menuProvider
      * @param FactoryInterface      $factory
      */
-    public function __construct($context, $name, EngineInterface $templating, MenuProviderInterface $menuProvider, FactoryInterface $factory)
+    public function __construct($context, $name, EngineInterface $templating, MenuProviderInterface $menuProvider, FactoryInterface $factory, MenuRegistryInterface $menuRegistry = null)
     {
-        parent::__construct($name, $templating, $menuProvider, []);
-
         $this->context = $context;
         $this->factory = $factory;
+
+        // NEXT_MAJOR: remove this if block
+        if (!$menuRegistry) {
+            @trigger_error(sprintf(
+                'Calling "%s" without a "%s" argument is deprecated since 2.x and will no longer be possible in 3.0.',
+                __METHOD__,
+                MenuRegistryInterface::class
+            ), E_USER_DEPRECATED);
+            parent::__construct($name, $templating, $menuProvider, []);
+        }
+
+        parent::__construct($name, $templating, $menuProvider, $menuRegistry);
     }
 
     /**
