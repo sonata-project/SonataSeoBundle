@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="ru" datatype="plaintext" original="SonataSeoBundle.en.xliff">
+        <body>
+            <trans-unit id="sonata_seo_homepage_breadcrumb">
+                <source>sonata_seo_homepage_breadcrumb</source>
+                <target>Главная</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_share_by_email">
+                <source>sonata_seo_share_by_email</source>
+                <target>Поделиться по e-mail</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_email_share_button">
+                <source>sonata.seo.block.email.share_button</source>
+                <target>Поделиться с помощью E-Mail</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_facebook_like_box">
+                <source>sonata.seo.block.facebook.like_box</source>
+                <target>Facebook - поле «Нравится»</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_facebook_like_button">
+                <source>sonata.seo.block.facebook.like_button</source>
+                <target>Facebook - кнопка «Нравится»</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_facebook_send_button">
+                <source>sonata.seo.block.facebook.send_button</source>
+                <target>Facebook - кнопка «Отправить»</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_facebook_share_button">
+                <source>sonata.seo.block.facebook.share_button</source>
+                <target>Facebook - кнопка «Поделиться»</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_share_button">
+                <source>sonata.seo.block.twitter.share_button</source>
+                <target>Twitter - кнопка «Поделиться»</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_follow_button">
+                <source>sonata.seo.block.twitter.follow_button</source>
+                <target>Twitter - кнопка «Подписаться»</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_hashtag_button">
+                <source>sonata.seo.block.twitter.hashtag_button</source>
+                <target>Twitter - кнопка «Твитнуть с хэштэгом»</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_mention_button">
+                <source>sonata.seo.block.twitter.mention_button</source>
+                <target>Twitter - кнопка «Упомянуть»</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_twitter_embed">
+                <source>sonata.seo.block.twitter.embed</source>
+                <target>Twitter - вставить твит</target>
+            </trans-unit>
+            <trans-unit id="sonata_seo_block_pinterest_pin_button">
+                <source>sonata.seo.block.pinterest.pin_button</source>
+                <target>Pinterest - кнопка «Сохранить»</target>
+            </trans-unit>
+            <trans-unit id="form.label_colorscheme">
+                <source>form.label_colorscheme</source>
+                <target>Цветовая схема</target>
+            </trans-unit>
+            <trans-unit id="form.label_colorscheme_light">
+                <source>form.label_colorscheme_light</source>
+                <target>светлая</target>
+            </trans-unit>
+            <trans-unit id="form.label_colorscheme_dark">
+                <source>form.label_colorscheme_dark</source>
+                <target>темная</target>
+            </trans-unit>
+            <trans-unit id="form.label_subject">
+                <source>form.label_subject</source>
+                <target>Тема</target>
+            </trans-unit>
+            <trans-unit id="form.label_body">
+                <source>form.label_body</source>
+                <target>Текст</target>
+            </trans-unit>
+            <trans-unit id="form.label_url">
+                <source>form.label_url</source>
+                <target>URL</target>
+            </trans-unit>
+            <trans-unit id="form.label_width">
+                <source>form.label_width</source>
+                <target>Ширина</target>
+            </trans-unit>
+            <trans-unit id="form.label_height">
+                <source>form.label_height</source>
+                <target>Высота</target>
+            </trans-unit>
+            <trans-unit id="form.label_show_faces">
+                <source>form.label_show_faces</source>
+                <target>Показывать фото профиля</target>
+            </trans-unit>
+            <trans-unit id="form.label_show_header">
+                <source>form.label_show_header</source>
+                <target>Показывать заголовок</target>
+            </trans-unit>
+            <trans-unit id="form.label_show_posts">
+                <source>form.label_show_posts</source>
+                <target>Показывать записи</target>
+            </trans-unit>
+            <trans-unit id="form.label_show_border">
+                <source>form.label_show_border</source>
+                <target>Показывать границу</target>
+            </trans-unit>
+            <trans-unit id="form.label_layout">
+                <source>form.label_layout</source>
+                <target>Макет</target>
+            </trans-unit>
+            <trans-unit id="form.label_layout_standard">
+                <source>form.label_layout_standard</source>
+                <target>standard</target>
+            </trans-unit>
+            <trans-unit id="form.label_layout_box_count">
+                <source>form.label_layout_box_count</source>
+                <target>box_count</target>
+            </trans-unit>
+            <trans-unit id="form.label_layout_button_count">
+                <source>form.label_layout_button_count</source>
+                <target>button_count</target>
+            </trans-unit>
+            <trans-unit id="form.label_layout_button">
+                <source>form.label_layout_button</source>
+                <target>button</target>
+            </trans-unit>
+            <trans-unit id="form.label_layout_icon_link">
+                <source>form.label_layout_icon_link</source>
+                <target>icon_link</target>
+            </trans-unit>
+            <trans-unit id="form.label_layout_icon">
+                <source>form.label_layout_icon</source>
+                <target>icon</target>
+            </trans-unit>
+            <trans-unit id="form.label_layout_link">
+                <source>form.label_layout_link</source>
+                <target>link</target>
+            </trans-unit>
+            <trans-unit id="form.label_action">
+                <source>form.label_action</source>
+                <target>Действие</target>
+            </trans-unit>
+            <trans-unit id="form.label_action_like">
+                <source>form.label_action_like</source>
+                <target>«Нравится»</target>
+            </trans-unit>
+            <trans-unit id="form.label_action_recommend">
+                <source>form.label_action_recommend</source>
+                <target>«Рекомендовать»</target>
+            </trans-unit>
+            <trans-unit id="form.label_share">
+                <source>form.label_share</source>
+                <target>Поделиться</target>
+            </trans-unit>
+            <trans-unit id="form.label_image">
+                <source>form.label_image</source>
+                <target>Изображение</target>
+            </trans-unit>
+            <trans-unit id="form.label_description">
+                <source>form.label_description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="form.label_size">
+                <source>form.label_size</source>
+                <target>Размер</target>
+            </trans-unit>
+            <trans-unit id="form.label_shape">
+                <source>form.label_shape</source>
+                <target>Форма</target>
+            </trans-unit>
+            <trans-unit id="form.label_shape_rectangular">
+                <source>form.label_shape_rectangular</source>
+                <target>прямоугольная</target>
+            </trans-unit>
+            <trans-unit id="form.label_shape_round">
+                <source>form.label_shape_round</source>
+                <target>круглая</target>
+            </trans-unit>
+            <trans-unit id="form.label_tweet">
+                <source>form.label_tweet</source>
+                <target>Твитнуть</target>
+            </trans-unit>
+            <trans-unit id="form.label_maxwidth">
+                <source>form.label_maxwidth</source>
+                <target>Максимальная ширина</target>
+            </trans-unit>
+            <trans-unit id="form.label_hide_media">
+                <source>form.label_hide_media</source>
+                <target>Скрыть медиа</target>
+            </trans-unit>
+            <trans-unit id="form.label_hide_thread">
+                <source>form.label_hide_thread</source>
+                <target>Спрятать обсуждение</target>
+            </trans-unit>
+            <trans-unit id="form.label_omit_script">
+                <source>form.label_omit_script</source>
+                <target>Опустить скрипт</target>
+            </trans-unit>
+            <trans-unit id="form.label_align">
+                <source>form.label_align</source>
+                <target>Выравнивание</target>
+            </trans-unit>
+            <trans-unit id="form.label_align_left">
+                <source>form.label_align_left</source>
+                <target>слева</target>
+            </trans-unit>
+            <trans-unit id="form.label_align_right">
+                <source>form.label_align_right</source>
+                <target>справа</target>
+            </trans-unit>
+            <trans-unit id="form.label_align_center">
+                <source>form.label_align_center</source>
+                <target>по центру</target>
+            </trans-unit>
+            <trans-unit id="form.label_align_none">
+                <source>form.label_align_none</source>
+                <target>нет</target>
+            </trans-unit>
+            <trans-unit id="form.label_related">
+                <source>form.label_related</source>
+                <target>Связанные аккаунты</target>
+            </trans-unit>
+            <trans-unit id="form.label_lang">
+                <source>form.label_lang</source>
+                <target>Язык</target>
+            </trans-unit>
+            <trans-unit id="form.label_user">
+                <source>form.label_user</source>
+                <target>Пользователь</target>
+            </trans-unit>
+            <trans-unit id="form.label_show_username">
+                <source>form.label_show_username</source>
+                <target>Показывать имя пользователя</target>
+            </trans-unit>
+            <trans-unit id="form.label_large_button">
+                <source>form.label_large_button</source>
+                <target>Большая кнопка</target>
+            </trans-unit>
+            <trans-unit id="form.label_opt_out">
+                <source>form.label_opt_out</source>
+                <target>Отказаться</target>
+            </trans-unit>
+            <trans-unit id="form.label_language">
+                <source>form.label_language</source>
+                <target>Язык</target>
+            </trans-unit>
+            <trans-unit id="form.label_hashtag">
+                <source>form.label_hashtag</source>
+                <target>Хэштэг</target>
+            </trans-unit>
+            <trans-unit id="form.label_text">
+                <source>form.label_text</source>
+                <target>Текст</target>
+            </trans-unit>
+            <trans-unit id="form.label_recommend">
+                <source>form.label_recommend</source>
+                <target>Рекомендовать</target>
+            </trans-unit>
+            <trans-unit id="form.label_show_count">
+                <source>form.label_show_count</source>
+                <target>Показать количество</target>
+            </trans-unit>
+            <trans-unit id="form.label_via">
+                <source>form.label_via</source>
+                <target>С помощью</target>
+            </trans-unit>
+            <trans-unit id="form.help_tweet">
+                <source>form.help_tweet</source>
+                <target>Id твита, URL или контент. Если вы разместите HTML-контент напрямую, другие параметры не будут обработаны.</target>
+            </trans-unit>
+            <trans-unit id="form.help_maxwidth">
+                <source>form.help_maxwidth</source>
+                <target>Должно быть между 250 и 550.</target>
+            </trans-unit>
+            <trans-unit id="form.help_hide_media">
+                <source>form.help_hide_media</source>
+                <target>Скрыть носители, содержащиеся в твите?</target>
+            </trans-unit>
+            <trans-unit id="form.help_hide_thread">
+                <source>form.help_hide_thread</source>
+                <target>Скрыть обсуждение?</target>
+            </trans-unit>
+            <trans-unit id="form.help_omit_script">
+                <source>form.help_omit_script</source>
+                <target>Следует отмечать не более одного раза на странице. Если вы вставляете несколько твитов на страницу, снимите этот флажок с других.</target>
+            </trans-unit>
+            <trans-unit id="form.help_related">
+                <source>form.help_related</source>
+                <target>См. параметр 'related' на https://dev.twitter.com/web/intents</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
