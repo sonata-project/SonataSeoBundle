@@ -12,29 +12,22 @@
 namespace Sonata\SeoBundle\Block\Breadcrumb;
 
 use Knp\Menu\FactoryInterface;
-use Knp\Menu\ItemInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
-use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\Service\MenuBlockService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Abstract class for breadcrumb menu services.
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
+ *
+ * @deprecated since 3.x, to be removed with 4.0.
  */
-abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
+abstract class BaseBreadcrumbMenuBlockService extends AbstractBreadcrumbMenuService
 {
     /**
      * @var string
      */
     private $context;
-
-    /**
-     * @var FactoryInterface
-     */
-    private $factory;
 
     /**
      * @param string                $context
@@ -45,10 +38,15 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
      */
     public function __construct($context, $name, EngineInterface $templating, MenuProviderInterface $menuProvider, FactoryInterface $factory)
     {
-        parent::__construct($name, $templating, $menuProvider);
+        @trigger_error(
+            'The '.__CLASS__.' class is deprecated since 3.x, to be removed in 4.0. '.
+            'Use '.AbstractBreadcrumbMenuService::class.' instead.',
+            E_USER_DEPRECATED
+        );
+
+        parent::__construct($name, $templating, $factory);
 
         $this->context = $context;
-        $this->factory = $factory;
     }
 
     /**
@@ -64,36 +62,6 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return sprintf('Breadcrumb %s', $this->context);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureSettings(OptionsResolver $resolver)
-    {
-        parent::configureSettings($resolver);
-
-        $resolver->setDefaults([
-            'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
-            'include_homepage_link' => true,
-            'context' => false,
-        ]);
-    }
-
-    /**
-     * @return FactoryInterface
-     */
-    protected function getFactory()
-    {
-        return $this->factory;
-    }
-
-    /**
      * @return string
      */
     protected function getContext()
@@ -102,35 +70,10 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     }
 
     /**
-     * Initialize breadcrumb menu.
-     *
-     * @param BlockContextInterface $blockContext
-     *
-     * @return ItemInterface
+     * {@inheritdoc}
      */
-    protected function getRootMenu(BlockContextInterface $blockContext)
+    public function getName()
     {
-        $settings = $blockContext->getSettings();
-        /*
-         * @todo : Use the router to get the homepage URI
-         */
-
-        $menu = $this->factory->createItem('breadcrumb');
-
-        $menu->setChildrenAttribute('class', 'breadcrumb');
-
-        if (method_exists($menu, 'setCurrentUri')) {
-            $menu->setCurrentUri($settings['current_uri']);
-        }
-
-        if (method_exists($menu, 'setCurrent')) {
-            $menu->setCurrent($settings['current_uri']);
-        }
-
-        if ($settings['include_homepage_link']) {
-            $menu->addChild('sonata_seo_homepage_breadcrumb', ['uri' => '/']);
-        }
-
-        return $menu;
+        return sprintf('Breadcrumb %s', $this->getContext());
     }
 }

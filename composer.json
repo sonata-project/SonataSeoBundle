@@ -45,6 +45,9 @@
         "symfony/phpunit-bridge": "^4.0",
         "symfony/yaml": "^2.8 || ^3.2 || ^4.0"
     },
+    "conflict": {
+        "sonata-project/block-bundle": "<3.7"
+    },
     "suggest": {
         "guzzle/guzzle": "3.*",
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"

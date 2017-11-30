@@ -44,9 +44,7 @@ First, you need to create a BlockService to handle your breadcrumbs. You can ext
 
     <service id="acme.bundle.block.breadcrumb" class="Acme\Bundle\Block\MyCustomBreadcrumbBlockService">
         <tag name="sonata.block"/>
-        <tag name="sonata.breadcrumb"/>
-
-        <argument>my_custom_context</argument>
+        <tag name="sonata.breadcrumb" context="my_custom_context" />
         <argument>acme.bundle.block.breadcrumb</argument>
         <argument type="service" id="templating" />
         <argument type="service" id="knp_menu.menu_provider" />

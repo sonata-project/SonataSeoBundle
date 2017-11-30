@@ -1,6 +1,19 @@
 UPGRADE 2.x
 ===========
 
+UPGRADE FROM 2.3 to 2.x
+=======================
+
+### Deprecated `BaseBreadcrumbMenuBlockService` class
+
+The class `Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService` is deprecated in favor of 
+`Sonata\SeoBundle\Block\Breadcrumb\AbstractBreadcrumbMenuService`.
+With these changes the context is removed from the block and will be bound through the `sonata.breadcrumb` tag:
+
+```xml
+    <tag name="sonata.breadcrumb" context="my_custom_context" />
+```
+
 UPGRADE FROM 2.2 to 2.3
 =======================
 

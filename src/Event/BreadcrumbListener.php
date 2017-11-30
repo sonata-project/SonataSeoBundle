@@ -28,14 +28,38 @@ class BreadcrumbListener
     protected $blockServices = [];
 
     /**
+     * @var array
+     */
+    protected $contextServices = [];
+
+    /**
      * Add a renderer to the status services list.
      *
      * @param string                $type
      * @param BlockServiceInterface $blockService
+     *
+     * @deprecated since 2.x, use BreadcrumbListener::addBlockContext instead
      */
     public function addBlockService($type, BlockServiceInterface $blockService)
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since 2.x, to be removed in 3.0. '.
+            'Use '.__NAMESPACE__.'::addBlockContext() instead.',
+            E_USER_DEPRECATED
+        );
+
         $this->blockServices[$type] = $blockService;
+    }
+
+    /**
+     * Binds a block service to a context.
+     *
+     * @param string $context
+     * @param string $serviceId
+     */
+    public function addBlockContext($context, $serviceId)
+    {
+        $this->contextServices[$context] = $serviceId;
     }
 
     /**
@@ -51,6 +75,18 @@ class BreadcrumbListener
             return;
         }
 
+        if (isset($this->contextServices[$context])) {
+            $block = new Block();
+            $block->setId(uniqid());
+            $block->setSettings($event->getSettings());
+            $block->setType($this->contextServices[$context]);
+
+            $event->addBlock($block);
+
+            return;
+        }
+
+        // NEXT_MAJOR: remove this block
         foreach ($this->blockServices as $type => $blockService) {
             if ($blockService->handleContext($context)) {
                 $block = new Block();

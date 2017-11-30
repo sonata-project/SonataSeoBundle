@@ -85,10 +85,10 @@
         <!-- Pinterest buttons -->
         <!-- Breadcrumb -->
         <service id="sonata.seo.block.breadcrumb.homepage" class="%sonata.seo.block.breadcrumb.homepage.class%" public="true">
-            <tag name="sonata.breadcrumb"/>
+            <tag name="sonata.breadcrumb" context="homepage"/>
             <tag name="sonata.block"/>
-            <argument>homepage</argument>
             <argument>sonata.seo.block.breadcrumb.homepage</argument>
+            <argument>homepage</argument>
             <argument type="service" id="sonata.templating"/>
             <argument type="service" id="knp_menu.menu_provider"/>
             <argument type="service" id="knp_menu.factory"/>
