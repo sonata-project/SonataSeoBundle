@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.3.0...2.4.0) - 2017-11-30
+### Added
+- Russian translations
+
+### Changed
+- do not use deprecated array for block menu service
+
+### Removed
+- Removed BC layer for old symfony versions
+- Support for `^3.0` and `^3.1` versions of `framework-bundle` and `options-resolver`.
+
 ## [2.3.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.2.1...2.3.0) - 2017-10-22
 ### Changed
 - moved `sonata-project/block-bundle` back to require-dev
