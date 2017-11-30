@@ -45,7 +45,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
      */
     public function __construct($context, $name, EngineInterface $templating, MenuProviderInterface $menuProvider, FactoryInterface $factory)
     {
-        parent::__construct($name, $templating, $menuProvider, []);
+        parent::__construct($name, $templating, $menuProvider);
 
         $this->context = $context;
         $this->factory = $factory;
