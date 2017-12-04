@@ -81,7 +81,7 @@ class ConfigurationTest extends TestCase
                 'head' => [],
                 'metas' => [],
                 'separator' => ' - ',
-                'title' => 'Sonata Project',
+                'title' => 'Project name',
             ],
             'sitemap' => [
                 'doctrine_orm' => [],
