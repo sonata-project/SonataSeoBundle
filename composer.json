@@ -25,7 +25,6 @@
     },
     "require-dev": {
         "guzzle/guzzle": "3.*",
-        "sllh/php-cs-fixer-styleci-bridge": "^2.0",
         "sonata-project/admin-bundle": "^3.0",
         "sonata-project/block-bundle": "^3.7",
         "symfony/console": "^2.8 || ^3.2 || ^4.0",
