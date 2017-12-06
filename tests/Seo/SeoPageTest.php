@@ -53,11 +53,10 @@ class SeoPageTest extends TestCase
         $this->assertFalse($page->hasMeta('property', 'foo'));
     }
 
-    /**
-     * @expectedException \RuntimeException
-     */
     public function testInvalidMetas()
     {
+        $this->expectException(\RuntimeException::class);
+
         $page = new SeoPage();
         $page->setMetas([
             'type' => 'not an array',
