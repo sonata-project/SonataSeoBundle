@@ -77,7 +77,7 @@ class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockServi
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), (!is_null($code) ? $code : $this->getName()), false, 'SonataSeoBundle', [
+        return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
         ]);
     }

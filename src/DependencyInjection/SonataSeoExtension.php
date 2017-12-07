@@ -37,7 +37,7 @@ class SonataSeoExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        if (isset($bundles['SonataBlockBundle']) && isset($bundles['KnpMenuBundle'])) {
+        if (isset($bundles['SonataBlockBundle'], $bundles['KnpMenuBundle'])) {
             $loader->load('blocks.xml');
         }
 
