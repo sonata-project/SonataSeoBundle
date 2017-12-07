@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -34,9 +36,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 {
-    const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
-    const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
-    const TWEET_ID_PATTERN = '%^([0-9]*)$%';
+    public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
+    public const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
+    public const TWEET_ID_PATTERN = '%^([0-9]*)$%';
 
     /**
      * {@inheritdoc}
@@ -75,7 +77,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     /**
      * {@inheritdoc}
      */
-    public function configureSettings(OptionsResolver $resolver)
+    public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'template' => 'SonataSeoBundle:Block:block_twitter_embed.html.twig',
@@ -93,7 +95,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     /**
      * {@inheritdoc}
      */
-    public function buildEditForm(FormMapper $form, BlockInterface $block)
+    public function buildEditForm(FormMapper $form, BlockInterface $block): void
     {
         $form->add('settings', ImmutableArrayType::class, [
             'keys' => [

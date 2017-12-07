@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -33,7 +35,7 @@ class BreadcrumbListener
      * @param string                $type
      * @param BlockServiceInterface $blockService
      */
-    public function addBlockService($type, BlockServiceInterface $blockService)
+    public function addBlockService($type, BlockServiceInterface $blockService): void
     {
         $this->blockServices[$type] = $blockService;
     }
@@ -43,7 +45,7 @@ class BreadcrumbListener
      *
      * @param BlockEvent $event
      */
-    public function onBlock(BlockEvent $event)
+    public function onBlock(BlockEvent $event): void
     {
         $context = $event->getSetting('context', null);
 
