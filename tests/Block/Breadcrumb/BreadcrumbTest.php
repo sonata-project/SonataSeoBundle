@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -23,7 +25,7 @@ class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
  */
 class BreadcrumbTest extends AbstractBlockServiceTestCase
 {
-    public function testBlockService()
+    public function testBlockService(): void
     {
         $blockService = new BreadcrumbMenuBlockService_Test(
             'context',

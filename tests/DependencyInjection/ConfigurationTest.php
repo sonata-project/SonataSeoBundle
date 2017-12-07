@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -18,7 +20,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class ConfigurationTest extends TestCase
 {
-    public function testDefaultConfiguration()
+    public function testDefaultConfiguration(): void
     {
         $config = $this->processConfiguration([[]]);
 
@@ -27,7 +29,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals($expected, $config);
     }
 
-    public function testKeysAreNotNormalized()
+    public function testKeysAreNotNormalized(): void
     {
         $values = [
             'page' => [
@@ -50,7 +52,7 @@ class ConfigurationTest extends TestCase
         $this->assertEquals($expected, $config);
     }
 
-    public function testWithYamlConfig()
+    public function testWithYamlConfig(): void
     {
         $values = Yaml::parse(
             file_get_contents(__DIR__.'/data/config.yml'),
