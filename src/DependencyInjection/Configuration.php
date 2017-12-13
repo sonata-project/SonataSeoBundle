@@ -50,7 +50,8 @@ class Configuration implements ConfigurationInterface
                             ->end()
                         ->end()
                         ->scalarNode('separator')->defaultValue(' - ')->end()
-                        ->scalarNode('title')->defaultValue('Sonata Project')->end()
+                        // NEXT_MAJOR: Make this field required
+                        ->scalarNode('title')->defaultValue('Project name')->end()
                     ->end()
                 ->end()
                 ->arrayNode('sitemap')
