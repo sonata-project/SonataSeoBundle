@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": "^5.6 || ^7.0",
+        "php": "^7.1",
         "sonata-project/exporter": "^1.2.2",
         "symfony/framework-bundle": "^2.8 || ^3.2 || ^4.0",
         "symfony/options-resolver": "^2.8 || ^3.2 || ^4.0",
