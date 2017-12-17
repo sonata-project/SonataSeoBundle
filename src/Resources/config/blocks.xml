@@ -19,72 +19,72 @@
     </parameters>
     <services>
         <!-- Email buttons -->
-        <service id="sonata.seo.block.email.share_button" class="%sonata.seo.block.email.share_button.class%">
+        <service id="sonata.seo.block.email.share_button" class="%sonata.seo.block.email.share_button.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.email.share_button</argument>
             <argument type="service" id="templating"/>
         </service>
         <!-- Email buttons -->
         <!-- Facebook Social Plugins -->
-        <service id="sonata.seo.block.facebook.like_box" class="%sonata.seo.block.facebook.like_box.class%">
+        <service id="sonata.seo.block.facebook.like_box" class="%sonata.seo.block.facebook.like_box.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.facebook.like_box</argument>
             <argument type="service" id="templating"/>
         </service>
-        <service id="sonata.seo.block.facebook.like_button" class="%sonata.seo.block.facebook.like_button.class%">
+        <service id="sonata.seo.block.facebook.like_button" class="%sonata.seo.block.facebook.like_button.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.facebook.like_button</argument>
             <argument type="service" id="templating"/>
         </service>
-        <service id="sonata.seo.block.facebook.send_button" class="%sonata.seo.block.facebook.send_button.class%">
+        <service id="sonata.seo.block.facebook.send_button" class="%sonata.seo.block.facebook.send_button.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.facebook.send_button</argument>
             <argument type="service" id="templating"/>
         </service>
-        <service id="sonata.seo.block.facebook.share_button" class="%sonata.seo.block.facebook.share_button.class%">
+        <service id="sonata.seo.block.facebook.share_button" class="%sonata.seo.block.facebook.share_button.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.facebook.share_button</argument>
             <argument type="service" id="templating"/>
         </service>
         <!-- Facebook Social Plugins -->
         <!-- Twitter buttons -->
-        <service id="sonata.seo.block.twitter.share_button" class="%sonata.seo.block.twitter.share_button.class%">
+        <service id="sonata.seo.block.twitter.share_button" class="%sonata.seo.block.twitter.share_button.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.twitter.share_button</argument>
             <argument type="service" id="templating"/>
         </service>
-        <service id="sonata.seo.block.twitter.follow_button" class="%sonata.seo.block.twitter.follow_button.class%">
+        <service id="sonata.seo.block.twitter.follow_button" class="%sonata.seo.block.twitter.follow_button.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.twitter.follow_button</argument>
             <argument type="service" id="templating"/>
         </service>
-        <service id="sonata.seo.block.twitter.hashtag_button" class="%sonata.seo.block.twitter.hashtag_button.class%">
+        <service id="sonata.seo.block.twitter.hashtag_button" class="%sonata.seo.block.twitter.hashtag_button.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.twitter.hashtag_button</argument>
             <argument type="service" id="templating"/>
         </service>
-        <service id="sonata.seo.block.twitter.mention_button" class="%sonata.seo.block.twitter.mention_button.class%">
+        <service id="sonata.seo.block.twitter.mention_button" class="%sonata.seo.block.twitter.mention_button.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.twitter.mention_button</argument>
             <argument type="service" id="templating"/>
         </service>
         <!-- Twitter buttons -->
         <!-- Twitter embed -->
-        <service id="sonata.seo.block.twitter.embed" class="%sonata.seo.block.twitter.embed.class%">
+        <service id="sonata.seo.block.twitter.embed" class="%sonata.seo.block.twitter.embed.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.twitter.embed</argument>
             <argument type="service" id="templating"/>
         </service>
         <!-- Twitter embed -->
         <!-- Pinterest buttons -->
-        <service id="sonata.seo.block.pinterest.pin_button" class="%sonata.seo.block.pinterest.pin_button.class%">
+        <service id="sonata.seo.block.pinterest.pin_button" class="%sonata.seo.block.pinterest.pin_button.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.pinterest.pin_button</argument>
             <argument type="service" id="templating"/>
         </service>
         <!-- Pinterest buttons -->
         <!-- Breadcrumb -->
-        <service id="sonata.seo.block.breadcrumb.homepage" class="%sonata.seo.block.breadcrumb.homepage.class%">
+        <service id="sonata.seo.block.breadcrumb.homepage" class="%sonata.seo.block.breadcrumb.homepage.class%" public="true">
             <tag name="sonata.breadcrumb"/>
             <tag name="sonata.block"/>
             <argument>homepage</argument>
