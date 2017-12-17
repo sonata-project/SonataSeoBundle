@@ -8,12 +8,12 @@
         <parameter key="sonata.seo.sitemap.manager.class">Sonata\SeoBundle\Sitemap\SourceManager</parameter>
     </parameters>
     <services>
-        <service id="sonata.seo.page.default" class="%sonata.seo.page.default.class%"/>
+        <service id="sonata.seo.page.default" class="%sonata.seo.page.default.class%" public="true"/>
         <service id="sonata.seo.twig.extension" class="%sonata.seo.twig.extension.class%" public="false">
             <tag name="twig.extension"/>
             <argument type="service" id="sonata.seo.page"/>
             <argument/>
         </service>
-        <service id="sonata.seo.sitemap.manager" class="%sonata.seo.sitemap.manager.class%"/>
+        <service id="sonata.seo.sitemap.manager" class="%sonata.seo.sitemap.manager.class%" public="true"/>
     </services>
 </container>
