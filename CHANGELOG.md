@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.4.0...2.5.0) - 2018-01-07
+### Fixed
+- It is now allowed to install Symfony 4
+
+### Changed
+- make services explicit public
+- Changed default title to `Project name`
+
 ## [2.4.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.3.0...2.4.0) - 2017-11-30
 ### Added
 - Russian translations
