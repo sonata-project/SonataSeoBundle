@@ -34,7 +34,7 @@ class EmailShareButtonBlockService extends AbstractAdminBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_email_share_button.html.twig',
+            'template' => '@SonataSeo/Block/block_email_share_button.html.twig',
             'subject' => null,
             'body' => null,
         ]);

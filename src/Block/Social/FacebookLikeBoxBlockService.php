@@ -36,7 +36,7 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_facebook_like_box.html.twig',
+            'template' => '@SonataSeo/Block/block_facebook_like_box.html.twig',
             'url' => null,
             'width' => null,
             'height' => null,

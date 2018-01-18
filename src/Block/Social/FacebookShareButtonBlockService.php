@@ -47,7 +47,7 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_facebook_share_button.html.twig',
+            'template' => '@SonataSeo/Block/block_facebook_share_button.html.twig',
             'url' => null,
             'width' => null,
             'layout' => $this->layoutList['box_count'],

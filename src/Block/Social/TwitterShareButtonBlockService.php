@@ -36,7 +36,7 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_twitter_share_button.html.twig',
+            'template' => '@SonataSeo/Block/block_twitter_share_button.html.twig',
             'url' => null,
             'text' => null,
             'show_count' => true,
