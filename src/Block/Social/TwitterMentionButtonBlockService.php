@@ -35,7 +35,7 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_twitter_mention_button.html.twig',
+            'template' => '@SonataSeo/Block/block_twitter_mention_button.html.twig',
             'user' => null,
             'text' => null,
             'recommend' => null,

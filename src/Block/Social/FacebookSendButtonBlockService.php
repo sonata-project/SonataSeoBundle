@@ -35,7 +35,7 @@ class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockServi
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_facebook_send_button.html.twig',
+            'template' => '@SonataSeo/Block/block_facebook_send_button.html.twig',
             'url' => null,
             'width' => null,
             'height' => null,

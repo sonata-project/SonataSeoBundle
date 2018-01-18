@@ -54,7 +54,7 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_facebook_like_button.html.twig',
+            'template' => '@SonataSeo/Block/block_facebook_like_button.html.twig',
             'url' => null,
             'width' => null,
             'show_faces' => true,
