@@ -2,7 +2,10 @@
     "name": "sonata-project/seo-bundle",
     "type": "symfony-bundle",
     "description": "Symfony SonataSeoBundle",
-    "keywords": ["seo", "sonata"],
+    "keywords": [
+        "seo",
+        "sonata"
+    ],
     "homepage": "https://sonata-project.org/bundles/seo",
     "license": "MIT",
     "authors": [
@@ -35,18 +38,22 @@
         "guzzle/guzzle": "3.*",
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder"
     },
-    "autoload": {
-        "psr-4": { "Sonata\\SeoBundle\\": "src/" }
-    },
-    "autoload-dev": {
-        "psr-4": { "Sonata\\SeoBundle\\Tests\\": "tests/" }
-    },
     "config": {
         "sort-packages": true
     },
     "extra": {
         "branch-alias": {
             "dev-master": "3.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Sonata\\SeoBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sonata\\SeoBundle\\Tests\\": "tests/"
         }
     }
 }
