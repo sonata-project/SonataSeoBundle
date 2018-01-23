@@ -26,10 +26,13 @@
         "symfony/options-resolver": "^2.8 || ^3.2 || ^4.0",
         "twig/twig": "^1.14.2 || ^2.0"
     },
+    "conflict": {
+        "sonata-project/block-bundle": "<3.11"
+    },
     "require-dev": {
         "guzzle/guzzle": "3.*",
         "sonata-project/admin-bundle": "^3.0",
-        "sonata-project/block-bundle": "^3.7",
+        "sonata-project/block-bundle": "^3.11",
         "symfony/console": "^2.8 || ^3.2 || ^4.0",
         "symfony/finder": "^2.8 || ^3.2 || ^4.0",
         "symfony/phpunit-bridge": "^3.3 || ^4.0"
