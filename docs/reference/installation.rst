@@ -3,13 +3,32 @@ Installation
 
 To begin, require the bundle via Composer::
 
-    php composer.phar require sonata-project/seo-bundle
+    composer require sonata-project/seo-bundle
 
-Now, add the new `SeoBundle` Bundle to the kernel
+Now, add the new `SeoBundle` Bundle to ``bundles.php`` file:
 
 .. code-block:: php
 
     <?php
+
+    // config/bundles.php
+
+    return [
+        //...
+        Sonata\SeoBundle\SonataSeoBundle::class => ['all' => true],
+    ];
+
+.. note::
+    If you are not using Symfony Flex, you should enable bundles in your
+    ``AppKernel.php``.
+
+
+.. code-block:: php
+
+    <?php
+
+    // app/AppKernel.php
+
     public function registerbundles()
     {
         return array(
@@ -25,7 +44,7 @@ file.
 
 .. code-block:: yaml
 
-    # app/config/config.yml
+    # config/packages/sonata.yaml
     sonata_seo:
         encoding:         UTF-8
         page:
@@ -59,3 +78,6 @@ file.
                 'xmlns:og':           http://opengraphprotocol.org/schema/
                 #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
 
+.. note::
+    If you are not using Symfony Flex, this configuration should be added
+    to ``app/config/config.yml``.
