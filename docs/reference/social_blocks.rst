@@ -28,11 +28,11 @@ layout. You can include them by including these templates :
 
 .. code-block:: jinja
 
-    {% include 'SonataSeoBundle:Block:_facebook_sdk.html.twig' %}
+    {% include '@SonataSeo/Block/_facebook_sdk.html.twig' %}
 
-    {% include 'SonataSeoBundle:Block:_twitter_sdk.html.twig' %}
+    {% include '@SonataSeo/Block/_twitter_sdk.html.twig' %}
 
-    {% include 'SonataSeoBundle:Block:_pinterest_sdk.html.twig' %}
+    {% include '@SonataSeo/Block/_pinterest_sdk.html.twig' %}
 
 Check the related documentation to get more details :
 

@@ -37,7 +37,7 @@ class TwitterFollowButtonBlockService extends BaseTwitterButtonBlockService
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_twitter_follow_button.html.twig',
+            'template' => '@SonataSeo/Block/block_twitter_follow_button.html.twig',
             'user' => null,
             'show_username' => true,
             'large_button' => false,

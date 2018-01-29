@@ -41,7 +41,7 @@ class PinterestPinButtonBlockService extends AbstractAdminBlockService
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_pinterest_pin_button.html.twig',
+            'template' => '@SonataSeo/Block/block_pinterest_pin_button.html.twig',
             'size' => null,
             'shape' => null,
             'url' => null,

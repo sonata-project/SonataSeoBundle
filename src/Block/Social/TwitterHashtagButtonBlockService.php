@@ -38,7 +38,7 @@ class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'template' => 'SonataSeoBundle:Block:block_twitter_hashtag_button.html.twig',
+            'template' => '@SonataSeo/Block/block_twitter_hashtag_button.html.twig',
             'url' => null,
             'hashtag' => null,
             'text' => null,
