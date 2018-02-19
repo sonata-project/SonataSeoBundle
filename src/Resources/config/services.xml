@@ -14,6 +14,11 @@
             <argument type="service" id="sonata.seo.page"/>
             <argument/>
         </service>
+        <service id="sonata.seo.twig.structured_data_extension" class="Sonata\SeoBundle\Twig\Extension\StructuredDataExtension" public="false">
+            <tag name="twig.extension"/>
+            <argument type="service" id="sonata.seo.page"/>
+            <argument/>
+        </service>
         <service id="sonata.seo.sitemap.manager" class="%sonata.seo.sitemap.manager.class%" public="true"/>
     </services>
 </container>

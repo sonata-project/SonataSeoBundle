@@ -3,11 +3,13 @@
 namespace Sonata\SeoBundle\Twig\Extension;
 
 use Sonata\SeoBundle\Seo\StructuredDataAwarePage;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
  */
-class StructuredDataExtension extends \Twig_Extension
+class StructuredDataExtension extends AbstractExtension
 {
     /**
      * @var StructuredDataAwarePage
@@ -33,7 +35,7 @@ class StructuredDataExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('sonata_seo_structured_data', [$this, 'getStructuredData'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_structured_data', [$this, 'getStructuredData'], ['is_safe' => ['html']]),
         ];
     }
 
