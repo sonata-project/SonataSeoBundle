@@ -155,18 +155,4 @@ interface SeoPageInterface
      * @return array
      */
     public function getOEmbedLinks();
-
-    /**
-     * Set the structured data as an JSON-LD string.
-     *
-     * @param string $structuredData
-     *
-     * @return SeoPageInterface
-     */
-    public function setStructuredData($structuredData);
-
-    /**
-     * @return string
-     */
-    public function getStructuredData();
 }
