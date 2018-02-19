@@ -63,7 +63,7 @@ class SeoPage implements SeoPageInterface
      *
      * @var string
      */
-    protected $structuredData;
+    private $structuredData;
 
     /**
      * @param string $title
@@ -424,5 +424,19 @@ class SeoPage implements SeoPageInterface
     public function setStructuredData($structuredData)
     {
         $this->structuredData = $structuredData;
+    }
+
+    /**
+     * @param mixed $meta
+     *
+     * @return array
+     */
+    private function normalize($meta)
+    {
+        if (is_string($meta)) {
+            return [$meta, []];
+        }
+
+        return $meta;
     }
 }

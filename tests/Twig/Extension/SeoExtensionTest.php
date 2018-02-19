@@ -177,7 +177,7 @@ class SeoExtensionTest extends TestCase
     public function testStructuredData()
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
-        $page->expects($this->any())->method('getStructuredData')->will($this->returnValue(file_get_contents(__DIR__ . '/../../Fixtures/structured_data.jsonld')));
+        $page->expects($this->any())->method('getStructuredData')->will($this->returnValue(file_get_contents(__DIR__.'/../../Fixtures/structured_data.jsonld')));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
