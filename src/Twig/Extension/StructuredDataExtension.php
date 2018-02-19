@@ -38,9 +38,6 @@ class StructuredDataExtension extends AbstractExtension
         $this->page = $page;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions()
     {
         return [

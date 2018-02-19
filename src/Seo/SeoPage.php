@@ -418,9 +418,6 @@ class SeoPage implements SeoPageInterface, StructuredDataAwarePage
         return $this->structuredData;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setStructuredData($structuredData)
     {
         $this->structuredData = $structuredData;
