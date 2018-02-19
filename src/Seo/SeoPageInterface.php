@@ -160,6 +160,8 @@ interface SeoPageInterface
      * Set the structured data as an JSON-LD string.
      *
      * @param string $structuredData
+     *
+     * @return SeoPageInterface
      */
     public function setStructuredData($structuredData);
 
