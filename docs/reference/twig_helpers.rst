@@ -86,3 +86,28 @@ This will render oEmbed links as follows:
 .. code-block:: html
 
     <link rel="alternate" type="application/json+oembed" href="http://flickr.com/services/oembed?url=http%3A%2F%2Fflickr.com%2Fphotos%2Fbees%2F2362225867%2F&format=json" title="Bacon Lollys oEmbed Profile" />
+
+Render structured data
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: jinja
+
+    {{ sonata_seo_structured_data() }}
+
+This will render the page structured data as followed:
+
+.. code-block:: html
+
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://www.example.com",
+      "name": "Unlimited Ball Bearings Corp.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-401-555-1212",
+        "contactType": "Customer service"
+      }
+    }
+    </script>
