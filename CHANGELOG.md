@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.5.1](https://github.com/sonata-project/SonataSeoBundle/compare/2.5.0...2.5.1) - 2018-02-23
+### Changed
+- Switch all templates references to Twig namespaced syntax
+- Switch from templating service to sonata.templating
+
+### Fixed
+- Register `Sonata\SeoBundle\Command\SitemapGeneratorCommand` via `console.command` tag
+
 ## [2.5.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.4.0...2.5.0) - 2018-01-07
 ### Fixed
 - It is now allowed to install Symfony 4
