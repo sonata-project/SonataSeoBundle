@@ -15,11 +15,15 @@ use PHPUnit\Framework\TestCase;
 use Sonata\SeoBundle\Seo\StructuredDataAwarePage;
 use Sonata\SeoBundle\Twig\Extension\StructuredDataExtension;
 
+/**
+ * @author Maximilian Berghoff <Maximilian.Berghoff@gmx.de>
+ */
 class StructuredDataExtensionTest extends TestCase
 {
     public function testStructuredData()
     {
         $page = $this->createMock(StructuredDataAwarePage::class);
+
         $page->expects($this->any())->method('getStructuredData')->will($this->returnValue(file_get_contents(__DIR__.'/../../Fixtures/structured_data.jsonld')));
 
         $extension = new StructuredDataExtension($page, 'UTF-8');
