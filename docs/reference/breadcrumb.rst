@@ -6,15 +6,16 @@ The ``SonataSeoBundle`` let's you create your own breadcrumbs based on your diff
 Create your own breadcrumb
 --------------------------
 
-First, you need to create a BlockService to handle your breadcrumbs. You can extend ``Sonata\SeoBundle\Block\BaseBreadcrumbMenuBlockService`` :
+First, you need to create a BlockService to handle your breadcrumbs. You can extend ``Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService`` :
 
 .. code-block:: php
 
     <?php
 
-    namespace Acme\Bundle\Block;
+    namespace App\Block;
 
-    use Sonata\SeoBundle\Block\BaseBreadcrumbMenuBlockService;
+    use Sonata\BlockBundle\Block\BlockContextInterface;
+    use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
 
     class MyCustomBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
     {
@@ -23,16 +24,15 @@ First, you need to create a BlockService to handle your breadcrumbs. You can ext
          */
         public function getName()
         {
-            return 'acme.bundle.block.breadcrumb';
+            return 'app.block.breadcrumb';
         }
 
         /**
          * {@inheritdoc}
          */
-        protected function getMenu(array $options)
+        protected function getMenu(BlockContextInterface $blockContext)
         {
-
-            $menu = $this->getMenu($options);
+            $menu = $this->getRootMenu($blockContext);
 
             $menu->addChild('my_awesome_action');
 
