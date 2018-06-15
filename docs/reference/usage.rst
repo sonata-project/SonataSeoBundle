@@ -51,6 +51,10 @@ However, it is possible to alter these values at runtime:
         ->addMeta('property', 'og:description', $post->getAbstract())
     ;
 
+.. note::
+
+    If you need a shortcut to inject the seo page into any class, you could use the
+    ``Sonata\SeoBundle\Seo\SeoAwareTrait``.
 
 These values can be used inside a twig template.
 
