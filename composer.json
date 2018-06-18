@@ -35,7 +35,7 @@
         "sonata-project/block-bundle": "<3.11"
     },
     "require-dev": {
-        "guzzle/guzzle": "3.*",
+        "guzzle/guzzle": "^3.8",
         "sonata-project/admin-bundle": "^3.31",
         "sonata-project/block-bundle": "^3.11",
         "sonata-project/core-bundle": "^3.9",
