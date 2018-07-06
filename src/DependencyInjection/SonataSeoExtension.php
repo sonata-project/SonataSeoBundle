@@ -67,7 +67,9 @@ class SonataSeoExtension extends Extension
         $definition->addMethodCall('setHtmlAttributes', [$config['head']]);
         $definition->addMethodCall('setSeparator', [$config['separator']]);
 
-        $container->setAlias('sonata.seo.page', $config['default']);
+        if ($alias = $container->setAlias('sonata.seo.page', $config['default'])) {
+            $alias->setPublic(true);
+        }
     }
 
     /**
