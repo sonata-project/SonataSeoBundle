@@ -201,7 +201,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
         $parameters = [];
         foreach ($apiParams as $key => $value) {
-            if ($value && in_array($key, $supportedParams)) {
+            if ($value && \in_array($key, $supportedParams)) {
                 $parameters[] = $key.'='.$value;
             }
         }
