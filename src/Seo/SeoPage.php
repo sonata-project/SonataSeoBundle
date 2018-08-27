@@ -159,7 +159,7 @@ class SeoPage implements SeoPageInterface
         $this->metas = [];
 
         foreach ($metadatas as $type => $metas) {
-            if (!is_array($metas)) {
+            if (!\is_array($metas)) {
                 throw new \RuntimeException('$metas must be an array');
             }
 
@@ -392,7 +392,7 @@ class SeoPage implements SeoPageInterface
      */
     private function normalize($meta)
     {
-        if (is_string($meta)) {
+        if (\is_string($meta)) {
             return [$meta, []];
         }
 
