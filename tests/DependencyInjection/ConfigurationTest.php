@@ -57,7 +57,7 @@ class ConfigurationTest extends TestCase
         $values = Yaml::parse(
             file_get_contents(__DIR__.'/data/config.yml'),
             // NEXT_MAJOR: use constant when dropping Symfony < 3.1
-            defined('Symfony\Component\Yaml\Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE') ?
+            \defined('Symfony\Component\Yaml\Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE') ?
             Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE :
             true
         );

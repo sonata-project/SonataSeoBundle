@@ -158,7 +158,7 @@ class SonataSeoExtension extends Extension
         }
 
         foreach ($config['sitemap']['services'] as $pos => $sitemap) {
-            if (!is_array($sitemap)) {
+            if (!\is_array($sitemap)) {
                 $sitemap = [
                     'group' => false,
                     'types' => [],

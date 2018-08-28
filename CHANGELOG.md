@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.5.1...2.6.0) - 2018-08-27
+### Added
+- Added `SeoAwareTrait`
+
+### Fixed
+- Make `sonata.seo.page` alias public
+
 ## [2.5.1](https://github.com/sonata-project/SonataSeoBundle/compare/2.5.0...2.5.1) - 2018-02-23
 ### Changed
 - Switch all templates references to Twig namespaced syntax
