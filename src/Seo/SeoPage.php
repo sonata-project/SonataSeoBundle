@@ -72,6 +72,7 @@ class SeoPage implements SeoPageInterface
             'property' => [],
         ];
 
+        $this->htmlAttributes = [];
         $this->headAttributes = [];
         $this->linkCanonical = '';
         $this->separator = ' ';
