@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -64,7 +66,7 @@ class SeoExtension extends \Twig_Extension
      *
      * @deprecated since 2.0, to be removed in 3.0
      */
-    public function renderTitle()
+    public function renderTitle(): void
     {
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
@@ -88,7 +90,7 @@ class SeoExtension extends \Twig_Extension
      *
      * @deprecated since 2.0, to be removed in 3.0
      */
-    public function renderMetadatas()
+    public function renderMetadatas(): void
     {
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
@@ -132,7 +134,7 @@ class SeoExtension extends \Twig_Extension
      *
      * @deprecated since 2.0, to be removed in 3.0
      */
-    public function renderHtmlAttributes()
+    public function renderHtmlAttributes(): void
     {
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
@@ -161,7 +163,7 @@ class SeoExtension extends \Twig_Extension
      *
      * @deprecated since 2.0, to be removed in 3.0
      */
-    public function renderHeadAttributes()
+    public function renderHeadAttributes(): void
     {
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
@@ -190,7 +192,7 @@ class SeoExtension extends \Twig_Extension
      *
      * @deprecated since 2.0, to be removed in 3.0
      */
-    public function renderLinkCanonical()
+    public function renderLinkCanonical(): void
     {
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
@@ -216,7 +218,7 @@ class SeoExtension extends \Twig_Extension
      *
      * @deprecated since 2.0, to be removed in 3.0
      */
-    public function renderLangAlternates()
+    public function renderLangAlternates(): void
     {
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
