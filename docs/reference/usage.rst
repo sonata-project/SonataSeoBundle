@@ -9,26 +9,11 @@ By default, the object is initialized with values defined in the configuration:
 .. code-block:: yaml
 
     sonata_seo:
+        encoding: 'UTF-8'
         page:
-            title:            Sonata Project
-            metas:
-                name:
-                    keywords:             foo bar
-                    description:          The description
-                    robots:               index, follow
-
-                property:
-                    'og:site_name':       Sonata Project Sandbox
-                    'og:description':     A demo of the some rich bundles for your Symfony2 projects
-
-                http-equiv:
-                    'Content-Type':         text/html; charset=utf-8
-                    #'X-Ua-Compatible':      IE=EmulateIE7
-
-            head:
-                'xmlns':              http://www.w3.org/1999/xhtml
-                'xmlns:og':           http://opengraphprotocol.org/schema/
-
+            default:   'sonata.seo.page.default'
+            separator: ' - '
+            title:     'Project name'
 
 However, it is possible to alter these values at runtime:
 
@@ -50,6 +35,19 @@ However, it is possible to alter these values at runtime:
         ), true))
         ->addMeta('property', 'og:description', $post->getAbstract())
     ;
+
+You could also prepend the page title, so that the global title is used as a suffix:
+
+.. code-block:: php
+
+    <?php
+
+    $seoPage = $this->container->get('sonata.seo.page');
+
+    $seoPage
+        ->addTitle($post->getTitle())
+    ;
+
 
 .. note::
 

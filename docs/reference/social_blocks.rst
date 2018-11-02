@@ -6,7 +6,7 @@ render block services.
 
 .. code-block:: jinja
 
-    # app/config/config.yml
+    # config/packages/sonata_seo.yaml
     sonata_block:
         sonata.seo.block.social.container:
         sonata.seo.block.email.share_button:
