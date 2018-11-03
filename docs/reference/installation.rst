@@ -44,11 +44,11 @@ file.
 
 .. code-block:: yaml
 
-    # config/packages/sonata.yaml
+    # config/packages/sonata_seo.yaml
     sonata_seo:
         encoding:         UTF-8
         page:
-            title:            Sonata Project
+            title:            Project name
             default:          sonata.seo.page.default
             metas:
                 name:

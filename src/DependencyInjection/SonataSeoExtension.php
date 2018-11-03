@@ -62,16 +62,7 @@ class SonataSeoExtension extends Extension
      */
     protected function configureSeoPage(array $config, ContainerBuilder $container): void
     {
-        $definition = $container->getDefinition($config['default']);
-
-        $definition->addMethodCall('setTitle', [$config['title']]);
-        $definition->addMethodCall('setMetas', [$config['metas']]);
-        $definition->addMethodCall('setHtmlAttributes', [$config['head']]);
-        $definition->addMethodCall('setSeparator', [$config['separator']]);
-
-        if ($alias = $container->setAlias('sonata.seo.page', $config['default'])) {
-            $alias->setPublic(true);
-        }
+        $container->setParameter('sonata.seo.config', $config);
     }
 
     /**
