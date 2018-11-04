@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.6.2](https://github.com/sonata-project/SonataSeoBundle/compare/2.6.1...2.6.2) - 2018-11-04
+
+### Fixed
+- Allow overriding default seo service
+
 ## [2.6.1](https://github.com/sonata-project/SonataSeoBundle/compare/2.6.0...2.6.1) - 2018-10-09
 ### Fixed
 - Initialized `SeoPage::$htmlAttributes` with empty array
