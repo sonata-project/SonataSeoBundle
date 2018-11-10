@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -36,7 +38,7 @@ class SourceManager implements SourceIteratorInterface
      * @param SourceIteratorInterface $source
      * @param array                   $types
      */
-    public function addSource($group, SourceIteratorInterface $source, array $types = [])
+    public function addSource($group, SourceIteratorInterface $source, array $types = []): void
     {
         if (!isset($this->sources[$group])) {
             $this->sources[$group] = new \stdClass();
@@ -63,7 +65,7 @@ class SourceManager implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function next()
+    public function next(): void
     {
         $this->sources->next();
     }
@@ -87,7 +89,7 @@ class SourceManager implements SourceIteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->sources->rewind();
     }

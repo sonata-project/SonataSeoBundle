@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -16,7 +18,7 @@ use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
 class SeoExtensionTest extends TestCase
 {
-    public function testHtmlAttributes()
+    public function testHtmlAttributes(): void
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getHtmlAttributes')->will($this->returnValue([
@@ -29,7 +31,7 @@ class SeoExtensionTest extends TestCase
         $this->assertEquals('xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/"', $extension->getHtmlAttributes());
     }
 
-    public function testHeadAttributes()
+    public function testHeadAttributes(): void
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getHeadAttributes')->will($this->returnValue([]));
@@ -39,7 +41,7 @@ class SeoExtensionTest extends TestCase
         $this->assertEquals('', $extension->getHeadAttributes());
     }
 
-    public function testTitle()
+    public function testTitle(): void
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getTitle')->will($this->returnValue('<b>foo bar</b>'));
@@ -49,7 +51,7 @@ class SeoExtensionTest extends TestCase
         $this->assertEquals('<title>foo bar</title>', $extension->getTitle());
     }
 
-    public function testEncoding()
+    public function testEncoding(): void
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getTitle')->will($this->returnValue('pięć głów zatkniętych na pal'));
@@ -68,7 +70,7 @@ class SeoExtensionTest extends TestCase
         $this->assertEquals("<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n", $extension->getMetadatas());
     }
 
-    public function testMetadatas()
+    public function testMetadatas(): void
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getMetas')->will($this->returnValue([
@@ -84,7 +86,7 @@ class SeoExtensionTest extends TestCase
         $this->assertEquals("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n", $extension->getMetadatas());
     }
 
-    public function testName()
+    public function testName(): void
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $extension = new SeoExtension($page, 'UTF-8');
@@ -92,7 +94,7 @@ class SeoExtensionTest extends TestCase
         $this->assertEquals('sonata_seo', $extension->getName());
     }
 
-    public function testLinkCanonical()
+    public function testLinkCanonical(): void
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->any())->method('getLinkCanonical')->will($this->returnValue('http://example.com'));
@@ -102,7 +104,7 @@ class SeoExtensionTest extends TestCase
         $this->assertEquals("<link rel=\"canonical\" href=\"http://example.com\"/>\n", $extension->getLinkCanonical());
     }
 
-    public function testLangAlternates()
+    public function testLangAlternates(): void
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getLangAlternates')->will($this->returnValue([
@@ -114,7 +116,7 @@ class SeoExtensionTest extends TestCase
         $this->assertEquals("<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n", $extension->getLangAlternates());
     }
 
-    public function testOEmbedLinks()
+    public function testOEmbedLinks(): void
     {
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $page->expects($this->once())->method('getOembedLinks')->will($this->returnValue([
