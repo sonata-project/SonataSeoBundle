@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -20,7 +22,7 @@ use Sonata\SeoBundle\Tests\Fixtures\Block\TwitterEmbedTweetBSTest;
  */
 class TwitterEmbedTweetBlockServiceTest extends AbstractBlockServiceTestCase
 {
-    public function testBuildUri()
+    public function testBuildUri(): void
     {
         $settings = [
             'tweet' => 'tweeeeeeeet',
