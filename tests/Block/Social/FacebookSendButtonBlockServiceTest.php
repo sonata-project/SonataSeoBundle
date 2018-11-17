@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -19,7 +21,7 @@ use Sonata\SeoBundle\Block\Social\FacebookSendButtonBlockService;
 
 class FacebookSendButtonBlockServiceTest extends AbstractBlockServiceTestCase
 {
-    public function testService()
+    public function testService(): void
     {
         $service = new FacebookSendButtonBlockService('sonata.block.service.facebook.send_button', $this->templating);
 
