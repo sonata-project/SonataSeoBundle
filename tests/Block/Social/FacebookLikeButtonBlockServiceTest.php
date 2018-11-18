@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -19,7 +21,7 @@ use Sonata\SeoBundle\Block\Social\FacebookLikeButtonBlockService;
 
 class FacebookLikeButtonBlockServiceTest extends AbstractBlockServiceTestCase
 {
-    public function testService()
+    public function testService(): void
     {
         $service = new FacebookLikeButtonBlockService('sonata.block.service.facebook.like_button', $this->templating);
 
