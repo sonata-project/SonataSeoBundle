@@ -16,7 +16,7 @@ namespace Sonata\SeoBundle\Seo;
 /**
  * http://en.wikipedia.org/wiki/Meta_element.
  */
-class SeoPage implements SeoPageInterface, StructuredDataAwarePage
+class SeoPage implements SeoPageInterface, PageWithStructuredData
 {
     /**
      * @var string

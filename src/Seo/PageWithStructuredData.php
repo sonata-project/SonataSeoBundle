@@ -14,7 +14,7 @@ namespace Sonata\SeoBundle\Seo;
 /**
  * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
  */
-interface StructuredDataAwarePage
+interface PageWithStructuredData
 {
     /**
      * Set the structured data as an JSON-LD string.
