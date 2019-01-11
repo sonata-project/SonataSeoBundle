@@ -397,20 +397,6 @@ class SeoPage implements SeoPageInterface, PageWithStructuredData
     }
 
     /**
-     * @param mixed $meta
-     *
-     * @return array
-     */
-    private function normalize($meta)
-    {
-        if (\is_string($meta)) {
-            return [$meta, []];
-        }
-
-        return $meta;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getStructuredData()
@@ -432,7 +418,21 @@ class SeoPage implements SeoPageInterface, PageWithStructuredData
      */
     private function normalize($meta)
     {
-        if (is_string($meta)) {
+        if (\is_string($meta)) {
+            return [$meta, []];
+        }
+
+        return $meta;
+    }
+
+    /**
+     * @param mixed $meta
+     *
+     * @return array
+     */
+    private function normalize($meta)
+    {
+        if (\is_string($meta)) {
             return [$meta, []];
         }
 
