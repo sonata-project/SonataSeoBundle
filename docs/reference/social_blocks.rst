@@ -1,12 +1,13 @@
 Social blocks
 =============
 
-You can use social blocks by adding them in your config. You must install Sonata BlockBundle as it is required to
-render block services.
+You can use social blocks by adding them in your config. You must install ``SonataBlockBundle``
+as it is required to render block services.
 
 .. code-block:: jinja
 
-    # config/packages/sonata_seo.yaml
+    # config/packages/sonata_block.yaml
+
     sonata_block:
         sonata.seo.block.social.container:
         sonata.seo.block.email.share_button:
@@ -21,10 +22,11 @@ render block services.
         sonata.seo.block.twitter.embed:
         sonata.seo.block.pinterest.pin_button:
 
-The ``SocialBlockContainer`` overrides the PageBundle's default container to render the social blocks in a dedicated template, in order to have them properly aligned on a page.
+The ``SocialBlockContainer`` overrides the PageBundle's default container to render the
+social blocks in a dedicated template, in order to have them properly aligned on a page.
 
-These blocks render the correct HTML code to display social widgets but you need to include the related SDK in your main
-layout. You can include them by including these templates :
+These blocks render the correct HTML code to display social widgets but you need to include
+the related SDK in your main layout. You can include them by including these templates:
 
 .. code-block:: jinja
 
@@ -43,6 +45,9 @@ Check the related documentation to get more details :
 Twitter Embed Tweet
 -------------------
 
-The ``sonata.seo.block.twitter.embed`` allows you to embed a tweet by giving its id, URL or embed content. Please refer to `Embedded Tweets doc <https://dev.twitter.com/docs/embedded-tweets>`_ and `OEmbed API doc <https://dev.twitter.com/docs/api/1/get/statuses/oembed>`_ for a full understanding.
+The ``sonata.seo.block.twitter.embed`` allows you to embed a tweet by giving its id, URL
+or embed content. Please refer to `Embedded Tweets doc <https://dev.twitter.com/docs/embedded-tweets>`_
+and `OEmbed API doc <https://dev.twitter.com/docs/api/1/get/statuses/oembed>`_ for a full understanding.
 
-The block service allows you to ask the API if you've given an ID or a URL (you'll need to install the Guzzle library for this: ``composer require guzzle/guzzle``).
+The block service allows you to ask the API if you've given an ID or a URL (you'll need to install the
+Guzzle library for this: ``composer require guzzle/guzzle``).

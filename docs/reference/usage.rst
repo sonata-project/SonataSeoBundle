@@ -8,6 +8,8 @@ By default, the object is initialized with values defined in the configuration:
 
 .. code-block:: yaml
 
+    # config/packages/sonata_seo.yaml
+
     sonata_seo:
         encoding: 'UTF-8'
         page:
@@ -15,11 +17,7 @@ By default, the object is initialized with values defined in the configuration:
             separator: ' - '
             title:     'Project name'
 
-However, it is possible to alter these values at runtime:
-
-.. code-block:: php
-
-    <?php
+However, it is possible to alter these values at runtime::
 
     $post = $this->getPostManager()->findOneByPermalink($permalink, $this->container->get('sonata.news.blog'));
 
@@ -30,24 +28,18 @@ However, it is possible to alter these values at runtime:
         ->addMeta('name', 'description', $post->getAbstract())
         ->addMeta('property', 'og:title', $post->getTitle())
         ->addMeta('property', 'og:type', 'blog')
-        ->addMeta('property', 'og:url',  $this->generateUrl('sonata_news_view', array(
-            'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($post, true)
-        ), true))
+        ->addMeta('property', 'og:url',  $this->generateUrl('sonata_news_view', [
+            'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post, true)
+        ], true))
         ->addMeta('property', 'og:description', $post->getAbstract())
     ;
 
-You could also prepend the page title, so that the global title is used as a suffix:
-
-.. code-block:: php
-
-    <?php
+You could also prepend the page title, so that the global title is used as a suffix::
 
     $seoPage = $this->container->get('sonata.seo.page');
 
     $seoPage
-        ->addTitle($post->getTitle())
-    ;
-
+        ->addTitle($post->getTitle());
 
 .. note::
 
