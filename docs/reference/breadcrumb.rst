@@ -6,11 +6,8 @@ The ``SonataSeoBundle`` let's you create your own breadcrumbs based on your diff
 Create your own breadcrumb
 --------------------------
 
-First, you need to create a BlockService to handle your breadcrumbs. You can extend ``Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService`` :
-
-.. code-block:: php
-
-    <?php
+First, you need to create a BlockService to handle your breadcrumbs.
+You can extend ``Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService``::
 
     namespace App\Block;
 
@@ -19,17 +16,11 @@ First, you need to create a BlockService to handle your breadcrumbs. You can ext
 
     class MyCustomBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
     {
-        /**
-         * {@inheritdoc}
-         */
         public function getName()
         {
             return 'app.block.breadcrumb';
         }
 
-        /**
-         * {@inheritdoc}
-         */
         protected function getMenu(BlockContextInterface $blockContext)
         {
             $menu = $this->getRootMenu($blockContext);
@@ -42,19 +33,23 @@ First, you need to create a BlockService to handle your breadcrumbs. You can ext
 
 .. code-block:: xml
 
-    <service id="acme.bundle.block.breadcrumb" class="Acme\Bundle\Block\MyCustomBreadcrumbBlockService">
-        <tag name="sonata.block"/>
-        <tag name="sonata.breadcrumb"/>
+    <!-- config/services.xml -->
 
+    <service id="app.bundle.block.breadcrumb" class="App\Block\MyCustomBreadcrumbBlockService">
         <argument>my_custom_context</argument>
         <argument>acme.bundle.block.breadcrumb</argument>
         <argument type="service" id="templating" />
         <argument type="service" id="knp_menu.menu_provider" />
         <argument type="service" id="knp_menu.factory" />
+        <tag name="sonata.block"/>
+        <tag name="sonata.breadcrumb"/>
     </service>
 
 And to render the breadcrumb, just use this Twig helper :
 
 .. code-block:: jinja
 
-    {{ sonata_block_render_event('breadcrumb', { 'context': 'my_custom_context', 'current_uri': app.request.requestUri }) }}
+    {{ sonata_block_render_event('breadcrumb', {
+        'context': 'my_custom_context',
+        'current_uri': app.request.requestUri
+    }) }}
