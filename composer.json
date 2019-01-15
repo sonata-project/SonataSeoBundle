@@ -37,7 +37,7 @@
     "require-dev": {
         "guzzlehttp/guzzle": "^6.0",
         "php-http/httplug": "^1.1 || ^2.0",
-        "php-http/httplug-bundle": "^1.14",
+        "php-http/httplug-bundle": "^1.13",
         "php-http/mock-client": "^0.3",
         "sonata-project/admin-bundle": "^3.31",
         "sonata-project/block-bundle": "^3.11",
