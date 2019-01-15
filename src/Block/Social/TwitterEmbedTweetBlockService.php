@@ -218,12 +218,8 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
     /**
      * Loads twitter tweet.
-     *
-     * @param BlockContextInterface $blockContext
-     *
-     * @return string|null
      */
-    private function loadTweet(BlockContextInterface $blockContext)
+    private function loadTweet(BlockContextInterface $blockContext): ?string
     {
         $uriMatched = preg_match(self::TWEET_URL_PATTERN, $blockContext->getSetting('tweet'));
 

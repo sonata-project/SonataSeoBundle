@@ -171,11 +171,7 @@ class SonataSeoExtension extends Extension
         return $config;
     }
 
-    /**
-     * @param ContainerBuilder $container
-     * @param array            $config
-     */
-    private function configureHttpClient(ContainerBuilder $container, array $config)
+    private function configureHttpClient(ContainerBuilder $container, array $config): void
     {
         $container->setAlias('sonata.seo.http.client', $config['client']);
         $container->setAlias('sonata.seo.http.message_factory', $config['message_factory']);

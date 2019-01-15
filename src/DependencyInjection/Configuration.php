@@ -81,10 +81,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    /**
-     * @param ArrayNodeDefinition $node
-     */
-    private function addHTTPlugSection(ArrayNodeDefinition $node)
+    private function addHTTPlugSection(ArrayNodeDefinition $node): void
     {
         $node
             ->children()
