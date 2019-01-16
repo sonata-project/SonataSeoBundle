@@ -54,13 +54,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     private $messageFactory;
 
-    /**
-     * @param string          $name
-     * @param EngineInterface $templating
-     * @param HttpClient      $httpClient
-     * @param MessageFactory  $messageFactory
-     */
-    public function __construct($name, EngineInterface $templating, HttpClient $httpClient = null, MessageFactory $messageFactory = null)
+    public function __construct(?string $name, EngineInterface $templating, HttpClient $httpClient = null, MessageFactory $messageFactory = null)
     {
         parent::__construct($name, $templating);
 
@@ -68,10 +62,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         $this->messageFactory = $messageFactory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    public function execute(BlockContextInterface $blockContext, Response $response = null): Response
     {
         return $this->renderResponse($blockContext->getTemplate(), [
             'block' => $blockContext->getBlock(),
