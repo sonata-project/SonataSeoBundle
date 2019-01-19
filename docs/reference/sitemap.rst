@@ -124,7 +124,7 @@ Usage
 
 - Generate the sitemap::
 
-    php app/console sonata:seo:sitemap web sonata-project.org
+    bin/console sonata:seo:sitemap web sonata-project.org
 
 .. note::
 

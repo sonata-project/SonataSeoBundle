@@ -1,40 +1,20 @@
 Installation
 ============
 
-To begin, require the bundle via Composer::
+To begin, require the bundle via Composer:
+
+.. code-block:: bash
 
     composer require sonata-project/seo-bundle
 
-Now, add the new `SeoBundle` Bundle to ``bundles.php`` file:
-
-.. code-block:: php
-
-    <?php
+Now, add the new `SeoBundle` Bundle to ``bundles.php`` file::
 
     // config/bundles.php
 
     return [
-        //...
+        // ...
         Sonata\SeoBundle\SonataSeoBundle::class => ['all' => true],
     ];
-
-.. note::
-    If you are not using Symfony Flex, you should enable bundles in your
-    ``AppKernel.php``.
-
-
-.. code-block:: php
-
-    <?php
-
-    // app/AppKernel.php
-
-    public function registerbundles()
-    {
-        return array(
-            new Sonata\SeoBundle\SonataSeoBundle(),
-        );
-    }
 
 Configuration
 -------------
@@ -45,6 +25,7 @@ file.
 .. code-block:: yaml
 
     # config/packages/sonata_seo.yaml
+
     sonata_seo:
         encoding:         UTF-8
         page:
@@ -77,7 +58,3 @@ file.
                 'xmlns':              http://www.w3.org/1999/xhtml
                 'xmlns:og':           http://opengraphprotocol.org/schema/
                 #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
-
-.. note::
-    If you are not using Symfony Flex, this configuration should be added
-    to ``app/config/config.yml``.
