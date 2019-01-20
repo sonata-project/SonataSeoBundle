@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Command;
 
-use Exporter\Handler;
-use Exporter\Writer\SitemapWriter;
+use Sonata\Exporter\Handler;
+use Sonata\Exporter\Writer\SitemapWriter;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
