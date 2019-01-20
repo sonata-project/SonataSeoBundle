@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Sitemap;
 
-use Exporter\Source\ChainSourceIterator;
-use Exporter\Source\SourceIteratorInterface;
+use Sonata\Exporter\Source\ChainSourceIterator;
+use Sonata\Exporter\Source\SourceIteratorInterface;
 
 /**
  * Manager several chain source iterator grouped.
