@@ -54,8 +54,12 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     private $messageFactory;
 
-    public function __construct(?string $name, EngineInterface $templating, HttpClient $httpClient = null, MessageFactory $messageFactory = null)
-    {
+    public function __construct(
+        ?string $name,
+        EngineInterface $templating,
+        HttpClient $httpClient = null,
+        MessageFactory $messageFactory = null
+    ) {
         parent::__construct($name, $templating);
 
         $this->httpClient = $httpClient;
