@@ -31,7 +31,7 @@ class SeoPageTest extends TestCase
             'property' => ['foo' => ['bar', []]],
         ];
 
-        $this->assertEquals($expected, $page->getMetas());
+        $this->assertSame($expected, $page->getMetas());
     }
 
     public function testOverrideMetas()
@@ -43,7 +43,7 @@ class SeoPageTest extends TestCase
             'property' => ['foo' => ['bar', []], 'foo2' => ['bar2', []]],
         ];
 
-        $this->assertEquals($expected, $page->getMetas());
+        $this->assertSame($expected, $page->getMetas());
     }
 
     public function testRemoveMeta()
@@ -76,7 +76,7 @@ class SeoPageTest extends TestCase
             'key2' => 'value2',
         ];
 
-        $this->assertEquals($expected, $page->getHtmlAttributes());
+        $this->assertSame($expected, $page->getHtmlAttributes());
 
         $this->assertTrue($page->hasHtmlAttribute('key2'));
         $page->removeHtmlAttributes('key2');
@@ -94,7 +94,7 @@ class SeoPageTest extends TestCase
             'head2' => 'value2',
         ];
 
-        $this->assertEquals($expected, $page->getHeadAttributes());
+        $this->assertSame($expected, $page->getHeadAttributes());
 
         $this->assertTrue($page->hasHeadAttribute('head1'));
         $page->removeHeadAttribute('head1');
@@ -106,7 +106,7 @@ class SeoPageTest extends TestCase
         $page = new SeoPage();
         $page->setTitle('My title');
 
-        $this->assertEquals('My title', $page->getTitle());
+        $this->assertSame('My title', $page->getTitle());
     }
 
     public function testAddTitle()
@@ -116,7 +116,7 @@ class SeoPageTest extends TestCase
         $page->setSeparator(' - ');
         $page->addTitle('Additional title');
 
-        $this->assertEquals('Additional title - My title', $page->getTitle());
+        $this->assertSame('Additional title - My title', $page->getTitle());
     }
 
     public function testLinkCanonical()
@@ -124,10 +124,10 @@ class SeoPageTest extends TestCase
         $page = new SeoPage();
         $page->setLinkCanonical('http://example.com');
 
-        $this->assertEquals('http://example.com', $page->getLinkCanonical());
+        $this->assertSame('http://example.com', $page->getLinkCanonical());
 
         $page->removeLinkCanonical();
-        $this->assertEquals('', $page->getLinkCanonical());
+        $this->assertSame('', $page->getLinkCanonical());
     }
 
     public function testLangAlternates()
@@ -141,7 +141,7 @@ class SeoPageTest extends TestCase
             'http://example.com/en-us' => 'en-us',
         ];
 
-        $this->assertEquals($expected, $page->getLangAlternates());
+        $this->assertSame($expected, $page->getLangAlternates());
 
         $this->assertTrue($page->hasLangAlternate('http://example.com/'));
         $page->removeLangAlternate('http://example.com/');

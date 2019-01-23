@@ -51,13 +51,13 @@ class FacebookLikeBoxBlockServiceTest extends AbstractBlockServiceTestCase
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting', $this->templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting', $this->templating->parameters['settings']['width']);
-        $this->assertEquals('height_setting', $this->templating->parameters['settings']['height']);
-        $this->assertEquals('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
-        $this->assertEquals('show_faces_setting', $this->templating->parameters['settings']['show_faces']);
-        $this->assertEquals('show_header_setting', $this->templating->parameters['settings']['show_header']);
-        $this->assertEquals('show_posts_setting', $this->templating->parameters['settings']['show_posts']);
-        $this->assertEquals('show_border_setting', $this->templating->parameters['settings']['show_border']);
+        $this->assertSame('url_setting', $this->templating->parameters['settings']['url']);
+        $this->assertSame('width_setting', $this->templating->parameters['settings']['width']);
+        $this->assertSame('height_setting', $this->templating->parameters['settings']['height']);
+        $this->assertSame('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
+        $this->assertSame('show_faces_setting', $this->templating->parameters['settings']['show_faces']);
+        $this->assertSame('show_header_setting', $this->templating->parameters['settings']['show_header']);
+        $this->assertSame('show_posts_setting', $this->templating->parameters['settings']['show_posts']);
+        $this->assertSame('show_border_setting', $this->templating->parameters['settings']['show_border']);
     }
 }

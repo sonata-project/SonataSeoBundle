@@ -28,7 +28,7 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals('xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/"', $extension->getHtmlAttributes());
+        $this->assertSame('xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/"', $extension->getHtmlAttributes());
     }
 
     public function testHeadAttributes()
@@ -38,7 +38,7 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals('', $extension->getHeadAttributes());
+        $this->assertSame('', $extension->getHeadAttributes());
     }
 
     public function testTitle()
@@ -48,7 +48,7 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals('<title>foo bar</title>', $extension->getTitle());
+        $this->assertSame('<title>foo bar</title>', $extension->getTitle());
     }
 
     public function testEncoding()
@@ -65,9 +65,9 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals('<title>pięć głów zatkniętych na pal</title>', $extension->getTitle());
+        $this->assertSame('<title>pięć głów zatkniętych na pal</title>', $extension->getTitle());
 
-        $this->assertEquals("<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n", $extension->getMetadatas());
+        $this->assertSame("<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n", $extension->getMetadatas());
     }
 
     public function testMetadatas()
@@ -83,7 +83,7 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n", $extension->getMetadatas());
+        $this->assertSame("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n", $extension->getMetadatas());
     }
 
     public function testName()
@@ -91,7 +91,7 @@ class SeoExtensionTest extends TestCase
         $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals('sonata_seo', $extension->getName());
+        $this->assertSame('sonata_seo', $extension->getName());
     }
 
     public function testLinkCanonical()
@@ -101,7 +101,7 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals("<link rel=\"canonical\" href=\"http://example.com\"/>\n", $extension->getLinkCanonical());
+        $this->assertSame("<link rel=\"canonical\" href=\"http://example.com\"/>\n", $extension->getLinkCanonical());
     }
 
     public function testLangAlternates()
@@ -113,7 +113,7 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals("<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n", $extension->getLangAlternates());
+        $this->assertSame("<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n", $extension->getLangAlternates());
     }
 
     public function testOEmbedLinks()
@@ -125,6 +125,6 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertEquals("<link rel=\"alternate\" type=\"application/json+oembed\" href=\"http://example.com/\" title=\"Foo\" />\n", $extension->getOembedLinks());
+        $this->assertSame("<link rel=\"alternate\" type=\"application/json+oembed\" href=\"http://example.com/\" title=\"Foo\" />\n", $extension->getOembedLinks());
     }
 }
