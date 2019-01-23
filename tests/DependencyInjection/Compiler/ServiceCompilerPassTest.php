@@ -31,8 +31,8 @@ class ServiceCompilerPassTest extends TestCase
 
         $config = [
             'page' => [
-                'default' => 'sonata.seo.custom.page'
-            ]
+                'default' => 'sonata.seo.custom.page',
+            ],
         ];
 
         $extension = new SonataSeoExtension();

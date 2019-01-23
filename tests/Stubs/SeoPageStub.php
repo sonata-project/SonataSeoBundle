@@ -17,5 +17,4 @@ use Sonata\SeoBundle\Seo\SeoPage;
 
 class SeoPageStub extends SeoPage
 {
-
 }
