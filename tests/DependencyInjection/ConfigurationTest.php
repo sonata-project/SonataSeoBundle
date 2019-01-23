@@ -26,7 +26,7 @@ class ConfigurationTest extends TestCase
 
         $expected = $this->getDefaultConfiguration();
 
-        $this->assertEquals($expected, $config);
+        $this->assertSame($expected, $config);
     }
 
     public function testKeysAreNotNormalized()
@@ -49,7 +49,7 @@ class ConfigurationTest extends TestCase
             $values
         );
 
-        $this->assertEquals($expected, $config);
+        $this->assertSame($expected, $config);
     }
 
     public function testWithYamlConfig()
@@ -69,9 +69,9 @@ class ConfigurationTest extends TestCase
             $values
         );
 
-        $this->assertEquals($expected, $config);
+        $this->assertSame($expected, $config);
 
-        $this->assertEquals('website', $config['page']['metas']['property']['og:type']);
+        $this->assertSame('website', $config['page']['metas']['property']['og:type']);
     }
 
     private function getDefaultConfiguration()

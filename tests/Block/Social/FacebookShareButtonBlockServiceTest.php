@@ -46,8 +46,8 @@ class FacebookShareButtonBlockServiceTest extends AbstractBlockServiceTestCase
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting', $this->templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting', $this->templating->parameters['settings']['width']);
-        $this->assertEquals('layout_setting', $this->templating->parameters['settings']['layout']);
+        $this->assertSame('url_setting', $this->templating->parameters['settings']['url']);
+        $this->assertSame('width_setting', $this->templating->parameters['settings']['width']);
+        $this->assertSame('layout_setting', $this->templating->parameters['settings']['layout']);
     }
 }

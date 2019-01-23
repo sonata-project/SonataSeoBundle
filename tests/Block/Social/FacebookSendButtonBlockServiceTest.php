@@ -47,9 +47,9 @@ class FacebookSendButtonBlockServiceTest extends AbstractBlockServiceTestCase
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting', $this->templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting', $this->templating->parameters['settings']['width']);
-        $this->assertEquals('height_setting', $this->templating->parameters['settings']['height']);
-        $this->assertEquals('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
+        $this->assertSame('url_setting', $this->templating->parameters['settings']['url']);
+        $this->assertSame('width_setting', $this->templating->parameters['settings']['width']);
+        $this->assertSame('height_setting', $this->templating->parameters['settings']['height']);
+        $this->assertSame('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
     }
 }
