@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.7.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.6.2...2.7.0) - 2019-01-23
+### Added
+- Added `SeoPageInterface` as alias service of `sonata.seo.page` for Dependency Injection usages.
+- Added support for latest exporter
+
+### Fixed
+- Fix deprecation for symfony/config 4.2+
+
+### Removed
+- support for php 5 and php 7.0
+
 ## [2.6.2](https://github.com/sonata-project/SonataSeoBundle/compare/2.6.1...2.6.2) - 2018-11-04
 
 ### Fixed

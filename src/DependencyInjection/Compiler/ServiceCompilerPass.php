@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\DependencyInjection\Compiler;
 
+use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -35,5 +36,7 @@ final class ServiceCompilerPass implements CompilerPassInterface
         if ($alias = $container->setAlias('sonata.seo.page', $config['default'])) {
             $alias->setPublic(true);
         }
+
+        $container->setAlias(SeoPageInterface::class, $config['default']);
     }
 }
