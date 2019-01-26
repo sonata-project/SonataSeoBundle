@@ -164,6 +164,6 @@ class SeoPageTest extends TestCase
     {
         $page = new SeoPage();
 
-        $this->assertInstanceOf('Sonata\SeoBundle\Seo\SeoPage', $page->setSeparator('-'));
+        $this->assertInstanceOf(SeoPage::class, $page->setSeparator('-'));
     }
 }

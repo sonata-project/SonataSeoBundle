@@ -14,13 +14,14 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Tests\Request;
 
 use PHPUnit\Framework\TestCase;
+use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
 class SeoExtensionTest extends TestCase
 {
     public function testHtmlAttributes()
     {
-        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->once())->method('getHtmlAttributes')->will($this->returnValue([
             'xmlns' => 'http://www.w3.org/1999/xhtml',
             'xmlns:og' => 'http://opengraphprotocol.org/schema/',
@@ -28,12 +29,15 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertSame('xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/"', $extension->getHtmlAttributes());
+        $this->assertSame(
+            'xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/"',
+            $extension->getHtmlAttributes()
+        );
     }
 
     public function testHeadAttributes()
     {
-        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->once())->method('getHeadAttributes')->will($this->returnValue([]));
 
         $extension = new SeoExtension($page, 'UTF-8');
@@ -43,7 +47,7 @@ class SeoExtensionTest extends TestCase
 
     public function testTitle()
     {
-        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->once())->method('getTitle')->will($this->returnValue('<b>foo bar</b>'));
 
         $extension = new SeoExtension($page, 'UTF-8');
@@ -53,7 +57,7 @@ class SeoExtensionTest extends TestCase
 
     public function testEncoding()
     {
-        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->once())->method('getTitle')->will($this->returnValue('pięć głów zatkniętych na pal'));
         $page->expects($this->once())->method('getMetas')->will($this->returnValue([
             'http-equiv' => [],
@@ -67,12 +71,15 @@ class SeoExtensionTest extends TestCase
 
         $this->assertSame('<title>pięć głów zatkniętych na pal</title>', $extension->getTitle());
 
-        $this->assertSame("<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n", $extension->getMetadatas());
+        $this->assertSame(
+            "<meta name=\"foo\" content=\"pięć gł&oacute;w zatkniętych na pal\" />\n",
+            $extension->getMetadatas()
+        );
     }
 
     public function testMetadatas()
     {
-        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->once())->method('getMetas')->will($this->returnValue([
             'http-equiv' => [],
             'name' => ['foo' => ['bar "\'"', []]],
@@ -83,12 +90,15 @@ class SeoExtensionTest extends TestCase
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertSame("<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n", $extension->getMetadatas());
+        $this->assertSame(
+            "<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n",
+            $extension->getMetadatas()
+        );
     }
 
     public function testName()
     {
-        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock(SeoPageInterface::class);
         $extension = new SeoExtension($page, 'UTF-8');
 
         $this->assertSame('sonata_seo', $extension->getName());
@@ -96,35 +106,44 @@ class SeoExtensionTest extends TestCase
 
     public function testLinkCanonical()
     {
-        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->any())->method('getLinkCanonical')->will($this->returnValue('http://example.com'));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertSame("<link rel=\"canonical\" href=\"http://example.com\"/>\n", $extension->getLinkCanonical());
+        $this->assertSame(
+            "<link rel=\"canonical\" href=\"http://example.com\"/>\n",
+            $extension->getLinkCanonical()
+        );
     }
 
     public function testLangAlternates()
     {
-        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->once())->method('getLangAlternates')->will($this->returnValue([
                     'http://example.com/' => 'x-default',
                 ]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertSame("<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n", $extension->getLangAlternates());
+        $this->assertSame(
+            "<link rel=\"alternate\" href=\"http://example.com/\" hreflang=\"x-default\"/>\n",
+            $extension->getLangAlternates()
+        );
     }
 
     public function testOEmbedLinks()
     {
-        $page = $this->createMock('Sonata\SeoBundle\Seo\SeoPageInterface');
+        $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->once())->method('getOembedLinks')->will($this->returnValue([
             'Foo' => 'http://example.com/',
         ]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertSame("<link rel=\"alternate\" type=\"application/json+oembed\" href=\"http://example.com/\" title=\"Foo\" />\n", $extension->getOembedLinks());
+        $this->assertSame(
+            "<link rel=\"alternate\" type=\"application/json+oembed\" href=\"http://example.com/\" title=\"Foo\" />\n",
+            $extension->getOembedLinks()
+        );
     }
 }

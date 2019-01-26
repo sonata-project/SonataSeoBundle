@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
@@ -23,7 +24,10 @@ class FacebookSendButtonBlockServiceTest extends AbstractBlockServiceTestCase
 {
     public function testService()
     {
-        $service = new FacebookSendButtonBlockService('sonata.block.service.facebook.send_button', $this->templating);
+        $service = new FacebookSendButtonBlockService(
+            'sonata.block.service.facebook.send_button',
+            $this->templating
+        );
 
         $block = new Block();
         $block->setType('core.text');
@@ -39,7 +43,7 @@ class FacebookSendButtonBlockServiceTest extends AbstractBlockServiceTestCase
 
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
-        $formMapper = $this->createMock('Sonata\\AdminBundle\\Form\\FormMapper', [], [], '', false);
+        $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
         $formMapper->expects($this->exactly(2))->method('add');
 
         $service->buildCreateForm($formMapper, $block);
