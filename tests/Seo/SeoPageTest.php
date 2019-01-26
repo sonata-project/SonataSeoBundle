@@ -119,6 +119,27 @@ class SeoPageTest extends TestCase
         $this->assertEquals('Additional title - My title', $page->getTitle());
     }
 
+    public function testSetTitleWithPrefixAndSuffix()
+    {
+        $page = new SeoPage();
+        $page->addTitle('My title');
+        $page->setSeparator(' - ');
+        $page->addTitle('Additional title');
+        $page->setTitlePrefix('My Prefix');
+
+        $this->assertEquals('My Prefix - Additional title - My title', $page->getTitle());
+
+        $page->setTitleSuffix('My Suffix');
+
+        $this->assertEquals('My Prefix - Additional title - My title - My Suffix', $page->getTitle());
+
+        $page->setTitle('');
+
+        $this->assertEquals('My Prefix - My Suffix', $page->getTitle());
+
+        $page->setTitlePrefix('');
+    }
+
     public function testLinkCanonical()
     {
         $page = new SeoPage();

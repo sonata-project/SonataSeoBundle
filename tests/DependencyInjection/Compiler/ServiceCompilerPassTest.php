@@ -25,25 +25,60 @@ class ServiceCompilerPassTest extends TestCase
     public function testServicesExistsAndCanBeOverridden()
     {
         $container = new ContainerBuilder();
-        $container->setParameter('kernel.bundles', []);
-
         $container->register('sonata.seo.custom.page', SeoPageStub::class);
-
         $config = [
             'page' => [
                 'default' => 'sonata.seo.custom.page',
             ],
         ];
-
-        $extension = new SonataSeoExtension();
-        $extension->load([$config], $container);
-
-        (new ServiceCompilerPass())->process($container);
+        $this->processConfiguration($config, $container);
 
         $this->assertTrue($service = $container->has('sonata.seo.page'));
         $this->assertTrue($alias = $container->has(SeoPageInterface::class));
         $this->assertSame($service, $alias);
 
         $this->assertInstanceOf(SeoPageStub::class, $container->get(SeoPageInterface::class));
+    }
+
+    public function testSimpleTitleConfiguration()
+    {
+        $container = new ContainerBuilder();
+        $config = [
+            'page' => [
+                'title' => 'My Title',
+            ],
+        ];
+        $this->processConfiguration($config, $container);
+
+        $page = $container->get('sonata.seo.page');
+        $this->assertEquals('My Title', $page->getTitle());
+    }
+
+    public function testAdvancedTitleConfiguration()
+    {
+        $container = new ContainerBuilder();
+
+        $config = [
+            'page' => [
+                'title' => [
+                    'prefix' => 'Prefix',
+                    'suffix' => 'My Title',
+                ],
+            ],
+        ];
+        $this->processConfiguration($config, $container);
+
+        $page = $container->get('sonata.seo.page');
+        $this->assertEquals('Prefix - My Title', $page->getTitle());
+    }
+
+    private function processConfiguration(array $config, ContainerBuilder $container)
+    {
+        $container->setParameter('kernel.bundles', []);
+
+        $extension = new SonataSeoExtension();
+        $extension->load([$config], $container);
+
+        (new ServiceCompilerPass())->process($container);
     }
 }

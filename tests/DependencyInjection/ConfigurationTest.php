@@ -83,7 +83,10 @@ class ConfigurationTest extends TestCase
                 'head' => [],
                 'metas' => [],
                 'separator' => ' - ',
-                'title' => 'Project name',
+                'title' => [
+                    'prefix' => '',
+                    'suffix' => 'Project name',
+                ],
             ],
             'sitemap' => [
                 'doctrine_orm' => [],
