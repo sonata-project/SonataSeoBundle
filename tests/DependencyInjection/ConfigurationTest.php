@@ -22,11 +22,22 @@ class ConfigurationTest extends TestCase
 {
     public function testDefaultConfiguration()
     {
-        $config = $this->processConfiguration([[]]);
+        $expected = [
+            'encoding' => 'UTF-8',
+            'page' => [
+                'default' => 'sonata.seo.page.default',
+                'head' => [],
+                'metas' => [],
+                'separator' => ' - ',
+                'title' => 'Project name',
+            ],
+            'sitemap' => [
+                'doctrine_orm' => [],
+                'services' => [],
+            ],
+        ];
 
-        $expected = $this->getDefaultConfiguration();
-
-        $this->assertSame($expected, $config);
+        $this->assertSame($expected, $this->processConfiguration([[]]));
     }
 
     public function testKeysAreNotNormalized()
@@ -77,14 +88,14 @@ class ConfigurationTest extends TestCase
     private function getDefaultConfiguration()
     {
         return [
-            'encoding' => 'UTF-8',
             'page' => [
-                'default' => 'sonata.seo.page.default',
                 'head' => [],
                 'metas' => [],
+                'default' => 'sonata.seo.page.default',
                 'separator' => ' - ',
                 'title' => 'Project name',
             ],
+            'encoding' => 'UTF-8',
             'sitemap' => [
                 'doctrine_orm' => [],
                 'services' => [],
