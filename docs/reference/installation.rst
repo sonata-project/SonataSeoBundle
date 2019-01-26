@@ -29,7 +29,7 @@ file.
     sonata_seo:
         encoding:         UTF-8
         page:
-            title:            Project name
+            title:            Project name  # default suffix
             default:          sonata.seo.page.default
             metas:
                 name:
