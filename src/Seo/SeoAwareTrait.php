@@ -13,7 +13,11 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Seo;
 
-@trigger_error('The '.__NAMESPACE__.'\SeoAwareTrait trait deprecated since version 2.8 and will be removed in 3.0. Inject the Sonata\SeoBundle\Seo\SeoPageInterface in your classes instead.', E_USER_DEPRECATED);
+@trigger_error(
+    'The '.__NAMESPACE__.'\SeoAwareTrait trait deprecated since version 2.8 and will be removed in 3.0. '.
+    'Inject the Sonata\SeoBundle\Seo\SeoPageInterface in your classes instead.', 
+    E_USER_DEPRECATED
+);
 
 /**
  * @deprecated SeoAwareTrait is deprecated since version 2.8 and will be removed in 3.0. Inject the Sonata\SeoBundle\Seo\SeoPageInterface in your classes instead.
