@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Tests\Request;
 
 use PHPUnit\Framework\TestCase;
+use Sonata\SeoBundle\Seo\BodyAttributeInterface;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
@@ -43,6 +44,17 @@ class SeoExtensionTest extends TestCase
         $extension = new SeoExtension($page, 'UTF-8');
 
         $this->assertSame('', $extension->getHeadAttributes());
+    }
+
+    public function testBodyAttributes()
+    {
+        $page = $this->createMock([SeoPageInterface::class, BodyAttributeInterface::class]);
+
+        $page->expects($this->once())->method('getBodyAttributes')->will($this->returnValue([]));
+
+        $extension = new SeoExtension($page, 'UTF-8');
+
+        $this->assertSame('', $extension->getBodyAttributes());
     }
 
     public function testTitle()

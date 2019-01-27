@@ -16,8 +16,10 @@ namespace Sonata\SeoBundle\Seo;
 /**
  * http://en.wikipedia.org/wiki/Meta_element.
  */
-class SeoPage implements SeoPageInterface
+class SeoPage implements SeoPageInterface, BodyAttributeInterface
 {
+    use BodyAttributesTrait;
+
     /**
      * @var string
      */
