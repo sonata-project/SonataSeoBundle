@@ -24,16 +24,6 @@ class SeoPage implements SeoPageInterface
     protected $title;
 
     /**
-     * @var string
-     */
-    protected $titlePrefix;
-
-    /**
-     * @var string
-     */
-    protected $titleSuffix;
-
-    /**
      * @var array
      */
     protected $metas;
@@ -67,6 +57,16 @@ class SeoPage implements SeoPageInterface
      * @var array
      */
     protected $oembedLinks;
+
+    /**
+     * @var string
+     */
+    private $titlePrefix;
+
+    /**
+     * @var string
+     */
+    private $titleSuffix;
 
     /**
      * @param string $title
@@ -118,14 +118,14 @@ class SeoPage implements SeoPageInterface
         return implode($this->separator, array_filter([$this->titlePrefix, $this->title, $this->titleSuffix]));
     }
 
-    public function setTitlePrefix(string $prefix): SeoPageInterface
+    final public function setTitlePrefix(string $prefix): SeoPageInterface
     {
         $this->titlePrefix = $prefix;
 
         return $this;
     }
 
-    public function setTitleSuffix(string $suffix): SeoPageInterface
+    final public function setTitleSuffix(string $suffix): SeoPageInterface
     {
         $this->titleSuffix = $suffix;
 
