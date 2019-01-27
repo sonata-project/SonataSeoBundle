@@ -27,6 +27,7 @@ defined in ``sonata_seo.page.default``.
     namespace App\Controller;
 
     use Sonata\SeoBundle\Seo\SeoPageInterface;
+    use Symfony\Component\HttpFoundation\Response;
 
     final class PostController
     {
