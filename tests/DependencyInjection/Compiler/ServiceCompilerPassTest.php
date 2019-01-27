@@ -18,6 +18,7 @@ use Sonata\SeoBundle\DependencyInjection\Compiler\ServiceCompilerPass;
 use Sonata\SeoBundle\DependencyInjection\SonataSeoExtension;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Tests\Stubs\SeoPageStub;
+use Sonata\SeoBundle\Tests\Stubs\SeoPageWithoutTitleInterfaceStub;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class ServiceCompilerPassTest extends TestCase
@@ -38,6 +39,21 @@ class ServiceCompilerPassTest extends TestCase
         $this->assertSame($service, $alias);
 
         $this->assertInstanceOf(SeoPageStub::class, $container->get(SeoPageInterface::class));
+    }
+
+    public function testServiceWithoutTitleInterfaceApplied()
+    {
+        $container = new ContainerBuilder();
+        $container->register('sonata.seo.custom.page', SeoPageWithoutTitleInterfaceStub::class);
+        $config = [
+            'page' => [
+                'default' => 'sonata.seo.custom.page',
+            ],
+        ];
+
+        $this->processConfiguration($config, $container);
+
+        $container->get('sonata.seo.page');
     }
 
     public function testSimpleTitleConfiguration()

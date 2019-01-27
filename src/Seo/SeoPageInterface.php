@@ -34,10 +34,6 @@ interface SeoPageInterface
      */
     public function getTitle();
 
-    public function setTitlePrefix(string $prefix): self;
-
-    public function setTitleSuffix(string $suffix): self;
-
     /**
      * @param string $type
      * @param string $name

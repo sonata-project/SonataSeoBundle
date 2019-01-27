@@ -16,7 +16,7 @@ namespace Sonata\SeoBundle\Seo;
 /**
  * http://en.wikipedia.org/wiki/Meta_element.
  */
-class SeoPage implements SeoPageInterface
+class SeoPage implements SeoPageInterface, SeoTitleInterface
 {
     /**
      * @var string
@@ -118,14 +118,14 @@ class SeoPage implements SeoPageInterface
         return implode($this->separator, array_filter([$this->titlePrefix, $this->title, $this->titleSuffix]));
     }
 
-    final public function setTitlePrefix(string $prefix): SeoPageInterface
+    final public function setTitlePrefix(string $prefix): SeoTitleInterface
     {
         $this->titlePrefix = $prefix;
 
         return $this;
     }
 
-    final public function setTitleSuffix(string $suffix): SeoPageInterface
+    final public function setTitleSuffix(string $suffix): SeoTitleInterface
     {
         $this->titleSuffix = $suffix;
 
