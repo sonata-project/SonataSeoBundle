@@ -40,7 +40,7 @@ However, it is possible to alter these values at runtime::
     ``Sonata\SeoBundle\Seo\SeoAwareTrait``.
 
 Prefix or suffix the page title
--------------------------------
+---------------------------------
 
 If you want to change the suffix of your page titles, you can either do this by altering the ``title`` directly or use the ``title.suffix``.
 
