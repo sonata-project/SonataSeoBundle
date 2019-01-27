@@ -28,7 +28,7 @@ defined in ``sonata_seo.page.default``.
 
     use Sonata\SeoBundle\Seo\SeoPageInterface;
 
-    class PostController
+    final class PostController
     {
         private $seoPage;
 
