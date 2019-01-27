@@ -40,7 +40,7 @@ However, it is possible to alter these values at runtime::
     ``Sonata\SeoBundle\Seo\SeoAwareTrait``.
 
 Prefix or suffix the page title
----------------------------------
+-------------------------------
 
 If you want to change the suffix of your page titles, you can either do this by altering the ``title`` directly or use the ``title.suffix``.
 
@@ -71,7 +71,7 @@ You can also add a prefix to your page titles, then you must configure ``title.p
                 prefix: 'My Prefix'
                 suffix: 'My Suffix'
 
-You can also edit the pre- or suffix at runtime, however this is uncommon::
+You can also edit the prefix or suffix at runtime, however this is uncommon::
 
     $seoPage = $this->container->get('sonata.seo.page');
 
@@ -104,7 +104,7 @@ You can also prepend the page title::
 If you prepend the page title to an already existing page title, the configured separator is used to split them.
 
 .. note::
-    ``setTitle`` and ``addTitle`` does not conflict with the pre- or suffix, the title stays between the prefix and suffix.
+    ``setTitle`` and ``addTitle`` does not conflict with the prefix or suffix, the title stays between the prefix and suffix.
 
 
 Twig template example
