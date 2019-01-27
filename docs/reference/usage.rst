@@ -39,7 +39,7 @@ However, it is possible to alter these values at runtime::
     If you need a shortcut to inject the seo page into any class, you could use the
     ``Sonata\SeoBundle\Seo\SeoAwareTrait``.
 
-Pre- or suffix the page title
+Prefix or suffix the page title
 -------------------------------
 
 If you want to change the suffix of your page titles, you can either do this by altering the ``title`` directly or use the ``title.suffix``.
