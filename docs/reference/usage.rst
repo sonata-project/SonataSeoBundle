@@ -37,7 +37,7 @@ defined in ``sonata_seo.page.default``.
             $this->seoPage = $seoPage;
         }
 
-        public function index()
+        public function index(): Response
         {
             // retrieve a post from the database
             $post = ...;
