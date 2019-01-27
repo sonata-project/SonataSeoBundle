@@ -1,9 +1,6 @@
 Usage
 =====
 
-The bundle provides a shared service accessible by the name ``sonata.seo.page``. The service
-is an instance of ``SeoPageInterface`` which contains methods to alter SEO information for the current request.
-
 By default, the object is initialized with values defined in the configuration:
 
 .. code-block:: yaml
@@ -17,32 +14,58 @@ By default, the object is initialized with values defined in the configuration:
             separator: ' - '
             title:     'Project name'
 
-However, it is possible to alter these values at runtime::
+Alter values in runtime
+-----------------------
 
-    $post = $this->getPostManager()->findOneByPermalink($permalink, $this->container->get('sonata.news.blog'));
+You can alter the SEO information at runtime by injecting the ``SeoPageInterface``
+into your classes. The bundle wil automatically use the configured service
+defined in ``sonata_seo.page.default``.
 
-    $seoPage = $this->container->get('sonata.seo.page');
+.. code-block:: php
 
-    $seoPage
-        ->setTitle($post->getTitle())
-        ->addMeta('name', 'description', $post->getAbstract())
-        ->addMeta('property', 'og:title', $post->getTitle())
-        ->addMeta('property', 'og:type', 'blog')
-        ->addMeta('property', 'og:url',  $this->generateUrl('sonata_news_view', [
-            'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post, true)
-        ], true))
-        ->addMeta('property', 'og:description', $post->getAbstract())
-    ;
+    // src/Controller/PostController.php
+    namespace App\Controller;
 
-.. note::
+    use Sonata\SeoBundle\Seo\SeoPageInterface;
 
-    If you need a shortcut to inject the seo page into any class, you could use the
-    ``Sonata\SeoBundle\Seo\SeoAwareTrait``.
+    class PostController
+    {
+        private $seoPage;
+
+        public function __construct(SeoPageInterface $seoPage)
+        {
+            $this->seoPage = $seoPage;
+        }
+
+        public function index()
+        {
+            // retrieve a post from the database
+            $post = ...;
+            $this->seoPage
+                ->setTitle($post->getTitle())
+                ->addMeta('name', 'description', $post->getAbstract())
+                ->addMeta('property', 'og:title', $post->getTitle())
+                ->addMeta('property', 'og:type', 'blog')
+                ->addMeta('property', 'og:url',  $this->generateUrl('sonata_news_view', [
+                    'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post, true)
+                ], true))
+                ->addMeta('property', 'og:description', $post->getAbstract())
+            ;
+        }
+    }
+
+.. warning::
+
+    The bundle also provides the same public service accessible by the name
+    ``sonata.seo.page``.
+    However, we recommend using dependency injection instead.
+
 
 Prefix or suffix the page title
 -------------------------------
 
-If you want to change the suffix of your page titles, you can either do this by altering the ``title`` directly or use the ``title.suffix``.
+If you want to change the suffix of your page titles, you can either do
+this by altering the ``title`` directly or use the ``title.suffix``.
 
 .. code-block:: yaml
 
@@ -59,7 +82,8 @@ If you want to change the suffix of your page titles, you can either do this by 
             title:
                 suffix: 'My Suffix'
 
-You can also add a prefix to your page titles, then you must configure ``title.prefix``. A combination of both prefix and suffix is also possible!
+You can also add a prefix to your page titles, you must configure ``title.prefix``.
+A combination of both prefix and suffix is also possible!
 
 .. code-block:: yaml
 
@@ -73,38 +97,57 @@ You can also add a prefix to your page titles, then you must configure ``title.p
 
 You can also edit the prefix or suffix at runtime, however this is uncommon::
 
-    $seoPage = $this->container->get('sonata.seo.page');
-
-    $seoPage
-        ->setTitlePrefix('My Prefix')
-        ->setTitleSuffix('My Suffix')
-    ;
+    // ...
+    public function index()
+    {
+        // ...
+        $this->seoPage
+            ->setTitlePrefix('My Prefix')
+            ->setTitleSuffix('My Suffix')
+        ;
+        // ...
+    }
+    // ...
 
 .. note::
 
-    Only want to use the prefix? Disable the suffix by setting it to ``null`` (use ``suffix: ~`` in yaml)
+    Only want to use the prefix?
+    Disable the suffix by setting it to ``null`` (use ``suffix: ~`` in yaml)
 
 Set or prepend the page title
 -----------------------------
 
 You can set the page title::
 
-    $seoPage = $this->container->get('sonata.seo.page');
-
-    $seoPage
-        ->setTitle($post->getTitle());
+    // ...
+    public function index()
+    {
+        // ...
+        $this->seoPage
+            ->setTitle($post->getTitle())
+        ;
+        // ...
+    }
+    // ...
 
 You can also prepend the page title::
 
-    $seoPage = $this->container->get('sonata.seo.page');
+    // ...
+    public function index()
+    {
+        // ...
+        $this->seoPage
+            ->addTitle($post->getTitle())
+        ;
+        // ...
+    }
+    // ...
 
-    $seoPage
-        ->addTitle($post->getTitle());
-
-If you prepend the page title to an already existing page title, the configured separator is used to split them.
+If you prepend the page title to an already existing page title, the configured
+separator is used to split them.
 
 .. note::
-    ``setTitle`` and ``addTitle`` does not conflict with the prefix or suffix, the title stays between the prefix and suffix.
+    ``setTitle`` and ``addTitle`` does not conflict with the prefix or suffix.
 
 
 Twig template example
