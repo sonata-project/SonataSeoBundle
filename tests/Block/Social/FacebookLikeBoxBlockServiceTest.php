@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
@@ -23,7 +24,10 @@ class FacebookLikeBoxBlockServiceTest extends AbstractBlockServiceTestCase
 {
     public function testService(): void
     {
-        $service = new FacebookLikeBoxBlockService('sonata.block.service.facebook.like_box', $this->templating);
+        $service = new FacebookLikeBoxBlockService(
+            'sonata.block.service.facebook.like_box',
+            $this->templating
+        );
 
         $block = new Block();
         $block->setType('core.text');
@@ -43,7 +47,7 @@ class FacebookLikeBoxBlockServiceTest extends AbstractBlockServiceTestCase
 
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
-        $formMapper = $this->createMock('Sonata\\AdminBundle\\Form\\FormMapper', [], [], '', false);
+        $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
         $formMapper->expects($this->exactly(2))->method('add');
 
         $service->buildCreateForm($formMapper, $block);
@@ -51,13 +55,13 @@ class FacebookLikeBoxBlockServiceTest extends AbstractBlockServiceTestCase
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting', $this->templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting', $this->templating->parameters['settings']['width']);
-        $this->assertEquals('height_setting', $this->templating->parameters['settings']['height']);
-        $this->assertEquals('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
-        $this->assertEquals('show_faces_setting', $this->templating->parameters['settings']['show_faces']);
-        $this->assertEquals('show_header_setting', $this->templating->parameters['settings']['show_header']);
-        $this->assertEquals('show_posts_setting', $this->templating->parameters['settings']['show_posts']);
-        $this->assertEquals('show_border_setting', $this->templating->parameters['settings']['show_border']);
+        $this->assertSame('url_setting', $this->templating->parameters['settings']['url']);
+        $this->assertSame('width_setting', $this->templating->parameters['settings']['width']);
+        $this->assertSame('height_setting', $this->templating->parameters['settings']['height']);
+        $this->assertSame('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
+        $this->assertSame('show_faces_setting', $this->templating->parameters['settings']['show_faces']);
+        $this->assertSame('show_header_setting', $this->templating->parameters['settings']['show_header']);
+        $this->assertSame('show_posts_setting', $this->templating->parameters['settings']['show_posts']);
+        $this->assertSame('show_border_setting', $this->templating->parameters['settings']['show_border']);
     }
 }

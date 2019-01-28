@@ -22,11 +22,22 @@ class ConfigurationTest extends TestCase
 {
     public function testDefaultConfiguration(): void
     {
-        $config = $this->processConfiguration([[]]);
+        $expected = [
+            'encoding' => 'UTF-8',
+            'page' => [
+                'default' => 'sonata.seo.page.default',
+                'head' => [],
+                'metas' => [],
+                'separator' => ' - ',
+                'title' => 'Project name',
+            ],
+            'sitemap' => [
+                'doctrine_orm' => [],
+                'services' => [],
+            ],
+        ];
 
-        $expected = $this->getDefaultConfiguration();
-
-        $this->assertEquals($expected, $config);
+        $this->assertSame($expected, $this->processConfiguration([[]]));
     }
 
     public function testKeysAreNotNormalized(): void
@@ -49,7 +60,7 @@ class ConfigurationTest extends TestCase
             $values
         );
 
-        $this->assertEquals($expected, $config);
+        $this->assertSame($expected, $config);
     }
 
     public function testWithYamlConfig(): void
@@ -69,22 +80,22 @@ class ConfigurationTest extends TestCase
             $values
         );
 
-        $this->assertEquals($expected, $config);
+        $this->assertSame($expected, $config);
 
-        $this->assertEquals('website', $config['page']['metas']['property']['og:type']);
+        $this->assertSame('website', $config['page']['metas']['property']['og:type']);
     }
 
     private function getDefaultConfiguration()
     {
         return [
-            'encoding' => 'UTF-8',
             'page' => [
-                'default' => 'sonata.seo.page.default',
                 'head' => [],
                 'metas' => [],
+                'default' => 'sonata.seo.page.default',
                 'separator' => ' - ',
                 'title' => 'Project name',
             ],
+            'encoding' => 'UTF-8',
             'sitemap' => [
                 'doctrine_orm' => [],
                 'services' => [],

@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\DependencyInjection;
 
+use Knp\Bundle\MenuBundle\KnpMenuBundle;
 use PHPUnit\Framework\TestCase;
+use Sonata\BlockBundle\SonataBlockBundle;
 use Sonata\SeoBundle\DependencyInjection\SonataSeoExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Tests SonataSeoExtension.
- *
  * @author Vincent Tommasi <tommasi.v@gmail.com>
  */
 class SonataSeoExtensionTest extends TestCase
@@ -31,8 +31,8 @@ class SonataSeoExtensionTest extends TestCase
     {
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', [
-            'SonataBlockBundle' => 'Sonata\BlockBundle\SonataBlockBundle',
-            'KnpMenuBundle' => 'Knp\Bundle\MenuBundle\KnpMenuBundle',
+            'SonataBlockBundle' => SonataBlockBundle::class,
+            'KnpMenuBundle' => KnpMenuBundle::class,
         ]);
 
         $extension = new SonataSeoExtension();

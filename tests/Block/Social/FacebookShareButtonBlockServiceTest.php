@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
@@ -23,7 +24,10 @@ class FacebookShareButtonBlockServiceTest extends AbstractBlockServiceTestCase
 {
     public function testService(): void
     {
-        $service = new FacebookShareButtonBlockService('sonata.block.service.facebook.share_button', $this->templating);
+        $service = new FacebookShareButtonBlockService(
+            'sonata.block.service.facebook.share_button',
+            $this->templating
+        );
 
         $block = new Block();
         $block->setType('core.text');
@@ -38,7 +42,7 @@ class FacebookShareButtonBlockServiceTest extends AbstractBlockServiceTestCase
 
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
-        $formMapper = $this->createMock('Sonata\\AdminBundle\\Form\\FormMapper', [], [], '', false);
+        $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
         $formMapper->expects($this->exactly(2))->method('add');
 
         $service->buildCreateForm($formMapper, $block);
@@ -46,8 +50,8 @@ class FacebookShareButtonBlockServiceTest extends AbstractBlockServiceTestCase
 
         $service->execute($blockContext);
 
-        $this->assertEquals('url_setting', $this->templating->parameters['settings']['url']);
-        $this->assertEquals('width_setting', $this->templating->parameters['settings']['width']);
-        $this->assertEquals('layout_setting', $this->templating->parameters['settings']['layout']);
+        $this->assertSame('url_setting', $this->templating->parameters['settings']['url']);
+        $this->assertSame('width_setting', $this->templating->parameters['settings']['width']);
+        $this->assertSame('layout_setting', $this->templating->parameters['settings']['layout']);
     }
 }

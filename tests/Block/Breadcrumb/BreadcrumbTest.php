@@ -13,8 +13,11 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 
+use Knp\Menu\FactoryInterface;
+use Knp\Menu\Provider\MenuProviderInterface;
 use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 {
@@ -30,9 +33,9 @@ class BreadcrumbTest extends AbstractBlockServiceTestCase
         $blockService = new BreadcrumbMenuBlockService_Test(
             'context',
             'name',
-            $this->createMock('Symfony\Bundle\FrameworkBundle\Templating\EngineInterface'),
-            $this->createMock('Knp\Menu\Provider\MenuProviderInterface'),
-            $this->createMock('Knp\Menu\FactoryInterface')
+            $this->createMock(EngineInterface::class),
+            $this->createMock(MenuProviderInterface::class),
+            $this->createMock(FactoryInterface::class)
         );
 
         $this->assertTrue($blockService->handleContext('context'));
