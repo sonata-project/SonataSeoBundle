@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Twig\Extension;
 
-use Sonata\SeoBundle\Seo\BodyAttributeInterface;
+use Sonata\SeoBundle\Seo\AttributeInterface;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 
 class SeoExtension extends \Twig_Extension
@@ -191,12 +191,12 @@ class SeoExtension extends \Twig_Extension
 
     public function getBodyAttributes(): string
     {
-        if (!$this->page instanceof BodyAttributeInterface) {
+        if (!$this->page instanceof AttributeInterface) {
             return '';
         }
 
         $attributes = '';
-        foreach ($this->page->getBodyAttributes() as $name => $value) {
+        foreach ($this->page->bodyAttributes() as $name => $value) {
             $attributes .= sprintf('%s="%s" ', $name, $value);
         }
 

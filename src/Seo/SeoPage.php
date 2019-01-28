@@ -16,10 +16,8 @@ namespace Sonata\SeoBundle\Seo;
 /**
  * http://en.wikipedia.org/wiki/Meta_element.
  */
-class SeoPage implements SeoPageInterface, BodyAttributeInterface
+class SeoPage implements SeoPageInterface, AttributeInterface
 {
-    use BodyAttributesTrait;
-
     /**
      * @var string
      */
@@ -60,6 +58,8 @@ class SeoPage implements SeoPageInterface, BodyAttributeInterface
      */
     protected $oembedLinks;
 
+    private $bodyAttributes;
+
     /**
      * @param string $title
      */
@@ -74,8 +74,9 @@ class SeoPage implements SeoPageInterface, BodyAttributeInterface
             'property' => [],
         ];
 
-        $this->htmlAttributes = [];
-        $this->headAttributes = [];
+        $this->htmlAttributes = new AttributeBag();
+        $this->headAttributes = new AttributeBag();
+        $this->bodyAttributes = new AttributeBag();
         $this->linkCanonical = '';
         $this->separator = ' ';
         $this->langAlternates = [];
@@ -183,7 +184,7 @@ class SeoPage implements SeoPageInterface, BodyAttributeInterface
      */
     public function setHtmlAttributes(array $attributes)
     {
-        $this->htmlAttributes = $attributes;
+        $this->htmlAttributes()->set($attributes);
 
         return $this;
     }
@@ -193,19 +194,21 @@ class SeoPage implements SeoPageInterface, BodyAttributeInterface
      */
     public function addHtmlAttributes($name, $value)
     {
-        $this->htmlAttributes[$name] = $value;
+        $this->htmlAttributes()->add($name, $value);
 
         return $this;
     }
 
     /**
+     * @deprecated use htmlAttributes()->remove() instead
+     *
      * @param string $name
      *
      * @return $this
      */
     public function removeHtmlAttributes($name)
     {
-        unset($this->htmlAttributes[$name]);
+        $this->htmlAttributes()->remove($name);
 
         return $this;
     }
@@ -215,72 +218,88 @@ class SeoPage implements SeoPageInterface, BodyAttributeInterface
      */
     public function getHtmlAttributes()
     {
-        return $this->htmlAttributes;
+        return $this->htmlAttributes()->all();
     }
 
     /**
+     * @deprecated use htmlAttributes()->has() instead
+     *
      * @param string $name
      *
      * @return bool
      */
     public function hasHtmlAttribute($name)
     {
-        return isset($this->htmlAttributes[$name]);
+        return $this->htmlAttributes()->has($name);
     }
 
     /**
-     * @param array $attributes
-     *
-     * @return SeoPageInterface
+     * {@inheritdoc}
      */
     public function setHeadAttributes(array $attributes)
     {
-        $this->headAttributes = $attributes;
+        $this->headAttributes()->set($attributes);
 
         return $this;
     }
 
     /**
-     * @param string $name
-     * @param string $value
-     *
-     * @return SeoPageInterface
+     * {@inheritdoc}
      */
     public function addHeadAttribute($name, $value)
     {
-        $this->headAttributes[$name] = $value;
+        $this->headAttributes()->add($name, $value);
 
         return $this;
     }
 
     /**
+     * @deprecated use headAttributes()->remove() instead
+     *
      * @param string $name
      *
      * @return $this
      */
     public function removeHeadAttribute($name)
     {
-        unset($this->headAttributes[$name]);
+        $this->headAttributes()->remove($name);
 
         return $this;
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getHeadAttributes()
+    {
+        return $this->headAttributes()->all();
+    }
+
+    /**
+     * @deprecated use headAttributes()->has() instead
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasHeadAttribute($name)
+    {
+        return $this->headAttributes()->has($name);
+    }
+
+    public function htmlAttributes(): AttributeBag
+    {
+        return $this->htmlAttributes;
+    }
+
+    public function headAttributes(): AttributeBag
     {
         return $this->headAttributes;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return array
-     */
-    public function hasHeadAttribute($name)
+    public function bodyAttributes(): AttributeBag
     {
-        return isset($this->headAttributes[$name]);
+        return $this->bodyAttributes;
     }
 
     /**

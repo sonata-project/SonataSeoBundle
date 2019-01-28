@@ -104,19 +104,19 @@ class SeoPageTest extends TestCase
     public function testBodyAttributes()
     {
         $page = new SeoPage();
-        $page->setBodyAttributes(['body1' => 'value1']);
-        $page->addBodyAttribute('body2', 'value2');
+        $page->bodyAttributes()->set(['body1' => 'value1']);
+        $page->bodyAttributes()->add('body2', 'value2');
 
         $expected = [
             'body1' => 'value1',
             'body2' => 'value2',
         ];
 
-        $this->assertSame($expected, $page->getBodyAttributes());
+        $this->assertSame($expected, $page->bodyAttributes()->all());
 
-        $this->assertTrue($page->hasBodyAttribute('body1'));
-        $page->removeBodyAttribute('body1');
-        $this->assertFalse($page->hasBodyAttribute('body1'));
+        $this->assertTrue($page->bodyAttributes()->has('body1'));
+        $page->bodyAttributes()->remove('body1');
+        $this->assertFalse($page->bodyAttributes()->has('body1'));
     }
 
     public function testSetTitle()

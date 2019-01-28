@@ -14,7 +14,8 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Tests\Request;
 
 use PHPUnit\Framework\TestCase;
-use Sonata\SeoBundle\Seo\BodyAttributeInterface;
+use Sonata\SeoBundle\Seo\AttributeBag;
+use Sonata\SeoBundle\Seo\AttributeInterface;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
@@ -48,9 +49,9 @@ class SeoExtensionTest extends TestCase
 
     public function testBodyAttributes()
     {
-        $page = $this->createMock([SeoPageInterface::class, BodyAttributeInterface::class]);
+        $page = $this->createMock([SeoPageInterface::class, AttributeInterface::class]);
 
-        $page->expects($this->once())->method('getBodyAttributes')->will($this->returnValue([]));
+        $page->expects($this->once())->method('bodyAttributes')->willReturn(new AttributeBag());
 
         $extension = new SeoExtension($page, 'UTF-8');
 

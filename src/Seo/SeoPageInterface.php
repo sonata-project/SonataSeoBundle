@@ -65,6 +65,8 @@ interface SeoPageInterface
     public function setMetas(array $metas);
 
     /**
+     * @deprecated use htmlAttributes()->set() instead
+     *
      * @param array $attributes
      *
      * @return SeoPageInterface
@@ -72,6 +74,8 @@ interface SeoPageInterface
     public function setHtmlAttributes(array $attributes);
 
     /**
+     * @deprecated use htmlAttributes()->add() instead
+     *
      * @param string $name
      * @param string $value
      *
@@ -80,11 +84,15 @@ interface SeoPageInterface
     public function addHtmlAttributes($name, $value);
 
     /**
+     * @deprecated use htmlAttributes()->all() instead
+     *
      * @return array
      */
     public function getHtmlAttributes();
 
     /**
+     * @deprecated use headAttributes()->set() instead
+     *
      * @param array $attributes
      *
      * @return SeoPageInterface
@@ -92,6 +100,8 @@ interface SeoPageInterface
     public function setHeadAttributes(array $attributes);
 
     /**
+     * @deprecated use headAttributes()->add() instead
+     *
      * @param string $name
      * @param string $value
      *
@@ -100,6 +110,8 @@ interface SeoPageInterface
     public function addHeadAttribute($name, $value);
 
     /**
+     * @deprecated use headAttributes()->all() instead
+     *
      * @return array
      */
     public function getHeadAttributes();
