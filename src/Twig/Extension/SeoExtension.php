@@ -16,8 +16,12 @@ namespace Sonata\SeoBundle\Twig\Extension;
 use Sonata\SeoBundle\Seo\AttributeBag;
 use Sonata\SeoBundle\Seo\SeoPageAttributesInterface;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
+use Twig\Environment;
+use Twig\Error\Error;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class SeoExtension extends \Twig_Extension
+class SeoExtension extends AbstractExtension
 {
     /**
      * @var SeoPageInterface
@@ -45,14 +49,14 @@ class SeoExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['needs_environment' => true, 'is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['needs_environment' => true, 'is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_body_attributes', [$this, 'getBodyAttributes'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_body_attributes', [$this, 'getBodyAttributes'], ['needs_environment' => true, 'is_safe' => ['html']]),
         ];
     }
 
@@ -148,7 +152,7 @@ class SeoExtension extends \Twig_Extension
         echo $this->getHtmlAttributes();
     }
 
-    public function getHtmlAttributes(\Twig_Environment $environment = null): string
+    public function getHtmlAttributes(Environment $environment = null): string
     {
         if ($this->page instanceof SeoPageAttributesInterface) {
             $attributes = $this->page->htmlAttributes();
@@ -175,7 +179,7 @@ class SeoExtension extends \Twig_Extension
         echo $this->getHeadAttributes();
     }
 
-    public function getHeadAttributes(\Twig_Environment $environment = null): string
+    public function getHeadAttributes(Environment $environment = null): string
     {
         if ($this->page instanceof SeoPageAttributesInterface) {
             $attributes = $this->page->headAttributes();
@@ -186,7 +190,7 @@ class SeoExtension extends \Twig_Extension
         return $this->renderAttributes($attributes, $environment);
     }
 
-    public function getBodyAttributes(\Twig_Environment $environment): string
+    final public function getBodyAttributes(Environment $environment): string
     {
         return $this->renderAttributes($this->page->bodyAttributes(), $environment);
     }
@@ -269,7 +273,7 @@ class SeoExtension extends \Twig_Extension
         return htmlentities(strip_tags($string), ENT_COMPAT, $this->encoding);
     }
 
-    private function renderAttributes(AttributeBag $attributes, \Twig_Environment $environment = null): string
+    private function renderAttributes(AttributeBag $attributes, Environment $environment = null): string
     {
         if (null === $environment) {
             return '';
@@ -277,7 +281,7 @@ class SeoExtension extends \Twig_Extension
 
         try {
             return trim($environment->render('@SonataSeo/attributes.html.twig', ['attr' => $attributes]));
-        } catch (\Twig_Error $exception) {
+        } catch (Error $exception) {
             return '';
         }
     }
