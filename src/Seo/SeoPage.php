@@ -29,12 +29,16 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
     protected $metas;
 
     /**
-     * @var AttributeBag
+     * @deprecated wil be removed in 3.0
+     *
+     * @var array
      */
     protected $htmlAttributes;
 
     /**
-     * @var AttributeBag
+     * @deprecated wil be removed in 3.0
+     *
+     * @var array
      */
     protected $headAttributes;
 
@@ -61,7 +65,17 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
     /**
      * @var AttributeBag
      */
-    private $bodyAttributes;
+    private $htmlAttributesBag;
+
+    /**
+     * @var AttributeBag
+     */
+    private $bodyAttributesBag;
+
+    /**
+     * @var AttributeBag
+     */
+    private $headAttributesBag;
 
     /**
      * @param string $title
@@ -77,9 +91,11 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
             'property' => [],
         ];
 
-        $this->htmlAttributes = new AttributeBag();
-        $this->headAttributes = new AttributeBag();
-        $this->bodyAttributes = new AttributeBag();
+        $this->htmlAttributes = [];
+        $this->headAttributes = [];
+        $this->htmlAttributesBag = new AttributeBag();
+        $this->headAttributesBag = new AttributeBag();
+        $this->bodyAttributesBag = new AttributeBag();
         $this->linkCanonical = '';
         $this->separator = ' ';
         $this->langAlternates = [];
@@ -187,6 +203,8 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
      */
     public function setHtmlAttributes(array $attributes)
     {
+        $this->htmlAttributes = $attributes;
+
         $this->htmlAttributes()->set($attributes);
 
         return $this;
@@ -197,6 +215,8 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
      */
     public function addHtmlAttributes($name, $value)
     {
+        $this->htmlAttributes[$name] = $value;
+
         $this->htmlAttributes()->add($name, $value);
 
         return $this;
@@ -211,6 +231,8 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
      */
     public function removeHtmlAttributes($name)
     {
+        unset($this->htmlAttributes[$name]);
+
         $this->htmlAttributes()->remove($name);
 
         return $this;
@@ -241,6 +263,8 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
      */
     public function setHeadAttributes(array $attributes)
     {
+        $this->headAttributes = $attributes;
+
         $this->headAttributes()->set($attributes);
 
         return $this;
@@ -251,6 +275,8 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
      */
     public function addHeadAttribute($name, $value)
     {
+        $this->headAttributes[$name] = $value;
+
         $this->headAttributes()->add($name, $value);
 
         return $this;
@@ -265,6 +291,8 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
      */
     public function removeHeadAttribute($name)
     {
+        unset($this->headAttributes[$name]);
+
         $this->headAttributes()->remove($name);
 
         return $this;
@@ -290,19 +318,19 @@ class SeoPage implements SeoPageInterface, SeoPageAttributesInterface
         return $this->headAttributes()->has($name);
     }
 
-    public function htmlAttributes(): AttributeBag
+    final public function htmlAttributes(): AttributeBag
     {
-        return $this->htmlAttributes;
+        return $this->htmlAttributesBag;
     }
 
-    public function headAttributes(): AttributeBag
+    final public function headAttributes(): AttributeBag
     {
-        return $this->headAttributes;
+        return $this->headAttributesBag;
     }
 
-    public function bodyAttributes(): AttributeBag
+    final public function bodyAttributes(): AttributeBag
     {
-        return $this->bodyAttributes;
+        return $this->bodyAttributesBag;
     }
 
     /**
