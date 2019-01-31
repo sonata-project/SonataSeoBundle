@@ -22,6 +22,9 @@ use Twig\Loader\FilesystemLoader;
 
 class SeoExtensionTest extends TestCase
 {
+    /**
+     * @group legacy
+     */
     public function testBackwardCompatibleHtmlAttributes()
     {
         $page = $this->createMock(SeoPageInterface::class);
@@ -54,6 +57,9 @@ class SeoExtensionTest extends TestCase
         );
     }
 
+    /**
+     * @group legacy
+     */
     public function testBackwardsCompatibleHeadAttributes()
     {
         $page = $this->createMock(SeoPageInterface::class);
