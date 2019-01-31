@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Seo;
 
-class AttributeBag implements \IteratorAggregate
+final class AttributeBag implements \IteratorAggregate
 {
     private $attributes = [];
 
