@@ -30,32 +30,32 @@ class AttributeBag implements \IteratorAggregate
         return isset($this->attributes[$name]);
     }
 
-    public function set(array $attributes)
+    public function set(array $attributes): void
     {
         $this->attributes = $attributes;
     }
 
-    public function add(string $name, $value)
+    public function add(string $name, $value): void
     {
         $this->attributes[$name] = $value;
     }
 
-    public function get(string $name, $default = null)
+    public function get(string $name, $default = null): ?string
     {
         return $this->attributes[$name] ?? $default;
     }
 
-    public function remove(string $name)
+    public function remove(string $name): void
     {
         unset($this->attributes[$name]);
     }
 
-    public function all()
+    public function all(): array
     {
         return $this->attributes;
     }
 
-    public function getIterator()
+    public function getIterator(): \ArrayIterator
     {
         return new \ArrayIterator($this->attributes);
     }
