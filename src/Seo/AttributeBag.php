@@ -18,7 +18,7 @@ final class AttributeBag implements \IteratorAggregate
     private $attributes = [];
 
     /**
-     * @param array $attributes
+     * @param string[] $attributes
      */
     public function __construct(array $attributes = [])
     {
