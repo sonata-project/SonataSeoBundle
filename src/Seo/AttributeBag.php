@@ -17,6 +17,14 @@ class AttributeBag implements \IteratorAggregate
 {
     private $attributes = [];
 
+    /**
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        $this->attributes = $attributes;
+    }
+
     public function has(string $name): bool
     {
         return isset($this->attributes[$name]);

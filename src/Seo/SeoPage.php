@@ -16,7 +16,7 @@ namespace Sonata\SeoBundle\Seo;
 /**
  * http://en.wikipedia.org/wiki/Meta_element.
  */
-class SeoPage implements SeoPageInterface, AttributeInterface
+class SeoPage implements SeoPageInterface
 {
     /**
      * @var string
@@ -29,9 +29,14 @@ class SeoPage implements SeoPageInterface, AttributeInterface
     protected $metas;
 
     /**
-     * @var array
+     * @var AttributeBag
      */
     protected $htmlAttributes;
+
+    /**
+     * @var AttributeBag
+     */
+    protected $headAttributes;
 
     /**
      * @var string
@@ -46,11 +51,6 @@ class SeoPage implements SeoPageInterface, AttributeInterface
     /**
      * @var array
      */
-    protected $headAttributes;
-
-    /**
-     * @var array
-     */
     protected $langAlternates;
 
     /**
@@ -58,6 +58,9 @@ class SeoPage implements SeoPageInterface, AttributeInterface
      */
     protected $oembedLinks;
 
+    /**
+     * @var AttributeBag
+     */
     private $bodyAttributes;
 
     /**
