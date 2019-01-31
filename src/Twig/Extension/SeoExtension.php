@@ -13,7 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Twig\Extension;
 
-use Sonata\SeoBundle\Seo\AttributeInterface;
+use Sonata\SeoBundle\Seo\AttributeBag;
+use Sonata\SeoBundle\Seo\SeoPageAttributesInterface;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 
 class SeoExtension extends \Twig_Extension
@@ -29,8 +30,8 @@ class SeoExtension extends \Twig_Extension
     protected $encoding;
 
     /**
-     * @param SeoPageInterface $page
-     * @param string           $encoding
+     * @param SeoPageInterface|SeoPageAttributesInterface $page
+     * @param string                                      $encoding
      */
     public function __construct(SeoPageInterface $page, $encoding)
     {
@@ -46,12 +47,12 @@ class SeoExtension extends \Twig_Extension
         return [
             new \Twig_SimpleFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('sonata_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_body_attributes', [$this, 'getBodyAttributes'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('sonata_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('sonata_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('sonata_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_seo_body_attributes', [$this, 'getBodyAttributes'], ['needs_environment' => true, 'is_safe' => ['html']]),
         ];
     }
 
@@ -147,17 +148,15 @@ class SeoExtension extends \Twig_Extension
         echo $this->getHtmlAttributes();
     }
 
-    /**
-     * @return string
-     */
-    public function getHtmlAttributes()
+    public function getHtmlAttributes(\Twig_Environment $environment = null): string
     {
-        $attributes = '';
-        foreach ($this->page->getHtmlAttributes() as $name => $value) {
-            $attributes .= sprintf('%s="%s" ', $name, $value);
+        if ($this->page instanceof SeoPageAttributesInterface) {
+            $attributes = $this->page->htmlAttributes();
+        } else {
+            $attributes = new AttributeBag($this->page->getHtmlAttributes());
         }
 
-        return rtrim($attributes);
+        return $this->renderAttributes($attributes, $environment);
     }
 
     /**
@@ -176,31 +175,20 @@ class SeoExtension extends \Twig_Extension
         echo $this->getHeadAttributes();
     }
 
-    /**
-     * @return string
-     */
-    public function getHeadAttributes()
+    public function getHeadAttributes(\Twig_Environment $environment = null): string
     {
-        $attributes = '';
-        foreach ($this->page->getHeadAttributes() as $name => $value) {
-            $attributes .= sprintf('%s="%s" ', $name, $value);
+        if ($this->page instanceof SeoPageAttributesInterface) {
+            $attributes = $this->page->headAttributes();
+        } else {
+            $attributes = new AttributeBag($this->page->getHeadAttributes());
         }
 
-        return rtrim($attributes);
+        return $this->renderAttributes($attributes, $environment);
     }
 
-    public function getBodyAttributes(): string
+    public function getBodyAttributes(\Twig_Environment $environment): string
     {
-        if (!$this->page instanceof AttributeInterface) {
-            return '';
-        }
-
-        $attributes = '';
-        foreach ($this->page->bodyAttributes() as $name => $value) {
-            $attributes .= sprintf('%s="%s" ', $name, $value);
-        }
-
-        return rtrim($attributes);
+        return $this->renderAttributes($this->page->bodyAttributes(), $environment);
     }
 
     /**
@@ -279,5 +267,18 @@ class SeoExtension extends \Twig_Extension
     private function normalize($string)
     {
         return htmlentities(strip_tags($string), ENT_COMPAT, $this->encoding);
+    }
+
+    private function renderAttributes(AttributeBag $attributes, \Twig_Environment $environment = null): string
+    {
+        if (null === $environment) {
+            return '';
+        }
+
+        try {
+            return trim($environment->render('@SonataSeo/attributes.html.twig', ['attr' => $attributes]));
+        } catch (\Twig_Error $exception) {
+            return '';
+        }
     }
 }

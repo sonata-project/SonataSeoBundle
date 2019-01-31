@@ -15,13 +15,14 @@ namespace Sonata\SeoBundle\Tests\Request;
 
 use PHPUnit\Framework\TestCase;
 use Sonata\SeoBundle\Seo\AttributeBag;
-use Sonata\SeoBundle\Seo\AttributeInterface;
+use Sonata\SeoBundle\Seo\SeoPageAttributesInterface;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
+use Twig\Loader\FilesystemLoader;
 
 class SeoExtensionTest extends TestCase
 {
-    public function testHtmlAttributes()
+    public function testBackwardCompatibleHtmlAttributes()
     {
         $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->once())->method('getHtmlAttributes')->will($this->returnValue([
@@ -33,29 +34,55 @@ class SeoExtensionTest extends TestCase
 
         $this->assertSame(
             'xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/"',
-            $extension->getHtmlAttributes()
+            $extension->getHtmlAttributes($this->getEnvironment())
         );
     }
 
-    public function testHeadAttributes()
+    public function testHtmlAttributes()
+    {
+        $page = $this->createMock([SeoPageInterface::class, SeoPageAttributesInterface::class]);
+        $page->expects($this->once())->method('htmlAttributes')->willReturn(new AttributeBag([
+            'xmlns' => 'http://www.w3.org/1999/xhtml',
+            'xmlns:og' => 'http://opengraphprotocol.org/schema/',
+        ]));
+
+        $extension = new SeoExtension($page, 'UTF-8');
+
+        $this->assertSame(
+            'xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/"',
+            $extension->getHtmlAttributes($this->getEnvironment())
+        );
+    }
+
+    public function testBackwardsCompatibleHeadAttributes()
     {
         $page = $this->createMock(SeoPageInterface::class);
         $page->expects($this->once())->method('getHeadAttributes')->will($this->returnValue([]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertSame('', $extension->getHeadAttributes());
+        $this->assertSame('', $extension->getHeadAttributes($this->getEnvironment()));
+    }
+
+    public function testHeadAttributes()
+    {
+        $page = $this->createMock([SeoPageInterface::class, SeoPageAttributesInterface::class]);
+        $page->expects($this->once())->method('headAttributes')->willReturn(new AttributeBag());
+
+        $extension = new SeoExtension($page, 'UTF-8');
+
+        $this->assertSame('', $extension->getHeadAttributes($this->getEnvironment()));
     }
 
     public function testBodyAttributes()
     {
-        $page = $this->createMock([SeoPageInterface::class, AttributeInterface::class]);
+        $page = $this->createMock([SeoPageInterface::class, SeoPageAttributesInterface::class]);
 
         $page->expects($this->once())->method('bodyAttributes')->willReturn(new AttributeBag());
 
         $extension = new SeoExtension($page, 'UTF-8');
 
-        $this->assertSame('', $extension->getBodyAttributes());
+        $this->assertSame('', $extension->getBodyAttributes($this->getEnvironment()));
     }
 
     public function testTitle()
@@ -158,5 +185,13 @@ class SeoExtensionTest extends TestCase
             "<link rel=\"alternate\" type=\"application/json+oembed\" href=\"http://example.com/\" title=\"Foo\" />\n",
             $extension->getOembedLinks()
         );
+    }
+
+    protected function getEnvironment()
+    {
+        $loader = new FilesystemLoader();
+        $loader->addPath(__DIR__.'/../../../src/Resources/views', 'SonataSeo');
+
+        return new \Twig_Environment($loader);
     }
 }
