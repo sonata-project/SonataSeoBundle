@@ -53,11 +53,8 @@ class SonataSeoExtension extends Extension
         $container->getDefinition('sonata.seo.twig.extension')
             ->replaceArgument(1, $config['encoding']);
 
-        // Register autoconfiguration rules for Symfony DI 3.3+
-        if (method_exists($container, 'registerForAutoconfiguration')) {
-            $container->registerForAutoconfiguration(SeoTitleInterface::class)
-                ->addTag('sonata.seo.internal.titleprefix');
-        }
+        $container->registerForAutoconfiguration(SeoTitleInterface::class)
+            ->addTag('sonata.seo.internal.titleprefix');
     }
 
     /**
