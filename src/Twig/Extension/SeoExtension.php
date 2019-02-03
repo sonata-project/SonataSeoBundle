@@ -17,7 +17,6 @@ use Sonata\SeoBundle\Seo\AttributeBag;
 use Sonata\SeoBundle\Seo\SeoPageAttributesInterface;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Twig\Environment;
-use Twig\Error\Error;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -279,10 +278,6 @@ class SeoExtension extends AbstractExtension
             return '';
         }
 
-        try {
-            return trim($environment->render('@SonataSeo/attributes.html.twig', ['attr' => $attributes]));
-        } catch (Error $exception) {
-            return '';
-        }
+        return trim($environment->render('@SonataSeo/attributes.html.twig', ['attr' => $attributes]));
     }
 }
