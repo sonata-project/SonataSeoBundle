@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\DependencyInjection;
 
+use Sonata\SeoBundle\Seo\SeoTitleInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -31,27 +32,32 @@ class SonataSeoExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('event.xml');
+        $loader->load('services.xml');
+        $loader->load('commands.xml');
+
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
         $config = $this->fixConfiguration($config);
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-
         if (isset($bundles['SonataBlockBundle'], $bundles['KnpMenuBundle'])) {
             $loader->load('blocks.xml');
         }
-
-        $loader->load('event.xml');
-        $loader->load('services.xml');
-        $loader->load('commands.xml');
 
         $this->configureSeoPage($config['page'], $container);
         $this->configureSitemap($config['sitemap'], $container);
 
         $container->getDefinition('sonata.seo.twig.extension')
             ->replaceArgument(1, $config['encoding']);
+
+        // Register autoconfiguration rules for Symfony DI 3.3+
+        if (method_exists($container, 'registerForAutoconfiguration')) {
+            $container->registerForAutoconfiguration(SeoTitleInterface::class)
+                ->addTag('sonata.seo.internal.titleprefix');
+        }
     }
 
     /**

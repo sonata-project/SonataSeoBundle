@@ -14,11 +14,13 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Tests\DependencyInjection\Compiler;
 
 use PHPUnit\Framework\TestCase;
+use Sonata\SeoBundle\DependencyInjection\Compiler\BreadcrumbBlockServicesCompilerPass;
 use Sonata\SeoBundle\DependencyInjection\Compiler\ServiceCompilerPass;
 use Sonata\SeoBundle\DependencyInjection\SonataSeoExtension;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Tests\Stubs\SeoPageStub;
 use Sonata\SeoBundle\Tests\Stubs\SeoPageWithoutTitleInterfaceStub;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class ServiceCompilerPassTest extends TestCase
@@ -32,6 +34,12 @@ class ServiceCompilerPassTest extends TestCase
                 'default' => 'sonata.seo.custom.page',
             ],
         ];
+
+        $container->addCompilerPass(
+            new AlterAliasPublicationPass(SeoPageInterface::class),
+            PassConfig::TYPE_BEFORE_REMOVING
+        );
+
         $this->processConfiguration($config, $container);
 
         $this->assertTrue($service = $container->has('sonata.seo.page'));
@@ -92,9 +100,14 @@ class ServiceCompilerPassTest extends TestCase
     {
         $container->setParameter('kernel.bundles', []);
 
-        $extension = new SonataSeoExtension();
-        $extension->load([$config], $container);
+        $container->registerExtension($extension = new SonataSeoExtension());
 
-        (new ServiceCompilerPass())->process($container);
+        $container->loadFromExtension($extension->getAlias(), $config);
+
+        $container
+            ->addCompilerPass(new ServiceCompilerPass())
+            ->addCompilerPass(new BreadcrumbBlockServicesCompilerPass());
+
+        $container->compile();
     }
 }
