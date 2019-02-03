@@ -57,7 +57,7 @@ class AttributeBagTest extends TestCase
 
     public function testGet()
     {
-        $bag = new AttributeBag(['foo' => 'bar', 'null' => null]);
+        $bag = new AttributeBag(['foo' => 'bar']);
         $this->assertSame('bar', $bag->get('foo'));
         $this->assertSame('default', $bag->get('unknown', 'default'));
         $this->assertNull($bag->get('null'));

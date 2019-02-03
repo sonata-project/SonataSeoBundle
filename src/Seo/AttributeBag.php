@@ -22,7 +22,9 @@ final class AttributeBag implements \IteratorAggregate
      */
     public function __construct(array $attributes = [])
     {
-        $this->attributes = $attributes;
+        foreach ($attributes as $name => $value) {
+            $this->add($name, $value);
+        }
     }
 
     public function has(string $name): bool
@@ -30,17 +32,23 @@ final class AttributeBag implements \IteratorAggregate
         return isset($this->attributes[$name]);
     }
 
+    /**
+     * @param string[] $attributes
+     */
     public function set(array $attributes): void
     {
-        $this->attributes = $attributes;
+        $this->attributes = [];
+        foreach ($attributes as $name => $value) {
+            $this->add($name, $value);
+        }
     }
 
-    public function add(string $name, $value): void
+    public function add(string $name, string $value): void
     {
         $this->attributes[$name] = $value;
     }
 
-    public function get(string $name, $default = null): ?string
+    public function get(string $name, string $default = null): ?string
     {
         return $this->attributes[$name] ?? $default;
     }
@@ -50,6 +58,9 @@ final class AttributeBag implements \IteratorAggregate
         unset($this->attributes[$name]);
     }
 
+    /**
+     * @return string[]
+     */
     public function all(): array
     {
         return $this->attributes;
