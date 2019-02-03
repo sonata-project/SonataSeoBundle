@@ -36,7 +36,7 @@ class ServiceCompilerPassTest extends TestCase
         ];
 
         $container->addCompilerPass(
-            new AlterAliasPublicationPass(SeoPageInterface::class),
+            new AlterAliasOrDefinitionPublicationPass(SeoPageInterface::class),
             PassConfig::TYPE_BEFORE_REMOVING
         );
 

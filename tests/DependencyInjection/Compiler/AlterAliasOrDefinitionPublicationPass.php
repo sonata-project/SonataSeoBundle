@@ -16,7 +16,7 @@ namespace Sonata\SeoBundle\Tests\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class AlterAliasPublicationPass implements CompilerPassInterface
+final class AlterAliasOrDefinitionPublicationPass implements CompilerPassInterface
 {
     /**
      * @var string
@@ -28,25 +28,21 @@ class AlterAliasPublicationPass implements CompilerPassInterface
         $this->service = $service;
     }
 
-    public function process(ContainerBuilder $container)
+    /**
+     * @inheritdoc
+     */
+    public function process(ContainerBuilder $container): void
     {
-        if (null === $definition = $this->getDefinitionOrAlias($container)) {
+        if ($container->hasAlias($this->service)) {
+            $container->getAlias($this->service)->setPublic(true);
             return;
         }
 
-        $definition->setPublic(true);
-    }
-
-    private function getDefinitionOrAlias(ContainerBuilder $container)
-    {
-        if ($container->hasAlias($this->service)) {
-            return $container->getAlias($this->service);
+        if ($container->hasDefinition($this->service)){
+            $container->getDefinition($this->service)->setPublic(true);
+            return;
         }
 
-        if ($container->hasDefinition($this->service)) {
-            return $container->getDefinition($this->service);
-        }
-
-        return null;
+        return;
     }
 }
