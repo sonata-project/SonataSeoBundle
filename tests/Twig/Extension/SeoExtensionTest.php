@@ -18,6 +18,7 @@ use Sonata\SeoBundle\Seo\AttributeBag;
 use Sonata\SeoBundle\Seo\SeoPageAttributesInterface;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
+use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 class SeoExtensionTest extends TestCase
@@ -198,6 +199,6 @@ class SeoExtensionTest extends TestCase
         $loader = new FilesystemLoader();
         $loader->addPath(__DIR__.'/../../../src/Resources/views', 'SonataSeo');
 
-        return new \Twig_Environment($loader);
+        return new Environment($loader);
     }
 }
