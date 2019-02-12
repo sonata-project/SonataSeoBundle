@@ -262,6 +262,6 @@ class SeoExtension extends \Twig_Extension
      */
     private function normalize($string)
     {
-        return htmlentities(strip_tags($string), ENT_COMPAT, $this->encoding);
+        return htmlentities(strip_tags((string) $string), ENT_COMPAT, $this->encoding);
     }
 }

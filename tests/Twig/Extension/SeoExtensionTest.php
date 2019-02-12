@@ -85,13 +85,16 @@ class SeoExtensionTest extends TestCase
             'name' => ['foo' => ['bar "\'"', []]],
             'schema' => [],
             'charset' => ['UTF-8' => ['', []]],
-            'property' => [],
+            'property' => [
+                'og:image:width' => [848, []],
+                'og:type' => [new MetaTest(), []],
+            ],
         ]));
 
         $extension = new SeoExtension($page, 'UTF-8');
 
         $this->assertSame(
-            "<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n",
+            "<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n<meta property=\"og:image:width\" content=\"848\" />\n<meta property=\"og:type\" content=\"article\" />\n",
             $extension->getMetadatas()
         );
     }
@@ -145,5 +148,13 @@ class SeoExtensionTest extends TestCase
             "<link rel=\"alternate\" type=\"application/json+oembed\" href=\"http://example.com/\" title=\"Foo\" />\n",
             $extension->getOembedLinks()
         );
+    }
+}
+
+class MetaTest
+{
+    public function __toString()
+    {
+        return 'article';
     }
 }
