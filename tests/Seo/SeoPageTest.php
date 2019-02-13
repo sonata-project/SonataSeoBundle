@@ -154,7 +154,7 @@ class SeoPageTest extends TestCase
     public function testHasMeta()
     {
         $page = new SeoPage();
-        $page->addMeta('property', 'test', []);
+        $page->addMeta('property', 'test', '');
 
         $this->assertTrue($page->hasMeta('property', 'test'));
         $this->assertFalse($page->hasMeta('property', 'fake'));
