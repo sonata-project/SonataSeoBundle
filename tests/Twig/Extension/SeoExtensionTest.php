@@ -22,10 +22,10 @@ class SeoExtensionTest extends TestCase
     public function testHtmlAttributes()
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects($this->once())->method('getHtmlAttributes')->will($this->returnValue([
+        $page->expects($this->once())->method('getHtmlAttributes')->willReturn([
             'xmlns' => 'http://www.w3.org/1999/xhtml',
             'xmlns:og' => 'http://opengraphprotocol.org/schema/',
-        ]));
+        ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -38,7 +38,7 @@ class SeoExtensionTest extends TestCase
     public function testHeadAttributes()
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects($this->once())->method('getHeadAttributes')->will($this->returnValue([]));
+        $page->expects($this->once())->method('getHeadAttributes')->willReturn([]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -48,7 +48,7 @@ class SeoExtensionTest extends TestCase
     public function testTitle()
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects($this->once())->method('getTitle')->will($this->returnValue('<b>foo bar</b>'));
+        $page->expects($this->once())->method('getTitle')->willReturn('<b>foo bar</b>');
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -58,14 +58,14 @@ class SeoExtensionTest extends TestCase
     public function testEncoding()
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects($this->once())->method('getTitle')->will($this->returnValue('pięć głów zatkniętych na pal'));
-        $page->expects($this->once())->method('getMetas')->will($this->returnValue([
+        $page->expects($this->once())->method('getTitle')->willReturn('pięć głów zatkniętych na pal');
+        $page->expects($this->once())->method('getMetas')->willReturn([
             'http-equiv' => [],
             'name' => ['foo' => ['pięć głów zatkniętych na pal', []]],
             'schema' => [],
             'charset' => [],
             'property' => [],
-        ]));
+        ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -80,7 +80,7 @@ class SeoExtensionTest extends TestCase
     public function testMetadatas()
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects($this->once())->method('getMetas')->will($this->returnValue([
+        $page->expects($this->once())->method('getMetas')->willReturn([
             'http-equiv' => [],
             'name' => ['foo' => ['bar "\'"', []]],
             'schema' => [],
@@ -89,7 +89,7 @@ class SeoExtensionTest extends TestCase
                 'og:image:width' => [848, []],
                 'og:type' => [new MetaTest(), []],
             ],
-        ]));
+        ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -110,7 +110,7 @@ class SeoExtensionTest extends TestCase
     public function testLinkCanonical()
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects($this->any())->method('getLinkCanonical')->will($this->returnValue('http://example.com'));
+        $page->expects($this->any())->method('getLinkCanonical')->willReturn('http://example.com');
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -123,9 +123,9 @@ class SeoExtensionTest extends TestCase
     public function testLangAlternates()
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects($this->once())->method('getLangAlternates')->will($this->returnValue([
+        $page->expects($this->once())->method('getLangAlternates')->willReturn([
                     'http://example.com/' => 'x-default',
-                ]));
+                ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
@@ -138,9 +138,9 @@ class SeoExtensionTest extends TestCase
     public function testOEmbedLinks()
     {
         $page = $this->createMock(SeoPageInterface::class);
-        $page->expects($this->once())->method('getOembedLinks')->will($this->returnValue([
+        $page->expects($this->once())->method('getOembedLinks')->willReturn([
             'Foo' => 'http://example.com/',
-        ]));
+        ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
