@@ -14,8 +14,10 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Twig\Extension;
 
 use Sonata\SeoBundle\Seo\SeoPageInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class SeoExtension extends \Twig_Extension
+class SeoExtension extends AbstractExtension
 {
     /**
      * @var SeoPageInterface
@@ -43,13 +45,13 @@ class SeoExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('sonata_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
         ];
     }
 
