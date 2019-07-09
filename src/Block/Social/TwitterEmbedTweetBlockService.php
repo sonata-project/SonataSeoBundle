@@ -182,8 +182,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     /**
      * Builds the API query URI based on $settings.
      *
-     * @param bool  $uriMatched
-     * @param array $settings
+     * @param bool $uriMatched
      *
      * @return string
      */

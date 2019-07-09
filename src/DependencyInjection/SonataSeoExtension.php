@@ -56,9 +56,6 @@ class SonataSeoExtension extends Extension
 
     /**
      * Configure the default seo page.
-     *
-     * @param array            $config
-     * @param ContainerBuilder $container
      */
     protected function configureSeoPage(array $config, ContainerBuilder $container)
     {
@@ -67,9 +64,6 @@ class SonataSeoExtension extends Extension
 
     /**
      * Configure the sitemap source manager.
-     *
-     * @param array            $config
-     * @param ContainerBuilder $container
      */
     protected function configureSitemap(array $config, ContainerBuilder $container)
     {
@@ -119,7 +113,6 @@ class SonataSeoExtension extends Extension
     /**
      * Fix the sitemap configuration.
      *
-     * @param array $config
      *
      * @return array
      */

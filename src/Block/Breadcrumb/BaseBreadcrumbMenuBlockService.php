@@ -39,11 +39,8 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     private $factory;
 
     /**
-     * @param string                $context
-     * @param string                $name
-     * @param EngineInterface       $templating
-     * @param MenuProviderInterface $menuProvider
-     * @param FactoryInterface      $factory
+     * @param string $context
+     * @param string $name
      */
     public function __construct($context, $name, EngineInterface $templating, MenuProviderInterface $menuProvider, FactoryInterface $factory)
     {
@@ -106,7 +103,6 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     /**
      * Initialize breadcrumb menu.
      *
-     * @param BlockContextInterface $blockContext
      *
      * @return ItemInterface
      */
