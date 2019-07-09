@@ -34,9 +34,7 @@ class SourceManager implements SourceIteratorInterface
     /**
      * Adding source with his group.
      *
-     * @param string                  $group
-     * @param SourceIteratorInterface $source
-     * @param array                   $types
+     * @param string $group
      */
     public function addSource($group, SourceIteratorInterface $source, array $types = [])
     {
