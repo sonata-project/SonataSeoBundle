@@ -235,8 +235,6 @@ class SeoPage implements SeoPageInterface
     }
 
     /**
-     * @param array $attributes
-     *
      * @return SeoPageInterface
      */
     public function setHeadAttributes(array $attributes)

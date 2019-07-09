@@ -32,8 +32,7 @@ class BreadcrumbListener
     /**
      * Add a renderer to the status services list.
      *
-     * @param string                $type
-     * @param BlockServiceInterface $blockService
+     * @param string $type
      */
     public function addBlockService($type, BlockServiceInterface $blockService)
     {
@@ -42,8 +41,6 @@ class BreadcrumbListener
 
     /**
      * Add context related BlockService, if found.
-     *
-     * @param BlockEvent $event
      */
     public function onBlock(BlockEvent $event)
     {
