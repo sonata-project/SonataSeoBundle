@@ -30,8 +30,7 @@ class SeoExtension extends AbstractExtension
     protected $encoding;
 
     /**
-     * @param SeoPageInterface $page
-     * @param string           $encoding
+     * @param string $encoding
      */
     public function __construct(SeoPageInterface $page, $encoding)
     {

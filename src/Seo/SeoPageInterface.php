@@ -38,7 +38,6 @@ interface SeoPageInterface
      * @param string $type
      * @param string $name
      * @param string $value
-     * @param array  $extras
      *
      * @return mixed
      */
@@ -58,15 +57,11 @@ interface SeoPageInterface
     public function getMetas();
 
     /**
-     * @param array $metas
-     *
      * @return SeoPageInterface
      */
     public function setMetas(array $metas);
 
     /**
-     * @param array $attributes
-     *
      * @return SeoPageInterface
      */
     public function setHtmlAttributes(array $attributes);
@@ -85,8 +80,6 @@ interface SeoPageInterface
     public function getHtmlAttributes();
 
     /**
-     * @param array $attributes
-     *
      * @return SeoPageInterface
      */
     public function setHeadAttributes(array $attributes);
@@ -124,8 +117,6 @@ interface SeoPageInterface
     public function setSeparator($separator);
 
     /**
-     * @param array $langAlternates
-     *
      * @return SeoPageInterface
      */
     public function setLangAlternates(array $langAlternates);
