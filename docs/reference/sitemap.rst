@@ -128,4 +128,8 @@ Usage
 
 .. note::
 
-    The command will generate all files in a temporary folder to avoid issue will files are indexed. Once the files are generated then the files will be copied to the ``web`` folder. The ``sonata-project.org`` argument will be used to prefix url with the provided domain.
+    The command will generate all files in a temporary directory to
+    avoid issue will files are indexed. Once the files are generated
+    then the files will be copied to the ``web`` directory. The
+    ``sonata-project.org`` argument will be used to prefix url with the
+    provided domain.
