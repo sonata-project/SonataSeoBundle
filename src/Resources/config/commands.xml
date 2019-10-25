@@ -3,6 +3,9 @@
     <services>
         <service id="Sonata\SeoBundle\Command\SitemapGeneratorCommand" class="Sonata\SeoBundle\Command\SitemapGeneratorCommand">
             <tag name="console.command"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="sonata.seo.sitemap.manager"/>
+            <argument type="service" id="filesystem"/>
         </service>
     </services>
 </container>
