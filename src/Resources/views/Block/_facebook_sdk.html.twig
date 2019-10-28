@@ -9,7 +9,7 @@ file that was distributed with this source code.
 
 #}
 {% block facebook_sdk %}
-{% spaceless %}
+{% apply spaceless %}
 
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
@@ -21,5 +21,5 @@ file that was distributed with this source code.
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-{% endspaceless %}
+{% endapply %}
 {% endblock %}
