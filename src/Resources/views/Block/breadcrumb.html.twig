@@ -23,9 +23,9 @@ file that was distributed with this source code.
 {% endblock %}
 
 {% block list %}
-{% spaceless %}
+{% apply spaceless %}
     <div class="sonata_breadcrumb">
         {{ parent() }}
     </div>
-{% endspaceless %}
+{% endapply %}
 {% endblock %}

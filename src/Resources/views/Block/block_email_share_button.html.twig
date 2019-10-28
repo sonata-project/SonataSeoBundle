@@ -11,11 +11,11 @@ file that was distributed with this source code.
 {% extends sonata_block.templates.block_base %}
 
 {% block block %}
-    {% spaceless %}
+    {% apply spaceless %}
 
         <a href="mailto:?subject={{ settings.subject }}&body={{ settings.body }}">
             {% trans from 'SonataSeoBundle' %}sonata_seo_share_by_email{% endtrans %}
         </a>
 
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}

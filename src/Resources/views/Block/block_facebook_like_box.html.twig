@@ -11,7 +11,7 @@ file that was distributed with this source code.
 {% extends sonata_block.templates.block_base %}
 
 {% block block %}
-{% spaceless %}
+{% apply spaceless %}
 
     <div class="fb-like-box"
         {% if settings.url %}data-href="{{ settings.url }}"{% endif %}
@@ -24,5 +24,5 @@ file that was distributed with this source code.
         data-colorscheme="{{ settings.colorscheme }}">
     </div>
 
-{% endspaceless %}
+{% endapply %}
 {% endblock %}
