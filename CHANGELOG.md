@@ -2,6 +2,19 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.8.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.7.0...2.8.0) - 2019-10-28
+### Fixed
+- cast metadata to string during render
+- deprecation notice about using namespaced classes from `\Twig\`
+- Fixed deprecation notice:
+  "Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand" class is deprecated
+- Fixed use of deprecated `spaceless` Twig tag
+
+### Deprecated
+- passing a non-string value when adding meta content
+- If you extend `SitemapGeneratorCommand`, avoid usage of the container in the
+  child command declarations.
+
 ## [2.7.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.6.2...2.7.0) - 2019-01-23
 ### Added
 - Added `SeoPageInterface` as alias service of `sonata.seo.page` for Dependency Injection usages.
