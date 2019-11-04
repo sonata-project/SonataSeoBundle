@@ -103,7 +103,6 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     /**
      * Initialize breadcrumb menu.
      *
-     *
      * @return ItemInterface
      */
     protected function getRootMenu(BlockContextInterface $blockContext)
