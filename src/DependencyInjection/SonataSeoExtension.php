@@ -113,7 +113,6 @@ class SonataSeoExtension extends Extension
     /**
      * Fix the sitemap configuration.
      *
-     *
      * @return array
      */
     protected function fixConfiguration(array $config)
