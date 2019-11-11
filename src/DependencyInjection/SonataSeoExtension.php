@@ -15,7 +15,6 @@ namespace Sonata\SeoBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
@@ -69,12 +68,7 @@ class SonataSeoExtension extends Extension
     {
         $source = $container->getDefinition('sonata.seo.sitemap.manager');
 
-        if (method_exists($source, 'setShared')) { // Symfony 2.8+
-            $source->setShared(false);
-        } else {
-            // For Symfony <2.8 compatibility
-            $source->setScope(ContainerInterface::SCOPE_PROTOTYPE);
-        }
+        $source->setShared(false);
 
         foreach ($config['doctrine_orm'] as $pos => $sitemap) {
             // define the connectionIterator
