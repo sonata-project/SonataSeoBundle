@@ -135,8 +135,8 @@ interface SeoPageInterface
     public function getLangAlternates();
 
     /**
-     * @param $title
-     * @param $link
+     * @param string $title
+     * @param string $link
      *
      * @return SeoPageInterface
      */
@@ -179,7 +179,7 @@ interface SeoPageInterface
     /**
      * @param string $name
      *
-     * @return array
+     * @return bool
      */
     public function hasHeadAttribute($name);
 
@@ -193,7 +193,7 @@ interface SeoPageInterface
     /**
      * @param string $href
      *
-     * @return $this
+     * @return bool
      */
     public function hasLangAlternate($href);
 }
