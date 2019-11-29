@@ -29,7 +29,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
+final class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
 {
     public function configureSettings(OptionsResolver $resolver): void
     {

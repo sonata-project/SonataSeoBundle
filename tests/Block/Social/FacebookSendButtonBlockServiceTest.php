@@ -20,7 +20,7 @@ use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 use Sonata\BlockBundle\Util\OptionsResolver;
 use Sonata\SeoBundle\Block\Social\FacebookSendButtonBlockService;
 
-class FacebookSendButtonBlockServiceTest extends AbstractBlockServiceTestCase
+final class FacebookSendButtonBlockServiceTest extends AbstractBlockServiceTestCase
 {
     public function testService(): void
     {

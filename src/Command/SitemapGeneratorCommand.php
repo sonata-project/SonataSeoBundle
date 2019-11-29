@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Command;
 
+use Exception;
 use Sonata\Exporter\Handler;
 use Sonata\Exporter\Writer\SitemapWriter;
 use Sonata\SeoBundle\Sitemap\SourceManager;
@@ -31,7 +32,7 @@ use Symfony\Component\Routing\RouterInterface;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class SitemapGeneratorCommand extends Command
+final class SitemapGeneratorCommand extends Command
 {
     /**
      * @var RouterInterface
@@ -151,7 +152,7 @@ EOT
 
             try {
                 Handler::create($sitemap->sources, $write)->export();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->filesystem->remove($dir);
 
                 throw $e;

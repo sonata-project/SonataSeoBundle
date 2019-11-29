@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class BreadcrumbBlockServicesCompilerPass implements CompilerPassInterface
+final class BreadcrumbBlockServicesCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {

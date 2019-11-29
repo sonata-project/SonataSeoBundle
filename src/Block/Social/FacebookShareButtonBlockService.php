@@ -29,7 +29,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockService
+final class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockService
 {
     /**
      * @var string[]

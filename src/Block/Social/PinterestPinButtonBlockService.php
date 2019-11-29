@@ -33,7 +33,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
-class PinterestPinButtonBlockService extends AbstractAdminBlockService
+final class PinterestPinButtonBlockService extends AbstractAdminBlockService
 {
     public function configureSettings(OptionsResolver $resolver): void
     {

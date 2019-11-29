@@ -18,7 +18,7 @@ use Sonata\SeoBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Yaml\Yaml;
 
-class ConfigurationTest extends TestCase
+final class ConfigurationTest extends TestCase
 {
     public function testDefaultConfiguration(): void
     {

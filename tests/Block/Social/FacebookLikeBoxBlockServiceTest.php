@@ -20,7 +20,7 @@ use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 use Sonata\BlockBundle\Util\OptionsResolver;
 use Sonata\SeoBundle\Block\Social\FacebookLikeBoxBlockService;
 
-class FacebookLikeBoxBlockServiceTest extends AbstractBlockServiceTestCase
+final class FacebookLikeBoxBlockServiceTest extends AbstractBlockServiceTestCase
 {
     public function testService(): void
     {

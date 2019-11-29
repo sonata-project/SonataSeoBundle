@@ -22,7 +22,7 @@ use Sonata\BlockBundle\Model\Block;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class BreadcrumbListener
+final class BreadcrumbListener
 {
     /**
      * @var array

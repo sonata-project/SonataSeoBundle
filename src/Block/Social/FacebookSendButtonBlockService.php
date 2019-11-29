@@ -29,7 +29,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockService
+final class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockService
 {
     public function configureSettings(OptionsResolver $resolver): void
     {

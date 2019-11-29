@@ -19,14 +19,14 @@ use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
-class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
+final class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 {
 }
 
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class BreadcrumbTest extends AbstractBlockServiceTestCase
+final class BreadcrumbTest extends AbstractBlockServiceTestCase
 {
     public function testBlockService(): void
     {

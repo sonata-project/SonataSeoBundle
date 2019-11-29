@@ -18,7 +18,7 @@ use Sonata\SeoBundle\DependencyInjection\Compiler\ServiceCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class SonataSeoBundle extends Bundle
+final class SonataSeoBundle extends Bundle
 {
     public function build(ContainerBuilder $container): void
     {
