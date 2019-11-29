@@ -40,9 +40,6 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     public const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
     public const TWEET_ID_PATTERN = '%^([0-9]*)$%';
 
-    /**
-     * {@inheritdoc}
-     */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $tweet = $blockContext->getSetting('tweet');
@@ -74,9 +71,6 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         ], $response);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -92,9 +86,6 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $form, BlockInterface $block): void
     {
         $form->add('settings', ImmutableArrayType::class, [
@@ -149,9 +140,6 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [

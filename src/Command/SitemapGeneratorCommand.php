@@ -100,9 +100,6 @@ class SitemapGeneratorCommand extends Command implements ContainerAwareInterface
         return $this->container;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configure(): void
     {
         $this->setName('sonata:seo:sitemap');
@@ -127,9 +124,6 @@ EOT
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $host = $input->getArgument('host');

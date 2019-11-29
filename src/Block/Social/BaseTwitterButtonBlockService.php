@@ -70,9 +70,6 @@ abstract class BaseTwitterButtonBlockService extends AbstractAdminBlockService
         'en-gb' => 'en-gb',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $settings = $blockContext->getSettings();

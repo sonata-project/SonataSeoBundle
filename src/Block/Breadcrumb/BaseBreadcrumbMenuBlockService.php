@@ -62,17 +62,11 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
         return $this->context === $context;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return sprintf('Breadcrumb %s', $this->context);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         parent::configureSettings($resolver);
