@@ -21,8 +21,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Routing\RequestContext;
@@ -33,7 +31,7 @@ use Symfony\Component\Routing\RouterInterface;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class SitemapGeneratorCommand extends Command implements ContainerAwareInterface
+class SitemapGeneratorCommand extends Command
 {
     /**
      * @var RouterInterface
@@ -50,54 +48,16 @@ class SitemapGeneratorCommand extends Command implements ContainerAwareInterface
      */
     private $filesystem;
 
-    /**
-     * @deprecated since sonata-project/seo-bundle 2.0
-     *
-     * @var ContainerInterface|null
-     */
-    private $container;
-
     public function __construct(
-        ?RouterInterface $router = null,
-        ?SourceManager $sitemapManager = null,
-        ?Filesystem $filesystem = null
+        ?RouterInterface $router,
+        ?SourceManager $sitemapManager,
+        ?Filesystem $filesystem
     ) {
         $this->router = $router;
         $this->sitemapManager = $sitemapManager;
         $this->filesystem = $filesystem;
 
         parent::__construct();
-    }
-
-    /**
-     * @deprecated since sonata-project/seo-bundle 2.0
-     *
-     * NEXT_MAJOR Remove deprecated methods, remove interface implementation, cleanup 'use' block.
-     * NEXT_MAJOR Make arguments of __construct required instead of optional.
-     */
-    public function setContainer(ContainerInterface $container = null): void
-    {
-        @trigger_error('Injection of container has been deprecated. Consider injection of each service you need in your console command declaration.', E_USER_DEPRECATED);
-
-        $this->container = $container;
-
-        if (null === $container) {
-            return;
-        }
-
-        $this->router = $container->get('router');
-        $this->sitemapManager = $container->get('sonata.seo.sitemap.manager');
-        $this->filesystem = $container->get('filesystem');
-    }
-
-    /**
-     * @deprecated since sonata-project/seo-bundle 2.0
-     */
-    public function getContainer(): ?ContainerInterface
-    {
-        @trigger_error('Please, avoid injection of container in your services.', E_USER_DEPRECATED);
-
-        return $this->container;
     }
 
     public function configure(): void
