@@ -32,9 +32,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
 {
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -51,9 +48,6 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
@@ -100,9 +94,6 @@ class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [

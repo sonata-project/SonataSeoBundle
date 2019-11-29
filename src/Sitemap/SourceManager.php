@@ -52,41 +52,26 @@ class SourceManager implements SourceIteratorInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         return $this->sources->current();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function next(): void
     {
         $this->sources->next();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function key()
     {
         return $this->sources->key();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function valid()
     {
         return $this->sources->valid();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rewind(): void
     {
         $this->sources->rewind();
