@@ -22,15 +22,8 @@ use Sonata\BlockBundle\Block\BlockContextInterface;
  */
 final class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
 {
-    public function getName()
-    {
-        return 'Breadcrumb (Homepage)';
-    }
-
     protected function getMenu(BlockContextInterface $blockContext)
     {
-        $menu = $this->getRootMenu($blockContext);
-
-        return $menu;
+        return $this->getRootMenu($blockContext);
     }
 }

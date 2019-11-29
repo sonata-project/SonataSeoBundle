@@ -13,20 +13,19 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
-use Sonata\BlockBundle\Util\OptionsResolver;
 use Sonata\SeoBundle\Block\Social\FacebookLikeButtonBlockService;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class FacebookLikeButtonBlockServiceTest extends BlockServiceTestCase
 {
     public function testService(): void
     {
         $service = new FacebookLikeButtonBlockService(
-            'sonata.block.service.facebook.like_button',
-            $this->templating
+            $this->twig
         );
 
         $block = new Block();
@@ -42,24 +41,24 @@ final class FacebookLikeButtonBlockServiceTest extends BlockServiceTestCase
         ]);
 
         $optionResolver = new OptionsResolver();
-        $service->setDefaultSettings($optionResolver);
+        $service->configureSettings($optionResolver);
 
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
         $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
         $formMapper->expects($this->exactly(2))->method('add');
 
-        $service->buildCreateForm($formMapper, $block);
-        $service->buildEditForm($formMapper, $block);
+        $service->configureCreateForm($formMapper, $block);
+        $service->configureEditForm($formMapper, $block);
 
         $service->execute($blockContext);
 
-        $this->assertSame('url_setting', $this->templating->parameters['settings']['url']);
-        $this->assertSame('width_setting', $this->templating->parameters['settings']['width']);
-        $this->assertSame('show_faces_setting', $this->templating->parameters['settings']['show_faces']);
-        $this->assertSame('share_setting', $this->templating->parameters['settings']['share']);
-        $this->assertSame('layout_setting', $this->templating->parameters['settings']['layout']);
-        $this->assertSame('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
-        $this->assertSame('action_setting', $this->templating->parameters['settings']['action']);
+        $this->assertSame('url_setting', $this->twig->parameters['settings']['url']);
+        $this->assertSame('width_setting', $this->twig->parameters['settings']['width']);
+        $this->assertSame('show_faces_setting', $this->twig->parameters['settings']['show_faces']);
+        $this->assertSame('share_setting', $this->twig->parameters['settings']['share']);
+        $this->assertSame('layout_setting', $this->twig->parameters['settings']['layout']);
+        $this->assertSame('colorscheme_setting', $this->twig->parameters['settings']['colorscheme']);
+        $this->assertSame('action_setting', $this->twig->parameters['settings']['action']);
     }
 }

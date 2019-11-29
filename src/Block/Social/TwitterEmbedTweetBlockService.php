@@ -17,12 +17,13 @@ use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Block\Service\EditableBlockService;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
+use Sonata\BlockBundle\Meta\MetadataInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
-use Sonata\CoreBundle\Model\Metadata;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Sonata\Form\Type\ImmutableArrayType;
+use Sonata\Form\Validator\ErrorElement;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -30,6 +31,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Twig\Environment;
 
 /**
  * This block service allows to embed a tweet by requesting the Twitter API.
@@ -38,7 +40,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Hugo Briand <briand@ekino.com>
  */
-class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
+class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implements EditableBlockService
 {
     public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
     private const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
@@ -55,18 +57,17 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     private $messageFactory;
 
     public function __construct(
-        ?string $name,
-        EngineInterface $templating,
+        Environment $twig,
         ClientInterface $httpClient = null,
         RequestFactoryInterface $messageFactory = null
     ) {
-        parent::__construct($name, $templating);
+        parent::__construct($twig);
 
         $this->httpClient = $httpClient;
         $this->messageFactory = $messageFactory;
     }
 
-    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    public function execute(BlockContextInterface $blockContext, Response $response = null): Response
     {
         return $this->renderResponse($blockContext->getTemplate(), [
             'block' => $blockContext->getBlock(),
@@ -89,7 +90,12 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    public function buildEditForm(FormMapper $form, BlockInterface $block): void
+    public function configureCreateForm(FormMapper $form, BlockInterface $block): void
+    {
+        $this->configureEditForm($form, $block);
+    }
+
+    public function configureEditForm(FormMapper $form, BlockInterface $block): void
     {
         $form->add('settings', ImmutableArrayType::class, [
             'keys' => [
@@ -143,9 +149,13 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    public function getBlockMetadata($code = null)
+    public function validate(ErrorElement $errorElement, BlockInterface $block): void
     {
-        return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [
+    }
+
+    public function getMetadata(): MetadataInterface
+    {
+        return new \Sonata\BlockBundle\Meta\Metadata('sonata.seo.block.twitter.embed', null, null, 'SonataSeoBundle', [
             'class' => 'fa fa-twitter',
         ]);
     }

@@ -15,61 +15,43 @@ namespace Sonata\SeoBundle\Block\Breadcrumb;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
-use Knp\Menu\Provider\MenuProviderInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Sonata\BlockBundle\Block\Service\MenuBlockService;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Twig\Environment;
 
 /**
  * Abstract class for breadcrumb menu services.
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
+abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService
 {
     /**
-     * @var string
+     * @var MenuBlockService
      */
-    private $context;
+    private $menuBlock;
 
     /**
      * @var FactoryInterface
      */
     private $factory;
 
-    /**
-     * @param string $context
-     * @param string $name
-     */
-    public function __construct($context, $name, EngineInterface $templating, MenuProviderInterface $menuProvider, FactoryInterface $factory)
-    {
-        parent::__construct($name, $templating, $menuProvider);
+    public function __construct(
+        Environment $twig,
+        MenuBlockService $menuBlock,
+        FactoryInterface $factory
+    ) {
+        parent::__construct($twig);
 
-        $this->context = $context;
         $this->factory = $factory;
-    }
-
-    /**
-     * Return true if current BlockService handles the given context.
-     *
-     * @param string $context
-     *
-     * @return bool
-     */
-    public function handleContext($context)
-    {
-        return $this->context === $context;
-    }
-
-    public function getName()
-    {
-        return sprintf('Breadcrumb %s', $this->context);
+        $this->menuBlock = $menuBlock;
     }
 
     public function configureSettings(OptionsResolver $resolver): void
     {
-        parent::configureSettings($resolver);
+        $this->menuBlock->configureSettings($resolver);
 
         $resolver->setDefaults([
             'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
@@ -84,14 +66,6 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
     protected function getFactory()
     {
         return $this->factory;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getContext()
-    {
-        return $this->context;
     }
 
     /**
