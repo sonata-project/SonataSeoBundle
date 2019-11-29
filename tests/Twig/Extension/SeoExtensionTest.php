@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
-class SeoExtensionTest extends TestCase
+final class SeoExtensionTest extends TestCase
 {
     public function testHtmlAttributes(): void
     {
@@ -151,7 +151,7 @@ class SeoExtensionTest extends TestCase
     }
 }
 
-class MetaTest
+final class MetaTest
 {
     public function __toString()
     {

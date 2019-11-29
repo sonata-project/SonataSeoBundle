@@ -30,7 +30,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
+final class TwitterHashtagButtonBlockService extends BaseTwitterButtonBlockService
 {
     public function configureSettings(OptionsResolver $resolver): void
     {

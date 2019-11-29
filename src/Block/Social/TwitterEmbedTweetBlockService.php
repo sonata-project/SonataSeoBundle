@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Block\Social;
 
+use Guzzle\Http\Client;
 use Guzzle\Http\Exception\CurlException;
+use RuntimeException;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
@@ -37,8 +39,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 {
     public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
-    public const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
-    public const TWEET_ID_PATTERN = '%^([0-9]*)$%';
+    private const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
+    private const TWEET_ID_PATTERN = '%^([0-9]*)$%';
 
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
@@ -48,11 +50,11 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
             || preg_match(self::TWEET_ID_PATTERN, $tweet)) {
             // We matched an URL or an ID, we'll need to ask the API
             if (false === class_exists('Guzzle\Http\Client')) {
-                throw new \RuntimeException('The guzzle http client library is required to call the Twitter API. Make sure to add guzzle/guzzle to your composer.json.');
+                throw new RuntimeException('The guzzle http client library is required to call the Twitter API. Make sure to add guzzle/guzzle to your composer.json.');
             }
 
             // TODO cache API result
-            $client = new \Guzzle\Http\Client();
+            $client = new Client();
             $client->setConfig(['curl.options' => [CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
 
             try {

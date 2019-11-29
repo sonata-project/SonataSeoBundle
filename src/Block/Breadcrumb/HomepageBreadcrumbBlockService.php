@@ -20,7 +20,7 @@ use Sonata\BlockBundle\Block\BlockContextInterface;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
+final class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
 {
     public function getName()
     {

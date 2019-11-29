@@ -21,7 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 /**
  * @author Hugo Briand <briand@ekino.com>
  */
-class TwitterEmbedTweetBlockServiceTest extends AbstractBlockServiceTestCase
+final class TwitterEmbedTweetBlockServiceTest extends AbstractBlockServiceTestCase
 {
     public function testBuildUri(): void
     {

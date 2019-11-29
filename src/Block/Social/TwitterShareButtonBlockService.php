@@ -30,7 +30,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
+final class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
 {
     public function configureSettings(OptionsResolver $resolver): void
     {

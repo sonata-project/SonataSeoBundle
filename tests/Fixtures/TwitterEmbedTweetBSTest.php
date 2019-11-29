@@ -13,7 +13,7 @@ namespace Sonata\SeoBundle\Tests\Fixtures\Block;
 
 use Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService;
 
-class TwitterEmbedTweetBSTest extends TwitterEmbedTweetBlockService
+final class TwitterEmbedTweetBSTest extends TwitterEmbedTweetBlockService
 {
     public function publicBuildUri($uriMatched, array $settings)
     {

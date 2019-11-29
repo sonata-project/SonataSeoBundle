@@ -30,7 +30,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockService
+final class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockService
 {
     /**
      * @var string[]

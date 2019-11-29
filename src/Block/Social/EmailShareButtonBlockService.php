@@ -28,7 +28,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
-class EmailShareButtonBlockService extends AbstractAdminBlockService
+final class EmailShareButtonBlockService extends AbstractAdminBlockService
 {
     public function configureSettings(OptionsResolver $resolver): void
     {

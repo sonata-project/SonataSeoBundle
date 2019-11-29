@@ -16,7 +16,7 @@ namespace Sonata\SeoBundle\Tests\Seo;
 use PHPUnit\Framework\TestCase;
 use Sonata\SeoBundle\Seo\SeoPage;
 
-class SeoPageTest extends TestCase
+final class SeoPageTest extends TestCase
 {
     public function testAddMeta(): void
     {
