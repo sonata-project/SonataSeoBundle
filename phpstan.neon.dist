@@ -1,0 +1,12 @@
+parameters:
+    level: 1
+
+    paths:
+        - src
+
+    excludes_analyse:
+        - tests/bootstrap.php
+        - src/Resources/skeleton/
+
+    autoload_files:
+        - vendor/autoload.php
