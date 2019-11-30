@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.9.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.8.0...2.9.0) - 2019-11-29
+### Added
+- Support for Twig 3 and Symfony 5
+
 ## [2.8.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.7.0...2.8.0) - 2019-10-28
 ### Fixed
 - cast metadata to string during render
