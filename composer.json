@@ -40,12 +40,12 @@
         "guzzlehttp/guzzle": "^6.0",
         "nyholm/psr7": "^1.2",
         "sonata-project/admin-bundle": "^3.31",
-        "symfony/http-client": "^4.3 || ^4.2 || ^5.0",
         "sonata-project/block-bundle": "^3.11",
         "sonata-project/core-bundle": "^3.9",
         "symfony/console": "^3.4 || ^4.2 || ^5.0",
         "symfony/filesystem": "^3.4 || ^4.2 || ^5.0",
         "symfony/finder": "^3.4 || ^4.2 || ^5.0",
+        "symfony/http-client": "^4.3 || ^4.2 || ^5.0",
         "symfony/phpunit-bridge": "^4.1 || ^5.0",
         "symfony/yaml": "^3.4 || ^4.2 || ^5.0"
     },
