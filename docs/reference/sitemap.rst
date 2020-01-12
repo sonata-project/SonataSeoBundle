@@ -32,8 +32,8 @@ The service must implement the ``SourceIteratorInterface`` from the ``sonata-pro
         {
             $this->key++;
             $this->current = array(
-                'permalink'  => '/the/path/to/target',
-                'lastmod'    => '',
+                'url'  => '/the/path/to/target',
+                'lastmod'    => '01.01.2020',
                 'changefreq' => 'weekly',
                 'priority'   => 0.5
             );
@@ -74,8 +74,8 @@ The following code is an extract of the query required to generate a valid sitem
 .. code-block:: sql
 
     SELECT
-        CONCAT_WS('/', YEAR(created_at), MONTH(created_at), DAY(created_at), slug) as permalink ,
-        updated_at as lastmod,
+        CONCAT_WS('/', YEAR(created_at), MONTH(created_at), DAY(created_at), slug) as url ,
+        updated_at as DATETIME(lastmod),
         'weekly' as changefreq,
         '0.5' as priority
     FROM news__post
@@ -108,7 +108,7 @@ Here is a full example coming from the [Sonata Sandbox demo website](https://git
                 # media
                 - { types: [image], connection: doctrine.dbal.default_connection, route: sonata_media_view,       parameters: {id: null},                               query: "SELECT id, updated_at as lastmod, 'weekly' as changefreq, '0.5' as priority FROM media__media WHERE enabled = true" }
                 # blog post
-                - { group: "news",  connection: doctrine.dbal.default_connection, route: sonata_news_view,        parameters: {permalink: null},                        query: "SELECT CONCAT_WS('/', YEAR(created_at), MONTH(created_at), DAY(created_at), slug) as permalink , updated_at as lastmod, 'weekly' as changefreq, '0.5' as priority FROM news__post WHERE enabled = 1 AND (publication_date_start IS NULL OR publication_date_start <= NOW())" }
+                - { group: "news",  connection: doctrine.dbal.default_connection, route: sonata_news_view,        parameters: {url: null},                        query: "SELECT CONCAT_WS('/', YEAR(created_at), MONTH(created_at), DAY(created_at), slug) as url , updated_at as lastmod, 'weekly' as changefreq, '0.5' as priority FROM news__post WHERE enabled = 1 AND (publication_date_start IS NULL OR publication_date_start <= NOW())" }
                 # page - works only for one site, please adapt the code if required
                 - {                 connection: doctrine.dbal.default_connection, route: page_slug,               parameters: {path: null},                             query: "SELECT url as path, updated_at as lastmod, 'weekly' as changefreq, '0.5' as priority FROM page__snapshot WHERE route_name = 'page_slug' AND enabled = 1 AND (publication_date_start IS NULL OR publication_date_start <= NOW()) AND (publication_date_end IS NULL OR publication_date_end >= NOW())" }
                 # product categories
