@@ -75,7 +75,7 @@ The following code is an extract of the query required to generate a valid sitem
 
     SELECT
         CONCAT_WS('/', YEAR(created_at), MONTH(created_at), DAY(created_at), slug) as url ,
-        updated_at as DATETIME(lastmod),
+        DATETIME(updated_at) as lastmod,
         'weekly' as changefreq,
         '0.5' as priority
     FROM news__post
