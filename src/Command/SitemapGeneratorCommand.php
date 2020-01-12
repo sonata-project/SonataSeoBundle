@@ -160,7 +160,7 @@ EOT
         $this->filesystem->remove($tempDir);
 
         $output->writeln('<info>done!</info>');
-        
+
         return 0;
     }
 
