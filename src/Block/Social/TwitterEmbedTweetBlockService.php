@@ -250,7 +250,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         }
 
         @trigger_error(
-            'The direct Guzzle implementation is deprecated since 2.x and will be removed with the next major release.',
+            'The direct Guzzle implementation is deprecated since 2.10 and will be removed with the next major release.',
             E_USER_DEPRECATED
         );
 
