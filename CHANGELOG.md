@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.10.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.9.0...2.10.0) - 2020-01-12
+### Added
+- Added support for `psr/http-client` in `TwitterEmbedTweetBlockService`
+
+### Fixed
+- Compatibility of the sitemap generator command with Symfony 5
+
 ## [2.9.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.8.0...2.9.0) - 2019-11-29
 ### Added
 - Support for Twig 3 and Symfony 5
