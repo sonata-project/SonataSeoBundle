@@ -166,7 +166,11 @@ Here is a full example coming from the [Sonata Sandbox demo website](https://git
                   parameters: {productId: null, slug: null}
                   query: |
                       SELECT 
-                      id as productId, slug, updated_at as lastmod, 'weekly' as changefreq, '0.5' as priority 
+                        id as productId,
+                        slug,
+                        updated_at as lastmod,
+                        'weekly' as changefreq,
+                        '0.5' as priority 
                       FROM product__product 
                       WHERE enabled = true
 
