@@ -15,7 +15,7 @@ namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
@@ -26,7 +26,7 @@ class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class BreadcrumbTest extends AbstractBlockServiceTestCase
+class BreadcrumbTest extends BlockServiceTestCase
 {
     public function testBlockService()
     {

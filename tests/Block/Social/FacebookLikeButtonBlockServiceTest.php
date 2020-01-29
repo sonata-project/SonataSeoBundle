@@ -16,11 +16,11 @@ namespace Sonata\SeoBundle\Tests\Block\Social;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\BlockBundle\Util\OptionsResolver;
 use Sonata\SeoBundle\Block\Social\FacebookLikeButtonBlockService;
 
-class FacebookLikeButtonBlockServiceTest extends AbstractBlockServiceTestCase
+class FacebookLikeButtonBlockServiceTest extends BlockServiceTestCase
 {
     public function testService()
     {
