@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService;
 use Sonata\SeoBundle\Tests\Fixtures\Block\TwitterEmbedTweetBSTest;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
@@ -21,7 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 /**
  * @author Hugo Briand <briand@ekino.com>
  */
-final class TwitterEmbedTweetBlockServiceTest extends AbstractBlockServiceTestCase
+final class TwitterEmbedTweetBlockServiceTest extends BlockServiceTestCase
 {
     public function testBuildUri(): void
     {
