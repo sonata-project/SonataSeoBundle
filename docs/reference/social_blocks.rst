@@ -4,7 +4,7 @@ Social blocks
 You can use social blocks by adding them in your config. You must install ``SonataBlockBundle``
 as it is required to render block services.
 
-.. code-block:: jinja
+.. code-block:: twig
 
     # config/packages/sonata_block.yaml
 
@@ -28,7 +28,7 @@ social blocks in a dedicated template, in order to have them properly aligned on
 These blocks render the correct HTML code to display social widgets but you need to include
 the related SDK in your main layout. You can include them by including these templates:
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {% include '@SonataSeo/Block/_facebook_sdk.html.twig' %}
 
