@@ -38,16 +38,16 @@ You can extend ``Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockServic
     <service id="app.bundle.block.breadcrumb" class="App\Block\MyCustomBreadcrumbBlockService">
         <argument>my_custom_context</argument>
         <argument>acme.bundle.block.breadcrumb</argument>
-        <argument type="service" id="templating" />
-        <argument type="service" id="knp_menu.menu_provider" />
-        <argument type="service" id="knp_menu.factory" />
+        <argument type="service" id="templating"/>
+        <argument type="service" id="knp_menu.menu_provider"/>
+        <argument type="service" id="knp_menu.factory"/>
         <tag name="sonata.block"/>
         <tag name="sonata.breadcrumb"/>
     </service>
 
 And to render the breadcrumb, just use this Twig helper :
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {{ sonata_block_render_event('breadcrumb', {
         'context': 'my_custom_context',

@@ -48,7 +48,7 @@ You could also prepend the page title, so that the global title is used as a suf
 
 These values can be used inside a twig template.
 
-.. code-block:: html+jinja
+.. code-block:: html+twig
 
     <!DOCTYPE html>
     <html {{ sonata_seo_html_attributes() }}>
