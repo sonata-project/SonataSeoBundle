@@ -120,7 +120,8 @@ class SitemapGeneratorCommand extends Command implements ContainerAwareInterface
         );
 
         $this->setDescription('Create a sitemap');
-        $this->setHelp(<<<'EOT'
+        $this->setHelp(
+            <<<'EOT'
 The <info>sonata:seo:sitemap</info> command create new sitemap files (index + sitemap).
 
 EOT
