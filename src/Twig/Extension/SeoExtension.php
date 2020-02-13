@@ -75,13 +75,15 @@ final class SeoExtension extends AbstractExtension
                 list($content, $extras) = $meta;
 
                 if (!empty($content)) {
-                    $html .= sprintf("<meta %s=\"%s\" content=\"%s\" />\n",
+                    $html .= sprintf(
+                        "<meta %s=\"%s\" content=\"%s\" />\n",
                         $type,
                         $this->normalize($name),
                         $this->normalize($content)
                     );
                 } else {
-                    $html .= sprintf("<meta %s=\"%s\" />\n",
+                    $html .= sprintf(
+                        "<meta %s=\"%s\" />\n",
                         $type,
                         $this->normalize($name)
                     );
