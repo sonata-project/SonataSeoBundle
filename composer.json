@@ -41,7 +41,7 @@
         "nyholm/psr7": "^1.2",
         "sonata-project/admin-bundle": "^3.31",
         "sonata-project/block-bundle": "^3.17",
-        "sonata-project/core-bundle": "^3.9",
+        "sonata-project/form-extensions": "^1.2",
         "symfony/console": "^4.4 || ^5.0",
         "symfony/filesystem": "^4.4 || ^5.0",
         "symfony/finder": "^4.4 || ^5.0",
