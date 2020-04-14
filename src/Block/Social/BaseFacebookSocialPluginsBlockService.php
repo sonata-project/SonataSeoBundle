@@ -35,7 +35,7 @@ abstract class BaseFacebookSocialPluginsBlockService extends AbstractAdminBlockS
     /**
      * {@inheritdoc}
      */
-    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    public function execute(BlockContextInterface $blockContext, ?Response $response = null)
     {
         $settings = $blockContext->getSettings();
 
