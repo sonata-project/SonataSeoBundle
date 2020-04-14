@@ -22,7 +22,7 @@ trait SeoAwareTrait
      */
     protected $seoPage;
 
-    public function setSeoPage(SeoPageInterface $seoPage = null)
+    public function setSeoPage(?SeoPageInterface $seoPage = null)
     {
         $this->seoPage = $seoPage;
     }
