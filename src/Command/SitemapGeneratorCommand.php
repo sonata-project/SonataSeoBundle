@@ -75,7 +75,7 @@ class SitemapGeneratorCommand extends Command implements ContainerAwareInterface
      * NEXT_MAJOR Remove deprecated methods, remove interface implementation, cleanup 'use' block.
      * NEXT_MAJOR Make arguments of __construct required instead of optional.
      */
-    public function setContainer(ContainerInterface $container = null): void
+    public function setContainer(?ContainerInterface $container = null): void
     {
         @trigger_error('Injection of container has been deprecated. Consider injection of each service you need in your console command declaration.', E_USER_DEPRECATED);
 
