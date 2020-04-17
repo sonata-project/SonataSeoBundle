@@ -32,7 +32,7 @@ abstract class BaseFacebookSocialPluginsBlockService extends AbstractAdminBlockS
         'dark' => 'form.label_colorscheme_dark',
     ];
 
-    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    public function execute(BlockContextInterface $blockContext, ?Response $response = null)
     {
         $settings = $blockContext->getSettings();
 

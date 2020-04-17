@@ -56,7 +56,7 @@ final class EmailShareButtonBlockService extends AbstractAdminBlockService
         ]);
     }
 
-    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    public function execute(BlockContextInterface $blockContext, ?Response $response = null)
     {
         $block = $blockContext->getBlock();
         $settings = array_merge($blockContext->getSettings(), $block->getSettings());
