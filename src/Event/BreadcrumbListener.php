@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Event;
 
-use Sonata\BlockBundle\Block\BlockServiceInterface;
+use Sonata\BlockBundle\Block\Service\BlockServiceInterface;
 use Sonata\BlockBundle\Event\BlockEvent;
 use Sonata\BlockBundle\Model\Block;
 

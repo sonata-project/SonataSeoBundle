@@ -13,12 +13,15 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Block\Social;
 
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
+use Sonata\BlockBundle\Block\Service\AbstractBlockService;
+use Sonata\BlockBundle\Block\Service\EditableBlockService;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Meta\Metadata;
+use Sonata\BlockBundle\Meta\MetadataInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Type\ImmutableArrayType;
+use Sonata\Form\Validator\ErrorElement;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -33,7 +36,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
-final class PinterestPinButtonBlockService extends AbstractAdminBlockService
+final class PinterestPinButtonBlockService extends AbstractBlockService implements EditableBlockService
 {
     public function configureSettings(OptionsResolver $resolver): void
     {
@@ -47,7 +50,12 @@ final class PinterestPinButtonBlockService extends AbstractAdminBlockService
         ]);
     }
 
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
+    public function configureCreateForm(FormMapper $formMapper, BlockInterface $block): void
+    {
+        $this->configureEditForm($formMapper, $block);
+    }
+
+    public function configureEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
             'keys' => [
@@ -80,7 +88,7 @@ final class PinterestPinButtonBlockService extends AbstractAdminBlockService
         ]);
     }
 
-    public function execute(BlockContextInterface $blockContext, ?Response $response = null)
+    public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
         $block = $blockContext->getBlock();
         $settings = array_merge($blockContext->getSettings(), $block->getSettings());
@@ -91,9 +99,13 @@ final class PinterestPinButtonBlockService extends AbstractAdminBlockService
         ], $response);
     }
 
-    public function getBlockMetadata($code = null)
+    public function validate(ErrorElement $errorElement, BlockInterface $block): void
     {
-        return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [
+    }
+
+    public function getMetadata(): MetadataInterface
+    {
+        return new Metadata('sonata.seo.block.pinterest.pin_button', null, null, 'SonataSeoBundle', [
             'class' => 'fa fa-pinterest-p',
         ]);
     }

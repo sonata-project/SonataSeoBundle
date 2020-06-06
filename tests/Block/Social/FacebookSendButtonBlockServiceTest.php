@@ -13,20 +13,19 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
-use Sonata\BlockBundle\Util\OptionsResolver;
 use Sonata\SeoBundle\Block\Social\FacebookSendButtonBlockService;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class FacebookSendButtonBlockServiceTest extends BlockServiceTestCase
 {
     public function testService(): void
     {
         $service = new FacebookSendButtonBlockService(
-            'sonata.block.service.facebook.send_button',
-            $this->templating
+            $this->twig
         );
 
         $block = new Block();
@@ -39,21 +38,28 @@ final class FacebookSendButtonBlockServiceTest extends BlockServiceTestCase
         ]);
 
         $optionResolver = new OptionsResolver();
-        $service->setDefaultSettings($optionResolver);
+        $service->configureSettings($optionResolver);
 
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
         $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
         $formMapper->expects($this->exactly(2))->method('add');
 
-        $service->buildCreateForm($formMapper, $block);
-        $service->buildEditForm($formMapper, $block);
+        $service->configureCreateForm($formMapper, $block);
+        $service->configureEditForm($formMapper, $block);
+
+        $this->twig->expects($this->once())->method('render')
+            ->with('@SonataSeo/Block/block_facebook_send_button.html.twig', [
+               'block' => $block,
+               'settings' => [
+                   'url' => 'url_setting',
+                   'width' => 'width_setting',
+                   'height' => 'height_setting',
+                   'colorscheme' => 'colorscheme_setting',
+                   'template' => '@SonataSeo/Block/block_facebook_send_button.html.twig',
+               ],
+            ]);
 
         $service->execute($blockContext);
-
-        $this->assertSame('url_setting', $this->templating->parameters['settings']['url']);
-        $this->assertSame('width_setting', $this->templating->parameters['settings']['width']);
-        $this->assertSame('height_setting', $this->templating->parameters['settings']['height']);
-        $this->assertSame('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
     }
 }

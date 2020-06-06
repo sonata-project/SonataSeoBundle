@@ -22,9 +22,9 @@ use Sonata\BlockBundle\Block\BlockContextInterface;
  */
 final class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
 {
-    public function getName()
+    protected function getContext(): string
     {
-        return 'Breadcrumb (Homepage)';
+        return 'homepage';
     }
 
     protected function getMenu(BlockContextInterface $blockContext)

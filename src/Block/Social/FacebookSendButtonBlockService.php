@@ -13,10 +13,13 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Block\Social;
 
-use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\BlockBundle\Block\Service\EditableBlockService;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Meta\Metadata;
+use Sonata\BlockBundle\Meta\MetadataInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Type\ImmutableArrayType;
+use Sonata\Form\Validator\ErrorElement;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -29,7 +32,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-final class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockService
+final class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBlockService implements EditableBlockService
 {
     public function configureSettings(OptionsResolver $resolver): void
     {
@@ -42,7 +45,12 @@ final class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBloc
         ]);
     }
 
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
+    public function configureCreateForm(\Sonata\BlockBundle\Form\Mapper\FormMapper $formMapper, BlockInterface $block): void
+    {
+        $this->configureEditForm($formMapper, $block);
+    }
+
+    public function configureEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
             'keys' => [
@@ -68,9 +76,13 @@ final class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBloc
         ]);
     }
 
-    public function getBlockMetadata($code = null)
+    public function validate(ErrorElement $errorElement, BlockInterface $block): void
     {
-        return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [
+    }
+
+    public function getMetadata(): MetadataInterface
+    {
+        return new Metadata('onata.seo.block.facebook.send_button', null, null, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
         ]);
     }
