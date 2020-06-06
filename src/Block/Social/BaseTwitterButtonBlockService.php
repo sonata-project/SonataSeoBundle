@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Block\Social;
 
 use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
+use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-abstract class BaseTwitterButtonBlockService extends AbstractAdminBlockService
+abstract class BaseTwitterButtonBlockService extends AbstractBlockService
 {
     /**
      * @var string[]
@@ -70,7 +70,7 @@ abstract class BaseTwitterButtonBlockService extends AbstractAdminBlockService
         'en-gb' => 'en-gb',
     ];
 
-    public function execute(BlockContextInterface $blockContext, ?Response $response = null)
+    public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
         $settings = $blockContext->getSettings();
 

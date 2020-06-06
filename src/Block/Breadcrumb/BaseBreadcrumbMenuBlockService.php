@@ -15,38 +15,27 @@ namespace Sonata\SeoBundle\Block\Breadcrumb;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
-use Knp\Menu\Provider\MenuProviderInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\Service\MenuBlockService;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Twig\Environment;
 
 /**
  * Abstract class for breadcrumb menu services.
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
+abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService
 {
-    /**
-     * @var string
-     */
-    private $context;
-
     /**
      * @var FactoryInterface
      */
     private $factory;
 
-    /**
-     * @param string $context
-     * @param string $name
-     */
-    public function __construct($context, $name, EngineInterface $templating, MenuProviderInterface $menuProvider, FactoryInterface $factory)
+    public function __construct(Environment $twig, FactoryInterface $factory)
     {
-        parent::__construct($name, $templating, $menuProvider);
+        parent::__construct($twig);
 
-        $this->context = $context;
         $this->factory = $factory;
     }
 
@@ -59,12 +48,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
      */
     public function handleContext($context)
     {
-        return $this->context === $context;
-    }
-
-    public function getName()
-    {
-        return sprintf('Breadcrumb %s', $this->context);
+        return $this->getContext() === $context;
     }
 
     public function configureSettings(OptionsResolver $resolver): void
@@ -78,28 +62,17 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService
         ]);
     }
 
-    /**
-     * @return FactoryInterface
-     */
-    protected function getFactory()
+    protected function getFactory(): FactoryInterface
     {
         return $this->factory;
     }
 
-    /**
-     * @return string
-     */
-    protected function getContext()
-    {
-        return $this->context;
-    }
+    abstract protected function getContext(): string;
 
     /**
      * Initialize breadcrumb menu.
-     *
-     * @return ItemInterface
      */
-    protected function getRootMenu(BlockContextInterface $blockContext)
+    protected function getRootMenu(BlockContextInterface $blockContext): ItemInterface
     {
         $settings = $blockContext->getSettings();
         /*
