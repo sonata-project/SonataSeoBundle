@@ -16,6 +16,7 @@ namespace Sonata\SeoBundle\Event;
 use Sonata\BlockBundle\Block\BlockServiceInterface;
 use Sonata\BlockBundle\Event\BlockEvent;
 use Sonata\BlockBundle\Model\Block;
+use Sonata\SeoBundle\BreadcrumbInterface;
 
 /**
  * BreadcrumbListener for Block Event.
@@ -32,11 +33,21 @@ class BreadcrumbListener
     /**
      * Add a renderer to the status services list.
      *
-     * @param string $type
+     * @param string              $type
+     * @param BreadcrumbInterface $breadcrumb
+     *
+     * NEXT_MAJOR: Require BreadcrumbInterface instead of BlockServiceInterface
      */
-    public function addBlockService($type, BlockServiceInterface $blockService)
+    public function addBlockService($type, BlockServiceInterface $breadcrumb)
     {
-        $this->blockServices[$type] = $blockService;
+        if (!$breadcrumb instanceof BreadcrumbInterface) {
+            @trigger_error(
+                sprintf('Passing a %s class is deprecated since 2.x, pass a %s instead', BlockServiceInterface::class, BreadcrumbInterface::class),
+                E_USER_DEPRECATED
+            );
+        }
+
+        $this->blockServices[$type] = $breadcrumb;
     }
 
     /**
