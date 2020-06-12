@@ -67,7 +67,7 @@ final class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBloc
         ]);
     }
 
-    public function configureCreateForm(\Sonata\BlockBundle\Form\Mapper\FormMapper $formMapper, BlockInterface $block): void
+    public function configureCreateForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $this->configureEditForm($formMapper, $block);
     }
@@ -118,7 +118,7 @@ final class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBloc
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('onata.seo.block.facebook.like_button', null, null, 'SonataSeoBundle', [
+        return new Metadata('sonata.seo.block.facebook.like_button', null, null, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
         ]);
     }
