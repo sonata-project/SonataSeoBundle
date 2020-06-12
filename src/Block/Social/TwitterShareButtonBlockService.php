@@ -51,7 +51,7 @@ final class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    public function configureCreateForm(\Sonata\BlockBundle\Form\Mapper\FormMapper $formMapper, BlockInterface $block): void
+    public function configureCreateForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $this->configureEditForm($formMapper, $block);
     }
