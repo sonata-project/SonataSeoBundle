@@ -34,7 +34,8 @@
         "twig/twig": "^2.9 || ^3.0"
     },
     "conflict": {
-        "sonata-project/block-bundle": "<3.11"
+        "sonata-project/block-bundle": "<3.11",
+        "sonata-project/core-bundle": "<3.20"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^6.0",
