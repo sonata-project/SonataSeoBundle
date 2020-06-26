@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.11.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.10.0...2.11.0) - 2020-06-26
+### Changed
+- [[#370](https://github.com/sonata-project/SonataSeoBundle/pull/370)] Bump SF
+  to 4.4 ([@bmaziere](https://github.com/bmaziere))
+
+### Removed
+- [[#394](https://github.com/sonata-project/SonataSeoBundle/pull/394)] Remove
+  SonataCoreBundle dependencies ([@wbloszyk](https://github.com/wbloszyk))
+
 ## [2.10.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.9.0...2.10.0) - 2020-01-12
 ### Added
 - Added support for `psr/http-client` in `TwitterEmbedTweetBlockService`
