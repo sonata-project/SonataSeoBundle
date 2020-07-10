@@ -71,7 +71,6 @@
         <!-- Pinterest buttons -->
         <service id="sonata.seo.block.pinterest.pin_button" class="%sonata.seo.block.pinterest.pin_button.class%" public="true">
             <tag name="sonata.block"/>
-            <argument>sonata.seo.block.pinterest.pin_button</argument>
             <argument type="service" id="twig"/>
         </service>
         <!-- Pinterest buttons -->
@@ -80,7 +79,6 @@
             <tag name="sonata.breadcrumb"/>
             <tag name="sonata.block"/>
             <argument type="service" id="twig"/>
-            <argument type="service" id="knp_menu.menu_provider"/>
             <argument type="service" id="knp_menu.factory"/>
         </service>
         <!-- Breadcrumb -->
