@@ -280,7 +280,7 @@ class SeoPage implements SeoPageInterface
     /**
      * @param string $name
      *
-     * @return array
+     * @return bool
      */
     public function hasHeadAttribute($name)
     {
@@ -358,7 +358,7 @@ class SeoPage implements SeoPageInterface
     /**
      * @param string $href
      *
-     * @return $this
+     * @return bool
      */
     public function hasLangAlternate($href)
     {
