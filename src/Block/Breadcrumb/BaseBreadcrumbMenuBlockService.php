@@ -121,9 +121,8 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
             $menu->setCurrentUri($settings['current_uri']);
         }
 
-        if (method_exists($menu, 'setCurrent')) {
-            $menu->setCurrent($settings['current_uri']);
-        }
+        $menu->setCurrent(true);
+        $menu->setUri($settings['current_uri']);
 
         if ($settings['include_homepage_link']) {
             $menu->addChild('sonata_seo_homepage_breadcrumb', ['uri' => '/']);
