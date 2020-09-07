@@ -2,6 +2,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.12.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.11.0...2.12.0) - 2020-09-07
+### Added
+- [[#398](https://github.com/sonata-project/SonataSeoBundle/pull/398)] Added
+  new `BreadcrumbInterface` ([@core23](https://github.com/core23))
+
+### Fixed
+- [[#426](https://github.com/sonata-project/SonataSeoBundle/pull/426)] Fix
+  parameter type when calling knp menu
+([@DamienDeSousa](https://github.com/DamienDeSousa))
+
+### Removed
+- [[#416](https://github.com/sonata-project/SonataSeoBundle/pull/416)] Support
+  for `sonata-project/exporter` < 2.0
+([@jordisala1991](https://github.com/jordisala1991))
+- [[#405](https://github.com/sonata-project/SonataSeoBundle/pull/405)] Support
+  for PHP < 7.2 ([@wbloszyk](https://github.com/wbloszyk))
+
 ## [2.11.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.10.0...2.11.0) - 2020-06-26
 ### Changed
 - [[#370](https://github.com/sonata-project/SonataSeoBundle/pull/370)] Bump SF
