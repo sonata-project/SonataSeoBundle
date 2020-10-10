@@ -110,7 +110,7 @@ class SeoExtension extends AbstractExtension
         $html = '';
         foreach ($this->page->getMetas() as $type => $metas) {
             foreach ((array) $metas as $name => $meta) {
-                list($content, $extras) = $meta;
+                [$content, $extras] = $meta;
 
                 if (!empty($content)) {
                     $html .= sprintf(
