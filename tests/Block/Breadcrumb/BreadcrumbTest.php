@@ -14,15 +14,25 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 
 use Knp\Menu\FactoryInterface;
+use Knp\Menu\MenuFactory;
+use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Block\BlockContextInterface;
+use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
 use Twig\Environment;
+use Twig\Loader\ArrayLoader;
 
 final class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 {
     protected function getContext(): string
     {
         return 'test';
+    }
+
+    protected function getMenu(BlockContextInterface $blockContext)
+    {
+        return $this->getRootMenu($blockContext);
     }
 }
 
@@ -39,5 +49,29 @@ final class BreadcrumbTest extends BlockServiceTestCase
         );
 
         $this->assertTrue($blockService->handleContext('test'));
+    }
+
+    public function testGetMenu(): void
+    {
+        $blockService = new BreadcrumbMenuBlockService_Test(
+            new Environment(new ArrayLoader([
+                'breadcrumbs.txt.twig' => 'This is a breadcrumbs with URI {{ menu.uri }}',
+            ])),
+            new MenuFactory()
+        );
+
+        $context = new BlockContext(
+            $this->createStub(BlockInterface::class),
+            [
+                'current_uri' => '/foo/bar',
+                'include_homepage_link' => false,
+                'cache_policy' => 'public',
+                'template' => 'breadcrumbs.txt.twig',
+            ]
+        );
+        self::assertStringContainsString(
+            '/foo/bar',
+            $blockService->execute($context)->getContent()
+        );
     }
 }

@@ -147,7 +147,7 @@ final class SeoPage implements SeoPageInterface
             }
 
             foreach ($metas as $name => $meta) {
-                list($content, $extras) = $this->normalize($meta);
+                [$content, $extras] = $this->normalize($meta);
 
                 $this->addMeta($type, $name, $content, $extras);
             }

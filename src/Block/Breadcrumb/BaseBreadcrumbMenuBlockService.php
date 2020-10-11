@@ -17,6 +17,7 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
+use Sonata\SeoBundle\BreadcrumbInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Twig\Environment;
 
@@ -25,7 +26,7 @@ use Twig\Environment;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService
+abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService implements BreadcrumbInterface
 {
     /**
      * @var FactoryInterface
@@ -87,9 +88,8 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService
             $menu->setCurrentUri($settings['current_uri']);
         }
 
-        if (method_exists($menu, 'setCurrent')) {
-            $menu->setCurrent($settings['current_uri']);
-        }
+        $menu->setCurrent(true);
+        $menu->setUri($settings['current_uri']);
 
         if ($settings['include_homepage_link']) {
             $menu->addChild('sonata_seo_homepage_breadcrumb', ['uri' => '/']);
