@@ -53,6 +53,9 @@ final class BreadcrumbTest extends BlockServiceTestCase
 
     public function testGetMenu(): void
     {
+        $this->markTestSkipped(
+            'Skipped until https://github.com/sonata-project/SonataSeoBundle/issues/446 is resolved'
+        );
         $blockService = new BreadcrumbMenuBlockService_Test(
             new Environment(new ArrayLoader([
                 'breadcrumbs.txt.twig' => 'This is a breadcrumbs with URI {{ menu.uri }}',
