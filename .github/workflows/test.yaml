@@ -44,10 +44,6 @@ jobs:
           - php-version: '7.4'
             dependencies: highest
             allowed_to_fail: false
-            variant: 'sonata-project/block-bundle:"3.*"'
-          - php-version: '7.4'
-            dependencies: highest
-            allowed_to_fail: false
             variant: 'sonata-project/admin-bundle:"3.*"'
 
     steps:

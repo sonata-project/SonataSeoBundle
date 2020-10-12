@@ -74,7 +74,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
     /**
      * {@inheritdoc}
      */
-    public function configureSettings(OptionsResolver $resolver)
+    public function configureSettings(OptionsResolver $resolver): void
     {
         parent::configureSettings($resolver);
 
