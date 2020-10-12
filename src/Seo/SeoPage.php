@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Seo;
 
-use RuntimeException;
-
 /**
  * http://en.wikipedia.org/wiki/Meta_element.
  */
@@ -143,7 +141,7 @@ final class SeoPage implements SeoPageInterface
 
         foreach ($metadatas as $type => $metas) {
             if (!\is_array($metas)) {
-                throw new RuntimeException('$metas must be an array');
+                throw new \RuntimeException('$metas must be an array');
             }
 
             foreach ($metas as $name => $meta) {
