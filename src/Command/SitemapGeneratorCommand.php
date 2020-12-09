@@ -105,7 +105,7 @@ EOT
             return 1;
         }
 
-        $output->writeln(sprintf('Generating sitemap - this can take a while'));
+        $output->writeln('Generating sitemap - this can take a while');
         $this->generateSitemap($tempDir, $scheme, $host, $appendPath);
 
         $output->writeln(sprintf('Moving temporary file to %s ...', $permanentDir));
