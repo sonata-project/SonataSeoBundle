@@ -370,7 +370,7 @@ class SeoPage implements SeoPageInterface
      */
     public function getLangAlternates()
     {
-        return  $this->langAlternates;
+        return $this->langAlternates;
     }
 
     /**
