@@ -24,7 +24,7 @@ final class SourceManager implements SourceIteratorInterface
     /**
      * @var \ArrayIterator
      */
-    protected $sources;
+    private $sources;
 
     public function __construct()
     {

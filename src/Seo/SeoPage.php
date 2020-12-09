@@ -21,42 +21,42 @@ final class SeoPage implements SeoPageInterface
     /**
      * @var string
      */
-    protected $title;
+    private $title;
 
     /**
      * @var array
      */
-    protected $metas;
+    private $metas;
 
     /**
      * @var array
      */
-    protected $htmlAttributes;
+    private $htmlAttributes;
 
     /**
      * @var string
      */
-    protected $linkCanonical;
+    private $linkCanonical;
 
     /**
      * @var string
      */
-    protected $separator;
+    private $separator;
 
     /**
      * @var array
      */
-    protected $headAttributes;
+    private $headAttributes;
 
     /**
      * @var array
      */
-    protected $langAlternates;
+    private $langAlternates;
 
     /**
      * @var array
      */
-    protected $oembedLinks;
+    private $oembedLinks;
 
     /**
      * @param string $title
