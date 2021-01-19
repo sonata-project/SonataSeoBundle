@@ -77,7 +77,7 @@ class SitemapGeneratorCommand extends Command implements ContainerAwareInterface
      */
     public function setContainer(?ContainerInterface $container = null): void
     {
-        @trigger_error('Injection of container has been deprecated. Consider injection of each service you need in your console command declaration.', E_USER_DEPRECATED);
+        @trigger_error('Injection of container has been deprecated. Consider injection of each service you need in your console command declaration.', \E_USER_DEPRECATED);
 
         $this->container = $container;
 
@@ -95,7 +95,7 @@ class SitemapGeneratorCommand extends Command implements ContainerAwareInterface
      */
     public function getContainer(): ?ContainerInterface
     {
-        @trigger_error('Please, avoid injection of container in your services.', E_USER_DEPRECATED);
+        @trigger_error('Please, avoid injection of container in your services.', \E_USER_DEPRECATED);
 
         return $this->container;
     }
