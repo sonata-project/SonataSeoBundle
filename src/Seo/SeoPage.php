@@ -126,7 +126,7 @@ class SeoPage implements SeoPageInterface
                 'Passing meta content of type %s in %s is deprecated since version 2.8 and will be unsupported in version 3. Please cast the value to a string first.',
                 \gettype($content),
                 __METHOD__
-            ), E_USER_DEPRECATED);
+            ), \E_USER_DEPRECATED);
         }
 
         if (!isset($this->metas[$type])) {

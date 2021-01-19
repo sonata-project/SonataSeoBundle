@@ -72,7 +72,7 @@ class SeoExtension extends AbstractExtension
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
             'Use '.__NAMESPACE__.'::getTitle() instead.',
-            E_USER_DEPRECATED
+            \E_USER_DEPRECATED
         );
 
         echo $this->getTitle();
@@ -96,7 +96,7 @@ class SeoExtension extends AbstractExtension
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
             'Use '.__NAMESPACE__.'::getMetadatas() instead.',
-            E_USER_DEPRECATED
+            \E_USER_DEPRECATED
         );
 
         echo $this->getMetadatas();
@@ -142,7 +142,7 @@ class SeoExtension extends AbstractExtension
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
             'Use '.__NAMESPACE__.'::getHtmlAttributes() instead.',
-            E_USER_DEPRECATED
+            \E_USER_DEPRECATED
         );
 
         echo $this->getHtmlAttributes();
@@ -171,7 +171,7 @@ class SeoExtension extends AbstractExtension
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
             'Use '.__NAMESPACE__.'::getHeadAttributes() instead.',
-            E_USER_DEPRECATED
+            \E_USER_DEPRECATED
         );
 
         echo $this->getHeadAttributes();
@@ -200,7 +200,7 @@ class SeoExtension extends AbstractExtension
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
             'Use '.__NAMESPACE__.'::getLinkCanonical() instead.',
-            E_USER_DEPRECATED
+            \E_USER_DEPRECATED
         );
 
         echo $this->getLinkCanonical();
@@ -226,7 +226,7 @@ class SeoExtension extends AbstractExtension
         @trigger_error(
             'The '.__METHOD__.' method is deprecated since 2.0, to be removed in 3.0. '.
             'Use '.__NAMESPACE__.'::getLangAlternates() instead.',
-            E_USER_DEPRECATED
+            \E_USER_DEPRECATED
         );
 
         echo $this->getLangAlternates();
@@ -265,6 +265,6 @@ class SeoExtension extends AbstractExtension
      */
     private function normalize($string)
     {
-        return htmlentities(strip_tags((string) $string), ENT_COMPAT, $this->encoding);
+        return htmlentities(strip_tags((string) $string), \ENT_COMPAT, $this->encoding);
     }
 }
