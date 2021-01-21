@@ -253,12 +253,12 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
 
         @trigger_error(
             'The direct Guzzle implementation is deprecated since 2.10 and will be removed with the next major release.',
-            E_USER_DEPRECATED
+            \E_USER_DEPRECATED
         );
 
         // TODO cache API result
         $client = new \GuzzleHttp\Client();
-        $client->setConfig(['curl.options' => [CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
+        $client->setConfig(['curl.options' => [\CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
 
         try {
             $request = $client->get($this->buildUri($uriMatched, $blockContext->getSettings()));
