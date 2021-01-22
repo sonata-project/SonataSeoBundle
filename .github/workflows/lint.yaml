@@ -26,6 +26,7 @@ jobs:
 
             - name: Run PHP-CS-Fixer
               uses: docker://oskarstark/php-cs-fixer-ga:2.18.0
+
               with:
                   args: --ansi --verbose --diff --dry-run
 
