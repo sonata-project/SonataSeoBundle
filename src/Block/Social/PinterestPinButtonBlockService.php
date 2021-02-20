@@ -35,9 +35,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class PinterestPinButtonBlockService extends AbstractAdminBlockService
 {
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -50,9 +47,6 @@ class PinterestPinButtonBlockService extends AbstractAdminBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
@@ -86,9 +80,6 @@ class PinterestPinButtonBlockService extends AbstractAdminBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function execute(BlockContextInterface $blockContext, ?Response $response = null)
     {
         $block = $blockContext->getBlock();
@@ -100,9 +91,6 @@ class PinterestPinButtonBlockService extends AbstractAdminBlockService
         ], $response);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [
