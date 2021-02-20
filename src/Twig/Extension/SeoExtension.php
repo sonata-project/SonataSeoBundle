@@ -38,9 +38,6 @@ class SeoExtension extends AbstractExtension
         $this->encoding = $encoding;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions()
     {
         return [
@@ -54,9 +51,6 @@ class SeoExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return 'sonata_seo';

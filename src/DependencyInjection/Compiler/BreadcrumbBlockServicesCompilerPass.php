@@ -22,9 +22,6 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class BreadcrumbBlockServicesCompilerPass implements CompilerPassInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container)
     {
         foreach ($container->findTaggedServiceIds('sonata.breadcrumb') as $id => $attributes) {

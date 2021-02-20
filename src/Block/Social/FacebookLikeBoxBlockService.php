@@ -32,9 +32,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
 {
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -50,9 +47,6 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
@@ -95,9 +89,6 @@ class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [

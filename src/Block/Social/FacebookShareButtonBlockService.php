@@ -43,9 +43,6 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
         'link' => 'form.label_layout_link',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -56,9 +53,6 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
@@ -81,9 +75,6 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [

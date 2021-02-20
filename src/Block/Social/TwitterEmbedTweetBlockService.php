@@ -74,9 +74,6 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         ], $response);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -92,9 +89,6 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $form, BlockInterface $block)
     {
         $form->add('settings', ImmutableArrayType::class, [
@@ -149,9 +143,6 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [

@@ -31,9 +31,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
 {
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -47,9 +44,6 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
@@ -84,9 +78,6 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [

@@ -50,9 +50,6 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
         'recommend' => 'form.label_action_recommend',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -67,9 +64,6 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
@@ -110,9 +104,6 @@ class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBlockServi
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), (null !== $code ? $code : $this->getName()), false, 'SonataSeoBundle', [

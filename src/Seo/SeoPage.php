@@ -80,9 +80,6 @@ class SeoPage implements SeoPageInterface
         $this->oembedLinks = [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setTitle($title)
     {
         $this->title = $title;
@@ -90,9 +87,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addTitle($title)
     {
         $this->title = $title.$this->separator.$this->title;
@@ -100,25 +94,16 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTitle()
     {
         return $this->title;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMetas()
     {
         return $this->metas;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addMeta($type, $name, /* string */ $content, array $extras = [])
     {
         if (!\is_string($content)) {
@@ -162,9 +147,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setMetas(array $metadatas)
     {
         $this->metas = [];
@@ -184,9 +166,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setHtmlAttributes(array $attributes)
     {
         $this->htmlAttributes = $attributes;
@@ -194,9 +173,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addHtmlAttributes($name, $value)
     {
         $this->htmlAttributes[$name] = $value;
@@ -216,9 +192,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getHtmlAttributes()
     {
         return $this->htmlAttributes;
@@ -287,9 +260,6 @@ class SeoPage implements SeoPageInterface
         return isset($this->headAttributes[$name]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setLinkCanonical($link)
     {
         $this->linkCanonical = $link;
@@ -297,25 +267,16 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLinkCanonical()
     {
         return $this->linkCanonical;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function removeLinkCanonical()
     {
         $this->linkCanonical = '';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setSeparator($separator)
     {
         $this->separator = $separator;
@@ -323,9 +284,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setLangAlternates(array $langAlternates)
     {
         $this->langAlternates = $langAlternates;
@@ -333,9 +291,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addLangAlternate($href, $hrefLang)
     {
         $this->langAlternates[$href] = $hrefLang;
@@ -365,9 +320,6 @@ class SeoPage implements SeoPageInterface
         return isset($this->langAlternates[$href]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLangAlternates()
     {
         return $this->langAlternates;
