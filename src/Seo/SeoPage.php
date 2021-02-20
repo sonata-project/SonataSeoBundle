@@ -128,12 +128,6 @@ class SeoPage implements SeoPageInterface
         return isset($this->metas[$type][$name]);
     }
 
-    /**
-     * @param string $type
-     * @param string $name
-     *
-     * @return SeoPageInterface
-     */
     public function removeMeta($type, $name)
     {
         unset($this->metas[$type][$name]);
@@ -174,11 +168,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return SeoPageInterface
-     */
     public function removeHtmlAttributes($name)
     {
         unset($this->htmlAttributes[$name]);
@@ -191,11 +180,6 @@ class SeoPage implements SeoPageInterface
         return $this->htmlAttributes;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
     public function hasHtmlAttribute($name)
     {
         return isset($this->htmlAttributes[$name]);
@@ -215,11 +199,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return SeoPageInterface
-     */
     public function removeHeadAttribute($name)
     {
         unset($this->headAttributes[$name]);
@@ -232,11 +211,6 @@ class SeoPage implements SeoPageInterface
         return $this->headAttributes;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
     public function hasHeadAttribute($name)
     {
         return isset($this->headAttributes[$name]);
@@ -280,11 +254,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @param string $href
-     *
-     * @return SeoPageInterface
-     */
     public function removeLangAlternate($href)
     {
         unset($this->langAlternates[$href]);
@@ -292,11 +261,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @param string $href
-     *
-     * @return bool
-     */
     public function hasLangAlternate($href)
     {
         return isset($this->langAlternates[$href]);

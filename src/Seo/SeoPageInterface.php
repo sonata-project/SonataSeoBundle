@@ -13,6 +13,15 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Seo;
 
+/**
+ * @method SeoPageInterface removeMeta(string $type, string $name)
+ * @method SeoPageInterface removeHtmlAttributes(string $name)
+ * @method bool             hasHtmlAttribute(string $name)
+ * @method SeoPageInterface removeHeadAttribute(string $name)
+ * @method bool             hasHeadAttribute(string $name)
+ * @method SeoPageInterface removeLangAlternate(string $href)
+ * @method bool             hasLangAlternate(string $href)
+ */
 interface SeoPageInterface
 {
     /**
