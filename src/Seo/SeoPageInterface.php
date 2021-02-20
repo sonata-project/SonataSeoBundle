@@ -35,11 +35,12 @@ interface SeoPageInterface
     public function getTitle();
 
     /**
-     * @param string $type
-     * @param string $name
-     * @param string $value
+     * @param string               $type
+     * @param string               $name
+     * @param string               $value
+     * @param array<string, mixed> $extras
      *
-     * @return mixed
+     * @return SeoPageInterface
      */
     public function addMeta($type, $name, $value, array $extras = []);
 
@@ -52,16 +53,20 @@ interface SeoPageInterface
     public function hasMeta($type, $name);
 
     /**
-     * @return array
+     * @return array<string, array<string, mixed>>
      */
     public function getMetas();
 
     /**
+     * @param array<string, array<string, mixed>> $metas
+     *
      * @return SeoPageInterface
      */
     public function setMetas(array $metas);
 
     /**
+     * @param array<string, string> $attributes
+     *
      * @return SeoPageInterface
      */
     public function setHtmlAttributes(array $attributes);
@@ -75,11 +80,13 @@ interface SeoPageInterface
     public function addHtmlAttributes($name, $value);
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     public function getHtmlAttributes();
 
     /**
+     * @param array<string, string> $attributes
+     *
      * @return SeoPageInterface
      */
     public function setHeadAttributes(array $attributes);
@@ -93,7 +100,7 @@ interface SeoPageInterface
     public function addHeadAttribute($name, $value);
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     public function getHeadAttributes();
 
@@ -117,6 +124,8 @@ interface SeoPageInterface
     public function setSeparator($separator);
 
     /**
+     * @param array<string, string> $langAlternates
+     *
      * @return SeoPageInterface
      */
     public function setLangAlternates(array $langAlternates);
@@ -130,20 +139,20 @@ interface SeoPageInterface
     public function addLangAlternate($href, $hrefLang);
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     public function getLangAlternates();
 
     /**
-     * @param $title
-     * @param $link
+     * @param string $title
+     * @param string $link
      *
      * @return SeoPageInterface
      */
     public function addOEmbedLink($title, $link);
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     public function getOEmbedLinks();
 }

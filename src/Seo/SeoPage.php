@@ -24,12 +24,12 @@ class SeoPage implements SeoPageInterface
     protected $title;
 
     /**
-     * @var array
+     * @var array<string, array<string, mixed>>
      */
     protected $metas;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $htmlAttributes;
 
@@ -44,17 +44,17 @@ class SeoPage implements SeoPageInterface
     protected $separator;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $headAttributes;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $langAlternates;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $oembedLinks;
 
@@ -123,12 +123,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @param string $type
-     * @param string $name
-     *
-     * @return bool
-     */
     public function hasMeta($type, $name)
     {
         return isset($this->metas[$type][$name]);
@@ -138,7 +132,7 @@ class SeoPage implements SeoPageInterface
      * @param string $type
      * @param string $name
      *
-     * @return $this
+     * @return SeoPageInterface
      */
     public function removeMeta($type, $name)
     {
@@ -183,7 +177,7 @@ class SeoPage implements SeoPageInterface
     /**
      * @param string $name
      *
-     * @return $this
+     * @return SeoPageInterface
      */
     public function removeHtmlAttributes($name)
     {
@@ -207,9 +201,6 @@ class SeoPage implements SeoPageInterface
         return isset($this->htmlAttributes[$name]);
     }
 
-    /**
-     * @return SeoPageInterface
-     */
     public function setHeadAttributes(array $attributes)
     {
         $this->headAttributes = $attributes;
@@ -217,12 +208,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @param string $name
-     * @param string $value
-     *
-     * @return SeoPageInterface
-     */
     public function addHeadAttribute($name, $value)
     {
         $this->headAttributes[$name] = $value;
@@ -233,7 +218,7 @@ class SeoPage implements SeoPageInterface
     /**
      * @param string $name
      *
-     * @return $this
+     * @return SeoPageInterface
      */
     public function removeHeadAttribute($name)
     {
@@ -242,9 +227,6 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getHeadAttributes()
     {
         return $this->headAttributes;
@@ -301,7 +283,7 @@ class SeoPage implements SeoPageInterface
     /**
      * @param string $href
      *
-     * @return $this
+     * @return SeoPageInterface
      */
     public function removeLangAlternate($href)
     {
@@ -325,12 +307,6 @@ class SeoPage implements SeoPageInterface
         return $this->langAlternates;
     }
 
-    /**
-     * @param $title
-     * @param $link
-     *
-     * @return SeoPageInterface
-     */
     public function addOEmbedLink($title, $link)
     {
         $this->oembedLinks[$title] = $link;
@@ -338,20 +314,15 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getOEmbedLinks()
     {
         return $this->oembedLinks;
     }
 
     /**
-     * @param mixed $meta
-     *
-     * @return array
+     * @param string|array $meta
      */
-    private function normalize($meta)
+    private function normalize($meta): array
     {
         if (\is_string($meta)) {
             return [$meta, []];
