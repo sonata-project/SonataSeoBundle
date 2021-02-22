@@ -1,6 +1,9 @@
 UPGRADE 2.x
 ===========
 
+UPGRADE FROM 2.9 to 2.10
+========================
+
 ## TwitterEmbedTweetBlockService uses psr/http-client
 
 The `Guzzle` dependency was removed and replaced with abstract `http-client` interface, so you can choose your preferred
