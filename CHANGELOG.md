@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2.13.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.12.0...2.13.0) - 2021-02-22
 ### Added
-- [[#507](https://github.com/sonata-project/SonataSeoBundle/pull/507)] Add support for PHP 8.0 ([@Yozhef](https://github.com/Yozhef))
+- [[#507](https://github.com/sonata-project/SonataSeoBundle/pull/507)] Add support for PHP 8.x ([@Yozhef](https://github.com/Yozhef))
 - [[#511](https://github.com/sonata-project/SonataSeoBundle/pull/511)] Added generic information to `SeoPageInterface` ([@core23](https://github.com/core23))
 
 ### Changed
