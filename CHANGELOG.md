@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - [[#511](https://github.com/sonata-project/SonataSeoBundle/pull/511)] Added generic information to `SeoPageInterface` ([@core23](https://github.com/core23))
 
 ### Changed
-- [[#459](https://github.com/sonata-project/SonataSeoBundle/pull/459)] Updates Dutch translations ([@zghosts](https://github.com/zghosts))
+- [[#459](https://github.com/sonata-project/SonataSeoBundle/pull/459)] Updated Dutch translations ([@zghosts](https://github.com/zghosts))
 - [[#511](https://github.com/sonata-project/SonataSeoBundle/pull/511)] Soft move methods to `SeoPageInterface` using @method ([@core23](https://github.com/core23))
 
 ## [2.12.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.11.0...2.12.0) - 2020-09-07
