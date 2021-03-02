@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.13.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.12.0...2.13.0) - 2021-02-22
+### Added
+- [[#507](https://github.com/sonata-project/SonataSeoBundle/pull/507)] Add support for PHP 8.x ([@Yozhef](https://github.com/Yozhef))
+- [[#511](https://github.com/sonata-project/SonataSeoBundle/pull/511)] Added generic information to `SeoPageInterface` ([@core23](https://github.com/core23))
+
+### Changed
+- [[#459](https://github.com/sonata-project/SonataSeoBundle/pull/459)] Updated Dutch translations ([@zghosts](https://github.com/zghosts))
+- [[#511](https://github.com/sonata-project/SonataSeoBundle/pull/511)] Soft move methods to `SeoPageInterface` using @method ([@core23](https://github.com/core23))
+
 ## [2.12.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.11.0...2.12.0) - 2020-09-07
 ### Added
 - [[#398](https://github.com/sonata-project/SonataSeoBundle/pull/398)] Added

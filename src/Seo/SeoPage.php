@@ -24,12 +24,12 @@ final class SeoPage implements SeoPageInterface
     private $title;
 
     /**
-     * @var array
+     * @var array<string, array<string, mixed>>
      */
     private $metas;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $htmlAttributes;
 
@@ -44,17 +44,17 @@ final class SeoPage implements SeoPageInterface
     private $separator;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $headAttributes;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $langAlternates;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $oembedLinks;
 
@@ -206,9 +206,6 @@ final class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getHeadAttributes()
     {
         return $this->headAttributes;
@@ -281,20 +278,15 @@ final class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getOEmbedLinks()
     {
         return $this->oembedLinks;
     }
 
     /**
-     * @param mixed $meta
-     *
-     * @return array
+     * @param string|array $meta
      */
-    private function normalize($meta)
+    private function normalize($meta): array
     {
         if (\is_string($meta)) {
             return [$meta, []];
