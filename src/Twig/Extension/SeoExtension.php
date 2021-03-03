@@ -70,7 +70,7 @@ final class SeoExtension extends AbstractExtension
                         "<meta %s=\"%s\" content=\"%s\" />\n",
                         $type,
                         $this->normalize($name),
-                        $this->normalize((string)$content)
+                        $this->normalize((string) $content)
                     );
                 } else {
                     $html .= sprintf(
