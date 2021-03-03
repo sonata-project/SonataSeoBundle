@@ -36,7 +36,7 @@ final class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlo
     /**
      * @var string[]
      */
-    protected $layoutList = [
+    private $layoutList = [
         'box_count' => 'form.label_layout_box_count',
         'button_count' => 'form.label_layout_button_count',
         'button' => 'form.label_layout_button',

@@ -163,8 +163,6 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
 
     /**
      * Returns supported API parameters from settings.
-     *
-     * @return array
      */
     protected function getSupportedApiParams()
     {
@@ -183,12 +181,8 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
 
     /**
      * Builds the API query URI based on $settings.
-     *
-     * @param bool $uriMatched
-     *
-     * @return string
      */
-    protected function buildUri($uriMatched, array $settings)
+    protected function buildUri(bool $uriMatched, array $settings): string
     {
         $apiParams = $settings;
         $supportedParams = $this->getSupportedApiParams();
@@ -217,9 +211,9 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
      */
     private function loadTweet(BlockContextInterface $blockContext): ?string
     {
-        $uriMatched = preg_match(self::TWEET_URL_PATTERN, $blockContext->getSetting('tweet'));
+        $uriMatched = \is_int(preg_match(self::TWEET_URL_PATTERN, $blockContext->getSetting('tweet')));
 
-        if (!$uriMatched || !preg_match(self::TWEET_ID_PATTERN, $blockContext->getSetting('tweet'))) {
+        if (!$uriMatched || !\is_int(preg_match(self::TWEET_ID_PATTERN, $blockContext->getSetting('tweet')))) {
             return null;
         }
 

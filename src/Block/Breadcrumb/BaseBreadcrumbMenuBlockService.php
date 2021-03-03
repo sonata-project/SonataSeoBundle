@@ -40,14 +40,7 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         $this->factory = $factory;
     }
 
-    /**
-     * Return true if current BlockService handles the given context.
-     *
-     * @param string $context
-     *
-     * @return bool
-     */
-    public function handleContext($context)
+    public function handleContext(string $context): bool
     {
         return $this->getContext() === $context;
     }
