@@ -164,7 +164,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
     /**
      * Returns supported API parameters from settings.
      */
-    protected function getSupportedApiParams()
+    protected function getSupportedApiParams(): array
     {
         return [
             'maxwidth',
