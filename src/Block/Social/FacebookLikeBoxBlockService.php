@@ -24,11 +24,15 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * Facebook like box integration.
  *
  * @see https://developers.facebook.com/docs/plugins/like-box-for-pages/
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
+ *
+ * @final since sonata-project/seo-bundle 2.x
  */
 class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
 {

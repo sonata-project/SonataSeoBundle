@@ -19,6 +19,8 @@ use Sonata\SeoBundle\Tests\Fixtures\Block\TwitterEmbedTweetBSTest;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * @author Hugo Briand <briand@ekino.com>
  */
 class TwitterEmbedTweetBlockServiceTest extends BlockServiceTestCase

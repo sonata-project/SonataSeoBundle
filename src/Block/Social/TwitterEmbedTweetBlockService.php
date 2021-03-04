@@ -32,6 +32,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * This block service allows to embed a tweet by requesting the Twitter API.
  *
  * @see https://dev.twitter.com/docs/api/1/get/statuses/oembed

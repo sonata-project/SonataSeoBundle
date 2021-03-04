@@ -20,6 +20,9 @@ use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Tests\Stubs\SeoPageStub;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * @final since sonata-project/seo-bundle 2.x
+ */
 class ServiceCompilerPassTest extends TestCase
 {
     public function testServicesExistsAndCanBeOverridden()

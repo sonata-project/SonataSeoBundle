@@ -28,6 +28,9 @@ use Symfony\Component\Templating\TemplateNameParser;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 
+/**
+ * @final since sonata-project/seo-bundle 2.x
+ */
 class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 {
     protected function getMenu(BlockContextInterface $blockContext)
@@ -37,6 +40,8 @@ class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 }
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
 class BreadcrumbTest extends BlockServiceTestCase

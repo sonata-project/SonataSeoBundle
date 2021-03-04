@@ -17,6 +17,9 @@ use PHPUnit\Framework\TestCase;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Sonata\SeoBundle\Twig\Extension\SeoExtension;
 
+/**
+ * @final since sonata-project/seo-bundle 2.x
+ */
 class SeoExtensionTest extends TestCase
 {
     public function testHtmlAttributes()

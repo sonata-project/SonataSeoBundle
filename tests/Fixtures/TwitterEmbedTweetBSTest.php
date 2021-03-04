@@ -15,6 +15,9 @@ namespace Sonata\SeoBundle\Tests\Fixtures\Block;
 
 use Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService;
 
+/**
+ * @deprecated since sonata-project/seo-bundle 2.x, and will be remove in 3.0.
+ */
 class TwitterEmbedTweetBSTest extends TwitterEmbedTweetBlockService
 {
     public function publicBuildUri($uriMatched, array $settings)
