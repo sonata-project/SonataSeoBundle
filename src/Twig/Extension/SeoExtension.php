@@ -22,17 +22,14 @@ final class SeoExtension extends AbstractExtension
     /**
      * @var SeoPageInterface
      */
-    protected $page;
+    private $page;
 
     /**
      * @var string
      */
-    protected $encoding;
+    private $encoding;
 
-    /**
-     * @param string $encoding
-     */
-    public function __construct(SeoPageInterface $page, $encoding)
+    public function __construct(SeoPageInterface $page, string $encoding)
     {
         $this->page = $page;
         $this->encoding = $encoding;
@@ -51,23 +48,17 @@ final class SeoExtension extends AbstractExtension
         ];
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'sonata_seo';
     }
 
-    /**
-     * @return string
-     */
-    public function getTitle()
+    public function getTitle(): string
     {
         return sprintf('<title>%s</title>', strip_tags($this->page->getTitle()));
     }
 
-    /**
-     * @return string
-     */
-    public function getMetadatas()
+    public function getMetadatas(): string
     {
         $html = '';
         foreach ($this->page->getMetas() as $type => $metas) {
@@ -79,7 +70,7 @@ final class SeoExtension extends AbstractExtension
                         "<meta %s=\"%s\" content=\"%s\" />\n",
                         $type,
                         $this->normalize($name),
-                        $this->normalize($content)
+                        $this->normalize((string) $content)
                     );
                 } else {
                     $html .= sprintf(
@@ -94,10 +85,7 @@ final class SeoExtension extends AbstractExtension
         return $html;
     }
 
-    /**
-     * @return string
-     */
-    public function getHtmlAttributes()
+    public function getHtmlAttributes(): string
     {
         $attributes = '';
         foreach ($this->page->getHtmlAttributes() as $name => $value) {
@@ -107,10 +95,7 @@ final class SeoExtension extends AbstractExtension
         return rtrim($attributes);
     }
 
-    /**
-     * @return string
-     */
-    public function getHeadAttributes()
+    public function getHeadAttributes(): string
     {
         $attributes = '';
         foreach ($this->page->getHeadAttributes() as $name => $value) {
@@ -120,20 +105,16 @@ final class SeoExtension extends AbstractExtension
         return rtrim($attributes);
     }
 
-    /**
-     * @return string
-     */
-    public function getLinkCanonical()
+    public function getLinkCanonical(): string
     {
         if ($this->page->getLinkCanonical()) {
             return sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
         }
+
+        return '';
     }
 
-    /**
-     * @return string
-     */
-    public function getLangAlternates()
+    public function getLangAlternates(): string
     {
         $html = '';
         foreach ($this->page->getLangAlternates() as $href => $hrefLang) {
@@ -143,10 +124,7 @@ final class SeoExtension extends AbstractExtension
         return $html;
     }
 
-    /**
-     * @return string
-     */
-    public function getOembedLinks()
+    public function getOembedLinks(): string
     {
         $html = '';
         foreach ($this->page->getOEmbedLinks() as $title => $link) {
@@ -156,13 +134,8 @@ final class SeoExtension extends AbstractExtension
         return $html;
     }
 
-    /**
-     * @param string $string
-     *
-     * @return mixed
-     */
-    private function normalize($string)
+    private function normalize(string $string): string
     {
-        return htmlentities(strip_tags((string) $string), \ENT_COMPAT, $this->encoding);
+        return htmlentities(strip_tags($string), \ENT_COMPAT, $this->encoding);
     }
 }

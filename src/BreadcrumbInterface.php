@@ -17,10 +17,5 @@ use Sonata\BlockBundle\Block\Service\BlockServiceInterface;
 
 interface BreadcrumbInterface extends BlockServiceInterface
 {
-    /**
-     * @param string $context
-     *
-     * @return bool
-     */
-    public function handleContext($context);
+    public function handleContext(string $context): bool;
 }

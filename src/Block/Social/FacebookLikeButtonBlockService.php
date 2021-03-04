@@ -38,7 +38,7 @@ final class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBloc
     /**
      * @var string[]
      */
-    protected $layoutList = [
+    private $layoutList = [
         'standard' => 'form.label_layout_standard',
         'box_count' => 'form.label_layout_box_count',
         'button_count' => 'form.label_layout_button_count',
@@ -48,7 +48,7 @@ final class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBloc
     /**
      * @var string[]
      */
-    protected $actionTypes = [
+    private $actionTypes = [
         'like' => 'form.label_action_like',
         'recommend' => 'form.label_action_recommend',
     ];

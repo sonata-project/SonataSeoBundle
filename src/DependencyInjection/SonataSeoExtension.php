@@ -54,7 +54,7 @@ final class SonataSeoExtension extends Extension
     /**
      * Configure the default seo page.
      */
-    protected function configureSeoPage(array $config, ContainerBuilder $container): void
+    private function configureSeoPage(array $config, ContainerBuilder $container): void
     {
         $container->setParameter('sonata.seo.config', $config);
     }
@@ -62,7 +62,7 @@ final class SonataSeoExtension extends Extension
     /**
      * Configure the sitemap source manager.
      */
-    protected function configureSitemap(array $config, ContainerBuilder $container): void
+    private function configureSitemap(array $config, ContainerBuilder $container): void
     {
         $source = $container->getDefinition('sonata.seo.sitemap.manager');
 
@@ -104,10 +104,8 @@ final class SonataSeoExtension extends Extension
 
     /**
      * Fix the sitemap configuration.
-     *
-     * @return array
      */
-    protected function fixConfiguration(array $config)
+    private function fixConfiguration(array $config): array
     {
         foreach ($config['sitemap']['doctrine_orm'] as $pos => $sitemap) {
             $sitemap['group'] = $sitemap['group'] ?? false;

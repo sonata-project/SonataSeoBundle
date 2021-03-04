@@ -85,7 +85,7 @@ EOT
         );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $host = $input->getArgument('host');
         $scheme = $input->getOption('scheme');
