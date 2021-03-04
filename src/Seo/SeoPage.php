@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Seo;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * http://en.wikipedia.org/wiki/Meta_element.
  */
 class SeoPage implements SeoPageInterface
