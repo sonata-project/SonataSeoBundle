@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Block\Social;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -41,7 +40,7 @@ use Twig\Environment;
  *
  * @author Hugo Briand <briand@ekino.com>
  */
-class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implements EditableBlockService
+final class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implements EditableBlockService
 {
     public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
     private const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
@@ -59,8 +58,8 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
 
     public function __construct(
         Environment $twig,
-        ?ClientInterface $httpClient = null,
-        ?RequestFactoryInterface $messageFactory = null
+        ClientInterface $httpClient,
+        RequestFactoryInterface $messageFactory
     ) {
         parent::__construct($twig);
 
@@ -164,7 +163,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
     /**
      * Returns supported API parameters from settings.
      */
-    protected function getSupportedApiParams(): array
+    public function getSupportedApiParams(): array
     {
         return [
             'maxwidth',
@@ -182,7 +181,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
     /**
      * Builds the API query URI based on $settings.
      */
-    protected function buildUri(bool $uriMatched, array $settings): string
+    public function buildUri(bool $uriMatched, array $settings): string
     {
         $apiParams = $settings;
         $supportedParams = $this->getSupportedApiParams();
@@ -217,52 +216,20 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
             return null;
         }
 
-        if (null !== $this->httpClient && null !== $this->messageFactory) {
-            try {
-                $response = $this->httpClient->sendRequest(
-                    $this->messageFactory->createRequest(
-                        'GET',
-                        $this->buildUri($uriMatched, $blockContext->getSettings())
-                    )
-                );
-            } catch (ClientExceptionInterface $e) {
-                // log error
-                return null;
-            }
-
-            $apiTweet = json_decode($response->getBody(), true);
-
-            return $apiTweet['html'];
-        }
-
-        // NEXT_MAJOR: Remove the old guzzle implementation
-
-        // We matched an URL or an ID, we'll need to ask the API
-        if (false === class_exists('GuzzleHttp\Client')) {
-            throw new \RuntimeException(
-                'The guzzle http client library is required to call the Twitter API.'.
-                'Make sure to add psr/http-client or guzzlehttp/guzzle to your composer.json.'
-            );
-        }
-
-        @trigger_error(
-            'The direct Guzzle implementation is deprecated since 2.10 and will be removed with the next major release.',
-            \E_USER_DEPRECATED
-        );
-
-        // TODO cache API result
-        $client = new \GuzzleHttp\Client();
-        $client->setConfig(['curl.options' => [\CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
-
         try {
-            $request = $client->get($this->buildUri($uriMatched, $blockContext->getSettings()));
-            $apiTweet = json_decode($request->send()->getBody(true), true);
-
-            return $apiTweet['html'];
-        } catch (GuzzleException $e) {
+            $response = $this->httpClient->sendRequest(
+                $this->messageFactory->createRequest(
+                    'GET',
+                    $this->buildUri($uriMatched, $blockContext->getSettings())
+                )
+            );
+        } catch (ClientExceptionInterface $e) {
             // log error
             return null;
         }
-        // END NEXT_MAJOR
+
+        $apiTweet = json_decode($response->getBody(), true);
+
+        return $apiTweet['html'];
     }
 }
