@@ -24,6 +24,8 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * Twitter share button integration.
  *
  * @see https://about.twitter.com/resources/buttons#tweet

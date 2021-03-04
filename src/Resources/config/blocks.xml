@@ -76,6 +76,7 @@
             <argument type="service" id="sonata.templating"/>
             <argument type="service" id="sonata.seo.http.client" on-invalid="null"/>
             <argument type="service" id="sonata.seo.http.message_factory" on-invalid="null"/>
+            <argument type="service" id="sonata.seo.twitter.tweet_getter" on-invalid="null"/>
         </service>
         <!-- Twitter embed -->
         <!-- Pinterest buttons -->

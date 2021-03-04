@@ -13,30 +13,52 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
+use Sonata\BlockBundle\Util\OptionsResolver;
 use Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService;
-use Sonata\SeoBundle\Tests\Fixtures\Block\TwitterEmbedTweetBSTest;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Sonata\SeoBundle\Twitter\TweetGetter;
+use Symfony\Component\HttpClient\Psr18Client;
 
 /**
  * @author Hugo Briand <briand@ekino.com>
  */
-class TwitterEmbedTweetBlockServiceTest extends BlockServiceTestCase
+final class TwitterEmbedTweetBlockServiceTest extends BlockServiceTestCase
 {
-    public function testBuildUri()
+    public function testService()
     {
-        $settings = [
-            'tweet' => 'tweeeeeeeet',
-            'foo' => 'bar',
+        $service = new TwitterEmbedTweetBlockService(
+            '',
+            $this->templating,
+            null,
+            null,
+            new TweetGetter(new Psr18Client(), new Psr17Factory())
+        );
+
+        $block = new Block();
+        $block->setType('core.text');
+        $block->setSettings([
+            'tweet' => 'https://twitter.com/dunglas/statuses/438337742565826560',
             'align' => 'bar',
-        ];
+        ]);
 
-        $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&url=tweeeeeeeet');
+        $optionResolver = new OptionsResolver();
+        $service->setDefaultSettings($optionResolver);
 
-        $blockService = new TwitterEmbedTweetBSTest('', $this->createMock(EngineInterface::class));
-        $this->assertSame($expected, $blockService->publicBuildUri(true, $settings));
+        $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
-        $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&id=tweeeeeeeet');
-        $this->assertSame($expected, $blockService->publicBuildUri(false, $settings));
+        $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
+        $formMapper->expects($this->exactly(2))->method('add');
+
+        $service->buildCreateForm($formMapper, $block);
+        $service->buildEditForm($formMapper, $block);
+
+        $service->execute($blockContext);
+
+        $this->assertIsString($blockContext->getSetting('tweet'));
+        $this->assertSame(856, \strlen($blockContext->getSetting('tweet')));
     }
 }

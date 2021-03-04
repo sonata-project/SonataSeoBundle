@@ -23,6 +23,8 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * Facebook send button integration.
  *
  * @see https://developers.facebook.com/docs/plugins/send-button/

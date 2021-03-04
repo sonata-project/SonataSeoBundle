@@ -16,10 +16,13 @@ namespace Sonata\SeoBundle\Tests\DependencyInjection\Compiler;
 use PHPUnit\Framework\TestCase;
 use Sonata\SeoBundle\DependencyInjection\Compiler\ServiceCompilerPass;
 use Sonata\SeoBundle\DependencyInjection\SonataSeoExtension;
+use Sonata\SeoBundle\Seo\SeoPage;
 use Sonata\SeoBundle\Seo\SeoPageInterface;
-use Sonata\SeoBundle\Tests\Stubs\SeoPageStub;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * @final since sonata-project/seo-bundle 2.x
+ */
 class ServiceCompilerPassTest extends TestCase
 {
     public function testServicesExistsAndCanBeOverridden()
@@ -27,7 +30,7 @@ class ServiceCompilerPassTest extends TestCase
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', []);
 
-        $container->register('sonata.seo.custom.page', SeoPageStub::class);
+        $container->register('sonata.seo.custom.page', SeoPage::class);
 
         $config = [
             'page' => [
@@ -44,6 +47,6 @@ class ServiceCompilerPassTest extends TestCase
         $this->assertTrue($alias = $container->has(SeoPageInterface::class));
         $this->assertSame($service, $alias);
 
-        $this->assertInstanceOf(SeoPageStub::class, $container->get(SeoPageInterface::class));
+        $this->assertInstanceOf(SeoPageInterface::class, $container->get(SeoPageInterface::class));
     }
 }
