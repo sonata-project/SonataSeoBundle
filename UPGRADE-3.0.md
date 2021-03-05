@@ -3,7 +3,7 @@ UPGRADE FROM 2.X to 3.0
 
 ## guzzlehttp/guzzle
 
-If you using `sonata.seo.block.twitter.embed` service with guzzle, you must create custom service based on guzzle client and add it to configuration:
+If you are using `sonata.seo.block.twitter.embed` service with Guzzle, you MUST create a custom service based on the Guzzle client and add it to configuration:
 
     sontata_seo:
         http:
