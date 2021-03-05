@@ -7,7 +7,7 @@ If you are using `sonata.seo.block.twitter.embed` service with Guzzle, you MUST 
 
     sontata_seo:
         http:
-            client: `you_custom.guzzle_client` # Psr\Http\Client\ClientInterface
+            client: `your_custom.guzzle_client` # Psr\Http\Client\ClientInterface
             message_factory: `your_custom.message_facory` # Psr\Http\Message\RequestFactoryInterface
 
 ## SeoPage
