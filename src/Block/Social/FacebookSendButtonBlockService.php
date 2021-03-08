@@ -82,7 +82,7 @@ final class FacebookSendButtonBlockService extends BaseFacebookSocialPluginsBloc
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.seo.block.facebook.send_button', null, null, 'SonataSeoBundle', [
+        return new Metadata('Facebook - Send', 'sonata.seo.block.facebook.send_button', null, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
         ]);
     }

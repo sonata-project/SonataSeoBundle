@@ -105,7 +105,7 @@ final class PinterestPinButtonBlockService extends AbstractBlockService implemen
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.seo.block.pinterest.pin_button', null, null, 'SonataSeoBundle', [
+        return new Metadata('Pinterest - Pin', 'sonata.seo.block.pinterest.pin_button', null, 'SonataSeoBundle', [
             'class' => 'fa fa-pinterest-p',
         ]);
     }

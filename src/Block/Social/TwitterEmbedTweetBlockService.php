@@ -156,7 +156,7 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implem
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.seo.block.twitter.embed', null, null, 'SonataSeoBundle', [
+        return new Metadata('Twitter - Embed', 'sonata.seo.block.twitter.embed', null, 'SonataSeoBundle', [
             'class' => 'fa fa-twitter',
         ]);
     }

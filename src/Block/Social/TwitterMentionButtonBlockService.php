@@ -92,7 +92,7 @@ final class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockServi
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.seo.block.twitter.mention_button', null, null, 'SonataSeoBundle', [
+        return new Metadata('Twitter - Mention', 'sonata.seo.block.twitter.mention_button', null, 'SonataSeoBundle', [
             'class' => 'fa fa-twitter',
         ]);
     }

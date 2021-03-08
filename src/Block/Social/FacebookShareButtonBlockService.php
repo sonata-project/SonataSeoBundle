@@ -88,7 +88,7 @@ final class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlo
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.seo.block.facebook.share_button', null, null, 'SonataSeoBundle', [
+        return new Metadata('Facebook - Share', 'sonata.seo.block.facebook.share_button', null, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
         ]);
     }

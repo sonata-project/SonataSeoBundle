@@ -118,7 +118,7 @@ final class FacebookLikeButtonBlockService extends BaseFacebookSocialPluginsBloc
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.seo.block.facebook.like_button', null, null, 'SonataSeoBundle', [
+        return new Metadata('Facebook - Like button', 'sonata.seo.block.facebook.like_button', null, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
         ]);
     }

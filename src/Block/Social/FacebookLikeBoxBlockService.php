@@ -103,7 +103,7 @@ final class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockSe
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.seo.block.facebook.like_box', null, null, 'SonataSeoBundle', [
+        return new Metadata('Facebook - Likebox', 'sonata.seo.block.facebook.like_box', null, 'SonataSeoBundle', [
             'class' => 'fa fa-facebook-official',
         ]);
     }

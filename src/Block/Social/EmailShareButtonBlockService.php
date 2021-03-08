@@ -81,7 +81,7 @@ final class EmailShareButtonBlockService extends AbstractBlockService implements
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.seo.block.pinterest.share_button', null, null, 'SonataSeoBundle', [
+        return new Metadata('Share via E-Mail', 'sonata.seo.block.pinterest.share_button', null, 'SonataSeoBundle', [
             'class' => 'fa fa-envelope-o',
         ]);
     }

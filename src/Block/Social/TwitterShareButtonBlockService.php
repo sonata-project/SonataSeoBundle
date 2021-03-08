@@ -108,7 +108,7 @@ final class TwitterShareButtonBlockService extends BaseTwitterButtonBlockService
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.seo.block.twitter.share_button', null, null, 'SonataSeoBundle', [
+        return new Metadata('Twitter - Share', 'sonata.seo.block.twitter.share_button', null, 'SonataSeoBundle', [
             'class' => 'fa fa-twitter',
         ]);
     }
