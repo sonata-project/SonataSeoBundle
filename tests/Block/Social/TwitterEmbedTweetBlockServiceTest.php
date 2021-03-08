@@ -17,6 +17,7 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService;
+use Sonata\SeoBundle\Tests\Fixtures\Block\TwitterEmbedTweetBSTest;
 use Twig\Environment;
 
 /**
@@ -26,22 +27,22 @@ final class TwitterEmbedTweetBlockServiceTest extends BlockServiceTestCase
 {
     public function testBuildUri(): void
     {
-        $twig = $this->createMock(Environment::class);
-        $httpClient = $this->createStub(ClientInterface::class);
-        $messageFactory = $this->createStub(RequestFactoryInterface::class);
-
-        $blockService = new TwitterEmbedTweetBlockService($twig, $httpClient, $messageFactory);
-
         $settings = [
             'tweet' => 'tweeeeeeeet',
             'foo' => 'bar',
             'align' => 'bar',
         ];
 
-        $expectedTrue = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&url=tweeeeeeeet');
-        $expectedFalse = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&id=tweeeeeeeet');
+        $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&url=tweeeeeeeet');
 
-        $this->assertSame($expectedTrue, $blockService->buildUri(true, $settings));
-        $this->assertSame($expectedFalse, $blockService->buildUri(false, $settings));
+        $twig = $this->createMock(Environment::class);
+        $client = $this->createMock(ClientInterface::class);
+        $requestFactory = $this->createMock(RequestFactoryInterface::class);
+        $blockService = new TwitterEmbedTweetBSTest($twig, $client, $requestFactory);
+
+        $this->assertSame($expected, $blockService->publicBuildUri(true, $settings));
+
+        $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&id=tweeeeeeeet');
+        $this->assertSame($expected, $blockService->publicBuildUri(false, $settings));
     }
 }

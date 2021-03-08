@@ -40,7 +40,7 @@ use Twig\Environment;
  *
  * @author Hugo Briand <briand@ekino.com>
  */
-final class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implements EditableBlockService
+class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implements EditableBlockService
 {
     public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
     public const SUPPORTED_API_PARAMS = [
@@ -174,7 +174,7 @@ final class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService 
     /**
      * Builds the API query URI based on $settings.
      */
-    public function buildUri(bool $uriMatched, array $settings): string
+    protected function buildUri(bool $uriMatched, array $settings): string
     {
         $apiParams = $settings;
 
