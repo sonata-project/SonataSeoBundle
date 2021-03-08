@@ -43,6 +43,17 @@ use Twig\Environment;
 final class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService implements EditableBlockService
 {
     public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
+    public const SUPPORTED_API_PARAMS = [
+        'maxwidth',
+        'hide_media',
+        'hide_thread',
+        'omit_script',
+        'align',
+        'related',
+        'lang',
+        'url',
+        'id',
+    ];
     private const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
     private const TWEET_ID_PATTERN = '%^([0-9]*)$%';
 
@@ -161,30 +172,11 @@ final class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService 
     }
 
     /**
-     * Returns supported API parameters from settings.
-     */
-    public function getSupportedApiParams(): array
-    {
-        return [
-            'maxwidth',
-            'hide_media',
-            'hide_thread',
-            'omit_script',
-            'align',
-            'related',
-            'lang',
-            'url',
-            'id',
-        ];
-    }
-
-    /**
      * Builds the API query URI based on $settings.
      */
     public function buildUri(bool $uriMatched, array $settings): string
     {
         $apiParams = $settings;
-        $supportedParams = $this->getSupportedApiParams();
 
         if ($uriMatched) {
             // We matched the uri
@@ -197,7 +189,7 @@ final class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService 
 
         $parameters = [];
         foreach ($apiParams as $key => $value) {
-            if ($value && \in_array($key, $supportedParams, true)) {
+            if ($value && \in_array($key, self::SUPPORTED_API_PARAMS, true)) {
                 $parameters[] = $key.'='.$value;
             }
         }
