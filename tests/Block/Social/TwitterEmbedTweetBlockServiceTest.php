@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Tests\Block\Social;
 
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Social\TwitterEmbedTweetBlockService;
 use Sonata\SeoBundle\Tests\Fixtures\Block\TwitterEmbedTweetBSTest;
@@ -33,7 +35,11 @@ final class TwitterEmbedTweetBlockServiceTest extends BlockServiceTestCase
 
         $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&url=tweeeeeeeet');
 
-        $blockService = new TwitterEmbedTweetBSTest($this->createMock(Environment::class));
+        $twig = $this->createMock(Environment::class);
+        $client = $this->createMock(ClientInterface::class);
+        $requestFactory = $this->createMock(RequestFactoryInterface::class);
+        $blockService = new TwitterEmbedTweetBSTest($twig, $client, $requestFactory);
+
         $this->assertSame($expected, $blockService->publicBuildUri(true, $settings));
 
         $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&id=tweeeeeeeet');

@@ -38,7 +38,6 @@
         "twig/twig": "^2.9 || ^3.0"
     },
     "require-dev": {
-        "guzzlehttp/guzzle": "^6.0",
         "knplabs/knp-menu": "^3.0",
         "nyholm/psr7": "^1.2",
         "symfony/console": "^4.4 || ^5.0",
@@ -49,6 +48,7 @@
         "symfony/yaml": "^4.4 || ^5.0"
     },
     "suggest": {
+        "guzzlehttp/guzzle": "Guzzle client implementation for TwitterEmbedTweetBlockService",
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder",
         "symfony/http-client": "Symfony client implementation for TwitterEmbedTweetBlockService"
     },

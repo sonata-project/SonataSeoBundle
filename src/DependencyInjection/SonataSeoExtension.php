@@ -155,6 +155,8 @@ final class SonataSeoExtension extends Extension
     private function configureHttpClient(ContainerBuilder $container, array $config): void
     {
         if (null === $config['client'] || null === $config['message_factory']) {
+            $container->removeDefinition('sonata.seo.block.twitter.embed');
+
             return;
         }
 

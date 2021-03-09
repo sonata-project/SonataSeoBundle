@@ -1,9 +1,19 @@
 UPGRADE FROM 2.X to 3.0
 =======================
 
+## guzzlehttp/guzzle
+
+If you are using `sonata.seo.block.twitter.embed` service with Guzzle, you MUST create a custom service based on the Guzzle client and add it to configuration:
+
+    sontata_seo:
+        http:
+            client: `your_custom.guzzle_client` # Psr\Http\Client\ClientInterface
+            message_factory: `your_custom.message_facory` # Psr\Http\Message\RequestFactoryInterface
+
 ## SeoPage
 
 If you have implemented a custom seo page, you must adapt the signature of the following new methods to match the one in `SeoPageInterface` again:
+
  * `removeMeta`
  * `removeHtmlAttributes`
  * `hasHtmlAttribute`
@@ -25,6 +35,7 @@ Consider using decoration instead.
  * `Sonata\BlockBundle\Block\Social\FacebookSendButtonBlockService`
  * `Sonata\BlockBundle\Block\Social\FacebookShareButtonBlockService`
  * `Sonata\BlockBundle\Block\Social\PinterestPinButtonBlockService`
+ * `Sonata\BlockBundle\Block\Social\TwitterEmbedTweetBlockService`
  * `Sonata\BlockBundle\Block\Social\TwitterFollowButtonBlockService`
  * `Sonata\BlockBundle\Block\Social\TwitterHashtagButtonBlockService`
  * `Sonata\BlockBundle\Block\Social\TwitterMentionButtonBlockService`
