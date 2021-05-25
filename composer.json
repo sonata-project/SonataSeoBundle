@@ -32,6 +32,7 @@
         "symfony/http-kernel": "^4.4 || ^5.0",
         "symfony/options-resolver": "^4.4 || ^5.0",
         "twig/twig": "^2.9 || ^3.0"
+        "sonata-project/block-bundle": ">=3.0 <4.0"
     },
     "conflict": {
         "sonata-project/block-bundle": "<3.11",
