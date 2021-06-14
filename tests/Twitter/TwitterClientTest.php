@@ -109,4 +109,33 @@ final class TwitterClientTest extends TestCase
 
         $this->assertTrue(null === $tweet);
     }
+
+    public function testLegacyLoadTweetById(): void
+    {
+        $settings = [
+            'id' => '438337742565826560',
+            'foo' => 'bar',
+            'align' => 'bar',
+        ];
+
+        $tweetGetter = new TwitterClient();
+
+        $tweet = $tweetGetter->loadTweet($settings);
+        $this->assertIsString($tweet);
+        $this->assertSame(856, \strlen($tweet));
+    }
+
+    public function testLegacyLoadTweetWithError(): void
+    {
+        $settings = [
+            'foo' => 'bar',
+            'align' => 'bar',
+        ];
+
+        $tweetGetter = new TwitterClient();
+
+        $tweet = $tweetGetter->loadTweet($settings);
+
+        $this->assertTrue(null === $tweet);
+    }
 }
