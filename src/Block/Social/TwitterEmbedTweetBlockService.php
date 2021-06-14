@@ -22,6 +22,7 @@ use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Meta\Metadata;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Type\ImmutableArrayType;
+use Sonata\SeoBundle\Twitter\TwitterClient;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -41,44 +42,70 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 {
     /**
-     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TweetGetter::TWITTER_OEMBED_URI" instead.
+     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TwitterClient::TWITTER_OEMBED_URI" instead.
      */
     public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
-
-    /**
-     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TweetGetter::TWEET_URL_PATTERN" instead.
-     */
     public const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
-
-    /**
-     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TweetGetter::TWEET_ID_PATTERN" instead.
-     */
     public const TWEET_ID_PATTERN = '%^([0-9]*)$%';
 
     /**
      * @var ClientInterface|null
+     *
+     * @deprecated since 2.x, to be removed in 3.0.
      */
     private $httpClient;
 
     /**
      * @var RequestFactoryInterface|null
+     *
+     * @deprecated since 2.x, to be removed in 3.0.
      */
     private $messageFactory;
+
+    /**
+     * @var TwitterClient|null
+     */
+    private $twitterClient;
 
     public function __construct(
         ?string $name,
         EngineInterface $templating,
         ?ClientInterface $httpClient = null,
-        ?RequestFactoryInterface $messageFactory = null
+        ?RequestFactoryInterface $messageFactory = null,
+        ?TwitterClient $twitterClient = null
     ) {
         parent::__construct($name, $templating);
 
         $this->httpClient = $httpClient;
         $this->messageFactory = $messageFactory;
+        $this->twitterClient = $twitterClient;
     }
 
     public function execute(BlockContextInterface $blockContext, ?Response $response = null)
     {
+        if (null !== $this->twitterClient) {
+            $apiParams = $blockContext->getSettings();
+
+            $uriMatched = preg_match(self::TWEET_URL_PATTERN, $blockContext->getSetting('tweet'));
+            $idMatched = preg_match(self::TWEET_ID_PATTERN, $blockContext->getSetting('tweet'));
+
+            if ($uriMatched) {
+                $apiParams['url'] = $blockContext->getSetting('tweet');
+            } elseif ($idMatched) {
+                $apiParams['id'] = $blockContext->getSetting('tweet');
+            } else {
+                return $this->renderResponse($blockContext->getTemplate(), [
+                    'block' => $blockContext->getBlock(),
+                    'tweet' => $blockContext->getSetting('tweet'),
+                ], $response);
+            }
+
+            return $this->renderResponse($blockContext->getTemplate(), [
+                'block' => $blockContext->getBlock(),
+                'tweet' => $this->twitterClient->loadTweet($apiParams),
+            ], $response);
+        }
+
         return $this->renderResponse($blockContext->getTemplate(), [
             'block' => $blockContext->getBlock(),
             'tweet' => $this->loadTweet($blockContext),
@@ -164,25 +191,19 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     /**
      * Returns supported API parameters from settings.
      *
+     * @deprecated since 2.x, to be removed in 3.0.
+     *
      * @return array
      */
     protected function getSupportedApiParams()
     {
-        return [
-            'maxwidth',
-            'hide_media',
-            'hide_thread',
-            'omit_script',
-            'align',
-            'related',
-            'lang',
-            'url',
-            'id',
-        ];
+        return TwitterClient::TWITTER_SUPPORTED_PARAMS;
     }
 
     /**
      * Builds the API query URI based on $settings.
+     *
+     * @deprecated since 2.x, to be removed in 3.0.
      *
      * @param bool $uriMatched
      *
@@ -214,29 +235,30 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
     /**
      * Loads twitter tweet.
+     *
+     * @deprecated since 2.x, to be removed in 3.0.
      */
     private function loadTweet(BlockContextInterface $blockContext): ?string
     {
         $uriMatched = preg_match(self::TWEET_URL_PATTERN, $blockContext->getSetting('tweet'));
 
         if (!$uriMatched || !preg_match(self::TWEET_ID_PATTERN, $blockContext->getSetting('tweet'))) {
-            return null;
+            return $blockContext->getSetting('tweet');
         }
+
+        $uri = $this->buildUri($uriMatched, $blockContext->getSettings());
 
         if (null !== $this->httpClient && null !== $this->messageFactory) {
             try {
                 $response = $this->httpClient->sendRequest(
-                    $this->messageFactory->createRequest(
-                        'GET',
-                        $this->buildUri($uriMatched, $blockContext->getSettings())
-                    )
+                    $this->messageFactory->createRequest('GET', $uri)
                 );
             } catch (ClientExceptionInterface $e) {
                 // log error
                 return null;
             }
 
-            $apiTweet = json_decode($response->getBody(), true);
+            $apiTweet = json_decode($response->getBody()->getContents(), true);
 
             return $apiTweet['html'];
         }
@@ -257,12 +279,11 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
         );
 
         // TODO cache API result
-        $client = new \GuzzleHttp\Client();
-        $client->setConfig(['curl.options' => [\CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
+        $client = new \GuzzleHttp\Client(['curl.options' => [\CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
 
         try {
             $request = $client->get($this->buildUri($uriMatched, $blockContext->getSettings()));
-            $apiTweet = json_decode($request->send()->getBody(true), true);
+            $apiTweet = json_decode($request->getBody()->getContents(), true);
 
             return $apiTweet['html'];
         } catch (GuzzleException $e) {

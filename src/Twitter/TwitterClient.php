@@ -13,16 +13,26 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Twitter;
 
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 
-class TweetGetter
+final class TwitterClient
 {
     public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
-    public const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
-    public const TWEET_ID_PATTERN = '%^([0-9]*)$%';
+    public const TWITTER_SUPPORTED_PARAMS = [
+        'maxwidth',
+        'hide_media',
+        'hide_thread',
+        'omit_script',
+        'align',
+        'related',
+        'lang',
+        'url',
+        'id',
+    ];
 
     /**
      * @var ClientInterface
@@ -43,14 +53,14 @@ class TweetGetter
     }
 
     /**
-     * @param array<string, mixed> $settings
+     * @param array<string, integer|string> $settings
      */
     public function loadTweet(array $settings): ?string
     {
         $uri = $this->getUriForSettings($settings);
 
         if (null === $uri) {
-            return $settings['tweet'] ?? null;
+            return null;
         }
 
         if (null !== $this->httpClient && null !== $this->messageFactory) {
@@ -71,7 +81,7 @@ class TweetGetter
         // NEXT_MAJOR: Remove the old guzzle implementation
 
         // We matched an URL or an ID, we'll need to ask the API
-        if (false === class_exists('GuzzleHttp\Client')) {
+        if (false === class_exists(Client::class)) {
             throw new \RuntimeException(
                 'The guzzle http client library is required to call the Twitter API.'.
                 'Make sure to add psr/http-client or guzzlehttp/guzzle to your composer.json.'
@@ -84,7 +94,7 @@ class TweetGetter
         );
 
         // TODO cache API result
-        $client = new \GuzzleHttp\Client(['curl.options' => [\CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
+        $client = new Client(['curl.options' => [\CURLOPT_CONNECTTIMEOUT_MS => 1000]]);
 
         try {
             $request = $client->get($uri);
@@ -98,29 +108,20 @@ class TweetGetter
         // END NEXT_MAJOR
     }
 
+    /**
+     * @param array<string, integer|string> $settings
+     */
     public function getUriForSettings(array $settings): ?string
     {
+        $parameters = [];
         $apiParams = $settings;
 
-        if (isset($settings['tweet'])) {
-            $uriMatched = preg_match(self::TWEET_URL_PATTERN, $settings['tweet']);
-            $idMatched = preg_match(self::TWEET_ID_PATTERN, $settings['tweet']);
-
-            if (!$uriMatched && !$idMatched) {
-                return null;
-            }
-
-            if ($uriMatched) {
-                // We matched the uri
-                $apiParams['url'] = $settings['tweet'];
-            } else {
-                $apiParams['id'] = $settings['tweet'];
-            }
+        if (isset($apiParams['id'])) {
+            unset($apiParams['url']);
         }
 
-        $parameters = [];
         foreach ($apiParams as $key => $value) {
-            if ($value && \in_array($key, $this->getSupportedApiParams(), true)) {
+            if ($value && \in_array($key, self::TWITTER_SUPPORTED_PARAMS, true)) {
                 $parameters[] = $key.'='.$value;
             }
         }
@@ -130,23 +131,5 @@ class TweetGetter
         }
 
         return null;
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getSupportedApiParams(): array
-    {
-        return [
-            'maxwidth',
-            'hide_media',
-            'hide_thread',
-            'omit_script',
-            'align',
-            'related',
-            'lang',
-            'url',
-            'id',
-        ];
     }
 }

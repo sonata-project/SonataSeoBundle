@@ -74,8 +74,10 @@
             <tag name="sonata.block"/>
             <argument>sonata.seo.block.twitter.embed</argument>
             <argument type="service" id="sonata.templating"/>
+            <!-- NEXT_MAJOR: remove arguments below and uncomment last argument -->
             <argument type="service" id="sonata.seo.http.client" on-invalid="null"/>
             <argument type="service" id="sonata.seo.http.message_factory" on-invalid="null"/>
+            <!-- <argument type="service" id="sonata.seo.twitter.tweet_getter" on-invalid="null"/> -->
         </service>
         <!-- Twitter embed -->
         <!-- Pinterest buttons -->

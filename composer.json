@@ -38,7 +38,7 @@
         "sonata-project/core-bundle": "<3.20"
     },
     "require-dev": {
-        "guzzlehttp/guzzle": "^6.0",
+        "guzzlehttp/guzzle": "^6.3",
         "nyholm/psr7": "^1.2",
         "sonata-project/admin-bundle": "^3.31",
         "sonata-project/doctrine-extensions": "^1.10.1",
