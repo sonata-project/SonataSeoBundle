@@ -31,6 +31,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Twig\Environment;
 
 /**
  * This block service allows to embed a tweet by requesting the Twitter API.
@@ -67,18 +68,52 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
      */
     private $twitterClient;
 
+    /**
+     * @param Environment|EngineInterface|string|null $twigOrDeprecatedName
+     * @param TwitterClient|EngineInterface           $twitterClientOrDeprecatedTemplating
+     */
     public function __construct(
-        ?string $name,
-        EngineInterface $templating,
-        ?ClientInterface $httpClient = null,
-        ?RequestFactoryInterface $messageFactory = null,
-        ?TwitterClient $twitterClient = null
+        $twigOrDeprecatedName,
+        $twitterClientOrDeprecatedTemplating,
+        ?ClientInterface $deprecatedHttpClient = null,
+        ?RequestFactoryInterface $deprecatedMessageFactory = null,
+        ?TwitterClient $deprecatedTwitterClient = null
     ) {
-        parent::__construct($name, $templating);
+        if ($twitterClientOrDeprecatedTemplating instanceof TwitterClient) {
+            if (!$twigOrDeprecatedName instanceof Environment) {
+                throw new \TypeError(sprintf(
+                    'Argument 1 passed to %s() must be an instance of %s, %s given.',
+                    __METHOD__,
+                    Environment::class,
+                    \is_object($twigOrDeprecatedName) ? 'instance of '.\get_class($twigOrDeprecatedName) : \gettype($twigOrDeprecatedName)
+                ));
+            }
 
-        $this->httpClient = $httpClient;
-        $this->messageFactory = $messageFactory;
-        $this->twitterClient = $twitterClient;
+            parent::__construct($twigOrDeprecatedName);
+
+            $this->twitterClient = $twitterClientOrDeprecatedTemplating;
+        } elseif (null === $twitterClientOrDeprecatedTemplating || $twitterClientOrDeprecatedTemplating instanceof EngineInterface) {
+            @trigger_error(sprintf(
+                'Passing %s as argument 2 to %s() is deprecated since sonata-project/admin-bundle 3.76'
+                .' and will throw a \TypeError in version 4.0. You must pass an instance of %s instead.',
+                null === $twitterClientOrDeprecatedTemplating ? 'null' : EngineInterface::class,
+                __METHOD__,
+                TwitterClient::class
+            ), \E_USER_DEPRECATED);
+
+            parent::__construct($twigOrDeprecatedName, $twitterClientOrDeprecatedTemplating);
+
+            $this->httpClient = $deprecatedHttpClient;
+            $this->messageFactory = $deprecatedMessageFactory;
+            $this->twitterClient = $deprecatedTwitterClient;
+        } else {
+            throw new \TypeError(sprintf(
+                'Argument 2 passed to %s() must be an instance of %s, %s given.',
+                __METHOD__,
+                TwitterClient::class,
+                null === $twitterClientOrDeprecatedTemplating ? 'null' : 'instance of '.\get_class($twitterClientOrDeprecatedTemplating)
+            ));
+        }
     }
 
     public function execute(BlockContextInterface $blockContext, ?Response $response = null)
