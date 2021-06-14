@@ -93,13 +93,15 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
             $this->twitterClient = $twitterClientOrDeprecatedTemplating;
         } elseif (null === $twitterClientOrDeprecatedTemplating || $twitterClientOrDeprecatedTemplating instanceof EngineInterface) {
-            @trigger_error(sprintf(
-                'Passing %s as argument 2 to %s() is deprecated since sonata-project/seo-bundle 2.x'
-                .' and will throw a \TypeError in version 3.0. You must pass an instance of %s instead.',
-                null === $twitterClientOrDeprecatedTemplating ? 'null' : EngineInterface::class,
-                __METHOD__,
-                TwitterClient::class
-            ), \E_USER_DEPRECATED);
+            if (is_subclass_of($this,TwitterEmbedTweetBlockService::class)) {
+                @trigger_error(sprintf(
+                    'Passing %s as argument 2 to %s() is deprecated since sonata-project/seo-bundle 2.x'
+                    .' and will throw a \TypeError in version 3.0. You must pass an instance of %s instead.',
+                    null === $twitterClientOrDeprecatedTemplating ? 'null' : EngineInterface::class,
+                    __METHOD__,
+                    TwitterClient::class
+                ), \E_USER_DEPRECATED);
+            }
 
             parent::__construct($twigOrDeprecatedName, $twitterClientOrDeprecatedTemplating);
 
