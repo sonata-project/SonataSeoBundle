@@ -15,5 +15,9 @@
             <argument/>
         </service>
         <service id="sonata.seo.sitemap.manager" class="%sonata.seo.sitemap.manager.class%" public="true"/>
+        <service id="sonata.seo.twitter.tweet_getter" class="Sonata\SeoBundle\Twitter\TweetGetter">
+            <argument type="service" id="sonata.seo.http.client" on-invalid="null"/>
+            <argument type="service" id="sonata.seo.http.message_factory" on-invalid="null"/>
+        </service>
     </services>
 </container>

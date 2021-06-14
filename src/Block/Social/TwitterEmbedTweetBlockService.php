@@ -40,8 +40,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 {
+    /**
+     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TweetGetter::TWITTER_OEMBED_URI" instead.
+     */
     public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
+
+    /**
+     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TweetGetter::TWEET_URL_PATTERN" instead.
+     */
     public const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
+
+    /**
+     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TweetGetter::TWEET_ID_PATTERN" instead.
+     */
     public const TWEET_ID_PATTERN = '%^([0-9]*)$%';
 
     /**
