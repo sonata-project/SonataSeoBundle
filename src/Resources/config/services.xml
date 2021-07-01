@@ -15,5 +15,9 @@
             <argument/>
         </service>
         <service id="sonata.seo.sitemap.manager" class="%sonata.seo.sitemap.manager.class%" public="true"/>
+        <service id="sonata.seo.twitter.tweet_getter" class="Sonata\SeoBundle\Twitter\TweetGetter">
+            <argument type="service" id="Symfony\Component\HttpClient\Psr18Client"/>
+            <argument type="service" id="Nyholm\Psr7\Factory\Psr17Factory"/>
+        </service>
     </services>
 </container>

@@ -22,7 +22,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @author Vincent Tommasi <tommasi.v@gmail.com>
  */
-class SonataSeoExtensionTest extends TestCase
+final class SonataSeoExtensionTest extends TestCase
 {
     /**
      * Tests the loading of blocks.xml file.

@@ -22,6 +22,7 @@ use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Meta\Metadata;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Type\ImmutableArrayType;
+use Sonata\SeoBundle\Twitter\TweetGetter;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -32,6 +33,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * This block service allows to embed a tweet by requesting the Twitter API.
  *
  * @see https://dev.twitter.com/docs/api/1/get/statuses/oembed
@@ -40,37 +43,70 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 {
+    /**
+     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TweetGetter::TWITTER_OEMBED_URI" instead.
+     */
     public const TWITTER_OEMBED_URI = 'https://api.twitter.com/1/statuses/oembed.json';
+
+    /**
+     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TweetGetter::TWEET_URL_PATTERN" instead.
+     */
     public const TWEET_URL_PATTERN = '%^(https://)(www.)?(twitter.com/)(.*)(/status)(es)?(/)([0-9]*)$%i';
+
+    /**
+     * @deprecated since 2.x, to be removed in 3.0. Use "Sonata\SeoBundle\Twitter\TweetGetter::TWEET_ID_PATTERN" instead.
+     */
     public const TWEET_ID_PATTERN = '%^([0-9]*)$%';
 
     /**
      * @var ClientInterface|null
+     *
+     * @deprecated since 2.x, to be removed in 3.0.
      */
     private $httpClient;
 
     /**
      * @var RequestFactoryInterface|null
+     *
+     * @deprecated since 2.x, to be removed in 3.0.
      */
     private $messageFactory;
+
+    /**
+     * @var tweetGetter|null
+     *
+     * NEXT_MAJOR: make it property required
+     */
+    private $tweetGetter;
 
     public function __construct(
         ?string $name,
         EngineInterface $templating,
         ?ClientInterface $httpClient = null,
-        ?RequestFactoryInterface $messageFactory = null
+        ?RequestFactoryInterface $messageFactory = null,
+        ?TweetGetter $tweetGetter = null
     ) {
         parent::__construct($name, $templating);
 
         $this->httpClient = $httpClient;
         $this->messageFactory = $messageFactory;
+        $this->tweetGetter = $tweetGetter;
     }
 
     public function execute(BlockContextInterface $blockContext, ?Response $response = null)
     {
+        // NEXT_MAJOR: load tweet from tweetGetter only
+        if (null !== $this->tweetGetter) {
+            $tweet = $this->tweetGetter->loadTweet($blockContext->getSettings());
+        } else {
+            $tweet = $this->loadTweet($blockContext);
+        }
+
+        $blockContext->setSetting('tweet', $tweet);
+
         return $this->renderResponse($blockContext->getTemplate(), [
             'block' => $blockContext->getBlock(),
-            'tweet' => $this->loadTweet($blockContext),
+            'tweet' => $tweet,
         ], $response);
     }
 
@@ -153,6 +189,8 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
     /**
      * Returns supported API parameters from settings.
      *
+     * @deprecated since 2.x, to be removed in 3.0.
+     *
      * @return array
      */
     protected function getSupportedApiParams()
@@ -172,6 +210,8 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
     /**
      * Builds the API query URI based on $settings.
+     *
+     * @deprecated since 2.x, to be removed in 3.0.
      *
      * @param bool $uriMatched
      *
@@ -203,13 +243,21 @@ class TwitterEmbedTweetBlockService extends BaseTwitterButtonBlockService
 
     /**
      * Loads twitter tweet.
+     *
+     * @deprecated since 2.x, to be removed in 3.0.
      */
     private function loadTweet(BlockContextInterface $blockContext): ?string
     {
         $uriMatched = preg_match(self::TWEET_URL_PATTERN, $blockContext->getSetting('tweet'));
 
-        if (!$uriMatched || !preg_match(self::TWEET_ID_PATTERN, $blockContext->getSetting('tweet'))) {
+        if (!$uriMatched && !preg_match(self::TWEET_ID_PATTERN, $blockContext->getSetting('tweet'))) {
             return null;
+        }
+
+        $uri = $this->buildUri($uriMatched, $blockContext->getSettings());
+
+        if (null === $uri) {
+            return $settings['tweet'] ?? null;
         }
 
         if (null !== $this->httpClient && null !== $this->messageFactory) {

@@ -24,6 +24,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * This block offers a button to share current page by email.
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>

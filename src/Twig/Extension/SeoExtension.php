@@ -17,6 +17,9 @@ use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
+/**
+ * @final since sonata-project/seo-bundle 2.x
+ */
 class SeoExtension extends AbstractExtension
 {
     /**

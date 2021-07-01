@@ -28,7 +28,7 @@ use Symfony\Component\Templating\TemplateNameParser;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 
-class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
+final class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 {
     protected function getMenu(BlockContextInterface $blockContext)
     {
@@ -39,7 +39,7 @@ class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-class BreadcrumbTest extends BlockServiceTestCase
+final class BreadcrumbTest extends BlockServiceTestCase
 {
     public function testBlockService()
     {

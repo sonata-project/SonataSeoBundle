@@ -27,6 +27,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * Pinterest pin button integration.
  *
  * @see http://fr.business.pinterest.com/widget-builder/#do_pin_it_button

@@ -21,6 +21,8 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * This is the class that loads and manages your bundle configuration.
  */
 class SonataSeoExtension extends Extension
