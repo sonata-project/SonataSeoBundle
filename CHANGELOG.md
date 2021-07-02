@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.13.1](https://github.com/sonata-project/SonataSeoBundle/compare/2.13.0...2.13.1) - 2021-06-13
+### Fixed
+- [[#542](https://github.com/sonata-project/SonataSeoBundle/pull/542)] Added missing sonata-project/block-bundle dependency ([@patrickmaynard](https://github.com/patrickmaynard))
+
 ## [2.13.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.12.0...2.13.0) - 2021-02-22
 ### Added
 - [[#507](https://github.com/sonata-project/SonataSeoBundle/pull/507)] Add support for PHP 8.x ([@Yozhef](https://github.com/Yozhef))
