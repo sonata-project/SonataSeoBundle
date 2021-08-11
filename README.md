@@ -49,4 +49,4 @@ This package is available under the [MIT license](LICENSE).
 [documentation_stable_badge]: https://readthedocs.org/projects/sonataseobundle/badge/?version=2.x
 [documentation_stable_link]: https://docs.sonata-project.org/projects/SonataSeoBundle/en/2.x/?badge=2.x
 [documentation_unstable_badge]: https://readthedocs.org/projects/sonataseobundle/badge/?version=master
-[documentation_unstable_link]: https://docs.readthedocs.org/projects/SonataSeoBundle/en/master/?badge=master
+[documentation_unstable_link]: https://docs.sonata-project.org/projects/SonataSeoBundle/en/master/?badge=master
