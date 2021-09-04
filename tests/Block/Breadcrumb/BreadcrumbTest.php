@@ -51,7 +51,7 @@ class BreadcrumbTest extends BlockServiceTestCase
             $this->createMock(FactoryInterface::class)
         );
 
-        $this->assertTrue($blockService->handleContext('context'));
+        static::assertTrue($blockService->handleContext('context'));
     }
 
     public function testGetMenu(): void
@@ -79,7 +79,7 @@ class BreadcrumbTest extends BlockServiceTestCase
                 'template' => 'breadcrumbs.txt.twig',
             ]
         );
-        self::assertStringContainsString(
+        static::assertStringContainsString(
             '/foo/bar',
             $blockService->execute($context)->getContent()
         );

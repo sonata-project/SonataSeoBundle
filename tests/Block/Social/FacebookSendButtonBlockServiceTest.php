@@ -44,16 +44,16 @@ class FacebookSendButtonBlockServiceTest extends BlockServiceTestCase
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
         $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
-        $formMapper->expects($this->exactly(2))->method('add');
+        $formMapper->expects(static::exactly(2))->method('add');
 
         $service->buildCreateForm($formMapper, $block);
         $service->buildEditForm($formMapper, $block);
 
         $service->execute($blockContext);
 
-        $this->assertSame('url_setting', $this->templating->parameters['settings']['url']);
-        $this->assertSame('width_setting', $this->templating->parameters['settings']['width']);
-        $this->assertSame('height_setting', $this->templating->parameters['settings']['height']);
-        $this->assertSame('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
+        static::assertSame('url_setting', $this->templating->parameters['settings']['url']);
+        static::assertSame('width_setting', $this->templating->parameters['settings']['width']);
+        static::assertSame('height_setting', $this->templating->parameters['settings']['height']);
+        static::assertSame('colorscheme_setting', $this->templating->parameters['settings']['colorscheme']);
     }
 }

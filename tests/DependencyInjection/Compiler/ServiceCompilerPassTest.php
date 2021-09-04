@@ -40,10 +40,10 @@ class ServiceCompilerPassTest extends TestCase
 
         (new ServiceCompilerPass())->process($container);
 
-        $this->assertTrue($service = $container->has('sonata.seo.page'));
-        $this->assertTrue($alias = $container->has(SeoPageInterface::class));
-        $this->assertSame($service, $alias);
+        static::assertTrue($service = $container->has('sonata.seo.page'));
+        static::assertTrue($alias = $container->has(SeoPageInterface::class));
+        static::assertSame($service, $alias);
 
-        $this->assertInstanceOf(SeoPageStub::class, $container->get(SeoPageInterface::class));
+        static::assertInstanceOf(SeoPageStub::class, $container->get(SeoPageInterface::class));
     }
 }
