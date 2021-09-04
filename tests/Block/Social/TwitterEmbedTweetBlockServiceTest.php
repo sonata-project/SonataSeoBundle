@@ -34,9 +34,9 @@ class TwitterEmbedTweetBlockServiceTest extends BlockServiceTestCase
         $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&url=tweeeeeeeet');
 
         $blockService = new TwitterEmbedTweetBSTest('', $this->createMock(EngineInterface::class));
-        $this->assertSame($expected, $blockService->publicBuildUri(true, $settings));
+        static::assertSame($expected, $blockService->publicBuildUri(true, $settings));
 
         $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&id=tweeeeeeeet');
-        $this->assertSame($expected, $blockService->publicBuildUri(false, $settings));
+        static::assertSame($expected, $blockService->publicBuildUri(false, $settings));
     }
 }
