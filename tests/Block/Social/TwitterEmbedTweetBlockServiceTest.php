@@ -40,9 +40,9 @@ final class TwitterEmbedTweetBlockServiceTest extends BlockServiceTestCase
         $requestFactory = $this->createMock(RequestFactoryInterface::class);
         $blockService = new TwitterEmbedTweetBSTest($twig, $client, $requestFactory);
 
-        $this->assertSame($expected, $blockService->publicBuildUri(true, $settings));
+        static::assertSame($expected, $blockService->publicBuildUri(true, $settings));
 
         $expected = sprintf('%s?%s', TwitterEmbedTweetBlockService::TWITTER_OEMBED_URI, 'align=bar&id=tweeeeeeeet');
-        $this->assertSame($expected, $blockService->publicBuildUri(false, $settings));
+        static::assertSame($expected, $blockService->publicBuildUri(false, $settings));
     }
 }

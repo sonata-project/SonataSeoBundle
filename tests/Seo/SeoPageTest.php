@@ -31,7 +31,7 @@ final class SeoPageTest extends TestCase
             'property' => ['foo' => ['bar', []]],
         ];
 
-        $this->assertSame($expected, $page->getMetas());
+        static::assertSame($expected, $page->getMetas());
     }
 
     public function testOverrideMetas(): void
@@ -43,7 +43,7 @@ final class SeoPageTest extends TestCase
             'property' => ['foo' => ['bar', []], 'foo2' => ['bar2', []]],
         ];
 
-        $this->assertSame($expected, $page->getMetas());
+        static::assertSame($expected, $page->getMetas());
     }
 
     public function testRemoveMeta(): void
@@ -52,7 +52,7 @@ final class SeoPageTest extends TestCase
         $page->setMetas(['property' => ['foo' => 'bar', 'foo2' => ['bar2', []]]]);
         $page->removeMeta('property', 'foo');
 
-        $this->assertFalse($page->hasMeta('property', 'foo'));
+        static::assertFalse($page->hasMeta('property', 'foo'));
     }
 
     public function testInvalidMetas(): void
@@ -76,11 +76,11 @@ final class SeoPageTest extends TestCase
             'key2' => 'value2',
         ];
 
-        $this->assertSame($expected, $page->getHtmlAttributes());
+        static::assertSame($expected, $page->getHtmlAttributes());
 
-        $this->assertTrue($page->hasHtmlAttribute('key2'));
+        static::assertTrue($page->hasHtmlAttribute('key2'));
         $page->removeHtmlAttributes('key2');
-        $this->assertFalse($page->hasHtmlAttribute('key2'));
+        static::assertFalse($page->hasHtmlAttribute('key2'));
     }
 
     public function testHeadAttributes(): void
@@ -94,11 +94,11 @@ final class SeoPageTest extends TestCase
             'head2' => 'value2',
         ];
 
-        $this->assertSame($expected, $page->getHeadAttributes());
+        static::assertSame($expected, $page->getHeadAttributes());
 
-        $this->assertTrue($page->hasHeadAttribute('head1'));
+        static::assertTrue($page->hasHeadAttribute('head1'));
         $page->removeHeadAttribute('head1');
-        $this->assertFalse($page->hasHeadAttribute('head1'));
+        static::assertFalse($page->hasHeadAttribute('head1'));
     }
 
     public function testSetTitle(): void
@@ -106,7 +106,7 @@ final class SeoPageTest extends TestCase
         $page = new SeoPage();
         $page->setTitle('My title');
 
-        $this->assertSame('My title', $page->getTitle());
+        static::assertSame('My title', $page->getTitle());
     }
 
     public function testAddTitle(): void
@@ -116,7 +116,7 @@ final class SeoPageTest extends TestCase
         $page->setSeparator(' - ');
         $page->addTitle('Additional title');
 
-        $this->assertSame('Additional title - My title', $page->getTitle());
+        static::assertSame('Additional title - My title', $page->getTitle());
     }
 
     public function testLinkCanonical(): void
@@ -124,10 +124,10 @@ final class SeoPageTest extends TestCase
         $page = new SeoPage();
         $page->setLinkCanonical('http://example.com');
 
-        $this->assertSame('http://example.com', $page->getLinkCanonical());
+        static::assertSame('http://example.com', $page->getLinkCanonical());
 
         $page->removeLinkCanonical();
-        $this->assertSame('', $page->getLinkCanonical());
+        static::assertSame('', $page->getLinkCanonical());
     }
 
     public function testLangAlternates(): void
@@ -141,11 +141,11 @@ final class SeoPageTest extends TestCase
             'http://example.com/en-us' => 'en-us',
         ];
 
-        $this->assertSame($expected, $page->getLangAlternates());
+        static::assertSame($expected, $page->getLangAlternates());
 
-        $this->assertTrue($page->hasLangAlternate('http://example.com/'));
+        static::assertTrue($page->hasLangAlternate('http://example.com/'));
         $page->removeLangAlternate('http://example.com/');
-        $this->assertFalse($page->hasLangAlternate('http://example.com/'));
+        static::assertFalse($page->hasLangAlternate('http://example.com/'));
     }
 
     /**
@@ -156,14 +156,14 @@ final class SeoPageTest extends TestCase
         $page = new SeoPage();
         $page->addMeta('property', 'test', '');
 
-        $this->assertTrue($page->hasMeta('property', 'test'));
-        $this->assertFalse($page->hasMeta('property', 'fake'));
+        static::assertTrue($page->hasMeta('property', 'test'));
+        static::assertFalse($page->hasMeta('property', 'fake'));
     }
 
     public function testSetSeparator(): void
     {
         $page = new SeoPage();
 
-        $this->assertInstanceOf(SeoPage::class, $page->setSeparator('-'));
+        static::assertInstanceOf(SeoPage::class, $page->setSeparator('-'));
     }
 }

@@ -43,12 +43,12 @@ final class FacebookSendButtonBlockServiceTest extends BlockServiceTestCase
         $blockContext = new BlockContext($block, $optionResolver->resolve($block->getSettings()));
 
         $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
-        $formMapper->expects($this->exactly(2))->method('add');
+        $formMapper->expects(static::exactly(2))->method('add');
 
         $service->configureCreateForm($formMapper, $block);
         $service->configureEditForm($formMapper, $block);
 
-        $this->twig->expects($this->once())->method('render')
+        $this->twig->expects(static::once())->method('render')
             ->with('@SonataSeo/Block/block_facebook_send_button.html.twig', [
                'block' => $block,
                'settings' => [

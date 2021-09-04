@@ -38,12 +38,12 @@ final class SonataSeoExtensionTest extends TestCase
         $extension = new SonataSeoExtension();
         $extension->load([[]], $container);
 
-        $this->assertTrue($container->hasDefinition('sonata.seo.block.breadcrumb.homepage'));
+        static::assertTrue($container->hasDefinition('sonata.seo.block.breadcrumb.homepage'));
 
         $container = new ContainerBuilder();
         $container->setParameter('kernel.bundles', []);
         $extension->load([[]], $container);
 
-        $this->assertFalse($container->hasDefinition('sonata.seo.block.breadcrumb.homepage'));
+        static::assertFalse($container->hasDefinition('sonata.seo.block.breadcrumb.homepage'));
     }
 }

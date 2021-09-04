@@ -48,12 +48,12 @@ final class BreadcrumbTest extends BlockServiceTestCase
             $this->createMock(FactoryInterface::class)
         );
 
-        $this->assertTrue($blockService->handleContext('test'));
+        static::assertTrue($blockService->handleContext('test'));
     }
 
     public function testGetMenu(): void
     {
-        $this->markTestSkipped(
+        static::markTestSkipped(
             'Skipped until https://github.com/sonata-project/SonataSeoBundle/issues/446 is resolved'
         );
         $blockService = new BreadcrumbMenuBlockService_Test(
@@ -72,7 +72,7 @@ final class BreadcrumbTest extends BlockServiceTestCase
                 'template' => 'breadcrumbs.txt.twig',
             ]
         );
-        self::assertStringContainsString(
+        static::assertStringContainsString(
             '/foo/bar',
             $blockService->execute($context)->getContent()
         );
