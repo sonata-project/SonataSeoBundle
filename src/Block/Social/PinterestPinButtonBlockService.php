@@ -32,6 +32,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @see http://fr.business.pinterest.com/widget-builder/#do_pin_it_button
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>
+ *
+ * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
  */
 class PinterestPinButtonBlockService extends AbstractAdminBlockService
 {

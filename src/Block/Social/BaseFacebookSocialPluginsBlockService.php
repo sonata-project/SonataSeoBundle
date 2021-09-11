@@ -21,6 +21,8 @@ use Symfony\Component\HttpFoundation\Response;
  * Abstract class for Facebook Social Plugins blocks services.
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
+ *
+ * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
  */
 abstract class BaseFacebookSocialPluginsBlockService extends AbstractAdminBlockService
 {

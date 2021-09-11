@@ -29,6 +29,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @see https://developers.facebook.com/docs/plugins/like-box-for-pages/
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
+ *
+ * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
  */
 class FacebookLikeBoxBlockService extends BaseFacebookSocialPluginsBlockService
 {
