@@ -27,6 +27,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * This block offers a button to share current page by email.
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>
+ *
+ * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
  */
 class EmailShareButtonBlockService extends AbstractAdminBlockService
 {

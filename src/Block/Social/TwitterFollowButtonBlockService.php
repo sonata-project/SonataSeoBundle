@@ -28,6 +28,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @see https://about.twitter.com/resources/buttons#follow
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
+ *
+ * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
  */
 class TwitterFollowButtonBlockService extends BaseTwitterButtonBlockService
 {
