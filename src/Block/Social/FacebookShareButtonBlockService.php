@@ -53,9 +53,9 @@ class FacebookShareButtonBlockService extends BaseFacebookSocialPluginsBlockServ
         ]);
     }
 
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
+    public function buildEditForm(FormMapper $form, BlockInterface $block)
     {
-        $formMapper->add('settings', ImmutableArrayType::class, [
+        $form->add('settings', ImmutableArrayType::class, [
             'keys' => [
                 ['url', UrlType::class, [
                     'required' => false,

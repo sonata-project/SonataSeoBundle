@@ -208,6 +208,8 @@ class SeoExtension extends AbstractExtension
         if ($this->page->getLinkCanonical()) {
             return sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
         }
+
+        return '';
     }
 
     /**
