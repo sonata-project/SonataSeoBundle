@@ -44,9 +44,9 @@ class TwitterMentionButtonBlockService extends BaseTwitterButtonBlockService
         ]);
     }
 
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block)
+    public function buildEditForm(FormMapper $form, BlockInterface $block)
     {
-        $formMapper->add('settings', ImmutableArrayType::class, [
+        $form->add('settings', ImmutableArrayType::class, [
             'keys' => [
                 ['user', TextType::class, [
                     'required' => true,

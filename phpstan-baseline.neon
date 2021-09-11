@@ -1,12 +1,3 @@
 parameters:
 	ignoreErrors:
-		-
-			message: "#^Method Sonata\\\\SeoBundle\\\\Twig\\\\Extension\\\\SeoExtension\\:\\:getLinkCanonical\\(\\) should return string but return statement is missing\\.$#"
-			count: 1
-			path: src/Twig/Extension/SeoExtension.php
-
-		-
-			message: "#^You should use assertTrue\\(\\) instead of assertSame\\(\\) when expecting \"true\"$#"
-			count: 1
-			path: tests/DependencyInjection/Compiler/ServiceCompilerPassTest.php
 

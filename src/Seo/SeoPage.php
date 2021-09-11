@@ -104,12 +104,12 @@ class SeoPage implements SeoPageInterface
         return $this->metas;
     }
 
-    public function addMeta($type, $name, /* string */ $content, array $extras = [])
+    public function addMeta($type, $name, /* string */ $value, array $extras = [])
     {
-        if (!\is_string($content)) {
+        if (!\is_string($value)) {
             @trigger_error(sprintf(
                 'Passing meta content of type %s in %s is deprecated since version 2.8 and will be unsupported in version 3. Please cast the value to a string first.',
-                \gettype($content),
+                \gettype($value),
                 __METHOD__
             ), \E_USER_DEPRECATED);
         }
@@ -118,7 +118,7 @@ class SeoPage implements SeoPageInterface
             $this->metas[$type] = [];
         }
 
-        $this->metas[$type][$name] = [$content, $extras];
+        $this->metas[$type][$name] = [$value, $extras];
 
         return $this;
     }
@@ -135,16 +135,16 @@ class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    public function setMetas(array $metadatas)
+    public function setMetas(array $metas)
     {
         $this->metas = [];
 
-        foreach ($metadatas as $type => $metas) {
-            if (!\is_array($metas)) {
+        foreach ($metas as $type => $metaItem) {
+            if (!\is_array($metaItem)) {
                 throw new \RuntimeException('$metas must be an array');
             }
 
-            foreach ($metas as $name => $meta) {
+            foreach ($metaItem as $name => $meta) {
                 [$content, $extras] = $this->normalize($meta);
 
                 $this->addMeta($type, $name, $content, $extras);
