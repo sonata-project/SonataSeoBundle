@@ -11,5 +11,4 @@ SEO Bundle
    reference/twig_helpers
    reference/usage
    reference/breadcrumb
-   reference/social_blocks
    reference/sitemap

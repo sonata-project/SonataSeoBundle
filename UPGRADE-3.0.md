@@ -29,17 +29,6 @@ Consider using decoration instead.
 
  * `Sonata\BlockBundle\SonataSeoBundle`
  * `Sonata\BlockBundle\Block\Breadcrumb\HomepageBreadcrumbBlockService`
- * `Sonata\BlockBundle\Block\Social\EmailShareButtonBlockService`
- * `Sonata\BlockBundle\Block\Social\FacebookLikeBoxBlockService`
- * `Sonata\BlockBundle\Block\Social\FacebookLikeButtonBlockService`
- * `Sonata\BlockBundle\Block\Social\FacebookSendButtonBlockService`
- * `Sonata\BlockBundle\Block\Social\FacebookShareButtonBlockService`
- * `Sonata\BlockBundle\Block\Social\PinterestPinButtonBlockService`
- * `Sonata\BlockBundle\Block\Social\TwitterEmbedTweetBlockService`
- * `Sonata\BlockBundle\Block\Social\TwitterFollowButtonBlockService`
- * `Sonata\BlockBundle\Block\Social\TwitterHashtagButtonBlockService`
- * `Sonata\BlockBundle\Block\Social\TwitterMentionButtonBlockService`
- * `Sonata\BlockBundle\Block\Social\TwitterShareButtonBlockService`
  * `Sonata\BlockBundle\Command\SitemapGeneratorCommand`
  * `Sonata\BlockBundle\DependencyInjection\Compiler\BreadcrumbBlockServicesCompilerPass`
  * `Sonata\BlockBundle\DependencyInjection\Compiler\ServiceCompilerPass`
@@ -49,3 +38,7 @@ Consider using decoration instead.
  * `Sonata\BlockBundle\Seo\SeoPage`
  * `Sonata\BlockBundle\Sitemap\SourceManager`
  * `Sonata\BlockBundle\Twig\Extension\SeoExtension`
+
+## Removed social blocks
+
+All social media related blocks have been removed.
