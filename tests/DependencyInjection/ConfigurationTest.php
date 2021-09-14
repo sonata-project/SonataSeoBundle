@@ -82,6 +82,9 @@ final class ConfigurationTest extends TestCase
         static::assertSame('website', $config['page']['metas']['property']['og:type']);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function getDefaultConfiguration(): array
     {
         return [
@@ -100,6 +103,11 @@ final class ConfigurationTest extends TestCase
         ];
     }
 
+    /**
+     * @param mixed[] $configs
+     *
+     * @return mixed[]
+     */
     private function processConfiguration(array $configs): array
     {
         $configuration = new Configuration();

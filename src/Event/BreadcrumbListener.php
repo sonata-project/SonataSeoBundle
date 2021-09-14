@@ -24,6 +24,9 @@ use Sonata\SeoBundle\BreadcrumbInterface;
  */
 final class BreadcrumbListener
 {
+    /**
+     * @var array<string, BreadcrumbInterface>
+     */
     private array $blockServices = [];
 
     /**

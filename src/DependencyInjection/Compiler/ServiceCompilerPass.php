@@ -33,10 +33,7 @@ final class ServiceCompilerPass implements CompilerPassInterface
         $definition->addMethodCall('setHtmlAttributes', [$config['head']]);
         $definition->addMethodCall('setSeparator', [$config['separator']]);
 
-        if ($alias = $container->setAlias('sonata.seo.page', $config['default'])) {
-            $alias->setPublic(true);
-        }
-
+        $container->setAlias('sonata.seo.page', $config['default'])->setPublic(true);
         $container->setAlias(SeoPageInterface::class, $config['default']);
     }
 }
