@@ -38,11 +38,18 @@
     "require-dev": {
         "knplabs/knp-menu": "^3.0",
         "knplabs/knp-menu-bundle": "^3.0",
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan": "^0.12.84",
+        "phpstan/phpstan-phpunit": "^0.12.16",
+        "psalm/plugin-phpunit": "^0.15",
+        "sonata-project/doctrine-extensions": "^1.10.1",
+        "sonata-project/form-extensions": "^0.1 || ^1.4",
         "symfony/console": "^4.4 || ^5.3",
         "symfony/filesystem": "^4.4 || ^5.3",
         "symfony/finder": "^4.4 || ^5.3",
         "symfony/phpunit-bridge": "^5.3",
-        "symfony/yaml": "^4.4 || ^5.3"
+        "symfony/yaml": "^4.4 || ^5.3",
+        "vimeo/psalm": "^4.7.2"
     },
     "config": {
         "sort-packages": true
@@ -61,5 +68,13 @@
         "psr-4": {
             "Sonata\\SeoBundle\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
+        ],
+        "post-update-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
+        ]
     }
 }

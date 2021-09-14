@@ -17,6 +17,8 @@ use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 
 /**
+ * @final since sonata-project/seo-bundle 2.x
+ *
  * BlockService for homepage breadcrumb.
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>

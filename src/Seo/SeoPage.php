@@ -135,16 +135,16 @@ final class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    public function setMetas(array $metadatas)
+    public function setMetas(array $metas)
     {
         $this->metas = [];
 
-        foreach ($metadatas as $type => $metas) {
-            if (!\is_array($metas)) {
+        foreach ($metas as $type => $metaItem) {
+            if (!\is_array($metaItem)) {
                 throw new \RuntimeException('$metas must be an array');
             }
 
-            foreach ($metas as $name => $meta) {
+            foreach ($metaItem as $name => $meta) {
                 [$content, $extras] = $this->normalize($meta);
 
                 $this->addMeta($type, $name, $content, $extras);
