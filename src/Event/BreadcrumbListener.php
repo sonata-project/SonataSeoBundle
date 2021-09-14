@@ -18,8 +18,6 @@ use Sonata\BlockBundle\Model\Block;
 use Sonata\SeoBundle\BreadcrumbInterface;
 
 /**
- * @final since sonata-project/seo-bundle 2.x
- *
  * BreadcrumbListener for Block Event.
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>

@@ -27,8 +27,6 @@ use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
- * @final since sonata-project/seo-bundle 2.x
- *
  * Create a sitemap.
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>

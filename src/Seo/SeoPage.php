@@ -104,12 +104,12 @@ final class SeoPage implements SeoPageInterface
         return $this->metas;
     }
 
-    public function addMeta($type, $name, $content, array $extras = [])
+    public function addMeta($type, $name, $value, array $extras = [])
     {
-        if (!\is_string($content)) {
+        if (!\is_string($value)) {
             @trigger_error(sprintf(
                 'Passing meta content of type %s in %s is deprecated since version 2.8 and will be unsupported in version 3. Please cast the value to a string first.',
-                \gettype($content),
+                \gettype($value),
                 __METHOD__
             ), \E_USER_DEPRECATED);
         }
@@ -118,7 +118,7 @@ final class SeoPage implements SeoPageInterface
             $this->metas[$type] = [];
         }
 
-        $this->metas[$type][$name] = [$content, $extras];
+        $this->metas[$type][$name] = [$value, $extras];
 
         return $this;
     }
