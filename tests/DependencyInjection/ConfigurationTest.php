@@ -35,10 +35,6 @@ final class ConfigurationTest extends TestCase
                 'doctrine_orm' => [],
                 'services' => [],
             ],
-            'http' => [
-                'client' => null,
-                'message_factory' => null,
-            ],
         ];
 
         static::assertSame($expected, $this->processConfiguration([[]]));
@@ -100,10 +96,6 @@ final class ConfigurationTest extends TestCase
             'sitemap' => [
                 'doctrine_orm' => [],
                 'services' => [],
-            ],
-            'http' => [
-                'client' => null,
-                'message_factory' => null,
             ],
         ];
     }
