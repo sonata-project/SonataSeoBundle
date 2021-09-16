@@ -33,6 +33,7 @@ final class SeoExtension extends AbstractExtension
     {
         return [
             new TwigFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_title_text', [$this, 'getTitleText'], ['is_safe' => ['html']]),
             new TwigFunction('sonata_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
             new TwigFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['is_safe' => ['html']]),
             new TwigFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['is_safe' => ['html']]),
@@ -50,6 +51,11 @@ final class SeoExtension extends AbstractExtension
     public function getTitle(): string
     {
         return sprintf('<title>%s</title>', strip_tags($this->page->getTitle()));
+    }
+
+    public function getTitleText(): string
+    {
+        return $this->page->getOriginalTitle();
     }
 
     public function getMetadatas(): string

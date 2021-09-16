@@ -16,6 +16,19 @@ This will render the page title as follows:
 
     <title>My custom title</title>
 
+Render the page title text
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: twig
+
+    {{ sonata_seo_title_text() }}
+
+This will render the page title as follows:
+
+.. code-block:: html
+
+    My custom title
+
 Render page metadata
 ^^^^^^^^^^^^^^^^^^^^
 

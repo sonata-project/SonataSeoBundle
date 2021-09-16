@@ -55,6 +55,16 @@ final class SeoExtensionTest extends TestCase
         static::assertSame('<title>foo bar</title>', $extension->getTitle());
     }
 
+    public function getTitleText(): void
+    {
+        $page = $this->createMock(SeoPageInterface::class);
+        $page->expects(static::once())->method('getTitle')->willReturn('<b>foo bar</b>');
+
+        $extension = new SeoExtension($page, 'UTF-8');
+
+        static::assertSame('foo bar', $extension->getTitleText());
+    }
+
     public function testEncoding(): void
     {
         $page = $this->createMock(SeoPageInterface::class);
