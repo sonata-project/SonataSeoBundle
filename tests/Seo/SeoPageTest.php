@@ -109,6 +109,9 @@ final class SeoPageTest extends TestCase
         static::assertSame('My title', $page->getTitle());
     }
 
+    /**
+     * @group legacy
+     */
     public function testAddTitle()
     {
         $page = new SeoPage();
@@ -117,6 +120,28 @@ final class SeoPageTest extends TestCase
         $page->addTitle('Additional title');
 
         static::assertSame('Additional title - My title', $page->getTitle());
+    }
+
+    public function addTitlePrefix()
+    {
+        $page = new SeoPage();
+        $page->setTitle('My title');
+        $page->setSeparator(' - ');
+        $page->addTitlePrefix('Additional title');
+
+        static::assertSame('Additional title - My title', $page->getTitle());
+        static::assertSame('My title', $page->getOriginalTitle());
+    }
+
+    public function addTitleSuffix()
+    {
+        $page = new SeoPage();
+        $page->setTitle('My title');
+        $page->setSeparator(' - ');
+        $page->addTitleSuffix('Additional title');
+
+        static::assertSame('My title - Additional title', $page->getTitle());
+        static::assertSame('My title', $page->getOriginalTitle());
     }
 
     public function testLinkCanonical()

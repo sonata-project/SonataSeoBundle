@@ -21,6 +21,9 @@ namespace Sonata\SeoBundle\Seo;
  * @method bool             hasHeadAttribute(string $name)
  * @method SeoPageInterface removeLangAlternate(string $href)
  * @method bool             hasLangAlternate(string $href)
+ * @method SeoPageInterface addTitlePrefix(string $prefix)
+ * @method SeoPageInterface addTitleSuffix(string $suffix)
+ * @method string           getOriginalTitle)
  */
 interface SeoPageInterface
 {
@@ -32,6 +35,8 @@ interface SeoPageInterface
     public function setTitle($title);
 
     /**
+     * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0. addTitlePrefix or addTitleSuffix instead.
+     *
      * @param string $title
      *
      * @return SeoPageInterface
