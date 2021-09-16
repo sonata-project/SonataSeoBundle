@@ -17,8 +17,6 @@ interface SeoPageInterface
 {
     public function setTitle(string $title): self;
 
-    public function addTitle(string $title): self;
-
     public function getTitle(): string;
 
     /**

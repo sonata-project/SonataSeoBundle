@@ -49,6 +49,11 @@ final class SeoPage implements SeoPageInterface
      */
     private array $oembedLinks;
 
+    /**
+     * @var string
+     */
+    private $originalTitle;
+
     public function __construct(string $title = '')
     {
         $this->title = $title;
@@ -71,13 +76,34 @@ final class SeoPage implements SeoPageInterface
     public function setTitle(string $title): self
     {
         $this->title = $title;
+        $this->originalTitle = $title;
 
         return $this;
     }
 
     public function addTitle(string $title): self
     {
+        @trigger_error(
+            'The '.__METHOD__.' method is deprecated since 2.x, to be removed in 3.0. '.
+            'Use '.__NAMESPACE__.'::addTitlePrefix() or '.__NAMESPACE__.'::addTitleSuffix .instead.',
+            \E_USER_DEPRECATED
+        );
+
         $this->title = $title.$this->separator.$this->title;
+
+        return $this;
+    }
+
+    public function addTitlePrefix(string $prefix): self
+    {
+        $this->title = $prefix.$this->separator.$this->title;
+
+        return $this;
+    }
+
+    public function addTitleSuffix(string $suffix): self
+    {
+        $this->title .= $this->separator.$suffix;
 
         return $this;
     }
@@ -85,6 +111,11 @@ final class SeoPage implements SeoPageInterface
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function getOriginalTitle(): string
+    {
+        return $this->originalTitle;
     }
 
     public function getMetas(): array

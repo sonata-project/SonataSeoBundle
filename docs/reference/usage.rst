@@ -39,7 +39,7 @@ You could also prepend the page title, so that the global title is used as a suf
     $seoPage = $this->container->get('sonata.seo.page');
 
     $seoPage
-        ->addTitle($post->getTitle());
+        ->addTitlePrefix($post->getTitle());
 
 .. note::
 
