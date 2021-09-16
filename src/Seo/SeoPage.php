@@ -18,50 +18,38 @@ namespace Sonata\SeoBundle\Seo;
  */
 final class SeoPage implements SeoPageInterface
 {
-    /**
-     * @var string
-     */
-    private $title;
+    private string $title;
 
     /**
      * @var array<string, array<string, mixed>>
      */
-    private $metas;
+    private array $metas;
 
     /**
      * @var array<string, string>
      */
-    private $htmlAttributes;
+    private array $htmlAttributes;
 
-    /**
-     * @var string
-     */
-    private $linkCanonical;
+    private string $linkCanonical;
 
-    /**
-     * @var string
-     */
-    private $separator;
+    private string $separator;
 
     /**
      * @var array<string, string>
      */
-    private $headAttributes;
+    private array $headAttributes;
 
     /**
      * @var array<string, string>
      */
-    private $langAlternates;
+    private array $langAlternates;
 
     /**
      * @var array<string, string>
      */
-    private $oembedLinks;
+    private array $oembedLinks;
 
-    /**
-     * @param string $title
-     */
-    public function __construct($title = '')
+    public function __construct(string $title = '')
     {
         $this->title = $title;
         $this->metas = [
@@ -80,31 +68,31 @@ final class SeoPage implements SeoPageInterface
         $this->oembedLinks = [];
     }
 
-    public function setTitle($title)
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function addTitle($title)
+    public function addTitle(string $title): self
     {
         $this->title = $title.$this->separator.$this->title;
 
         return $this;
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function getMetas()
+    public function getMetas(): array
     {
         return $this->metas;
     }
 
-    public function addMeta($type, $name, $value, array $extras = [])
+    public function addMeta(string $type, string $name, string $value, array $extras = []): self
     {
         if (!\is_string($value)) {
             @trigger_error(sprintf(
@@ -123,19 +111,19 @@ final class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    public function hasMeta($type, $name)
+    public function hasMeta(string $type, string $name): bool
     {
         return isset($this->metas[$type][$name]);
     }
 
-    public function removeMeta($type, $name)
+    public function removeMeta(string $type, string $name): self
     {
         unset($this->metas[$type][$name]);
 
         return $this;
     }
 
-    public function setMetas(array $metas)
+    public function setMetas(array $metas): self
     {
         $this->metas = [];
 
@@ -154,76 +142,76 @@ final class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    public function setHtmlAttributes(array $attributes)
+    public function setHtmlAttributes(array $attributes): self
     {
         $this->htmlAttributes = $attributes;
 
         return $this;
     }
 
-    public function addHtmlAttributes($name, $value)
+    public function addHtmlAttributes(string $name, string $value): self
     {
         $this->htmlAttributes[$name] = $value;
 
         return $this;
     }
 
-    public function removeHtmlAttributes($name)
+    public function removeHtmlAttributes(string $name): self
     {
         unset($this->htmlAttributes[$name]);
 
         return $this;
     }
 
-    public function getHtmlAttributes()
+    public function getHtmlAttributes(): array
     {
         return $this->htmlAttributes;
     }
 
-    public function hasHtmlAttribute($name)
+    public function hasHtmlAttribute(string $name): bool
     {
         return isset($this->htmlAttributes[$name]);
     }
 
-    public function setHeadAttributes(array $attributes)
+    public function setHeadAttributes(array $attributes): self
     {
         $this->headAttributes = $attributes;
 
         return $this;
     }
 
-    public function addHeadAttribute($name, $value)
+    public function addHeadAttribute(string $name, string $value): self
     {
         $this->headAttributes[$name] = $value;
 
         return $this;
     }
 
-    public function removeHeadAttribute($name)
+    public function removeHeadAttribute(string $name): self
     {
         unset($this->headAttributes[$name]);
 
         return $this;
     }
 
-    public function getHeadAttributes()
+    public function getHeadAttributes(): array
     {
         return $this->headAttributes;
     }
 
-    public function hasHeadAttribute($name)
+    public function hasHeadAttribute(string $name): bool
     {
         return isset($this->headAttributes[$name]);
     }
 
-    public function setLinkCanonical($link)
+    public function setLinkCanonical(string $link): self
     {
         $this->linkCanonical = $link;
 
         return $this;
     }
 
-    public function getLinkCanonical()
+    public function getLinkCanonical(): string
     {
         return $this->linkCanonical;
     }
@@ -233,58 +221,58 @@ final class SeoPage implements SeoPageInterface
         $this->linkCanonical = '';
     }
 
-    public function setSeparator($separator)
+    public function setSeparator(string $separator): self
     {
         $this->separator = $separator;
 
         return $this;
     }
 
-    public function setLangAlternates(array $langAlternates)
+    public function setLangAlternates(array $langAlternates): self
     {
         $this->langAlternates = $langAlternates;
 
         return $this;
     }
 
-    public function addLangAlternate($href, $hrefLang)
+    public function addLangAlternate(string $href, string $hrefLang): self
     {
         $this->langAlternates[$href] = $hrefLang;
 
         return $this;
     }
 
-    public function removeLangAlternate($href)
+    public function removeLangAlternate(string $href): self
     {
         unset($this->langAlternates[$href]);
 
         return $this;
     }
 
-    public function hasLangAlternate($href)
+    public function hasLangAlternate(string $href): bool
     {
         return isset($this->langAlternates[$href]);
     }
 
-    public function getLangAlternates()
+    public function getLangAlternates(): array
     {
         return $this->langAlternates;
     }
 
-    public function addOEmbedLink($title, $link)
+    public function addOEmbedLink(string $title, string $link): self
     {
         $this->oembedLinks[$title] = $link;
 
         return $this;
     }
 
-    public function getOEmbedLinks()
+    public function getOEmbedLinks(): array
     {
         return $this->oembedLinks;
     }
 
     /**
-     * @param string|array $meta
+     * @param array|string $meta
      */
     private function normalize($meta): array
     {

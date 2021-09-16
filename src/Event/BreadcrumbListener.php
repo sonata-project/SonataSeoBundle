@@ -24,10 +24,7 @@ use Sonata\SeoBundle\BreadcrumbInterface;
  */
 final class BreadcrumbListener
 {
-    /**
-     * @var array
-     */
-    private $blockServices = [];
+    private array $blockServices = [];
 
     /**
      * Add a renderer to the status services list.

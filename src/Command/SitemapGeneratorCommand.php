@@ -33,25 +33,16 @@ use Symfony\Component\Routing\RouterInterface;
  */
 final class SitemapGeneratorCommand extends Command
 {
-    /**
-     * @var RouterInterface
-     */
-    private $router;
+    private RouterInterface $router;
 
-    /**
-     * @var SourceManager
-     */
-    private $sitemapManager;
+    private SourceManager $sitemapManager;
 
-    /**
-     * @var Filesystem
-     */
-    private $filesystem;
+    private Filesystem $filesystem;
 
     public function __construct(
-        ?RouterInterface $router,
-        ?SourceManager $sitemapManager,
-        ?Filesystem $filesystem
+        RouterInterface $router,
+        SourceManager $sitemapManager,
+        Filesystem $filesystem
     ) {
         $this->router = $router;
         $this->sitemapManager = $sitemapManager;
