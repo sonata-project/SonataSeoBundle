@@ -82,7 +82,7 @@ final class ConfigurationTest extends TestCase
         static::assertSame('website', $config['page']['metas']['property']['og:type']);
     }
 
-    private function getDefaultConfiguration()
+    private function getDefaultConfiguration(): array
     {
         return [
             'page' => [
@@ -100,7 +100,7 @@ final class ConfigurationTest extends TestCase
         ];
     }
 
-    private function processConfiguration(array $configs)
+    private function processConfiguration(array $configs): array
     {
         $configuration = new Configuration();
         $processor = new Processor();

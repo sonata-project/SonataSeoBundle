@@ -13,205 +13,91 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Seo;
 
-/**
- * @method SeoPageInterface removeMeta(string $type, string $name)
- * @method SeoPageInterface removeHtmlAttributes(string $name)
- * @method bool             hasHtmlAttribute(string $name)
- * @method SeoPageInterface removeHeadAttribute(string $name)
- * @method bool             hasHeadAttribute(string $name)
- * @method SeoPageInterface removeLangAlternate(string $href)
- * @method bool             hasLangAlternate(string $href)
- */
 interface SeoPageInterface
 {
-    /**
-     * @param string $title
-     *
-     * @return SeoPageInterface
-     */
-    public function setTitle($title);
+    public function setTitle(string $title): self;
+
+    public function addTitle(string $title): self;
+
+    public function getTitle(): string;
 
     /**
-     * @param string $title
-     *
-     * @return SeoPageInterface
-     */
-    public function addTitle($title);
-
-    /**
-     * @return string
-     */
-    public function getTitle();
-
-    /**
-     * @param string               $type
-     * @param string               $name
-     * @param string               $value
      * @param array<string, mixed> $extras
-     *
-     * @return SeoPageInterface
      */
-    public function addMeta($type, $name, $value, array $extras = []);
+    public function addMeta(string $type, string $name, string $value, array $extras = []): self;
 
-    /**
-     * @param string $type
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function hasMeta($type, $name);
+    public function hasMeta(string $type, string $name): bool;
 
     /**
      * @return array<string, array<string, mixed>>
      */
-    public function getMetas();
+    public function getMetas(): array;
 
     /**
      * @param array<string, array<string, mixed>> $metas
-     *
-     * @return SeoPageInterface
      */
-    public function setMetas(array $metas);
+    public function setMetas(array $metas): self;
 
     /**
      * @param array<string, string> $attributes
-     *
-     * @return SeoPageInterface
      */
-    public function setHtmlAttributes(array $attributes);
+    public function setHtmlAttributes(array $attributes): self;
 
-    /**
-     * @param string $name
-     * @param string $value
-     *
-     * @return SeoPageInterface
-     */
-    public function addHtmlAttributes($name, $value);
+    public function addHtmlAttributes(string $name, string $value): self;
 
     /**
      * @return array<string, string>
      */
-    public function getHtmlAttributes();
+    public function getHtmlAttributes(): array;
 
     /**
      * @param array<string, string> $attributes
-     *
-     * @return SeoPageInterface
      */
-    public function setHeadAttributes(array $attributes);
+    public function setHeadAttributes(array $attributes): self;
 
-    /**
-     * @param string $name
-     * @param string $value
-     *
-     * @return SeoPageInterface
-     */
-    public function addHeadAttribute($name, $value);
+    public function addHeadAttribute(string $name, string $value): self;
 
     /**
      * @return array<string, string>
      */
-    public function getHeadAttributes();
+    public function getHeadAttributes(): array;
 
-    /**
-     * @param string $link
-     *
-     * @return SeoPageInterface
-     */
-    public function setLinkCanonical($link);
+    public function setLinkCanonical(string $link): self;
 
-    /**
-     * @return string
-     */
-    public function getLinkCanonical();
+    public function getLinkCanonical(): string;
 
-    /**
-     * @param string $separator
-     *
-     * @return SeoPageInterface
-     */
-    public function setSeparator($separator);
+    public function setSeparator(string $separator): self;
 
     /**
      * @param array<string, string> $langAlternates
-     *
-     * @return SeoPageInterface
      */
-    public function setLangAlternates(array $langAlternates);
+    public function setLangAlternates(array $langAlternates): self;
 
-    /**
-     * @param string $href
-     * @param string $hrefLang
-     *
-     * @return SeoPageInterface
-     */
-    public function addLangAlternate($href, $hrefLang);
+    public function addLangAlternate(string $href, string $hrefLang): self;
 
     /**
      * @return array<string, string>
      */
-    public function getLangAlternates();
+    public function getLangAlternates(): array;
 
-    /**
-     * @param string $title
-     * @param string $link
-     *
-     * @return SeoPageInterface
-     */
-    public function addOEmbedLink($title, $link);
+    public function addOEmbedLink(string $title, string $link): self;
 
     /**
      * @return array<string, string>
      */
-    public function getOEmbedLinks();
+    public function getOEmbedLinks(): array;
 
-    /**
-     * @param string $type
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function removeMeta($type, $name);
+    public function removeMeta(string $type, string $name): self;
 
-    /**
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function removeHtmlAttributes($name);
+    public function removeHtmlAttributes(string $name): self;
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function hasHtmlAttribute($name);
+    public function hasHtmlAttribute(string $name): bool;
 
-    /**
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function removeHeadAttribute($name);
+    public function removeHeadAttribute(string $name): self;
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function hasHeadAttribute($name);
+    public function hasHeadAttribute(string $name): bool;
 
-    /**
-     * @param string $href
-     *
-     * @return $this
-     */
-    public function removeLangAlternate($href);
+    public function removeLangAlternate(string $href): self;
 
-    /**
-     * @param string $href
-     *
-     * @return bool
-     */
-    public function hasLangAlternate($href);
+    public function hasLangAlternate(string $href): bool;
 }

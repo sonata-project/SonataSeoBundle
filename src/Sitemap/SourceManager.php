@@ -21,10 +21,7 @@ use Sonata\Exporter\Source\SourceIteratorInterface;
  */
 final class SourceManager implements SourceIteratorInterface
 {
-    /**
-     * @var \ArrayIterator
-     */
-    private $sources;
+    private \ArrayIterator $sources;
 
     public function __construct()
     {
@@ -33,10 +30,8 @@ final class SourceManager implements SourceIteratorInterface
 
     /**
      * Adding source with his group.
-     *
-     * @param string $group
      */
-    public function addSource($group, SourceIteratorInterface $source, array $types = []): void
+    public function addSource(string $group, SourceIteratorInterface $source, array $types = []): void
     {
         if (!isset($this->sources[$group])) {
             $this->sources[$group] = new \stdClass();
@@ -67,7 +62,7 @@ final class SourceManager implements SourceIteratorInterface
         return $this->sources->key();
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return $this->sources->valid();
     }

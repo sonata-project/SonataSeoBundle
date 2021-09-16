@@ -28,10 +28,7 @@ use Twig\Environment;
  */
 abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService implements BreadcrumbInterface
 {
-    /**
-     * @var FactoryInterface
-     */
-    private $factory;
+    private FactoryInterface $factory;
 
     public function __construct(Environment $twig, FactoryInterface $factory)
     {

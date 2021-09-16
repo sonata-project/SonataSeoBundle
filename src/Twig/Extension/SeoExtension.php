@@ -19,15 +19,9 @@ use Twig\TwigFunction;
 
 final class SeoExtension extends AbstractExtension
 {
-    /**
-     * @var SeoPageInterface
-     */
-    private $page;
+    private SeoPageInterface $page;
 
-    /**
-     * @var string
-     */
-    private $encoding;
+    private string $encoding;
 
     public function __construct(SeoPageInterface $page, string $encoding)
     {
@@ -35,7 +29,7 @@ final class SeoExtension extends AbstractExtension
         $this->encoding = $encoding;
     }
 
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),

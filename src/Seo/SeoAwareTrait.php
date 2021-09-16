@@ -16,11 +16,9 @@ namespace Sonata\SeoBundle\Seo;
 trait SeoAwareTrait
 {
     /**
-     * @var SeoPageInterface|null
-     *
      * @required
      */
-    protected $seoPage;
+    protected ?SeoPageInterface $seoPage;
 
     public function setSeoPage(?SeoPageInterface $seoPage = null): void
     {

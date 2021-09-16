@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 
 use Knp\Menu\FactoryInterface;
+use Knp\Menu\ItemInterface;
 use Knp\Menu\MenuFactory;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Block\BlockContextInterface;
@@ -30,7 +31,7 @@ final class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockServi
         return 'test';
     }
 
-    protected function getMenu(BlockContextInterface $blockContext)
+    protected function getMenu(BlockContextInterface $blockContext): ItemInterface
     {
         return $this->getRootMenu($blockContext);
     }
