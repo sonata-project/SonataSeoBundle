@@ -54,6 +54,11 @@ final class SeoPage implements SeoPageInterface
      */
     private $originalTitle;
 
+    /**
+     * @var array<string, mixed>
+     */
+    private $breadcrumb;
+
     public function __construct(string $title = '')
     {
         $this->title = $title;
@@ -292,6 +297,21 @@ final class SeoPage implements SeoPageInterface
     public function getOEmbedLinks(): array
     {
         return $this->oembedLinks;
+    }
+
+    public function setBreadcrumb(string $context, array $options = []): self
+    {
+        $this->breadcrumb = array_merge_recursive([
+            'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
+            'context' => $context,
+        ], $options);
+
+        return $this;
+    }
+
+    public function getBreadcrumbOptions(): array
+    {
+        return $this->breadcrumb;
     }
 
     /**

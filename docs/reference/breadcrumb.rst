@@ -53,3 +53,10 @@ And to render the breadcrumb, just use this Twig helper :
         'context': 'my_custom_context',
         'current_uri': app.request.requestUri
     }) }}
+
+
+You can also use the shortcut to render the current breadcrumb :
+
+.. code-block:: twig
+
+    {{ sonata_seo_breadcrumb() }}

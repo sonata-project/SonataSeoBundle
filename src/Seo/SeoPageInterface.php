@@ -98,4 +98,14 @@ interface SeoPageInterface
     public function removeLangAlternate(string $href): self;
 
     public function hasLangAlternate(string $href): bool;
+
+    /**
+     * @param array<string, mixed> $options
+     */
+    public function setBreadcrumb(string $context, array $options): self;
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getBreadcrumbOptions(): array;
 }
