@@ -24,6 +24,8 @@ namespace Sonata\SeoBundle\Seo;
  * @method SeoPageInterface addTitlePrefix(string $prefix)
  * @method SeoPageInterface addTitleSuffix(string $suffix)
  * @method string           getOriginalTitle)
+ * @method string           setBreadcrumb(string $context, array $options)
+ * @method array            getBreadcrumbOptions()
  */
 interface SeoPageInterface
 {

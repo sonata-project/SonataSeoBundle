@@ -1,0 +1,5 @@
+{% if options|length %}
+    {{ sonata_block_render_event('breadcrumb', options|merge({
+        'current_uri': currentUri|default(app.request.requestUri)
+    })) }}
+{% endif %}
