@@ -32,6 +32,9 @@ However, it is possible to alter these values at runtime::
             'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post, true)
         ], true))
         ->addMeta('property', 'og:description', $post->getAbstract())
+        ->setBreadcrumb('news_post', [
+            'post' => $post,
+        ])
     ;
 
 You could also prepend the page title, so that the global title is used as a suffix::

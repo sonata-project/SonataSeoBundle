@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Twig\Extension;
 
 use Sonata\SeoBundle\Seo\SeoPageInterface;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -52,6 +53,10 @@ class SeoExtension extends AbstractExtension
             new TwigFunction('sonata_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
             new TwigFunction('sonata_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
             new TwigFunction('sonata_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_breadcrumb', [$this, 'renderBreadcrumb'], [
+                'needs_environment' => true,
+                'is_safe' => ['html'],
+            ]),
         ];
     }
 
@@ -261,6 +266,14 @@ class SeoExtension extends AbstractExtension
         }
 
         return $html;
+    }
+
+    public function renderBreadcrumb(Environment $environment, ?string $currentUri = null): string
+    {
+        return $environment->render('@SonataSeo/breadcrumb.html.twig', [
+            'currentUri' => $currentUri,
+            'options' => $this->page->getBreadcrumbOptions(),
+        ]);
     }
 
     /**
