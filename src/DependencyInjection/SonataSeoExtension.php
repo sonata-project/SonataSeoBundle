@@ -52,6 +52,8 @@ final class SonataSeoExtension extends Extension
 
     /**
      * Configure the default seo page.
+     *
+     * @param mixed[] $config
      */
     private function configureSeoPage(array $config, ContainerBuilder $container): void
     {
@@ -60,6 +62,8 @@ final class SonataSeoExtension extends Extension
 
     /**
      * Configure the sitemap source manager.
+     *
+     * @param mixed[] $config
      */
     private function configureSitemap(array $config, ContainerBuilder $container): void
     {
@@ -103,6 +107,10 @@ final class SonataSeoExtension extends Extension
 
     /**
      * Fix the sitemap configuration.
+     *
+     * @param mixed[] $config
+     *
+     * @return mixed[]
      */
     private function fixConfiguration(array $config): array
     {

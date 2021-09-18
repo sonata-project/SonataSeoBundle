@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.10.0@916b098b008f6de4543892b1e0651c1c3b92cbfa">
-    <file src="src/Block/Breadcrumb/BaseBreadcrumbMenuBlockService.php">
-        <InvalidExtendClass occurrences="1">
-            <code>MenuBlockService</code>
-        </InvalidExtendClass>
-        <MethodSignatureMismatch occurrences="2">
-            <code>public function __construct($context, $name, EngineInterface $templating, MenuProviderInterface $menuProvider, FactoryInterface $factory)</code>
-            <code>public function configureSettings(OptionsResolver $resolver)</code>
-        </MethodSignatureMismatch>
-    </file>
-    <file src="src/Block/Breadcrumb/HomepageBreadcrumbBlockService.php">
-        <MethodSignatureMismatch occurrences="1">
-            <code>protected function getMenu(BlockContextInterface $blockContext)</code>
-        </MethodSignatureMismatch>
-    </file>
-    <file src="tests/Block/Breadcrumb/BreadcrumbTest.php">
-        <MethodSignatureMismatch occurrences="1">
-            <code>protected function getMenu(BlockContextInterface $blockContext)</code>
-        </MethodSignatureMismatch>
+    <file src="src/Sitemap/SourceManager.php">
+        <InvalidTemplateParam occurrences="2">
+            <code>SourceIteratorInterface</code>
+            <code>SourceIteratorInterface&lt;\stdClass&gt;</code>
+        </InvalidTemplateParam>
     </file>
 </files>

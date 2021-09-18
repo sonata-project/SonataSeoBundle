@@ -55,11 +55,15 @@ final class SeoPageTest extends TestCase
         static::assertFalse($page->hasMeta('property', 'foo'));
     }
 
+    /**
+     * @psalm-suppress InvalidArgument
+     */
     public function testInvalidMetas(): void
     {
         $this->expectException(\RuntimeException::class);
 
         $page = new SeoPage();
+        // @phpstan-ignore-next-line
         $page->setMetas([
             'type' => 'not an array',
         ]);

@@ -1,12 +1,11 @@
-parameters:
-    level: 1
+includes:
+    - phpstan-baseline.neon
 
+parameters:
+    level: 6
+    bootstrapFiles:
+        - vendor/bin/.phpunit/phpunit/vendor/autoload.php
     paths:
         - src
-
-    excludes_analyse:
-        - tests/bootstrap.php
-        - src/Resources/skeleton/
-
-    autoload_files:
-        - vendor/autoload.php
+        - tests
+    treatPhpDocTypesAsCertain: false
