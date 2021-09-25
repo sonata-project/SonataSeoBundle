@@ -26,8 +26,18 @@ class BreadcrumbBlockServicesCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
+        $queue = new \SplPriorityQueue();
+
+        $order = \PHP_INT_MAX;
         foreach ($container->findTaggedServiceIds('sonata.breadcrumb') as $id => $attributes) {
-            $container->getDefinition('sonata.seo.event.breadcrumb')->addMethodCall('addBlockService', [$id, new Reference($id)]);
+            $priority = $attributes[0]['priority'] ?? 0;
+
+            $queue->insert(new Reference($id), [$priority, --$order]);
+        }
+
+        $definition = $container->getDefinition('sonata.seo.event.breadcrumb');
+        foreach ($queue as $serviceId) {
+            $definition->addMethodCall('addBlockService', [$serviceId->__toString(), $serviceId]);
         }
     }
 }
