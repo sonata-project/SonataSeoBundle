@@ -49,4 +49,30 @@ class ServiceCompilerPassTest extends TestCase
 
         static::assertInstanceOf(SeoPageInterface::class, $container->get(SeoPageInterface::class));
     }
+
+    public function testGlobalTitle(): void
+    {
+        $container = new ContainerBuilder();
+        $container->setParameter('kernel.bundles', []);
+        $container->register('sonata.seo.custom.page', SeoPage::class);
+
+        $config = [
+            'page' => [
+                'default' => 'sonata.seo.custom.page',
+                'title' => 'Project name',
+                'title_prefix' => 'Prefix',
+                'title_suffix' => 'Suffix',
+            ],
+        ];
+
+        $extension = new SonataSeoExtension();
+        $extension->load([$config], $container);
+
+        (new ServiceCompilerPass())->process($container);
+
+        $page = $container->get('sonata.seo.custom.page');
+
+        static::assertSame('Project name', $page->getOriginalTitle());
+        static::assertSame('Prefix Project name Suffix', $page->getTitle());
+    }
 }
