@@ -53,6 +53,8 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('separator')->defaultValue(' - ')->end()
                         // NEXT_MAJOR: Make this field required
                         ->scalarNode('title')->defaultValue('Project name')->end()
+                        ->scalarNode('title_prefix')->defaultNull()->end()
+                        ->scalarNode('title_suffix')->defaultNull()->end()
                     ->end()
                 ->end()
                 ->arrayNode('sitemap')
