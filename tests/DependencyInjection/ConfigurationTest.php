@@ -30,6 +30,8 @@ final class ConfigurationTest extends TestCase
                 'metas' => [],
                 'separator' => ' - ',
                 'title' => 'Project name',
+                'title_prefix' => null,
+                'title_suffix' => null,
             ],
             'sitemap' => [
                 'doctrine_orm' => [],
@@ -94,6 +96,8 @@ final class ConfigurationTest extends TestCase
                 'default' => 'sonata.seo.page.default',
                 'separator' => ' - ',
                 'title' => 'Project name',
+                'title_prefix' => null,
+                'title_suffix' => null,
             ],
             'encoding' => 'UTF-8',
             'sitemap' => [

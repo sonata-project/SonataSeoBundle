@@ -29,6 +29,13 @@ final class ServiceCompilerPass implements CompilerPassInterface
         $definition = $container->findDefinition($config['default']);
 
         $definition->addMethodCall('setTitle', [$config['title']]);
+        if (null !== $config['title_prefix']) {
+            $definition->addMethodCall('addTitlePrefix', [$config['title_prefix']]);
+        }
+        if (null !== $config['title_suffix']) {
+            $definition->addMethodCall('addTitleSuffix', [$config['title_suffix']]);
+        }
+
         $definition->addMethodCall('setMetas', [$config['metas']]);
         $definition->addMethodCall('setHtmlAttributes', [$config['head']]);
         $definition->addMethodCall('setSeparator', [$config['separator']]);
