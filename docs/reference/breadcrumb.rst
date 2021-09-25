@@ -45,6 +45,22 @@ You can extend ``Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockServic
         <tag name="sonata.breadcrumb"/>
     </service>
 
+You can also override the breadcrumb order by defining a ``priority``:
+
+.. code-block:: xml
+
+    <!-- config/services.xml -->
+
+    <service id="app.bundle.block.breadcrumb" class="App\Block\MyCustomBreadcrumbBlockService">
+        <argument>my_custom_context</argument>
+        <argument>acme.bundle.block.breadcrumb</argument>
+        <argument type="service" id="templating"/>
+        <argument type="service" id="knp_menu.menu_provider"/>
+        <argument type="service" id="knp_menu.factory"/>
+        <tag name="sonata.block"/>
+        <tag name="sonata.breadcrumb" priority="-127"/>
+    </service>
+
 And to render the breadcrumb, just use this Twig helper :
 
 .. code-block:: twig
