@@ -68,7 +68,7 @@ class SeoPage implements SeoPageInterface
     /**
      * @var array<string, mixed>
      */
-    private $breadcrumb;
+    private $breadcrumb = [];
 
     /**
      * @param string $title
