@@ -57,7 +57,7 @@ final class SeoPage implements SeoPageInterface
     /**
      * @var array<string, mixed>
      */
-    private $breadcrumb;
+    private $breadcrumb = [];
 
     public function __construct(string $title = '')
     {
