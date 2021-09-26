@@ -19,7 +19,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 /**
- * @final since sonata-project/seo-bundle 2.x
+ * @final since sonata-project/seo-bundle 2.14
  */
 class SeoExtension extends AbstractExtension
 {

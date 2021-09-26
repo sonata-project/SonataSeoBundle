@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * @final since sonata-project/seo-bundle 2.x
+ * @final since sonata-project/seo-bundle 2.14
  */
 class SonataSeoBundle extends Bundle
 {

@@ -17,7 +17,7 @@ use Sonata\Exporter\Source\ChainSourceIterator;
 use Sonata\Exporter\Source\SourceIteratorInterface;
 
 /**
- * @final since sonata-project/seo-bundle 2.x
+ * @final since sonata-project/seo-bundle 2.14
  *
  * Manager several chain source iterator grouped.
  */

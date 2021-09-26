@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Seo;
 
 /**
- * @final since sonata-project/seo-bundle 2.x
+ * @final since sonata-project/seo-bundle 2.14
  *
  * http://en.wikipedia.org/wiki/Meta_element.
  */
@@ -104,7 +104,7 @@ class SeoPage implements SeoPageInterface
     public function addTitle($title)
     {
         @trigger_error(
-            'The '.__METHOD__.' method is deprecated since 2.x, to be removed in 3.0. '.
+            'The '.__METHOD__.' method is deprecated since 2.14, to be removed in 3.0. '.
             'Use '.__NAMESPACE__.'::addTitlePrefix() or '.__NAMESPACE__.'::addTitleSuffix .instead.',
             \E_USER_DEPRECATED
         );

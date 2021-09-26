@@ -18,7 +18,7 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * @final since sonata-project/seo-bundle 2.x
+ * @final since sonata-project/seo-bundle 2.14
  *
  * This is the class that validates and merges configuration from your app/config files.
  */

@@ -37,7 +37,7 @@ interface SeoPageInterface
     public function setTitle($title);
 
     /**
-     * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0. addTitlePrefix or addTitleSuffix instead.
+     * @deprecated since sonata-project/seo-bundle 2.14, to be removed in 3.0. addTitlePrefix or addTitleSuffix instead.
      *
      * @param string $title
      *
