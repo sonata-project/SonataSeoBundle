@@ -21,7 +21,7 @@ use Sonata\SeoBundle\Seo\SeoPageInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * @final since sonata-project/seo-bundle 2.x
+ * @final since sonata-project/seo-bundle 2.14
  */
 class ServiceCompilerPassTest extends TestCase
 {

@@ -1,6 +1,13 @@
 UPGRADE 2.x
 ===========
 
+UPGRADE FROM 2.13 to 2.14
+=========================
+
+## Social block deprecations
+
+All social blocks have been deprecated without any replacement.
+
 UPGRADE FROM 2.9 to 2.10
 ========================
 

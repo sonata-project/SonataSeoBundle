@@ -2,6 +2,25 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.14.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.13.1...2.14.0) - 2021-09-26
+### Added
+- [[#596](https://github.com/sonata-project/SonataSeoBundle/pull/596)] Added `priority` to `sonata.breadcrumb` tag ([@core23](https://github.com/core23))
+- [[#588](https://github.com/sonata-project/SonataSeoBundle/pull/588)] Added `SeoPageInterface::setBreadcrumb` ([@core23](https://github.com/core23))
+- [[#588](https://github.com/sonata-project/SonataSeoBundle/pull/588)] Added `SeoPageInterface::getBreadcrumbOptions` ([@core23](https://github.com/core23))
+- [[#588](https://github.com/sonata-project/SonataSeoBundle/pull/588)] Added `sonata_seo_breadcrumb` twig extension to render current breadcrumb ([@core23](https://github.com/core23))
+- [[#597](https://github.com/sonata-project/SonataSeoBundle/pull/597)] Allow setting global page prefix and suffix ([@core23](https://github.com/core23))
+- [[#586](https://github.com/sonata-project/SonataSeoBundle/pull/586)] Added `SeoPageInterface::addTitlePrefix` ([@core23](https://github.com/core23))
+- [[#586](https://github.com/sonata-project/SonataSeoBundle/pull/586)] Added `SeoPageInterface::addTitleSuffix` ([@core23](https://github.com/core23))
+- [[#586](https://github.com/sonata-project/SonataSeoBundle/pull/586)] Added `SeoPageInterface::getOriginalTitle` ([@core23](https://github.com/core23))
+- [[#586](https://github.com/sonata-project/SonataSeoBundle/pull/586)] Added `sonata_seo_title_text` twig function ([@core23](https://github.com/core23))
+
+### Changed
+- [[#572](https://github.com/sonata-project/SonataSeoBundle/pull/572)] Mark all* components as final by default ([@core23](https://github.com/core23))
+
+### Deprecated
+- [[#586](https://github.com/sonata-project/SonataSeoBundle/pull/586)] Deprecated `SeoPageInterface::addTitle` ([@core23](https://github.com/core23))
+- [[#572](https://github.com/sonata-project/SonataSeoBundle/pull/572)] Deprecated all social blocks ([@core23](https://github.com/core23))
+
 ## [2.13.1](https://github.com/sonata-project/SonataSeoBundle/compare/2.13.0...2.13.1) - 2021-06-13
 ### Fixed
 - [[#542](https://github.com/sonata-project/SonataSeoBundle/pull/542)] Added missing sonata-project/block-bundle dependency ([@patrickmaynard](https://github.com/patrickmaynard))

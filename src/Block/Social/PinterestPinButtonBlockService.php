@@ -33,7 +33,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  *
- * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
+ * @deprecated since sonata-project/seo-bundle 2.14, to be removed in 3.0.
  */
 class PinterestPinButtonBlockService extends AbstractAdminBlockService
 {

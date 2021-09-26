@@ -16,7 +16,7 @@ namespace Sonata\SeoBundle\Block\Breadcrumb;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 
 /**
- * @final since sonata-project/seo-bundle 2.x
+ * @final since sonata-project/seo-bundle 2.14
  *
  * BlockService for homepage breadcrumb.
  *
