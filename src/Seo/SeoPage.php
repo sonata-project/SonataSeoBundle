@@ -70,6 +70,7 @@ final class SeoPage implements SeoPageInterface
             'property' => [],
         ];
 
+        // NEXT_MAJOR: Use property initialization
         $this->htmlAttributes = [];
         $this->headAttributes = [];
         $this->linkCanonical = '';
