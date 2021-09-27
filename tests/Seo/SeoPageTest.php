@@ -34,6 +34,29 @@ final class SeoPageTest extends TestCase
         static::assertSame($expected, $page->getMetas());
     }
 
+    public function testAddArrayMeta()
+    {
+        $page = new SeoPage();
+
+        //Allow multiple tags
+        $page->addMeta('property', 'og:image', 'http://example1.com/');
+        $page->addMeta('property', 'og:image', 'http://example2.com/');
+
+        //Override tag
+        $page->addMeta('property', 'foo', 'foo', ['foo' => 'foo']);
+        $page->addMeta('property', 'foo', 'bar', ['foo' => 'bar']);
+
+        $expected = [
+            'http-equiv' => [],
+            'name' => [],
+            'schema' => [],
+            'charset' => [],
+            'property' => ['og:image' => [['http://example1.com/', 'http://example2.com/'], [[], []]], 'foo' => ['bar', ['foo' => 'bar']]],
+        ];
+
+        static::assertSame($expected, $page->getMetas());
+    }
+
     public function testOverrideMetas()
     {
         $page = new SeoPage();

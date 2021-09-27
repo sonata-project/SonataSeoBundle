@@ -121,18 +121,27 @@ class SeoExtension extends AbstractExtension
                 [$content, $extras] = $meta;
 
                 if (!empty($content)) {
-                    $html .= sprintf(
-                        "<meta %s=\"%s\" content=\"%s\" />\n",
-                        $type,
-                        $this->normalize($name),
-                        $this->normalize($content)
-                    );
+                    if (\is_array($content)) {
+                        foreach ($content as $contentKey => $contentItem) {
+                            $html .= $this->generateMetaTag($type, $name, $contentItem);
+                            if (isset($extras[$contentKey]) && \is_array($extras[$contentKey])) {
+                                foreach ($extras[$contentKey] as $extraKey => $extra) {
+                                    if (':' === substr($extraKey, 0, 1)) {
+                                        $html .= $this->generateMetaTag($type, $name.$extraKey, $extra);
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        $html .= $this->generateMetaTag($type, $name, $content);
+                        foreach ($extras as $extraKey => $extra) {
+                            if (':' === substr($extraKey, 0, 1)) {
+                                $html .= $this->generateMetaTag($type, $name.$extraKey, $extra);
+                            }
+                        }
+                    }
                 } else {
-                    $html .= sprintf(
-                        "<meta %s=\"%s\" />\n",
-                        $type,
-                        $this->normalize($name)
-                    );
+                    $html .= $this->generateMetaTag($type, $name);
                 }
             }
         }
@@ -274,6 +283,27 @@ class SeoExtension extends AbstractExtension
             'currentUri' => $currentUri,
             'options' => $this->page->getBreadcrumbOptions(),
         ]);
+    }
+
+    /**
+     * @return string
+     */
+    private function generateMetaTag($type, $name, $content = null)
+    {
+        if (null === $content) {
+            return sprintf(
+                "<meta %s=\"%s\" />\n",
+                $type,
+                $this->normalize($name)
+            );
+        }
+
+        return sprintf(
+            "<meta %s=\"%s\" content=\"%s\" />\n",
+            $type,
+            $this->normalize($name),
+            $this->normalize($content)
+        );
     }
 
     /**

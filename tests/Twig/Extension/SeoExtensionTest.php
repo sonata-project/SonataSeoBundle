@@ -96,7 +96,8 @@ final class SeoExtensionTest extends TestCase
             'schema' => [],
             'charset' => ['UTF-8' => ['', []]],
             'property' => [
-                'og:image:width' => [848, []],
+                'og:image' => ['image1', [':width' => 848]],
+                'og:image:height' => [646, []],
                 'og:type' => [new MetaTest(), []],
             ],
         ]);
@@ -104,7 +105,28 @@ final class SeoExtensionTest extends TestCase
         $extension = new SeoExtension($page, 'UTF-8');
 
         static::assertSame(
-            "<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n<meta property=\"og:image:width\" content=\"848\" />\n<meta property=\"og:type\" content=\"article\" />\n",
+            "<meta name=\"foo\" content=\"bar &quot;'&quot;\" />\n<meta charset=\"UTF-8\" />\n<meta property=\"og:image\" content=\"image1\" />\n<meta property=\"og:image:width\" content=\"848\" />\n<meta property=\"og:image:height\" content=\"646\" />\n<meta property=\"og:type\" content=\"article\" />\n",
+            $extension->getMetadatas()
+        );
+    }
+
+    public function testArrayMetadatas()
+    {
+        $page = $this->createMock(SeoPageInterface::class);
+        $page->expects(static::once())->method('getMetas')->willReturn([
+            'http-equiv' => [],
+            'name' => [],
+            'schema' => [],
+            'charset' => [],
+            'property' => [
+                'og:image' => [['image1', 'image2'], [['foo' => 'bar', ':width' => '640'], [':width' => '640', ':height' => '480']]],
+            ],
+        ]);
+
+        $extension = new SeoExtension($page, 'UTF-8');
+
+        static::assertSame(
+            "<meta property=\"og:image\" content=\"image1\" />\n<meta property=\"og:image:width\" content=\"640\" />\n<meta property=\"og:image\" content=\"image2\" />\n<meta property=\"og:image:width\" content=\"640\" />\n<meta property=\"og:image:height\" content=\"480\" />\n",
             $extension->getMetadatas()
         );
     }

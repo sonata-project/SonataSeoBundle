@@ -21,6 +21,12 @@ namespace Sonata\SeoBundle\Seo;
 class SeoPage implements SeoPageInterface
 {
     /**
+     * @var array<string>
+     */
+    private const ALLOW_MULTIPLE_TAGS = [
+        'og:image',
+    ];
+    /**
      * @var string
      */
     protected $title;
@@ -157,7 +163,20 @@ class SeoPage implements SeoPageInterface
             $this->metas[$type] = [];
         }
 
-        $this->metas[$type][$name] = [$value, $extras];
+        $arrayValue = [$value, $extras];
+
+        if (\in_array($name, self::ALLOW_MULTIPLE_TAGS, true)) {
+            if (isset($this->metas[$type][$name])) {
+                [$oldValue, $oldExtras] = $this->metas[$type][$name];
+                if (!\is_array($oldValue)) {
+                    $oldValue = [$oldValue];
+                    $oldExtras = [$oldExtras];
+                }
+                $arrayValue = [array_merge($oldValue, [$value]), array_merge($oldExtras, [$extras])];
+            }
+        }
+
+        $this->metas[$type][$name] = $arrayValue;
 
         return $this;
     }
