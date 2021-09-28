@@ -16,7 +16,7 @@ namespace Sonata\SeoBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -33,15 +33,15 @@ final class SonataSeoExtension extends Extension
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         if (isset($bundles['SonataBlockBundle'], $bundles['KnpMenuBundle'])) {
-            $loader->load('blocks.xml');
+            $loader->load('blocks.php');
         }
 
-        $loader->load('event.xml');
-        $loader->load('services.xml');
-        $loader->load('commands.xml');
+        $loader->load('event.php');
+        $loader->load('services.php');
+        $loader->load('commands.php');
 
         $this->configureSeoPage($config['page'], $container);
         $this->configureSitemap($config['sitemap'], $container);
