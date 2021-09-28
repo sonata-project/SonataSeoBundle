@@ -18,7 +18,6 @@ use Knp\Menu\ItemInterface;
 use Knp\Menu\Provider\MenuProviderInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\MenuBlockService;
-use Sonata\SeoBundle\BreadcrumbInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -27,7 +26,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implements BreadcrumbInterface
+abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implements BreadcrumbBlockService
 {
     /**
      * @var string
