@@ -15,6 +15,9 @@ namespace Sonata\SeoBundle;
 
 use Sonata\BlockBundle\Block\Service\BlockServiceInterface;
 
+/**
+ * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0. Use Sonata\SeoBundle\Block\Breadcrumb\Breadcrumb instead.
+ */
 interface BreadcrumbInterface extends BlockServiceInterface
 {
     /**
