@@ -21,7 +21,7 @@ namespace Sonata\SeoBundle\Seo;
 class SeoPage implements SeoPageInterface
 {
     /**
-     * @var array<string>
+     * @var string[]
      */
     private const ALLOW_MULTIPLE_TAGS = [
         'og:image',
