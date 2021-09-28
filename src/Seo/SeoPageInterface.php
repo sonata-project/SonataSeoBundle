@@ -19,6 +19,12 @@ interface SeoPageInterface
 
     public function getTitle(): string;
 
+    public function addTitlePrefix(string $prefix): self;
+
+    public function addTitleSuffix(string $suffix): self;
+
+    public function getOriginalTitle(): string;
+
     /**
      * @param array<string, mixed> $extras
      */
