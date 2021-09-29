@@ -35,15 +35,15 @@ class SonataSeoExtension extends Extension
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         if (isset($bundles['SonataBlockBundle'], $bundles['KnpMenuBundle'])) {
-            $loader->load('blocks.xml');
+            $loader->load('blocks.php');
         }
 
-        $loader->load('event.xml');
-        $loader->load('services.xml');
-        $loader->load('commands.xml');
+        $loader->load('event.php');
+        $loader->load('services.php');
+        $loader->load('commands.php');
 
         $this->configureSeoPage($config['page'], $container);
         $this->configureSitemap($config['sitemap'], $container);
