@@ -19,9 +19,9 @@ use Sonata\Exporter\Source\SourceIteratorInterface;
 /**
  * Manager several chain source iterator grouped.
  *
- * @phpstan-implements SourceIteratorInterface<\stdClass>
+ * @phpstan-implements \Iterator<\stdClass>
  */
-final class SourceManager implements SourceIteratorInterface
+final class SourceManager implements \Iterator
 {
     /**
      * @var \ArrayIterator<string, \stdClass>
@@ -36,8 +36,7 @@ final class SourceManager implements SourceIteratorInterface
     /**
      * Adding source with his group.
      *
-     * @param SourceIteratorInterface<\stdClass> $source
-     * @param mixed[]                            $types
+     * @param mixed[] $types
      */
     public function addSource(string $group, SourceIteratorInterface $source, array $types = []): void
     {
