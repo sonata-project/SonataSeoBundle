@@ -15,6 +15,7 @@ namespace Sonata\SeoBundle\Command;
 
 use Sonata\Exporter\Handler;
 use Sonata\Exporter\Writer\SitemapWriter;
+use Sonata\SeoBundle\Sitemap\Source;
 use Sonata\SeoBundle\Sitemap\SourceManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -140,11 +141,15 @@ EOT
      */
     private function generateSitemap(string $dir, string $scheme, string $host, string $appendPath): void
     {
+        /**
+         * @var string $group
+         * @var Source $sitemap
+         */
         foreach ($this->sitemapManager as $group => $sitemap) {
-            $write = new SitemapWriter($dir, $group, $sitemap->types, false);
+            $write = new SitemapWriter($dir, $group, $sitemap->getTypes(), false);
 
             try {
-                Handler::create($sitemap->sources, $write)->export();
+                Handler::create($sitemap->getSources(), $write)->export();
             } catch (\Exception $e) {
                 $this->filesystem->remove($dir);
 
