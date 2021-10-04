@@ -23,60 +23,48 @@ final class SeoPage implements SeoPageInterface
     /**
      * @var array<string, array<string, mixed>>
      */
-    private array $metas;
+    private array $metas = [
+        'http-equiv' => [],
+        'name' => [],
+        'schema' => [],
+        'charset' => [],
+        'property' => [],
+    ];
 
     /**
      * @var array<string, string>
      */
-    private array $htmlAttributes;
+    private array $htmlAttributes = [];
 
-    private string $linkCanonical;
+    private string $linkCanonical = '';
 
-    private string $separator;
-
-    /**
-     * @var array<string, string>
-     */
-    private array $headAttributes;
+    private string $separator = ' ';
 
     /**
      * @var array<string, string>
      */
-    private array $langAlternates;
+    private array $headAttributes = [];
 
     /**
      * @var array<string, string>
      */
-    private array $oembedLinks;
+    private array $langAlternates = [];
 
     /**
-     * @var string
+     * @var array<string, string>
      */
-    private $originalTitle;
+    private array $oembedLinks = [];
+
+    private string $originalTitle;
 
     /**
      * @var array<string, mixed>
      */
-    private $breadcrumb = [];
+    private array $breadcrumb = [];
 
     public function __construct(string $title = '')
     {
-        $this->title = $title;
-        $this->metas = [
-            'http-equiv' => [],
-            'name' => [],
-            'schema' => [],
-            'charset' => [],
-            'property' => [],
-        ];
-
-        // NEXT_MAJOR: Use property initialization
-        $this->htmlAttributes = [];
-        $this->headAttributes = [];
-        $this->linkCanonical = '';
-        $this->separator = ' ';
-        $this->langAlternates = [];
-        $this->oembedLinks = [];
+        $this->setTitle($title);
     }
 
     public function setTitle(string $title): self

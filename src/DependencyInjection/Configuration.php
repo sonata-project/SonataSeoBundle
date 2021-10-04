@@ -48,8 +48,7 @@ final class Configuration implements ConfigurationInterface
                             ->end()
                         ->end()
                         ->scalarNode('separator')->defaultValue(' - ')->end()
-                        // NEXT_MAJOR: Make this field required
-                        ->scalarNode('title')->defaultValue('Project name')->end()
+                        ->scalarNode('title')->defaultValue('')->end()
                         ->scalarNode('title_prefix')->defaultNull()->end()
                         ->scalarNode('title_suffix')->defaultNull()->end()
                     ->end()
