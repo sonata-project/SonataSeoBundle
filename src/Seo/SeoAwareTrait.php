@@ -18,7 +18,7 @@ trait SeoAwareTrait
     /**
      * @required
      */
-    protected ?SeoPageInterface $seoPage;
+    protected ?SeoPageInterface $seoPage = null;
 
     public function setSeoPage(?SeoPageInterface $seoPage = null): void
     {
