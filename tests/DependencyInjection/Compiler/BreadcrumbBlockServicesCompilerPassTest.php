@@ -100,6 +100,9 @@ final class BreadcrumbBlockServicesCompilerPassTest extends TestCase
         ]);
     }
 
+    /**
+     * @return string[]
+     */
     private function getCalledServices(): array
     {
         $methodCalls = $this->listener->getMethodCalls();
@@ -114,6 +117,9 @@ final class BreadcrumbBlockServicesCompilerPassTest extends TestCase
         $this->compilerPass->process($this->containerBuilder);
     }
 
+    /**
+     * @param string[] $services
+     */
     private function assertServiceOrder(array $services): void
     {
         static::assertSame($services, $this->getCalledServices());

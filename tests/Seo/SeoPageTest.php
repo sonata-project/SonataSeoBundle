@@ -126,7 +126,7 @@ final class SeoPageTest extends TestCase
         static::assertSame('Additional title - My title', $page->getTitle());
     }
 
-    public function addTitlePrefix()
+    public function addTitlePrefix(): void
     {
         $page = new SeoPage();
         $page->setTitle('My title');
@@ -137,7 +137,7 @@ final class SeoPageTest extends TestCase
         static::assertSame('My title', $page->getOriginalTitle());
     }
 
-    public function addTitleSuffix()
+    public function addTitleSuffix(): void
     {
         $page = new SeoPage();
         $page->setTitle('My title');
