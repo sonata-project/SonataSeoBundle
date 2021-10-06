@@ -113,19 +113,6 @@ final class SeoPageTest extends TestCase
         static::assertSame('My title', $page->getTitle());
     }
 
-    /**
-     * @group legacy
-     */
-    public function testAddTitle(): void
-    {
-        $page = new SeoPage();
-        $page->setTitle('My title');
-        $page->setSeparator(' - ');
-        $page->addTitle('Additional title');
-
-        static::assertSame('Additional title - My title', $page->getTitle());
-    }
-
     public function addTitlePrefix(): void
     {
         $page = new SeoPage();

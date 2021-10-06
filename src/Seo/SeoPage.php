@@ -75,19 +75,6 @@ final class SeoPage implements SeoPageInterface
         return $this;
     }
 
-    public function addTitle(string $title): self
-    {
-        @trigger_error(
-            'The '.__METHOD__.' method is deprecated since 2.14, to be removed in 3.0. '.
-            'Use '.__NAMESPACE__.'::addTitlePrefix() or '.__NAMESPACE__.'::addTitleSuffix .instead.',
-            \E_USER_DEPRECATED
-        );
-
-        $this->title = $title.$this->separator.$this->title;
-
-        return $this;
-    }
-
     public function addTitlePrefix(string $prefix): self
     {
         $this->title = $prefix.$this->separator.$this->title;
