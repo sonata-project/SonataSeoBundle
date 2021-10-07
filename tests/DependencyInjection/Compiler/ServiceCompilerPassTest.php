@@ -69,6 +69,8 @@ final class ServiceCompilerPassTest extends TestCase
 
         $page = $container->get('sonata.seo.custom.page');
 
+        \assert($page instanceof SeoPageInterface);
+
         static::assertSame('Project name', $page->getOriginalTitle());
         static::assertSame('Prefix Project name Suffix', $page->getTitle());
     }

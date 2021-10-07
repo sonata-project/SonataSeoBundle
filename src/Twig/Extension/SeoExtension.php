@@ -67,10 +67,10 @@ final class SeoExtension extends AbstractExtension
     {
         $html = '';
         foreach ($this->page->getMetas() as $type => $metas) {
-            foreach ((array) $metas as $name => $meta) {
+            foreach ($metas as $name => $meta) {
                 [$content, $extras] = $meta;
 
-                if (!empty($content)) {
+                if ('' !== $content) {
                     $html .= sprintf(
                         "<meta %s=\"%s\" content=\"%s\" />\n",
                         $type,
@@ -112,7 +112,7 @@ final class SeoExtension extends AbstractExtension
 
     public function getLinkCanonical(): string
     {
-        if ($this->page->getLinkCanonical()) {
+        if ('' !== $this->page->getLinkCanonical()) {
             return sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
         }
 

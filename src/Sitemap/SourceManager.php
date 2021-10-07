@@ -43,6 +43,8 @@ final class SourceManager implements \Iterator
             $this->sources[$group] = new Source();
         }
 
+        \assert(null !== $this->sources[$group]);
+
         $this->sources[$group]->addSource($source);
 
         if ([] !== $types) {

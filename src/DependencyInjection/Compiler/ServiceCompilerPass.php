@@ -24,6 +24,7 @@ final class ServiceCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
+        /** @var array<string, mixed> $config */
         $config = $container->getParameter('sonata.seo.config');
 
         $definition = $container->findDefinition($config['default']);

@@ -170,12 +170,24 @@ EOT
     {
         $oldFiles = Finder::create()->files()->name('sitemap*.xml')->in($permanentDir);
         foreach ($oldFiles as $file) {
-            $this->filesystem->remove($file->getRealPath());
+            $pathname = $file->getRealPath();
+
+            if (false === $pathname) {
+                throw new \LogicException(sprintf('File %s does not exist', $file));
+            }
+
+            $this->filesystem->remove($pathname);
         }
 
         $newFiles = Finder::create()->files()->name('sitemap*.xml')->in($tempDir);
         foreach ($newFiles as $file) {
-            $this->filesystem->rename($file->getRealPath(), sprintf('%s/%s', $permanentDir, $file->getFilename()));
+            $pathname = $file->getRealPath();
+
+            if (false === $pathname) {
+                throw new \LogicException(sprintf('File %s does not exist', $file));
+            }
+
+            $this->filesystem->rename($pathname, sprintf('%s/%s', $permanentDir, $file->getFilename()));
         }
     }
 }
