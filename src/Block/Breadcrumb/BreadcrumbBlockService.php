@@ -13,8 +13,9 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Block\Breadcrumb;
 
-use Sonata\SeoBundle\BreadcrumbInterface;
+use Sonata\BlockBundle\Block\Service\BlockServiceInterface;
 
-interface BreadcrumbBlockService extends BreadcrumbInterface
+interface BreadcrumbBlockService extends BlockServiceInterface
 {
+    public function handleContext(string $context): bool;
 }
