@@ -18,13 +18,10 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigura
 return static function (ContainerConfigurator $containerConfigurator): void {
     // Use "service" function for creating references to services when dropping support for Symfony 4.4
     // Use "param" function for creating references to parameters when dropping support for Symfony 5.1
-    $containerConfigurator->parameters()
-        ->set('sonata.seo.block.breadcrumb.homepage.class', HomepageBreadcrumbBlockService::class);
 
     $containerConfigurator->services()
 
-        // Breadcrumb
-        ->set('sonata.seo.block.breadcrumb.homepage', '%sonata.seo.block.breadcrumb.homepage.class%')
+        ->set('sonata.seo.block.breadcrumb.homepage', HomepageBreadcrumbBlockService::class)
             ->public()
             ->tag('sonata.block')
             ->tag('sonata.breadcrumb')
