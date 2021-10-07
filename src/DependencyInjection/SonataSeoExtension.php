@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\DependencyInjection;
 
+use Sonata\Exporter\Source\DoctrineDBALConnectionSourceIterator;
+use Sonata\Exporter\Source\SymfonySitemapSourceIterator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -75,7 +77,7 @@ final class SonataSeoExtension extends Extension
             // define the connectionIterator
             $connectionIteratorId = 'sonata.seo.source.doctrine_connection_iterator_'.$pos;
 
-            $connectionIterator = new Definition('%sonata.seo.exporter.database_source_iterator.class%', [
+            $connectionIterator = new Definition(DoctrineDBALConnectionSourceIterator::class, [
                 new Reference($sitemap['connection']),
                 $sitemap['query'],
             ]);
@@ -86,7 +88,7 @@ final class SonataSeoExtension extends Extension
             // define the sitemap proxy iterator
             $sitemapIteratorId = 'sonata.seo.source.doctrine_sitemap_iterator_'.$pos;
 
-            $sitemapIterator = new Definition('%sonata.seo.exporter.sitemap_source_iterator.class%', [
+            $sitemapIterator = new Definition(SymfonySitemapSourceIterator::class, [
                 new Reference($connectionIteratorId),
                 new Reference('router'),
                 $sitemap['route'],
