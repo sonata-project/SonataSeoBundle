@@ -33,6 +33,7 @@ final class SonataSeoExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
         $config = $this->fixConfiguration($config);
 
+        /** @var array<string, mixed> $bundles */
         $bundles = $container->getParameter('kernel.bundles');
 
         $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));

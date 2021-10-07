@@ -175,11 +175,4 @@ final class SeoPageTest extends TestCase
         static::assertTrue($page->hasMeta('property', 'test'));
         static::assertFalse($page->hasMeta('property', 'fake'));
     }
-
-    public function testSetSeparator(): void
-    {
-        $page = new SeoPage();
-
-        static::assertInstanceOf(SeoPage::class, $page->setSeparator('-'));
-    }
 }

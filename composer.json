@@ -39,6 +39,7 @@
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^0.12.84",
         "phpstan/phpstan-phpunit": "^0.12.16",
+        "phpstan/phpstan-strict-rules": "^0.12.10",
         "phpstan/phpstan-symfony": "^0.12.44",
         "psalm/plugin-phpunit": "^0.15",
         "symfony/console": "^4.4 || ^5.3",
