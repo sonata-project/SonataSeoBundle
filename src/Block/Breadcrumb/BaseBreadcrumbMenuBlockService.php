@@ -52,7 +52,7 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         ]);
     }
 
-    protected function getFactory(): FactoryInterface
+    final protected function getFactory(): FactoryInterface
     {
         return $this->factory;
     }
