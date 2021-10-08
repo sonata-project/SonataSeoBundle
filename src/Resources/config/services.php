@@ -32,6 +32,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
                 '',
             ])
 
-        ->set('sonata.seo.sitemap.manager', SourceManager::class)
-            ->public();
+        ->set('sonata.seo.sitemap.manager', SourceManager::class);
 };
