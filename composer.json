@@ -43,7 +43,8 @@
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^0.12.84",
         "phpstan/phpstan-phpunit": "^0.12.16",
-        "psalm/plugin-phpunit": "^0.15",
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-phpunit": "^0.16",
         "sonata-project/admin-bundle": "^3.31",
         "sonata-project/doctrine-extensions": "^1.10.1",
         "sonata-project/form-extensions": "^0.1 || ^1.4",
@@ -76,13 +77,5 @@
         "psr-4": {
             "Sonata\\SeoBundle\\Tests\\": "tests/"
         }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
-        ],
-        "post-update-cmd": [
-            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
-        ]
     }
 }
