@@ -24,13 +24,13 @@
         "ext-json": "*",
         "sonata-project/block-bundle": "^4.0",
         "sonata-project/exporter": "^2.0",
-        "symfony/config": "^4.4 || ^5.3",
-        "symfony/dependency-injection": "^4.4 || ^5.3",
-        "symfony/form": "^4.4 || ^5.3",
-        "symfony/framework-bundle": "^4.4 || ^5.3",
-        "symfony/http-foundation": "^4.4 || ^5.3",
-        "symfony/http-kernel": "^4.4.13 || ^5.3",
-        "symfony/options-resolver": "^4.4 || ^5.3",
+        "symfony/config": "^4.4 || ^5.3 || ^6.0",
+        "symfony/dependency-injection": "^4.4 || ^5.3 || ^6.0",
+        "symfony/form": "^4.4 || ^5.3 || ^6.0",
+        "symfony/framework-bundle": "^4.4 || ^5.3 || ^6.0",
+        "symfony/http-foundation": "^4.4 || ^5.3 || ^6.0",
+        "symfony/http-kernel": "^4.4.13 || ^5.3 || ^6.0",
+        "symfony/options-resolver": "^4.4 || ^5.3 || ^6.0",
         "twig/twig": "^2.9 || ^3.0"
     },
     "require-dev": {
@@ -41,12 +41,13 @@
         "phpstan/phpstan-phpunit": "^0.12.16",
         "phpstan/phpstan-strict-rules": "^0.12.10",
         "phpstan/phpstan-symfony": "^0.12.44",
-        "psalm/plugin-phpunit": "^0.15",
-        "symfony/console": "^4.4 || ^5.3",
-        "symfony/filesystem": "^4.4 || ^5.3",
-        "symfony/finder": "^4.4 || ^5.3",
-        "symfony/phpunit-bridge": "^5.3",
-        "symfony/yaml": "^4.4 || ^5.3",
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-phpunit": "^0.16",
+        "symfony/console": "^4.4 || ^5.3 || ^6.0",
+        "symfony/filesystem": "^4.4 || ^5.3 || ^6.0",
+        "symfony/finder": "^4.4 || ^5.3 || ^6.0",
+        "symfony/phpunit-bridge": "^5.3 || ^6.0",
+        "symfony/yaml": "^4.4 || ^5.3 || ^6.0",
         "vimeo/psalm": "^4.7.2"
     },
     "config": {
@@ -61,13 +62,5 @@
         "psr-4": {
             "Sonata\\SeoBundle\\Tests\\": "tests/"
         }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
-        ],
-        "post-update-cmd": [
-            "[ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/simple-phpunit install"
-        ]
     }
 }
