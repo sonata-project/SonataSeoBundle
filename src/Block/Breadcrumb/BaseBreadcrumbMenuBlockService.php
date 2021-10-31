@@ -17,6 +17,7 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Twig\Environment;
 
@@ -41,15 +42,47 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         return $this->getContext() === $context;
     }
 
+    final public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
+    {
+        $responseSettings = [
+            'menu' => $this->getMenu($blockContext),
+            'menu_options' => $this->getMenuOptions($blockContext->getSettings()),
+            'block' => $blockContext->getBlock(),
+            'context' => $blockContext,
+        ];
+
+        $template = $blockContext->getTemplate();
+
+        \assert(\is_string($template));
+
+        if ('private' === $blockContext->getSetting('cache_policy')) {
+            return $this->renderPrivateResponse($template, $responseSettings, $response);
+        }
+
+        return $this->renderResponse($template, $responseSettings, $response);
+    }
+
     public function configureSettings(OptionsResolver $resolver): void
     {
-        parent::configureSettings($resolver);
-
         $resolver->setDefaults([
+            'cache_policy' => 'public',
+            'template' => '@SonataBlock/Block/block_core_menu.html.twig',
+            'safe_labels' => false,
+            'current_class' => 'active',
+            'first_class' => false,
+            'last_class' => false,
+            'current_uri' => null,
+            'menu_class' => 'list-group',
+            'children_class' => 'list-group-item',
             'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
             'include_homepage_link' => true,
-            'context' => false,
+            'context' => null,
         ]);
+    }
+
+    protected function getMenu(BlockContextInterface $blockContext): ItemInterface
+    {
+        return $this->getRootMenu($blockContext);
     }
 
     final protected function getFactory(): FactoryInterface
@@ -59,10 +92,7 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
 
     abstract protected function getContext(): string;
 
-    /**
-     * Initialize breadcrumb menu.
-     */
-    protected function getRootMenu(BlockContextInterface $blockContext): ItemInterface
+    final protected function getRootMenu(BlockContextInterface $blockContext): ItemInterface
     {
         $settings = $blockContext->getSettings();
         /*
@@ -85,5 +115,33 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         }
 
         return $menu;
+    }
+
+    /**
+     * Replaces setting keys with knp menu item options keys.
+     *
+     * @param array<string, mixed> $settings
+     *
+     * @return array<string, mixed>
+     */
+    private function getMenuOptions(array $settings): array
+    {
+        $mapping = [
+            'current_class' => 'currentClass',
+            'first_class' => 'firstClass',
+            'last_class' => 'lastClass',
+            'safe_labels' => 'allow_safe_labels',
+            'menu_template' => 'template',
+        ];
+
+        $options = [];
+
+        foreach ($settings as $key => $value) {
+            if (null !== $value && \array_key_exists($key, $mapping)) {
+                $options[$mapping[$key]] = $value;
+            }
+        }
+
+        return $options;
     }
 }
