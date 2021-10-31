@@ -28,7 +28,7 @@ final class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockServic
         return 'homepage';
     }
 
-    private function getMenu(BlockContextInterface $blockContext): ItemInterface
+    protected function getMenu(BlockContextInterface $blockContext): ItemInterface
     {
         $menu = $this->getRootMenu($blockContext);
 
