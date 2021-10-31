@@ -100,13 +100,7 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
          */
 
         $menu = $this->factory->createItem('breadcrumb');
-
         $menu->setChildrenAttribute('class', 'breadcrumb');
-
-        if (method_exists($menu, 'setCurrentUri')) {
-            $menu->setCurrentUri($settings['current_uri']);
-        }
-
         $menu->setCurrent(true);
         $menu->setUri($settings['current_uri']);
 
