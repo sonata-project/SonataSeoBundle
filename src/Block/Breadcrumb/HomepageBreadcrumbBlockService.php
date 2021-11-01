@@ -20,8 +20,8 @@ namespace Sonata\SeoBundle\Block\Breadcrumb;
  */
 final class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
 {
-    protected function getContext(): string
+    public function handleContext(string $context): bool
     {
-        return 'homepage';
+        return true;
     }
 }
