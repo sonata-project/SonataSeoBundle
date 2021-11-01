@@ -62,6 +62,9 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
         return $this->context === $context;
     }
 
+    /**
+     * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
+     */
     public function getName()
     {
         return sprintf('Breadcrumb %s', $this->context);
@@ -80,6 +83,8 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
 
     /**
      * @return FactoryInterface
+     *
+     * @final since sonata-project/seo-bundle 2.x
      */
     protected function getFactory()
     {
@@ -88,6 +93,8 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
 
     /**
      * @return string
+     *
+     * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
      */
     protected function getContext()
     {
@@ -98,6 +105,8 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
      * Initialize breadcrumb menu.
      *
      * @return ItemInterface
+     *
+     * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
      */
     protected function getRootMenu(BlockContextInterface $blockContext)
     {
