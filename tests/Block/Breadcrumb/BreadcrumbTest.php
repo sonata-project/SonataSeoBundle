@@ -24,9 +24,9 @@ use Twig\Environment;
 
 final class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 {
-    protected function getContext(): string
+    public function handleContext(string $context): bool
     {
-        return 'test';
+        return true;
     }
 }
 

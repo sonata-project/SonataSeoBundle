@@ -37,11 +37,6 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         $this->factory = $factory;
     }
 
-    public function handleContext(string $context): bool
-    {
-        return $this->getContext() === $context;
-    }
-
     final public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
         $responseSettings = [
@@ -100,8 +95,6 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
     {
         return $this->factory;
     }
-
-    abstract protected function getContext(): string;
 
     /**
      * Replaces setting keys with knp menu item options keys.
