@@ -10,15 +10,22 @@ The `getRootMenu()` method was removed and the logic was moved to the `getMenu()
 Before:
 ```php
 protected function getMenu(BlockContextInterface $blockContext) {
-    // come custom logic
+    $menu = $this->getRootMenu($blockContext);
+
+    // Some custom logic
+
+    return $menu;
 }
 ```
 After:
+
 ```php
 protected function getMenu(BlockContextInterface $blockContext): ItemInterface {
-    parent::getMenu($blockContext);
+    $menu = parent::getMenu($blockContext);
 
-    // come custom logic
+    // Some custom logic
+
+    return $menu;
 }
 ```
 
