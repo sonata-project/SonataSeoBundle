@@ -82,22 +82,7 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
 
     protected function getMenu(BlockContextInterface $blockContext): ItemInterface
     {
-        return $this->getRootMenu($blockContext);
-    }
-
-    final protected function getFactory(): FactoryInterface
-    {
-        return $this->factory;
-    }
-
-    abstract protected function getContext(): string;
-
-    final protected function getRootMenu(BlockContextInterface $blockContext): ItemInterface
-    {
         $settings = $blockContext->getSettings();
-        /*
-         * @todo : Use the router to get the homepage URI
-         */
 
         $menu = $this->factory->createItem('breadcrumb');
         $menu->setChildrenAttribute('class', 'breadcrumb');
@@ -110,6 +95,13 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
 
         return $menu;
     }
+
+    final protected function getFactory(): FactoryInterface
+    {
+        return $this->factory;
+    }
+
+    abstract protected function getContext(): string;
 
     /**
      * Replaces setting keys with knp menu item options keys.
