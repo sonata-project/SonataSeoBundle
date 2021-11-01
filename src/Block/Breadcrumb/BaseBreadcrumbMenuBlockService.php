@@ -84,7 +84,7 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         $menu->setCurrent(true);
         $menu->setUri($settings['current_uri']);
 
-        if ($settings['include_homepage_link']) {
+        if (true === $settings['include_homepage_link']) {
             $menu->addChild('sonata_seo_homepage_breadcrumb', ['uri' => '/']);
         }
 
