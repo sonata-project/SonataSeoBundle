@@ -63,7 +63,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
     }
 
     /**
-     * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
+     * @deprecated since sonata-project/seo-bundle 2.15, to be removed in 3.0.
      */
     public function getName()
     {
@@ -84,7 +84,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
     /**
      * @return FactoryInterface
      *
-     * @final since sonata-project/seo-bundle 2.x
+     * @final since sonata-project/seo-bundle 2.15
      */
     protected function getFactory()
     {
@@ -94,7 +94,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
     /**
      * @return string
      *
-     * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
+     * @deprecated since sonata-project/seo-bundle 2.15, to be removed in 3.0.
      */
     protected function getContext()
     {
@@ -106,7 +106,7 @@ abstract class BaseBreadcrumbMenuBlockService extends MenuBlockService implement
      *
      * @return ItemInterface
      *
-     * @deprecated since sonata-project/seo-bundle 2.x, to be removed in 3.0.
+     * @deprecated since sonata-project/seo-bundle 2.15, to be removed in 3.0.
      */
     protected function getRootMenu(BlockContextInterface $blockContext)
     {
