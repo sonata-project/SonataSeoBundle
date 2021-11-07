@@ -28,6 +28,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - [[#609](https://github.com/sonata-project/SonataSeoBundle/pull/609)] Removed all `sonata.seo.*.class` parameters from container ([@core23](https://github.com/core23))
 - [[#580](https://github.com/sonata-project/SonataSeoBundle/pull/580)] Removed `http` service configuration ([@core23](https://github.com/core23))
 
+## [2.15.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.14.0...2.15.0) - 2021-11-06
+### Added
+- [[#603](https://github.com/sonata-project/SonataSeoBundle/pull/603)] Add `Sonata\SeoBundle\Block\Breadcrumb\BreadcrumbBlockService` ([@core23](https://github.com/core23))
+
+### Changed
+- [[#623](https://github.com/sonata-project/SonataSeoBundle/pull/623)] Add upgrade information to `BaseBreadcrumbMenuBlockService` ([@core23](https://github.com/core23))
+
+### Deprecated
+- [[#603](https://github.com/sonata-project/SonataSeoBundle/pull/603)] Deprecate `Sonata\SeoBundle\BreadcrumbInterface` ([@core23](https://github.com/core23))
+
 ## [2.14.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.13.1...2.14.0) - 2021-09-26
 ### Added
 - [[#596](https://github.com/sonata-project/SonataSeoBundle/pull/596)] Added `priority` to `sonata.breadcrumb` tag ([@core23](https://github.com/core23))
