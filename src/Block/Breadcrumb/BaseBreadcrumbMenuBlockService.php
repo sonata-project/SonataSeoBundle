@@ -37,11 +37,6 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         $this->factory = $factory;
     }
 
-    public function handleContext(string $context): bool
-    {
-        return $this->getContext() === $context;
-    }
-
     final public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
         $responseSettings = [
@@ -82,33 +77,23 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
 
     protected function getMenu(BlockContextInterface $blockContext): ItemInterface
     {
-        return $this->getRootMenu($blockContext);
-    }
-
-    final protected function getFactory(): FactoryInterface
-    {
-        return $this->factory;
-    }
-
-    abstract protected function getContext(): string;
-
-    final protected function getRootMenu(BlockContextInterface $blockContext): ItemInterface
-    {
         $settings = $blockContext->getSettings();
-        /*
-         * @todo : Use the router to get the homepage URI
-         */
 
         $menu = $this->factory->createItem('breadcrumb');
         $menu->setChildrenAttribute('class', 'breadcrumb');
         $menu->setCurrent(true);
         $menu->setUri($settings['current_uri']);
 
-        if ($settings['include_homepage_link']) {
+        if (true === $settings['include_homepage_link']) {
             $menu->addChild('sonata_seo_homepage_breadcrumb', ['uri' => '/']);
         }
 
         return $menu;
+    }
+
+    final protected function getFactory(): FactoryInterface
+    {
+        return $this->factory;
     }
 
     /**

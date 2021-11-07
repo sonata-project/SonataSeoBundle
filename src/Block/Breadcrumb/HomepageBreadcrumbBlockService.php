@@ -13,9 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Block\Breadcrumb;
 
-use Knp\Menu\ItemInterface;
-use Sonata\BlockBundle\Block\BlockContextInterface;
-
 /**
  * BlockService for homepage breadcrumb.
  *
@@ -23,15 +20,8 @@ use Sonata\BlockBundle\Block\BlockContextInterface;
  */
 final class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
 {
-    protected function getContext(): string
+    public function handleContext(string $context): bool
     {
-        return 'homepage';
-    }
-
-    protected function getMenu(BlockContextInterface $blockContext): ItemInterface
-    {
-        $menu = $this->getRootMenu($blockContext);
-
-        return $menu;
+        return true;
     }
 }

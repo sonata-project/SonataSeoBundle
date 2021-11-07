@@ -2,6 +2,21 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.0-RC1](https://github.com/sonata-project/SonataSeoBundle/compare/3.0.0-alpha.1...3.0.0-RC1) - 2021-11-03
+### Added
+- [[#614](https://github.com/sonata-project/SonataSeoBundle/pull/614)] Symfony 6 support ([@Kocal](https://github.com/Kocal))
+
+### Changed
+- [[#624](https://github.com/sonata-project/SonataSeoBundle/pull/624)] `BaseBreadcrumbMenuBlockService::getMenu()` method contains the root menu ([@core23](https://github.com/core23))
+- [[#620](https://github.com/sonata-project/SonataSeoBundle/pull/620)] Mark `BaseBreadcrumbMenuBlockService::getRootMenu()` as final ([@core23](https://github.com/core23))
+
+### Fixed
+- [[#620](https://github.com/sonata-project/SonataSeoBundle/pull/620)] Fixed breadcrumb rendering ([@core23](https://github.com/core23))
+
+### Removed
+- [[#622](https://github.com/sonata-project/SonataSeoBundle/pull/622)] `BaseBreadcrumbMenuBlockService::getContext` method in favor of `BreadcrumbBlockService::handleContext` ([@core23](https://github.com/core23))
+- [[#624](https://github.com/sonata-project/SonataSeoBundle/pull/624)] `BaseBreadcrumbMenuBlockService::getRootMenu()` method ([@core23](https://github.com/core23))
+
 ## [3.0.0-alpha.1](https://github.com/sonata-project/SonataSeoBundle/compare/2.14.0...3.0.0-alpha.1) - 2021-10-11
 ### Changed
 - [[#585](https://github.com/sonata-project/SonataSeoBundle/pull/585)] Added type hints to every property and method. ([@core23](https://github.com/core23))
@@ -12,6 +27,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - [[#585](https://github.com/sonata-project/SonataSeoBundle/pull/585)] Dropped support for PHP 7.3 ([@core23](https://github.com/core23))
 - [[#609](https://github.com/sonata-project/SonataSeoBundle/pull/609)] Removed all `sonata.seo.*.class` parameters from container ([@core23](https://github.com/core23))
 - [[#580](https://github.com/sonata-project/SonataSeoBundle/pull/580)] Removed `http` service configuration ([@core23](https://github.com/core23))
+
+## [2.15.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.14.0...2.15.0) - 2021-11-06
+### Added
+- [[#603](https://github.com/sonata-project/SonataSeoBundle/pull/603)] Add `Sonata\SeoBundle\Block\Breadcrumb\BreadcrumbBlockService` ([@core23](https://github.com/core23))
+
+### Changed
+- [[#623](https://github.com/sonata-project/SonataSeoBundle/pull/623)] Add upgrade information to `BaseBreadcrumbMenuBlockService` ([@core23](https://github.com/core23))
+
+### Deprecated
+- [[#603](https://github.com/sonata-project/SonataSeoBundle/pull/603)] Deprecate `Sonata\SeoBundle\BreadcrumbInterface` ([@core23](https://github.com/core23))
 
 ## [2.14.0](https://github.com/sonata-project/SonataSeoBundle/compare/2.13.1...2.14.0) - 2021-09-26
 ### Added

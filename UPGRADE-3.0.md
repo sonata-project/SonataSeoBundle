@@ -1,6 +1,34 @@
 UPGRADE FROM 2.X to 3.0
 =======================
 
+## Refactored `BaseBreadcrumbMenuBlockService`
+
+The class was slightly refactored, so some extension points became final.
+
+The `getRootMenu()` method was removed and the logic was moved to the `getMenu()` method. You need to call the parent method if you rely on the old logic:
+
+Before:
+```php
+protected function getMenu(BlockContextInterface $blockContext) {
+    $menu = $this->getRootMenu($blockContext);
+
+    // Some custom logic
+
+    return $menu;
+}
+```
+After:
+
+```php
+protected function getMenu(BlockContextInterface $blockContext): ItemInterface {
+    $menu = parent::getMenu($blockContext);
+
+    // Some custom logic
+
+    return $menu;
+}
+```
+
 ## SeoPage
 
 If you have implemented a custom seo page, you must adapt the signature of the following new methods to match the one in `SeoPageInterface` again:

@@ -11,19 +11,20 @@ You can extend ``Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockServic
 
     namespace App\Block;
 
+    use Knp\Menu\ItemInterface;
     use Sonata\BlockBundle\Block\BlockContextInterface;
     use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
 
     class MyCustomBreadcrumbBlockService extends BaseBreadcrumbMenuBlockService
     {
-        public function getName()
+        public function handleContext(string $context): bool
         {
-            return 'app.block.breadcrumb';
+            return 'app.block.breadcrumb' === $context;
         }
 
-        protected function getMenu(BlockContextInterface $blockContext)
+        protected function getMenu(BlockContextInterface $blockContext): ItemInterface
         {
-            $menu = $this->getRootMenu($blockContext);
+            $menu = $this->getMenu($blockContext);
 
             $menu->addChild('my_awesome_action');
 
@@ -36,10 +37,7 @@ You can extend ``Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockServic
     <!-- config/services.xml -->
 
     <service id="app.bundle.block.breadcrumb" class="App\Block\MyCustomBreadcrumbBlockService">
-        <argument>my_custom_context</argument>
-        <argument>acme.bundle.block.breadcrumb</argument>
-        <argument type="service" id="templating"/>
-        <argument type="service" id="knp_menu.menu_provider"/>
+        <argument type="service" id="twig"/>
         <argument type="service" id="knp_menu.factory"/>
         <tag name="sonata.block"/>
         <tag name="sonata.breadcrumb"/>
@@ -52,10 +50,7 @@ You can also override the breadcrumb order by defining a ``priority``:
     <!-- config/services.xml -->
 
     <service id="app.bundle.block.breadcrumb" class="App\Block\MyCustomBreadcrumbBlockService">
-        <argument>my_custom_context</argument>
-        <argument>acme.bundle.block.breadcrumb</argument>
-        <argument type="service" id="templating"/>
-        <argument type="service" id="knp_menu.menu_provider"/>
+        <argument type="service" id="twig"/>
         <argument type="service" id="knp_menu.factory"/>
         <tag name="sonata.block"/>
         <tag name="sonata.breadcrumb" priority="-127"/>

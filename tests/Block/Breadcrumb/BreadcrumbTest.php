@@ -16,7 +16,6 @@ namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContext;
-use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
@@ -25,14 +24,9 @@ use Twig\Environment;
 
 final class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 {
-    protected function getContext(): string
+    public function handleContext(string $context): bool
     {
-        return 'test';
-    }
-
-    protected function getMenu(BlockContextInterface $blockContext): ItemInterface
-    {
-        return $this->getRootMenu($blockContext);
+        return true;
     }
 }
 
