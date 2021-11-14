@@ -27,8 +27,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             ->tag('sonata.breadcrumb')
             ->args([
                 new ReferenceConfigurator('twig'),
-                new ReferenceConfigurator('knp_menu.menu_provider'),
-                new ReferenceConfigurator('sonata.block.menu.registry'),
                 new ReferenceConfigurator('knp_menu.factory'),
             ]);
 };
