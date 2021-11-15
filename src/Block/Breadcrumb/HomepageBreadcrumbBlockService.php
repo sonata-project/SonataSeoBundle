@@ -22,6 +22,6 @@ final class HomepageBreadcrumbBlockService extends BaseBreadcrumbMenuBlockServic
 {
     public function handleContext(string $context): bool
     {
-        return true;
+        return 'homepage' === $context;
     }
 }
