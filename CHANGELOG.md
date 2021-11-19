@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.0.0-RC1...3.0.0) - 2021-11-20
+### Fixed
+- [[#635](https://github.com/sonata-project/SonataSeoBundle/pull/635)] Fix block service registration ([@core23](https://github.com/core23))
+- [[#635](https://github.com/sonata-project/SonataSeoBundle/pull/635)] Fix always loading homepage block ([@core23](https://github.com/core23))
+
 ## [3.0.0-RC1](https://github.com/sonata-project/SonataSeoBundle/compare/3.0.0-alpha.1...3.0.0-RC1) - 2021-11-03
 ### Added
 - [[#614](https://github.com/sonata-project/SonataSeoBundle/pull/614)] Symfony 6 support ([@Kocal](https://github.com/Kocal))
