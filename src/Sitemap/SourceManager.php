@@ -53,9 +53,7 @@ final class SourceManager implements \Iterator
     }
 
     /**
-     * @return mixed
-     *
-     * @phpstan-return Source
+     * @return Source
      */
     #[\ReturnTypeWillChange]
     public function current()
@@ -69,9 +67,7 @@ final class SourceManager implements \Iterator
     }
 
     /**
-     * @return mixed
-     *
-     * @phpstan-return string
+     * @return string
      */
     #[\ReturnTypeWillChange]
     public function key()
