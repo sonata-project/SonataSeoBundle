@@ -52,6 +52,10 @@ final class SourceManager implements \Iterator
         }
     }
 
+    /**
+     * @return Source
+     */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->sources->current();
@@ -62,6 +66,10 @@ final class SourceManager implements \Iterator
         $this->sources->next();
     }
 
+    /**
+     * @return string
+     */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->sources->key();
