@@ -1,13 +1,12 @@
 {
     "name": "sonata-project/seo-bundle",
-    "type": "symfony-bundle",
     "description": "Symfony SonataSeoBundle",
+    "license": "MIT",
+    "type": "symfony-bundle",
     "keywords": [
         "seo",
         "sonata"
     ],
-    "homepage": "https://docs.sonata-project.org/projects/SonataSeoBundle",
-    "license": "MIT",
     "authors": [
         {
             "name": "Thomas Rabaix",
@@ -19,6 +18,7 @@
             "homepage": "https://github.com/sonata-project/SonataSeoBundle/contributors"
         }
     ],
+    "homepage": "https://docs.sonata-project.org/projects/SonataSeoBundle",
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
@@ -50,9 +50,6 @@
         "symfony/yaml": "^4.4 || ^5.3 || ^6.0",
         "vimeo/psalm": "^4.7.2"
     },
-    "config": {
-        "sort-packages": true
-    },
     "autoload": {
         "psr-4": {
             "Sonata\\SeoBundle\\": "src/"
@@ -62,5 +59,8 @@
         "psr-4": {
             "Sonata\\SeoBundle\\Tests\\": "tests/"
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
