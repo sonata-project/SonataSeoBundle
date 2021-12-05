@@ -1,13 +1,12 @@
 {
     "name": "sonata-project/seo-bundle",
-    "type": "symfony-bundle",
     "description": "Symfony SonataSeoBundle",
+    "license": "MIT",
+    "type": "symfony-bundle",
     "keywords": [
         "seo",
         "sonata"
     ],
-    "homepage": "https://docs.sonata-project.org/projects/SonataSeoBundle",
-    "license": "MIT",
     "authors": [
         {
             "name": "Thomas Rabaix",
@@ -19,6 +18,7 @@
             "homepage": "https://github.com/sonata-project/SonataSeoBundle/contributors"
         }
     ],
+    "homepage": "https://docs.sonata-project.org/projects/SonataSeoBundle",
     "require": {
         "php": "^7.3 || ^8.0",
         "psr/http-client": "^1.0",
@@ -33,9 +33,6 @@
         "symfony/http-kernel": "^4.4.13 || ^5.3",
         "symfony/options-resolver": "^4.4 || ^5.3",
         "twig/twig": "^2.9 || ^3.0"
-    },
-    "conflict": {
-        "sonata-project/core-bundle": "<3.20"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^6.0",
@@ -56,17 +53,12 @@
         "symfony/yaml": "^4.4 || ^5.3",
         "vimeo/psalm": "^4.7.2"
     },
+    "conflict": {
+        "sonata-project/core-bundle": "<3.20"
+    },
     "suggest": {
         "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder",
         "symfony/http-client": "Symfony client implementation for TwitterEmbedTweetBlockService"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.x-dev"
-        }
     },
     "autoload": {
         "psr-4": {
@@ -76,6 +68,14 @@
     "autoload-dev": {
         "psr-4": {
             "Sonata\\SeoBundle\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
         }
     }
 }
