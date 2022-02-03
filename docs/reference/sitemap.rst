@@ -93,7 +93,6 @@ Configuration example
 ---------------------
 
 Sitemap configuration obviously depends on the bundle, page types & custom routes you choose to expose.
-Here is a full example coming from the [Sonata Sandbox demo website](https://github.com/sonata-project/sandbox)
 
 .. code-block:: yaml
 

@@ -173,7 +173,7 @@ EOT
             $pathname = $file->getRealPath();
 
             if (false === $pathname) {
-                throw new \LogicException(sprintf('File %s does not exist', $file));
+                throw new \LogicException(sprintf('File %s does not exist', (string) $file));
             }
 
             $this->filesystem->remove($pathname);
@@ -184,7 +184,7 @@ EOT
             $pathname = $file->getRealPath();
 
             if (false === $pathname) {
-                throw new \LogicException(sprintf('File %s does not exist', $file));
+                throw new \LogicException(sprintf('File %s does not exist', (string) $file));
             }
 
             $this->filesystem->rename($pathname, sprintf('%s/%s', $permanentDir, $file->getFilename()));
