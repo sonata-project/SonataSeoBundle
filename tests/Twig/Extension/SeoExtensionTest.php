@@ -163,7 +163,7 @@ final class SeoExtensionTest extends TestCase
 
 final class MetaTest
 {
-    public function __toString()
+    public function __toString(): string
     {
         return 'article';
     }
