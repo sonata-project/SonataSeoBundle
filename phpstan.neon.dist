@@ -8,6 +8,8 @@ parameters:
         - tests
     treatPhpDocTypesAsCertain: false
     checkGenericClassInNonGenericObjectType: true
+    checkInternalClassCaseSensitivity: true
     checkMissingIterableValueType: true
     checkMissingVarTagTypehint: true
     checkMissingTypehints: true
+    checkUninitializedProperties: true
