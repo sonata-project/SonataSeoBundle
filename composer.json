@@ -34,6 +34,7 @@
         "twig/twig": "^2.9 || ^3.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.4",
         "knplabs/knp-menu": "^3.0",
         "knplabs/knp-menu-bundle": "^3.0",
         "phpstan/extension-installer": "^1.0",

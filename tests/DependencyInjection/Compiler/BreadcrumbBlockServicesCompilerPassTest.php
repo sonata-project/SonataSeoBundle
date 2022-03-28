@@ -47,7 +47,7 @@ final class BreadcrumbBlockServicesCompilerPassTest extends TestCase
 
     public function testProcess(): void
     {
-        $this->containerBuilder->register('acme.service', );
+        $this->containerBuilder->register('acme.service');
         $this->containerBuilder->register('acme.breadcrumb')
             ->addTag('sonata.breadcrumb');
 
