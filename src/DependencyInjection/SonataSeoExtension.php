@@ -18,7 +18,7 @@ use Sonata\Exporter\Source\SymfonySitemapSourceIterator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -36,7 +36,7 @@ final class SonataSeoExtension extends Extension
         /** @var array<string, mixed> $bundles */
         $bundles = $container->getParameter('kernel.bundles');
 
-        $loader = new Loader\PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         if (isset($bundles['SonataBlockBundle'], $bundles['KnpMenuBundle'])) {
             $loader->load('blocks.php');
@@ -118,12 +118,12 @@ final class SonataSeoExtension extends Extension
     private function fixConfiguration(array $config): array
     {
         foreach ($config['sitemap']['doctrine_orm'] as $pos => $sitemap) {
-            $sitemap['group'] = $sitemap['group'] ?? false;
-            $sitemap['types'] = $sitemap['types'] ?? [];
-            $sitemap['connection'] = $sitemap['connection'] ?? 'doctrine.dbal.default_connection';
-            $sitemap['route'] = $sitemap['route'] ?? false;
-            $sitemap['parameters'] = $sitemap['parameters'] ?? false;
-            $sitemap['query'] = $sitemap['query'] ?? false;
+            $sitemap['group'] ??= false;
+            $sitemap['types'] ??= [];
+            $sitemap['connection'] ??= 'doctrine.dbal.default_connection';
+            $sitemap['route'] ??= false;
+            $sitemap['parameters'] ??= false;
+            $sitemap['query'] ??= false;
 
             if (false === $sitemap['route']) {
                 throw new \RuntimeException('Route cannot be empty, please review the sonata_seo.sitemap configuration');
@@ -148,8 +148,8 @@ final class SonataSeoExtension extends Extension
                     'id' => $sitemap,
                 ];
             } else {
-                $sitemap['group'] = $sitemap['group'] ?? false;
-                $sitemap['types'] = $sitemap['types'] ?? [];
+                $sitemap['group'] ??= false;
+                $sitemap['types'] ??= [];
 
                 if (!isset($sitemap['id'])) {
                     throw new \RuntimeException('Service id must to be defined, please review the sonata_seo.sitemap configuration');
