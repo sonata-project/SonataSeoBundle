@@ -21,20 +21,11 @@ use Symfony\Component\DependencyInjection\Definition;
 
 final class BreadcrumbBlockServicesCompilerPassTest extends TestCase
 {
-    /**
-     * @var ContainerBuilder
-     */
-    private $containerBuilder;
+    private ContainerBuilder $containerBuilder;
 
-    /**
-     * @var Definition
-     */
-    private $listener;
+    private Definition $listener;
 
-    /**
-     * @var BreadcrumbBlockServicesCompilerPass
-     */
-    private $compilerPass;
+    private BreadcrumbBlockServicesCompilerPass $compilerPass;
 
     protected function setUp(): void
     {
@@ -107,9 +98,7 @@ final class BreadcrumbBlockServicesCompilerPassTest extends TestCase
     {
         $methodCalls = $this->listener->getMethodCalls();
 
-        return array_map(static function ($call) {
-            return $call[1][0];
-        }, $methodCalls);
+        return array_map(static fn ($call) => $call[1][0], $methodCalls);
     }
 
     private function process(): void
