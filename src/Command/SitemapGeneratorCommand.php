@@ -17,6 +17,7 @@ use Sonata\Exporter\Handler;
 use Sonata\Exporter\Writer\SitemapWriter;
 use Sonata\SeoBundle\Sitemap\Source;
 use Sonata\SeoBundle\Sitemap\SourceManager;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,8 +33,13 @@ use Symfony\Component\Routing\RouterInterface;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
+#[AsCommand(name: 'sonata:seo:sitemap', description: 'Create a sitemap')]
 final class SitemapGeneratorCommand extends Command
 {
+    // TODO: Remove static properties when support for Symfony < 5.4 is dropped.
+    protected static $defaultName = 'sonata:seo:sitemap';
+    protected static $defaultDescription = 'Create a sitemap';
+
     private RouterInterface $router;
 
     private SourceManager $sitemapManager;
@@ -54,27 +60,25 @@ final class SitemapGeneratorCommand extends Command
 
     public function configure(): void
     {
-        $this->setName('sonata:seo:sitemap');
+        \assert(null !== static::$defaultDescription);
 
-        $this->addArgument('dir', InputArgument::REQUIRED, 'The directory to store the sitemap.xml file');
-        $this->addArgument('host', InputArgument::REQUIRED, 'Set the host');
-        $this->addOption('scheme', null, InputOption::VALUE_OPTIONAL, 'Set the scheme', 'http');
-        $this->addOption('baseurl', null, InputOption::VALUE_OPTIONAL, 'Set the base url', '');
-        $this->addOption(
-            'sitemap_path',
-            null,
-            InputOption::VALUE_OPTIONAL,
-            'Set the sitemap relative path (if in a specific directory)',
-            ''
-        );
-
-        $this->setDescription('Create a sitemap');
-        $this->setHelp(
-            <<<'EOT'
+        $this
+            // TODO: Remove setDescription when support for Symfony < 5.4 is dropped.
+            ->setDescription(static::$defaultDescription)
+            ->setHelp(<<<'EOT'
 The <info>sonata:seo:sitemap</info> command create new sitemap files (index + sitemap).
-
-EOT
-        );
+EOT)
+            ->addArgument('dir', InputArgument::REQUIRED, 'The directory to store the sitemap.xml file')
+            ->addArgument('host', InputArgument::REQUIRED, 'Set the host')
+            ->addOption('scheme', null, InputOption::VALUE_OPTIONAL, 'Set the scheme', 'http')
+            ->addOption('baseurl', null, InputOption::VALUE_OPTIONAL, 'Set the base url', '')
+            ->addOption(
+                'sitemap_path',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Set the sitemap relative path (if in a specific directory)',
+                ''
+            );
     }
 
     public function execute(InputInterface $input, OutputInterface $output): int
