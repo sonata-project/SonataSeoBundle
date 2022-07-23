@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.0.0...3.1.0) - 2022-07-13
+### Changed
+- [[#673](https://github.com/sonata-project/SonataSeoBundle/pull/673)] Make sitemap generator command lazy. ([@jordisala1991](https://github.com/jordisala1991))
+
+### Removed
+- [[#672](https://github.com/sonata-project/SonataSeoBundle/pull/672)] Support of Symfony 5.3 ([@franmomu](https://github.com/franmomu))
+
 ## [3.0.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.0.0-RC1...3.0.0) - 2021-11-20
 ### Fixed
 - [[#635](https://github.com/sonata-project/SonataSeoBundle/pull/635)] Fix block service registration ([@core23](https://github.com/core23))
