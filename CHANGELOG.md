@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.2.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.1.0...3.2.0) - 2022-07-28
+### Added
+- [[#680](https://github.com/sonata-project/SonataSeoBundle/pull/680)] Support for `sonata-project/exporter` ^3 ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [3.1.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.0.0...3.1.0) - 2022-07-13
 ### Changed
 - [[#673](https://github.com/sonata-project/SonataSeoBundle/pull/673)] Make sitemap generator command lazy. ([@jordisala1991](https://github.com/jordisala1991))
