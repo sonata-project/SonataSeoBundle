@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Sonata\SeoBundle\Sitemap;
 
 use Sonata\Exporter\Source\ChainSourceIterator;
-use Sonata\Exporter\Source\SourceIteratorInterface;
 
 final class Source
 {
@@ -35,7 +34,7 @@ final class Source
         return $this->sources;
     }
 
-    public function addSource(SourceIteratorInterface $source): void
+    public function addSource(\Iterator $source): void
     {
         $this->sources->addSource($source);
     }

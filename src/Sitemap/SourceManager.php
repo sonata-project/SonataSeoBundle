@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Sitemap;
 
-use Sonata\Exporter\Source\SourceIteratorInterface;
-
 /**
  * Manager several chain source iterator grouped.
  *
@@ -37,7 +35,7 @@ final class SourceManager implements \Iterator
      *
      * @param mixed[] $types
      */
-    public function addSource(string $group, SourceIteratorInterface $source, array $types = []): void
+    public function addSource(string $group, \Iterator $source, array $types = []): void
     {
         if (!isset($this->sources[$group])) {
             $this->sources[$group] = new Source();
