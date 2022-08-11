@@ -66,8 +66,8 @@ final class SitemapGeneratorCommand extends Command
             // TODO: Remove setDescription when support for Symfony < 5.4 is dropped.
             ->setDescription(static::$defaultDescription)
             ->setHelp(<<<'EOT'
-The <info>sonata:seo:sitemap</info> command create new sitemap files (index + sitemap).
-EOT)
+                The <info>sonata:seo:sitemap</info> command create new sitemap files (index + sitemap).
+                EOT)
             ->addArgument('dir', InputArgument::REQUIRED, 'The directory to store the sitemap.xml file')
             ->addArgument('host', InputArgument::REQUIRED, 'Set the host')
             ->addOption('scheme', null, InputOption::VALUE_OPTIONAL, 'Set the scheme', 'http')
