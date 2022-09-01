@@ -16,6 +16,7 @@ namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Block\Service\MenuBlockService;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
@@ -39,6 +40,7 @@ final class BreadcrumbTest extends BlockServiceTestCase
     {
         $blockService = new BreadcrumbMenuBlockService_Test(
             $this->createStub(Environment::class),
+            $this->createStub(MenuBlockService::class),
             $this->createStub(FactoryInterface::class)
         );
 
@@ -51,6 +53,7 @@ final class BreadcrumbTest extends BlockServiceTestCase
 
         $blockService = new BreadcrumbMenuBlockService_Test(
             $this->createStub(Environment::class),
+            $this->createStub(MenuBlockService::class),
             $menuFactory
         );
 
@@ -71,21 +74,14 @@ final class BreadcrumbTest extends BlockServiceTestCase
     {
         $blockService = new BreadcrumbMenuBlockService_Test(
             $this->createStub(Environment::class),
+            $this->createStub(MenuBlockService::class),
             $this->createStub(FactoryInterface::class)
         );
 
         $blockContext = $this->getBlockContext($blockService);
 
         $this->assertSettings([
-            'cache_policy' => 'public',
-            'template' => '@SonataBlock/Block/block_core_menu.html.twig',
-            'safe_labels' => false,
-            'current_class' => 'active',
-            'first_class' => false,
-            'last_class' => false,
-            'current_uri' => null,
-            'menu_class' => 'list-group',
-            'children_class' => 'list-group-item',
+            'template' => null,
             'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
             'include_homepage_link' => true,
             'context' => null,
