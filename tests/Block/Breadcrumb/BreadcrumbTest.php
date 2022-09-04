@@ -16,12 +16,17 @@ namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContext;
-use Sonata\BlockBundle\Block\Service\MenuBlockService;
+use Sonata\BlockBundle\Block\Service\BlockServiceInterface;
+use Sonata\BlockBundle\Block\Service\EditableBlockService;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
+
+interface EditableBlockServiceInterface extends BlockServiceInterface, EditableBlockService
+{
+}
 
 final class BreadcrumbMenuBlockService_Test extends BaseBreadcrumbMenuBlockService
 {
@@ -40,7 +45,7 @@ final class BreadcrumbTest extends BlockServiceTestCase
     {
         $blockService = new BreadcrumbMenuBlockService_Test(
             $this->createStub(Environment::class),
-            $this->createStub(MenuBlockService::class),
+            $this->createStub(EditableBlockServiceInterface::class),
             $this->createStub(FactoryInterface::class)
         );
 
@@ -53,7 +58,7 @@ final class BreadcrumbTest extends BlockServiceTestCase
 
         $blockService = new BreadcrumbMenuBlockService_Test(
             $this->createStub(Environment::class),
-            $this->createStub(MenuBlockService::class),
+            $this->createStub(EditableBlockServiceInterface::class),
             $menuFactory
         );
 
@@ -74,7 +79,7 @@ final class BreadcrumbTest extends BlockServiceTestCase
     {
         $blockService = new BreadcrumbMenuBlockService_Test(
             $this->createStub(Environment::class),
-            $this->createStub(MenuBlockService::class),
+            $this->createStub(EditableBlockServiceInterface::class),
             $this->createStub(FactoryInterface::class)
         );
 

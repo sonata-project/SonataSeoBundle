@@ -17,8 +17,8 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
+use Sonata\BlockBundle\Block\Service\BlockServiceInterface;
 use Sonata\BlockBundle\Block\Service\EditableBlockService;
-use Sonata\BlockBundle\Block\Service\MenuBlockService;
 use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Meta\MetadataInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
@@ -32,11 +32,17 @@ use Twig\Environment;
  */
 abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService implements EditableBlockService, BreadcrumbBlockService
 {
-    private MenuBlockService $menuBlock;
+    /**
+     * @var BlockServiceInterface&EditableBlockService
+     */
+    private object $menuBlock;
 
     private FactoryInterface $factory;
 
-    public function __construct(Environment $twig, MenuBlockService $menuBlock, FactoryInterface $factory)
+    /**
+     * @param BlockServiceInterface&EditableBlockService $menuBlock
+     */
+    public function __construct(Environment $twig, object $menuBlock, FactoryInterface $factory)
     {
         parent::__construct($twig);
 
