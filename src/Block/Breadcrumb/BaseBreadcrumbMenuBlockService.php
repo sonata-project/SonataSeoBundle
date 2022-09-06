@@ -44,6 +44,15 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
      */
     public function __construct(Environment $twig, object $menuBlock, FactoryInterface $factory)
     {
+        // TODO: Remove this check and add the intersection typehint when dropping support for PHP < 8.1
+        if (!$menuBlock instanceof BlockServiceInterface || !$menuBlock instanceof EditableBlockService) {
+            throw new \TypeError(sprintf(
+                'Argument 2 should be an instance of %s and %s',
+                BlockServiceInterface::class,
+                EditableBlockService::class
+            ));
+        }
+
         parent::__construct($twig);
 
         $this->menuBlock = $menuBlock;
