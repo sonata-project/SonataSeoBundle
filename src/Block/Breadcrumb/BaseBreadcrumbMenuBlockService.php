@@ -17,12 +17,6 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
-use Sonata\BlockBundle\Block\Service\BlockServiceInterface;
-use Sonata\BlockBundle\Block\Service\EditableBlockService;
-use Sonata\BlockBundle\Form\Mapper\FormMapper;
-use Sonata\BlockBundle\Meta\MetadataInterface;
-use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\Form\Validator\ErrorElement;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Twig\Environment;
@@ -30,40 +24,19 @@ use Twig\Environment;
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService implements EditableBlockService, BreadcrumbBlockService
+abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService implements BreadcrumbBlockService
 {
-    /**
-     * @var BlockServiceInterface&EditableBlockService
-     */
-    private object $menuBlock;
-
     private FactoryInterface $factory;
 
-    /**
-     * @param BlockServiceInterface&EditableBlockService $menuBlock
-     */
-    public function __construct(Environment $twig, object $menuBlock, FactoryInterface $factory)
+    public function __construct(Environment $twig, FactoryInterface $factory)
     {
-        // TODO: Remove this check and add the intersection typehint when dropping support for PHP < 8.1
-        if (!$menuBlock instanceof BlockServiceInterface || !$menuBlock instanceof EditableBlockService) {
-            throw new \TypeError(sprintf(
-                'Argument 2 should be an instance of %s and %s',
-                BlockServiceInterface::class,
-                EditableBlockService::class
-            ));
-        }
-
         parent::__construct($twig);
 
-        $this->menuBlock = $menuBlock;
         $this->factory = $factory;
     }
 
     final public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
-        $template = $blockContext->getTemplate();
-        \assert(null !== $template);
-
         $responseSettings = [
             'menu' => $this->getMenu($blockContext),
             'menu_options' => $this->getMenuOptions($blockContext->getSettings()),
@@ -71,41 +44,34 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
             'context' => $blockContext,
         ];
 
+        $template = $blockContext->getTemplate();
+
+        \assert(\is_string($template));
+
+        if ('private' === $blockContext->getSetting('cache_policy')) {
+            return $this->renderPrivateResponse($template, $responseSettings, $response);
+        }
+
         return $this->renderResponse($template, $responseSettings, $response);
-    }
-
-    final public function configureCreateForm(FormMapper $form, BlockInterface $block): void
-    {
-        $this->menuBlock->configureCreateForm($form, $block);
-    }
-
-    final public function configureEditForm(FormMapper $form, BlockInterface $block): void
-    {
-        $this->menuBlock->configureEditForm($form, $block);
-    }
-
-    public function getMetadata(): MetadataInterface
-    {
-        return $this->menuBlock->getMetadata();
-    }
-
-    final public function validate(ErrorElement $errorElement, BlockInterface $block): void
-    {
-        $this->menuBlock->validate($errorElement, $block);
     }
 
     public function configureSettings(OptionsResolver $resolver): void
     {
-        $this->menuBlock->configureSettings($resolver);
-
         $resolver->setDefaults([
+            'cache_policy' => 'public',
+            'template' => '@SonataBlock/Block/block_core_menu.html.twig',
+            'safe_labels' => false,
+            'current_class' => 'active',
+            'first_class' => false,
+            'last_class' => false,
+            'current_uri' => null,
+            'menu_class' => 'list-group',
+            'children_class' => 'list-group-item',
             'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
             'include_homepage_link' => true,
             'context' => null,
         ]);
     }
-
-    abstract public function handleContext(string $context): bool;
 
     protected function getMenu(BlockContextInterface $blockContext): ItemInterface
     {
@@ -121,6 +87,11 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         }
 
         return $menu;
+    }
+
+    final protected function getFactory(): FactoryInterface
+    {
+        return $this->factory;
     }
 
     /**
@@ -143,7 +114,7 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         $options = [];
 
         foreach ($settings as $key => $value) {
-            if (\array_key_exists($key, $mapping) && null !== $value) {
+            if (null !== $value && \array_key_exists($key, $mapping)) {
                 $options[$mapping[$key]] = $value;
             }
         }
