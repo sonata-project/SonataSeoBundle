@@ -67,17 +67,17 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractMenuBlockService i
             [
                 ['include_homepage_link', CheckboxType::class, [
                     'required' => false,
-                    'label' => 'form.label_include_homepage_link', // TODO
+                    'label' => 'form.label_include_homepage_link',
                     'translation_domain' => 'SonataSeoBundle',
                 ]],
                 ['current_uri', TextType::class, [
                     'required' => false,
-                    'label' => 'form.label_current_uri', // TODO
+                    'label' => 'form.label_current_uri',
                     'translation_domain' => 'SonataSeoBundle',
                 ]],
                 ['context', TextType::class, [
                     'required' => false,
-                    'label' => 'form.label_context', // TODO
+                    'label' => 'form.label_context',
                     'translation_domain' => 'SonataSeoBundle',
                 ]],
             ]
