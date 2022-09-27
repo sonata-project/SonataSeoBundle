@@ -85,8 +85,6 @@ final class BreadcrumbTest extends BlockServiceTestCase
             'first_class' => false,
             'last_class' => false,
             'current_uri' => null,
-            'menu_class' => 'list-group',
-            'children_class' => 'list-group-item',
             'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
             'include_homepage_link' => true,
             'context' => null,

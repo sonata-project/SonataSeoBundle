@@ -17,6 +17,8 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractMenuBlockService;
+use Sonata\BlockBundle\Meta\Metadata;
+use Sonata\BlockBundle\Meta\MetadataInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -48,10 +50,20 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractMenuBlockService i
         ]);
     }
 
+    /**
+     * NEXT_MAJOR: Remove this method.
+     */
+    public function getMetadata(): MetadataInterface
+    {
+        return new Metadata('sonata.block.service.menu', null, null, 'SonataBlockBundle', [
+            'class' => 'fa fa-bars',
+        ]);
+    }
+
     protected function getFormSettingsKeys(): array
     {
         return array_merge(
-            parent::getFormSettingsKeys(), // TODO: Remove the menu_template
+            parent::getFormSettingsKeys(),
             [
                 ['include_homepage_link', CheckboxType::class, [
                     'required' => false,
