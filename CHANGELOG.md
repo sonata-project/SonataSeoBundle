@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.4.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.3.0...3.4.0) - 2022-09-28
+### Fixed
+- [[#692](https://github.com/sonata-project/SonataSeoBundle/pull/692)] Revert BC break on BreadcrumbMenuBlockService ([@VincentLanglet](https://github.com/VincentLanglet))
+
 ## [3.3.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.2.0...3.3.0) - 2022-09-06
 ### Fixed
 - [[#687](https://github.com/sonata-project/SonataSeoBundle/pull/687)] [BC break] Breadcrumbs now work in the context of SonataPageBundle blocks, broken since 3.0. ([@jordisala1991](https://github.com/jordisala1991))
