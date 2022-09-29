@@ -286,6 +286,18 @@
         <source>form.help_related</source>
         <target>См. параметр 'related' на https://dev.twitter.com/web/intents</target>
       </trans-unit>
+      <trans-unit id="form.label_include_homepage_link">
+        <source>form.label_include_homepage_link</source>
+        <target>Включить ссылку на главную страницу?</target>
+      </trans-unit>
+      <trans-unit id="form.label_current_uri">
+        <source>form.label_current_uri</source>
+        <target>Текущий URI</target>
+      </trans-unit>
+      <trans-unit id="form.label_context">
+        <source>form.label_context</source>
+        <target>Контекст</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

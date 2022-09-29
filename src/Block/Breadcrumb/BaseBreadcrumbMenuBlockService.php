@@ -16,96 +16,73 @@ namespace Sonata\SeoBundle\Block\Breadcrumb;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\Service\AbstractBlockService;
-use Sonata\BlockBundle\Block\Service\BlockServiceInterface;
-use Sonata\BlockBundle\Block\Service\EditableBlockService;
-use Sonata\BlockBundle\Form\Mapper\FormMapper;
+use Sonata\BlockBundle\Block\Service\AbstractMenuBlockService;
+use Sonata\BlockBundle\Meta\Metadata;
 use Sonata\BlockBundle\Meta\MetadataInterface;
-use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\Form\Validator\ErrorElement;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Twig\Environment;
 
 /**
  * @author Sylvain Deloux <sylvain.deloux@ekino.com>
  */
-abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService implements EditableBlockService, BreadcrumbBlockService
+abstract class BaseBreadcrumbMenuBlockService extends AbstractMenuBlockService implements BreadcrumbBlockService
 {
-    /**
-     * @var BlockServiceInterface&EditableBlockService
-     */
-    private object $menuBlock;
-
     private FactoryInterface $factory;
 
-    /**
-     * @param BlockServiceInterface&EditableBlockService $menuBlock
-     */
-    public function __construct(Environment $twig, object $menuBlock, FactoryInterface $factory)
+    public function __construct(Environment $twig, FactoryInterface $factory)
     {
-        // TODO: Remove this check and add the intersection typehint when dropping support for PHP < 8.1
-        if (!$menuBlock instanceof BlockServiceInterface || !$menuBlock instanceof EditableBlockService) {
-            throw new \TypeError(sprintf(
-                'Argument 2 should be an instance of %s and %s',
-                BlockServiceInterface::class,
-                EditableBlockService::class
-            ));
-        }
-
         parent::__construct($twig);
 
-        $this->menuBlock = $menuBlock;
         $this->factory = $factory;
-    }
-
-    final public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
-    {
-        $template = $blockContext->getTemplate();
-        \assert(null !== $template);
-
-        $responseSettings = [
-            'menu' => $this->getMenu($blockContext),
-            'menu_options' => $this->getMenuOptions($blockContext->getSettings()),
-            'block' => $blockContext->getBlock(),
-            'context' => $blockContext,
-        ];
-
-        return $this->renderResponse($template, $responseSettings, $response);
-    }
-
-    final public function configureCreateForm(FormMapper $form, BlockInterface $block): void
-    {
-        $this->menuBlock->configureCreateForm($form, $block);
-    }
-
-    final public function configureEditForm(FormMapper $form, BlockInterface $block): void
-    {
-        $this->menuBlock->configureEditForm($form, $block);
-    }
-
-    public function getMetadata(): MetadataInterface
-    {
-        return $this->menuBlock->getMetadata();
-    }
-
-    final public function validate(ErrorElement $errorElement, BlockInterface $block): void
-    {
-        $this->menuBlock->validate($errorElement, $block);
     }
 
     public function configureSettings(OptionsResolver $resolver): void
     {
-        $this->menuBlock->configureSettings($resolver);
+        parent::configureSettings($resolver);
 
         $resolver->setDefaults([
             'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
             'include_homepage_link' => true,
+            'current_uri' => null,
             'context' => null,
         ]);
     }
 
-    abstract public function handleContext(string $context): bool;
+    /**
+     * NEXT_MAJOR: Remove this method.
+     */
+    public function getMetadata(): MetadataInterface
+    {
+        return new Metadata('sonata.block.service.menu', null, null, 'SonataBlockBundle', [
+            'class' => 'fa fa-bars',
+        ]);
+    }
+
+    protected function getFormSettingsKeys(): array
+    {
+        return array_merge(
+            parent::getFormSettingsKeys(),
+            [
+                ['include_homepage_link', CheckboxType::class, [
+                    'required' => false,
+                    'label' => 'form.label_include_homepage_link',
+                    'translation_domain' => 'SonataSeoBundle',
+                ]],
+                ['current_uri', TextType::class, [
+                    'required' => false,
+                    'label' => 'form.label_current_uri',
+                    'translation_domain' => 'SonataSeoBundle',
+                ]],
+                ['context', TextType::class, [
+                    'required' => false,
+                    'label' => 'form.label_context',
+                    'translation_domain' => 'SonataSeoBundle',
+                ]],
+            ]
+        );
+    }
 
     protected function getMenu(BlockContextInterface $blockContext): ItemInterface
     {
@@ -121,33 +98,5 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractBlockService imple
         }
 
         return $menu;
-    }
-
-    /**
-     * Replaces setting keys with knp menu item options keys.
-     *
-     * @param array<string, mixed> $settings
-     *
-     * @return array<string, mixed>
-     */
-    private function getMenuOptions(array $settings): array
-    {
-        $mapping = [
-            'current_class' => 'currentClass',
-            'first_class' => 'firstClass',
-            'last_class' => 'lastClass',
-            'safe_labels' => 'allow_safe_labels',
-            'menu_template' => 'template',
-        ];
-
-        $options = [];
-
-        foreach ($settings as $key => $value) {
-            if (\array_key_exists($key, $mapping) && null !== $value) {
-                $options[$mapping[$key]] = $value;
-            }
-        }
-
-        return $options;
     }
 }
