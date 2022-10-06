@@ -14,6 +14,10 @@
         <source>sonata.seo.block.email.share_button</source>
         <target>Поделиться с помощью E-Mail</target>
       </trans-unit>
+      <trans-unit id="sonata_seo_block_menu_breadcrumb">
+        <source>sonata.seo.block.menu.breadcrumb</source>
+        <target>Breadcrumb меню</target>
+      </trans-unit>
       <trans-unit id="sonata_seo_block_facebook_like_box">
         <source>sonata.seo.block.facebook.like_box</source>
         <target>Facebook - поле «Нравится»</target>
