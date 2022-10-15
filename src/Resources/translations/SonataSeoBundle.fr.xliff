@@ -6,10 +6,6 @@
         <source>sonata_seo_homepage_breadcrumb</source>
         <target>Accueil</target>
       </trans-unit>
-      <trans-unit id="sonata_seo_share_by_email">
-        <source>sonata_seo_share_by_email</source>
-        <target>Partager par e-mail</target>
-      </trans-unit>
       <trans-unit id="form.label_include_homepage_link">
         <source>form.label_include_homepage_link</source>
         <target>Inclure le lien vers la page d'accueil ?</target>
