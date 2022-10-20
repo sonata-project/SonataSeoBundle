@@ -6,10 +6,6 @@
         <source>sonata_seo_homepage_breadcrumb</source>
         <target>Accueil</target>
       </trans-unit>
-      <trans-unit id="sonata_seo_share_by_email">
-        <source>sonata_seo_share_by_email</source>
-        <target>Partager par e-mail</target>
-      </trans-unit>
       <trans-unit id="sonata_seo_block_menu_breadcrumb">
         <source>sonata.seo.block.menu.breadcrumb</source>
         <target>Menu fil d'Ariane</target>
