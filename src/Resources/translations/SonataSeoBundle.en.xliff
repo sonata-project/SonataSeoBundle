@@ -6,6 +6,10 @@
         <source>sonata_seo_homepage_breadcrumb</source>
         <target>Home</target>
       </trans-unit>
+      <trans-unit id="sonata_seo_block_menu_breadcrumb">
+        <source>sonata.seo.block.menu.breadcrumb</source>
+        <target>Breadcrumb Menu</target>
+      </trans-unit>
       <trans-unit id="form.label_include_homepage_link">
         <source>form.label_include_homepage_link</source>
         <target>Include homepage link?</target>

@@ -55,8 +55,8 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractMenuBlockService i
      */
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('sonata.block.service.menu', null, null, 'SonataBlockBundle', [
-            'class' => 'fa fa-bars',
+        return new Metadata('sonata.seo.block.menu.breadcrumb', null, null, 'SonataSeoBundle', [
+            'class' => 'fa fa-angle-double-right',
         ]);
     }
 
