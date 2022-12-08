@@ -1,2 +1,7 @@
 parameters:
-	ignoreErrors:
+    excludePaths:
+        # This trait is deprecated and will be remove in next major
+        # NEXT_MAJOR: Remove these files
+        - src/Seo/SeoAwareTrait.php
+
+    ignoreErrors:
