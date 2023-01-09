@@ -13,6 +13,11 @@ declare(strict_types=1);
 
 namespace Sonata\SeoBundle\Seo;
 
+/**
+ * @deprecated since sonata-project/seo-bundle 3.6, will be remove in 4.0.
+ *
+ * NEXT_MAJOR: remove this trait
+ */
 trait SeoAwareTrait
 {
     /**

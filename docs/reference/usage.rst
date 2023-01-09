@@ -44,11 +44,6 @@ You could also prepend the page title, so that the global title is used as a suf
     $seoPage
         ->addTitlePrefix($post->getTitle());
 
-.. note::
-
-    If you need a shortcut to inject the seo page into any class, you could use the
-    ``Sonata\SeoBundle\Seo\SeoAwareTrait``.
-
 These values can be used inside a twig template.
 
 .. code-block:: html+twig
