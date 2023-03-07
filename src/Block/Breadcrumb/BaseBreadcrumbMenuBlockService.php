@@ -29,13 +29,11 @@ use Twig\Environment;
  */
 abstract class BaseBreadcrumbMenuBlockService extends AbstractMenuBlockService implements BreadcrumbBlockService
 {
-    private FactoryInterface $factory;
-
-    public function __construct(Environment $twig, FactoryInterface $factory)
-    {
+    public function __construct(
+        Environment $twig,
+        private FactoryInterface $factory
+    ) {
         parent::__construct($twig);
-
-        $this->factory = $factory;
     }
 
     public function configureSettings(OptionsResolver $resolver): void

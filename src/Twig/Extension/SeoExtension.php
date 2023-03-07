@@ -20,14 +20,10 @@ use Twig\TwigFunction;
 
 final class SeoExtension extends AbstractExtension
 {
-    private SeoPageInterface $page;
-
-    private string $encoding;
-
-    public function __construct(SeoPageInterface $page, string $encoding)
-    {
-        $this->page = $page;
-        $this->encoding = $encoding;
+    public function __construct(
+        private SeoPageInterface $page,
+        private string $encoding
+    ) {
     }
 
     public function getFunctions(): array
