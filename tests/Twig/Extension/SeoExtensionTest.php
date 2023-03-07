@@ -161,7 +161,7 @@ final class SeoExtensionTest extends TestCase
     }
 }
 
-final class MetaTest
+final class MetaTest implements \Stringable
 {
     public function __toString(): string
     {
