@@ -40,21 +40,11 @@ final class SitemapGeneratorCommand extends Command
     protected static $defaultName = 'sonata:seo:sitemap';
     protected static $defaultDescription = 'Create a sitemap';
 
-    private RouterInterface $router;
-
-    private SourceManager $sitemapManager;
-
-    private Filesystem $filesystem;
-
     public function __construct(
-        RouterInterface $router,
-        SourceManager $sitemapManager,
-        Filesystem $filesystem
+        private RouterInterface $router,
+        private SourceManager $sitemapManager,
+        private Filesystem $filesystem
     ) {
-        $this->router = $router;
-        $this->sitemapManager = $sitemapManager;
-        $this->filesystem = $filesystem;
-
         parent::__construct();
     }
 

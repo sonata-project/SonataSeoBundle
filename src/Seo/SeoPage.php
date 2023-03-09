@@ -295,7 +295,7 @@ final class SeoPage implements SeoPageInterface
      *
      * @return mixed[]
      */
-    private function normalize($meta): array
+    private function normalize(array|string $meta): array
     {
         if (\is_string($meta)) {
             return [$meta, []];
