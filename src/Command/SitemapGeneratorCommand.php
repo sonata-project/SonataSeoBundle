@@ -36,10 +36,6 @@ use Symfony\Component\Routing\RouterInterface;
 #[AsCommand(name: 'sonata:seo:sitemap', description: 'Create a sitemap')]
 final class SitemapGeneratorCommand extends Command
 {
-    // TODO: Remove static properties when support for Symfony < 5.4 is dropped.
-    protected static $defaultName = 'sonata:seo:sitemap';
-    protected static $defaultDescription = 'Create a sitemap';
-
     public function __construct(
         private RouterInterface $router,
         private SourceManager $sitemapManager,
@@ -50,11 +46,7 @@ final class SitemapGeneratorCommand extends Command
 
     public function configure(): void
     {
-        \assert(null !== static::$defaultDescription);
-
         $this
-            // TODO: Remove setDescription when support for Symfony < 5.4 is dropped.
-            ->setDescription(static::$defaultDescription)
             ->setHelp(<<<'EOT'
                 The <info>sonata:seo:sitemap</info> command create new sitemap files (index + sitemap).
                 EOT)
