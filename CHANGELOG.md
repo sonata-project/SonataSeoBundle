@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.6.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.5.0...3.6.0) - 2023-04-25
+### Removed
+- [[#714](https://github.com/sonata-project/SonataSeoBundle/pull/714)] Support for Symfony 4 ([@jordisala1991](https://github.com/jordisala1991))
+- [[#714](https://github.com/sonata-project/SonataSeoBundle/pull/714)] Support for Twig 2 ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [3.5.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.4.0...3.5.0) - 2022-10-20
 ### Changed
 - [[#696](https://github.com/sonata-project/SonataSeoBundle/pull/696)] Changed `menu label` to `Breadcrumb menu` ([@eerison](https://github.com/eerison))
