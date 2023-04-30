@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 - [[#714](https://github.com/sonata-project/SonataSeoBundle/pull/714)] Support for Symfony 4 ([@jordisala1991](https://github.com/jordisala1991))
 - [[#714](https://github.com/sonata-project/SonataSeoBundle/pull/714)] Support for Twig 2 ([@jordisala1991](https://github.com/jordisala1991))
+- [[#704](https://github.com/sonata-project/SonataSeoBundle/pull/704)] Support for PHP 7.4 ([@SonataCI](https://github.com/SonataCI))
+- [[#704](https://github.com/sonata-project/SonataSeoBundle/pull/704)] Support for Symfony 6.0 and 6.1 ([@SonataCI](https://github.com/SonataCI))
 
 ## [3.5.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.4.0...3.5.0) - 2022-10-20
 ### Changed
