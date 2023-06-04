@@ -16,6 +16,7 @@ namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Cache\HttpCacheHandler;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
