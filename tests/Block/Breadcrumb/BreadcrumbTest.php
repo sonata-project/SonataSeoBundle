@@ -99,9 +99,5 @@ final class BreadcrumbTest extends BlockServiceTestCase
         }
 
         $this->assertSettings($settings, $blockContext);
-
-        $this->assertSettings([
-
-        ], $blockContext);
     }
 }
