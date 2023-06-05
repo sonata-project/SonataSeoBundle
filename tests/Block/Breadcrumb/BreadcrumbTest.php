@@ -16,6 +16,7 @@ namespace Sonata\SeoBundle\Tests\Block\Breadcrumb;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Cache\HttpCacheHandler;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\SeoBundle\Block\Breadcrumb\BaseBreadcrumbMenuBlockService;
@@ -67,6 +68,9 @@ final class BreadcrumbTest extends BlockServiceTestCase
         $blockService->execute($blockContext, new Response());
     }
 
+    /**
+     * @psalm-suppress DeprecatedClass
+     */
     public function testDefaultSettings(): void
     {
         $blockService = new BreadcrumbMenuBlockService_Test(
@@ -76,9 +80,8 @@ final class BreadcrumbTest extends BlockServiceTestCase
 
         $blockContext = $this->getBlockContext($blockService);
 
-        $this->assertSettings([
+        $settings = [
             'title' => '',
-            'cache_policy' => 'public',
             'template' => '@SonataBlock/Block/block_core_menu.html.twig',
             'safe_labels' => false,
             'current_class' => 'active',
@@ -88,6 +91,13 @@ final class BreadcrumbTest extends BlockServiceTestCase
             'menu_template' => '@SonataSeo/Block/breadcrumb.html.twig',
             'include_homepage_link' => true,
             'context' => null,
-        ], $blockContext);
+        ];
+
+        // TODO: Remove if when dropping support for sonata-project/block-bundle < 5.0
+        if (class_exists(HttpCacheHandler::class)) {
+            $settings['cache_policy'] = 'public';
+        }
+
+        $this->assertSettings($settings, $blockContext);
     }
 }
