@@ -1,7 +1,7 @@
 UPGRADE 3.x
 ===========
 
-UPGRADE FROM 3.x to 3.x
+UPGRADE FROM 3.2 to 3.3
 =======================
 
 ## BaseBreacrumbMenuBlockService changed its constructor
