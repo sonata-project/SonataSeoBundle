@@ -105,7 +105,7 @@ final class SitemapGeneratorCommand extends Command
     /**
      * Creates temporary directory if one does not exist.
      *
-     * @return string|null Directory name or null if directory is already exist
+     * @return non-empty-string|null Directory name or null if directory is already exist
      */
     private function createTempDir(OutputInterface $output): ?string
     {
@@ -123,6 +123,8 @@ final class SitemapGeneratorCommand extends Command
     }
 
     /**
+     * @param non-empty-string $dir
+     *
      * @throws \Exception
      */
     private function generateSitemap(string $dir, string $scheme, string $host, string $appendPath): void
