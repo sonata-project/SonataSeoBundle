@@ -68,9 +68,6 @@ final class BreadcrumbTest extends BlockServiceTestCase
         $blockService->execute($blockContext, new Response());
     }
 
-    /**
-     * @psalm-suppress DeprecatedClass
-     */
     public function testDefaultSettings(): void
     {
         $blockService = new BreadcrumbMenuBlockService_Test(
