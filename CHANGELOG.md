@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.8.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.7.0...3.8.0) - 2023-12-24
+### Added
+- [[#733](https://github.com/sonata-project/SonataSeoBundle/pull/733)] Support for Symfony 7 ([@abdellahrk](https://github.com/abdellahrk))
+
 ## [3.7.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.6.0...3.7.0) - 2023-06-04
 ### Added
 - [[#725](https://github.com/sonata-project/SonataSeoBundle/pull/725)] Support for SonataBlockBundle 5.0 ([@jordisala1991](https://github.com/jordisala1991))
