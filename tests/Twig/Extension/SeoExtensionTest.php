@@ -134,8 +134,8 @@ final class SeoExtensionTest extends TestCase
     {
         $page = $this->createMock(SeoPageInterface::class);
         $page->expects(static::once())->method('getLangAlternates')->willReturn([
-                    'http://example.com/' => 'x-default',
-                ]);
+            'http://example.com/' => 'x-default',
+        ]);
 
         $extension = new SeoExtension($page, 'UTF-8');
 
