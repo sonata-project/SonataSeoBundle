@@ -22,7 +22,7 @@ final class SeoExtension extends AbstractExtension
 {
     public function __construct(
         private SeoPageInterface $page,
-        private string $encoding
+        private string $encoding,
     ) {
     }
 
@@ -51,7 +51,7 @@ final class SeoExtension extends AbstractExtension
 
     public function getTitle(): string
     {
-        return sprintf('<title>%s</title>', strip_tags($this->page->getTitle()));
+        return \sprintf('<title>%s</title>', strip_tags($this->page->getTitle()));
     }
 
     public function getTitleText(): string
@@ -67,14 +67,14 @@ final class SeoExtension extends AbstractExtension
                 [$content, $extras] = $meta;
 
                 if ('' !== $content) {
-                    $html .= sprintf(
+                    $html .= \sprintf(
                         "<meta %s=\"%s\" content=\"%s\" />\n",
                         $type,
                         $this->normalize($name),
                         $this->normalize((string) $content)
                     );
                 } else {
-                    $html .= sprintf(
+                    $html .= \sprintf(
                         "<meta %s=\"%s\" />\n",
                         $type,
                         $this->normalize($name)
@@ -90,7 +90,7 @@ final class SeoExtension extends AbstractExtension
     {
         $attributes = '';
         foreach ($this->page->getHtmlAttributes() as $name => $value) {
-            $attributes .= sprintf('%s="%s" ', $name, $value);
+            $attributes .= \sprintf('%s="%s" ', $name, $value);
         }
 
         return rtrim($attributes);
@@ -100,7 +100,7 @@ final class SeoExtension extends AbstractExtension
     {
         $attributes = '';
         foreach ($this->page->getHeadAttributes() as $name => $value) {
-            $attributes .= sprintf('%s="%s" ', $name, $value);
+            $attributes .= \sprintf('%s="%s" ', $name, $value);
         }
 
         return rtrim($attributes);
@@ -109,7 +109,7 @@ final class SeoExtension extends AbstractExtension
     public function getLinkCanonical(): string
     {
         if ('' !== $this->page->getLinkCanonical()) {
-            return sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
+            return \sprintf("<link rel=\"canonical\" href=\"%s\"/>\n", $this->page->getLinkCanonical());
         }
 
         return '';
@@ -119,7 +119,7 @@ final class SeoExtension extends AbstractExtension
     {
         $html = '';
         foreach ($this->page->getLangAlternates() as $href => $hrefLang) {
-            $html .= sprintf("<link rel=\"alternate\" href=\"%s\" hreflang=\"%s\"/>\n", $href, $hrefLang);
+            $html .= \sprintf("<link rel=\"alternate\" href=\"%s\" hreflang=\"%s\"/>\n", $href, $hrefLang);
         }
 
         return $html;
@@ -129,7 +129,7 @@ final class SeoExtension extends AbstractExtension
     {
         $html = '';
         foreach ($this->page->getOEmbedLinks() as $title => $link) {
-            $html .= sprintf("<link rel=\"alternate\" type=\"application/json+oembed\" href=\"%s\" title=\"%s\" />\n", $link, $title);
+            $html .= \sprintf("<link rel=\"alternate\" type=\"application/json+oembed\" href=\"%s\" title=\"%s\" />\n", $link, $title);
         }
 
         return $html;

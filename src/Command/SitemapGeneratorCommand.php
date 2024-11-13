@@ -39,7 +39,7 @@ final class SitemapGeneratorCommand extends Command
     public function __construct(
         private RouterInterface $router,
         private SourceManager $sitemapManager,
-        private Filesystem $filesystem
+        private Filesystem $filesystem,
     ) {
         parent::__construct();
     }
@@ -86,7 +86,7 @@ final class SitemapGeneratorCommand extends Command
         $output->writeln('Generating sitemap - this can take a while');
         $this->generateSitemap($tempDir, $scheme, $host, $appendPath);
 
-        $output->writeln(sprintf('Moving temporary file to %s ...', $permanentDir));
+        $output->writeln(\sprintf('Moving temporary file to %s ...', $permanentDir));
         $this->moveTemporaryFile($tempDir, $permanentDir);
 
         $output->writeln('Cleanup ...');
@@ -111,7 +111,7 @@ final class SitemapGeneratorCommand extends Command
     {
         $tempDir = sys_get_temp_dir().'/sonata_sitemap_'.md5(__DIR__);
 
-        $output->writeln(sprintf('Creating temporary directory: %s', $tempDir));
+        $output->writeln(\sprintf('Creating temporary directory: %s', $tempDir));
 
         if ($this->filesystem->exists($tempDir)) {
             return null;
@@ -148,7 +148,7 @@ final class SitemapGeneratorCommand extends Command
         // generate global sitemap index
         SitemapWriter::generateSitemapIndex(
             $dir,
-            sprintf('%s://%s%s', $scheme, $host, $appendPath),
+            \sprintf('%s://%s%s', $scheme, $host, $appendPath),
             'sitemap*.xml',
             'sitemap.xml'
         );
@@ -161,7 +161,7 @@ final class SitemapGeneratorCommand extends Command
             $pathname = $file->getRealPath();
 
             if (false === $pathname) {
-                throw new \LogicException(sprintf('File %s does not exist', (string) $file));
+                throw new \LogicException(\sprintf('File %s does not exist', (string) $file));
             }
 
             $this->filesystem->remove($pathname);
@@ -172,10 +172,10 @@ final class SitemapGeneratorCommand extends Command
             $pathname = $file->getRealPath();
 
             if (false === $pathname) {
-                throw new \LogicException(sprintf('File %s does not exist', (string) $file));
+                throw new \LogicException(\sprintf('File %s does not exist', (string) $file));
             }
 
-            $this->filesystem->rename($pathname, sprintf('%s/%s', $permanentDir, $file->getFilename()));
+            $this->filesystem->rename($pathname, \sprintf('%s/%s', $permanentDir, $file->getFilename()));
         }
     }
 }
