@@ -31,7 +31,7 @@ abstract class BaseBreadcrumbMenuBlockService extends AbstractMenuBlockService i
 {
     public function __construct(
         Environment $twig,
-        private FactoryInterface $factory
+        private FactoryInterface $factory,
     ) {
         parent::__construct($twig);
     }
