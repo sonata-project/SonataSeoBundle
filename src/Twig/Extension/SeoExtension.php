@@ -29,15 +29,15 @@ final class SeoExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('sonata_seo_title', [$this, 'getTitle'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_title_text', [$this, 'getTitleText'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_metadatas', [$this, 'getMetadatas'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_html_attributes', [$this, 'getHtmlAttributes'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_head_attributes', [$this, 'getHeadAttributes'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_link_canonical', [$this, 'getLinkCanonical'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_lang_alternates', [$this, 'getLangAlternates'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_oembed_links', [$this, 'getOembedLinks'], ['is_safe' => ['html']]),
-            new TwigFunction('sonata_seo_breadcrumb', [$this, 'renderBreadcrumb'], [
+            new TwigFunction('sonata_seo_title', $this->getTitle(...), ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_title_text', $this->getTitleText(...), ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_metadatas', $this->getMetadatas(...), ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_html_attributes', $this->getHtmlAttributes(...), ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_head_attributes', $this->getHeadAttributes(...), ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_link_canonical', $this->getLinkCanonical(...), ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_lang_alternates', $this->getLangAlternates(...), ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_oembed_links', $this->getOembedLinks(...), ['is_safe' => ['html']]),
+            new TwigFunction('sonata_seo_breadcrumb', $this->renderBreadcrumb(...), [
                 'needs_environment' => true,
                 'is_safe' => ['html'],
             ]),
