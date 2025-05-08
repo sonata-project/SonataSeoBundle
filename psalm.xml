@@ -10,4 +10,7 @@
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
     </plugins>
+    <issueHandlers>
+        <MissingOverrideAttribute errorLevel="suppress"/>
+    </issueHandlers>
 </psalm>
