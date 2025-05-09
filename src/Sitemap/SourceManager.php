@@ -56,7 +56,10 @@ final class SourceManager implements \Iterator
     #[\ReturnTypeWillChange]
     public function current()
     {
-        return $this->sources->current();
+        $current = $this->sources->current();
+        \assert(null !== $current);
+
+        return $current;
     }
 
     public function next(): void
@@ -70,7 +73,10 @@ final class SourceManager implements \Iterator
     #[\ReturnTypeWillChange]
     public function key()
     {
-        return $this->sources->key();
+        $key = $this->sources->key();
+        \assert(null !== $key);
+
+        return $key;
     }
 
     public function valid(): bool

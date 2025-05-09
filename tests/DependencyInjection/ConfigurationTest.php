@@ -67,9 +67,11 @@ final class ConfigurationTest extends TestCase
 
     public function testWithYamlConfig(): void
     {
+        $config = file_get_contents(__DIR__.'/data/config.yml');
+        \assert(false !== $config);
+
         $values = Yaml::parse(
-            /* @phpstan-ignore-next-line */
-            file_get_contents(__DIR__.'/data/config.yml'),
+            $config,
             Yaml::PARSE_EXCEPTION_ON_INVALID_TYPE
         );
 
