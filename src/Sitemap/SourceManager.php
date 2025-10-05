@@ -34,14 +34,14 @@ final class SourceManager implements \Iterator
      * Adding source with his group.
      *
      * @param mixed[] $types
+     *
+     * @psalm-suppress PossiblyNullReference
      */
     public function addSource(string $group, \Iterator $source, array $types = []): void
     {
         if (!isset($this->sources[$group])) {
             $this->sources[$group] = new Source();
         }
-
-        \assert(null !== $this->sources[$group]);
 
         $this->sources[$group]->addSource($source);
 
