@@ -98,7 +98,7 @@ final class BreadcrumbBlockServicesCompilerPassTest extends TestCase
     {
         $methodCalls = $this->listener->getMethodCalls();
 
-        return array_map(static fn ($call) => $call[1][0], $methodCalls);
+        return array_map(static fn (array $call): string => $call[1][0], $methodCalls);
     }
 
     private function process(): void
