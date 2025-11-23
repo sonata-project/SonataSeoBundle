@@ -10,7 +10,6 @@ Symfony SonataSeoBundle
 
 [![Latest Stable Version](https://poser.pugx.org/sonata-project/seo-bundle/v/stable)](https://packagist.org/packages/sonata-project/seo-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/sonata-project/seo-bundle/v/unstable)](https://packagist.org/packages/sonata-project/seo-bundle)
-[![Psalm Type Coverage][shepherd_stable_badge]][shepherd_stable_link]
 [![License](https://poser.pugx.org/sonata-project/seo-bundle/license)](https://packagist.org/packages/sonata-project/seo-bundle)
 
 [![Total Downloads](https://poser.pugx.org/sonata-project/seo-bundle/downloads)](https://packagist.org/packages/sonata-project/seo-bundle)
