@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.9.0](https://github.com/sonata-project/SonataSeoBundle/compare/3.8.2...3.9.0) - 2025-12-16
+### Added
+- [[#776](https://github.com/sonata-project/SonataSeoBundle/pull/776)] Support for Symfony 8 ([@dmaicher](https://github.com/dmaicher))
+
+### Removed
+- [[#776](https://github.com/sonata-project/SonataSeoBundle/pull/776)] Support for PHP 8.1 ([@dmaicher](https://github.com/dmaicher))
+- [[#776](https://github.com/sonata-project/SonataSeoBundle/pull/776)] Support for Symfony 7.1 and 7.2 ([@dmaicher](https://github.com/dmaicher))
+- [[#776](https://github.com/sonata-project/SonataSeoBundle/pull/776)] Support for `sonata-project/block-bundle` v4 ([@dmaicher](https://github.com/dmaicher))
+- [[#776](https://github.com/sonata-project/SonataSeoBundle/pull/776)] Support for `sonata-project/exporter` v2 ([@dmaicher](https://github.com/dmaicher))
+
 ## [3.8.2](https://github.com/sonata-project/SonataSeoBundle/compare/3.8.1...3.8.2) - 2025-10-26
 ### Fixed
 - [[#772](https://github.com/sonata-project/SonataSeoBundle/pull/772)] Deprecated usages of `spaceless` twig filter ([@VincentLanglet](https://github.com/VincentLanglet))
