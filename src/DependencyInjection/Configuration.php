@@ -21,11 +21,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 final class Configuration implements ConfigurationInterface
 {
-    /**
-     * @psalm-suppress UndefinedMethod
-     *
-     * @see https://github.com/psalm/psalm-plugin-symfony/issues/174
-     */
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('sonata_seo');

@@ -34,8 +34,6 @@ final class SourceManager implements \Iterator
      * Adding source with his group.
      *
      * @param mixed[] $types
-     *
-     * @psalm-suppress PossiblyNullReference
      */
     public function addSource(string $group, \Iterator $source, array $types = []): void
     {
